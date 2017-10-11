@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Legato.ServiceDAL.Interfaces;
 using Legato.ServiceDAL.ViewModels;
-using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.Service
@@ -18,77 +17,77 @@ namespace Legato.Service
 
         public IEnumerable<GuitarViewModel> GetAllGuitars()
         {
-            return ServiceMappings.Map<IEnumerable<GuitarDataModel>, IEnumerable<GuitarViewModel>>(_unitOfWork.GuitarsCommon.GetAll());
+            return ServiceMappings.Map<List<GuitarViewModel>>(_unitOfWork.GuitarsCommon.GetAll());
         }
 
         public IEnumerable<GuitarViewModel> GetGuitarsByPrice(short from, short to)
         {
-            return ServiceMappings.Map<IEnumerable<GuitarDataModel>, IEnumerable<GuitarViewModel>>(_unitOfWork.GuitarsCommon.FindByCost(from, to));
+            return ServiceMappings.Map<List<GuitarViewModel>>(_unitOfWork.GuitarsCommon.FindByCost(from, to));
         }
 
         public IEnumerable<GuitarViewModel> GetGuitarsByVendor(string vendor)
         {
-            return ServiceMappings.Map<IEnumerable<GuitarDataModel>, IEnumerable<GuitarViewModel>>(_unitOfWork.GuitarsCommon.FindByVendor(vendor));
+            return ServiceMappings.Map<List<GuitarViewModel>>(_unitOfWork.GuitarsCommon.FindByVendor(vendor));
         }
 
         public IEnumerable<AcousticClassicalGuitarViewModel> GetAcousticClassicalGuitarsByPrice(short from, short to)
         {
-            return ServiceMappings.Map<IEnumerable<AcousticClassicalGuitarDataModel>, IEnumerable<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.FindByCost(from, to));
+            return ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.FindByCost(from, to));
         }
 
         public IEnumerable<AcousticWesternGuitarViewModel> GetAcousticWesternGuitarsByPrice(short from, short to)
         {
-            return ServiceMappings.Map<IEnumerable<AcousticWesternGuitarDataModel>, IEnumerable<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.FindByCost(from, to));
+            return ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.FindByCost(from, to));
         }
 
         public IEnumerable<BassGuitarViewModel> GetBassGuitarsByPrice(short from, short to)
         {
-            return ServiceMappings.Map<IEnumerable<BassGuitarDataModel>, IEnumerable<BassGuitarViewModel>>(_unitOfWork.BassGuitars.FindByCost(from, to));
+            return ServiceMappings.Map<List<BassGuitarViewModel>>(_unitOfWork.BassGuitars.FindByCost(from, to));
         }
 
         public IEnumerable<ElectroGuitarViewModel> GetElectroGuitarsByPrice(short from, short to)
         {
-            return ServiceMappings.Map<IEnumerable<ElectroGuitarDataModel>, IEnumerable<ElectroGuitarViewModel>>(_unitOfWork.ElectroGuitars.FindByCost(from, to));
+            return ServiceMappings.Map<List<ElectroGuitarViewModel>>(_unitOfWork.ElectroGuitars.FindByCost(from, to));
         }
 
         public IEnumerable<AcousticClassicalGuitarViewModel> GetAllAcousticClassicalGuitars()
         {
-            return ServiceMappings.Map<IEnumerable<AcousticClassicalGuitarDataModel>, IEnumerable<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.GetAll());
+            return ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.GetAll());
         }
 
         public IEnumerable<AcousticWesternGuitarViewModel> GetAllAcousticWesternGuitars()
         {
-            return ServiceMappings.Map<IEnumerable<AcousticWesternGuitarDataModel>, IEnumerable<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.GetAll());
+            return ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.GetAll());
         }
 
         public IEnumerable<ElectroGuitarViewModel> GetAllElectroGuitars()
         {
-            return ServiceMappings.Map<IEnumerable<ElectroGuitarDataModel>, IEnumerable<ElectroGuitarViewModel>>(_unitOfWork.ElectroGuitars.GetAll());
+            return ServiceMappings.Map<List<ElectroGuitarViewModel>>(_unitOfWork.ElectroGuitars.GetAll());
         }
 
         public IEnumerable<BassGuitarViewModel> GetAllBassGuitars()
         {
-            return ServiceMappings.Map<IEnumerable<BassGuitarDataModel>, IEnumerable<BassGuitarViewModel>>(_unitOfWork.BassGuitars.GetAll());
+            return ServiceMappings.Map<List<BassGuitarViewModel>>(_unitOfWork.BassGuitars.GetAll());
         }
 
         public IEnumerable<AcousticClassicalGuitarViewModel> GetAcousticClassicalGuitarsByVendor(string vendor)
         {
-            return ServiceMappings.Map<IEnumerable<AcousticClassicalGuitarDataModel>, IEnumerable<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.FindByVendor(vendor));
+            return ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.FindByVendor(vendor));
         }
 
         public IEnumerable<AcousticWesternGuitarViewModel> GetAcousticWesternGuitarsByVendor(string vendor)
         {
-            return ServiceMappings.Map<IEnumerable<AcousticWesternGuitarDataModel>, IEnumerable<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.FindByVendor(vendor));
+            return ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.FindByVendor(vendor));
         }
 
         public IEnumerable<ElectroGuitarViewModel> GetElectroGuitarsByVendor(string vendor)
         {
-            return ServiceMappings.Map<IEnumerable<ElectroGuitarDataModel>, IEnumerable<ElectroGuitarViewModel>>(_unitOfWork.ElectroGuitars.FindByVendor(vendor));
+            return ServiceMappings.Map<List<ElectroGuitarViewModel>>(_unitOfWork.ElectroGuitars.FindByVendor(vendor));
         }
 
         public IEnumerable<BassGuitarViewModel> GetBassGuitarsByVendor(string vendor)
         {
-            return ServiceMappings.Map<IEnumerable<BassGuitarDataModel>, IEnumerable<BassGuitarViewModel>>(_unitOfWork.BassGuitars.FindByVendor(vendor));
+            return ServiceMappings.Map<List<BassGuitarViewModel>>(_unitOfWork.BassGuitars.FindByVendor(vendor));
         }
     }
 }

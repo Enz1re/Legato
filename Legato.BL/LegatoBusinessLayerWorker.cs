@@ -1,6 +1,5 @@
 ﻿using Ninject;
 using System.Linq;
-using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
 using Legato.ServiceContracts;
 using System.Collections.Generic;
@@ -11,20 +10,12 @@ namespace Legato.BL
 {
     public class LegatoBusinessLayerWorker : ILegatoBusinessLayerWorker
     {
-        private IGuitarUnitOfWork _unitOfWork;
         private IRepositoryProvider _repoProvider;
-
-        static LegatoBusinessLayerWorker()
-        {
-        }
 
         [Inject]
         public LegatoBusinessLayerWorker(IRepositoryProvider repoProvider)
         {
-            //var ninjectKernel = new StandardKernel();
-            //_unitOfWork = ninjectKernel.Get<IGuitarUnitOfWork>();
             _repoProvider = repoProvider;
-            MiddlewareMappings.CreateMappings();
         }
 
         public IEnumerable<GuitarDataModel> GetAllGuitars()
@@ -66,22 +57,22 @@ namespace Legato.BL
 
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars()
         {
-            return MiddlewareMappings.Map<IEnumerable<AcousticClassicalGuitarModel>, IEnumerable<AcousticClassicalGuitarDataModel>>(_repoProvider.AcousticClassicalGuitarRepository.GetAll());
+            return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(_repoProvider.AcousticClassicalGuitarRepository.GetAll());
         }
 
         public IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars()
         {
-            return MiddlewareMappings.Map<IEnumerable<AcousticWesternGuitarModel>, IEnumerable<AcousticWesternGuitarDataModel>>(_repoProvider.AcousticWesternGuitarRepository.GetAll());
+            return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(_repoProvider.AcousticWesternGuitarRepository.GetAll());
         }
 
         public IEnumerable<ElectroGuitarDataModel> GetAllElectroGuitars()
         {
-            return MiddlewareMappings.Map<IEnumerable<ElectroGuitarModel>, IEnumerable<ElectroGuitarDataModel>>(_repoProvider.ElectroGuitarRepository.GetAll());
+            return MiddlewareMappings.Map<List<ElectroGuitarDataModel>>(_repoProvider.ElectroGuitarRepository.GetAll());
         }
 
         public IEnumerable<BassGuitarDataModel> GetAllBassGuitars()
         {
-            return MiddlewareMappings.Map<IEnumerable<BassGuitarModel>, IEnumerable<BassGuitarDataModel>>(_repoProvider.BassGuitarRepository.GetAll());
+            return MiddlewareMappings.Map<List<BassGuitarDataModel>>(_repoProvider.BassGuitarRepository.GetAll());
         }
 
         public IEnumerable<GuitarDataModel> GetGuitarsByVendor(string vendor)
@@ -98,22 +89,22 @@ namespace Legato.BL
 
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendor(string vendor)
         {
-            return MiddlewareMappings.Map<IEnumerable<AcousticClassicalGuitarModel>, IEnumerable<AcousticClassicalGuitarDataModel>>(_repoProvider.AcousticClassicalGuitarRepository.FindByVendor(vendor));
+            return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(_repoProvider.AcousticClassicalGuitarRepository.FindByVendor(vendor));
         }
 
         public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor)
         {
-            return MiddlewareMappings.Map<IEnumerable<AcousticWesternGuitarModel>, IEnumerable<AcousticWesternGuitarDataModel>>(_repoProvider.AcousticWesternGuitarRepository.FindByVendor(vendor));
+            return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(_repoProvider.AcousticWesternGuitarRepository.FindByVendor(vendor));
         }
 
         public IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByVendor(string vendor)
         {
-            return MiddlewareMappings.Map<IEnumerable<ElectroGuitarModel>, IEnumerable<ElectroGuitarDataModel>>(_repoProvider.ElectroGuitarRepository.FindByVendor(vendor));
+            return MiddlewareMappings.Map<List<ElectroGuitarDataModel>>(_repoProvider.ElectroGuitarRepository.FindByVendor(vendor));
         }
 
         public IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendor(string vendor)
         {
-            return MiddlewareMappings.Map<IEnumerable<BassGuitarModel>, IEnumerable<BassGuitarDataModel>>(_repoProvider.BassGuitarRepository.FindByVendor(vendor));
+            return MiddlewareMappings.Map<List<BassGuitarDataModel>>(_repoProvider.BassGuitarRepository.FindByVendor(vendor));
         }
 
         public ILegatoBusinessLayerWorker Get()
