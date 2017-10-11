@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{BA89F36F-C912-41D9-A80A-237485130F1D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\img\guitar-ico.png" />
+    <Content Include="Content\img\guitar-gif-6.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="index.html" />
+    <Content Include="Content\legato.css" />
+    <Content Include="fonts\Dosis\Dosis-Bold.ttf" />
+    <Content Include="fonts\Dosis\Dosis-ExtraBold.ttf" />
+    <Content Include="fonts\Dosis\Dosis-ExtraLight.ttf" />
+    <Content Include="fonts\Dosis\Dosis-Light.ttf" />
+    <Content Include="fonts\Dosis\Dosis-Medium.ttf" />
+    <Content Include="fonts\Dosis\Dosis-Regular.ttf" />
+    <Content Include="fonts\Dosis\Dosis-SemiBold.ttf" />
+    <Content Include="package.json" />
+    <Content Include="systemjs.config.js" />
+    <Content Include="legato\Templates\bass.html" />
+    <Content Include="legato\Templates\classical.html" />
+    <Content Include="legato\Templates\electro.html" />
+    <Content Include="legato\Templates\main.html" />
+    <Content Include="legato\Templates\western.html" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="legato\Controllers\src\BassController.ts" />
+    <TypeScriptCompile Include="legato\Controllers\src\ClassicalController.ts" />
+    <TypeScriptCompile Include="legato\Controllers\controllers-module.ts" />
+    <TypeScriptCompile Include="legato\Controllers\src\ElectroController.ts" />
+    <TypeScriptCompile Include="legato\Controllers\src\MainController.ts" />
+    <TypeScriptCompile Include="legato\Controllers\src\WesternController.ts" />
+    <TypeScriptCompile Include="legato\Directives\directives-module.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\BassDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\ClassicalDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\ElectroDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\MainDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\WesternDirective.ts" />
+    <TypeScriptCompile Include="legato\Interfaces\iHttpService.ts" />
+    <TypeScriptCompile Include="legato\legato-module.ts" />
+    <TypeScriptCompile Include="legato\Models\BassGuitar.ts" />
+    <TypeScriptCompile Include="legato\Models\ClassicalGuitar.ts" />
+    <TypeScriptCompile Include="legato\Models\ElectroGuitar.ts" />
+    <TypeScriptCompile Include="legato\Models\Guitar.ts" />
+    <TypeScriptCompile Include="legato\Models\WesternGuitar.ts" />
+    <TypeScriptCompile Include="legato\Routes\Router.ts" />
+    <TypeScriptCompile Include="legato\Services\src\HttpService.ts" />
+    <TypeScriptCompile Include="legato\Services\services-module.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.json" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Legato.Client</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59637</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59637/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>

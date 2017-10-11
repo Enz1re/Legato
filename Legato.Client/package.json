@@ -1,0 +1,50 @@
+{
+  "name": "legato",
+  "version": "1.0.0",
+  "description": "Easy-going guitar catalog",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
+    "cleanup": "find ./app -name \\*.js -delete -o -name \\*.map -delete",
+    "test": "concurrent \"npm run tsc:w\" \"karma start\" "
+  },
+  "keywords": [
+    "angular",
+    "typescript",
+    "systemjs"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/angular": "^1.6.9",
+	  "@types/angular-animate": "^1.5.8",
+    "@types/angular-mocks": "^1.5.9",
+    "@types/angular-ui-router": "^1.1.36",
+    "@types/jasmine": "^2.5.47",
+    "@types/systemjs": "^0.20.2",
+    "angular-ui-bootstrap": "~2.5.0",
+    "codelyzer": "^3.0.0",
+    "concurrently": "^3.4.0",
+    "jasmine-core": "^2.6.0",
+    "jasmine-spec-reporter": "^4.0.0",
+    "karma": "^1.6.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-systemjs": "^0.16.0",
+    "karma-typescript": "^3.0.1",
+    "lite-server": "^2.3.0",
+    "systemjs": "^0.19.47",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+	  "angular-animate": "^1.5.8",
+    "angular-ui-router": "^0.3.2",
+    "angular-ui-bootstrap": "~2.5.0",
+    "bootstrap": "^3.3.7",
+    "systemjs": "^0.19.9"
+  }
+}

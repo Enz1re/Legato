@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9adf7f4d-42d2-4871-90f0-fce6fae7cf48" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:59435/LegatoMiddleware.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LegatoMiddleware.disco" MetadataType="Disco" ID="a419b259-a393-4259-87ef-38d184bb1a48" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?disco" />
+    <MetadataFile FileName="LegatoMiddleware.xsd" MetadataType="Schema" ID="1c72a9ed-95b9-4ee0-8d84-d8e788b6fa35" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?xsd=xsd2" />
+    <MetadataFile FileName="LegatoMiddleware.wsdl" MetadataType="Wsdl" ID="d658067c-3e64-4347-86c4-b770bc61455b" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?wsdl" />
+    <MetadataFile FileName="LegatoMiddleware1.xsd" MetadataType="Schema" ID="c3b7dc02-706d-4f48-be1e-66da376bad1f" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?xsd=xsd0" />
+    <MetadataFile FileName="LegatoMiddleware2.xsd" MetadataType="Schema" ID="af314a34-cdd3-4e9e-8f4a-c3ec29e9437f" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

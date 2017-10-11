@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legato.DAL", "Legato.DAL\Legato.DAL.csproj", "{8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legato.BL", "Legato.BL\Legato.BL.csproj", "{407C91F4-7E86-4A1A-B3EF-1C33BB61617A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D} = {8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legato.Middleware", "Legato.Middleware\Legato.Middleware.csproj", "{5A0BD0F0-F76D-4CC3-B9EE-7DD1A1D19759}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7D81956-AF45-47D3-AF00-278940AA3372} = {B7D81956-AF45-47D3-AF00-278940AA3372}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legato.Service", "Legato.Service\Legato.Service.csproj", "{0B933AC0-2A41-4D70-8FB4-C908A895C653}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D} = {8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legato.Client", "Legato.Client\Legato.Client.csproj", "{BA89F36F-C912-41D9-A80A-237485130F1D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0B933AC0-2A41-4D70-8FB4-C908A895C653} = {0B933AC0-2A41-4D70-8FB4-C908A895C653}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legato.ServiceDAL", "Legato.ServiceDAL\Legato.ServiceDAL.csproj", "{9E981857-D209-4D07-A852-9EB7C8F922E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7D81956-AF45-47D3-AF00-278940AA3372} = {B7D81956-AF45-47D3-AF00-278940AA3372}
+		{5A0BD0F0-F76D-4CC3-B9EE-7DD1A1D19759} = {5A0BD0F0-F76D-4CC3-B9EE-7DD1A1D19759}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legato.MiddlewareContracts", "Legato.MiddlewareContracts\Legato.MiddlewareContracts.csproj", "{B7D81956-AF45-47D3-AF00-278940AA3372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legato.DAL.Tests", "Legato.DAL.Tests\Legato.DAL.Tests.csproj", "{33EA09D2-BA43-4F87-82AA-870331425926}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7B3623-EFC4-4280-A5ED-8B9FD9F1F51D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{407C91F4-7E86-4A1A-B3EF-1C33BB61617A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{407C91F4-7E86-4A1A-B3EF-1C33BB61617A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{407C91F4-7E86-4A1A-B3EF-1C33BB61617A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{407C91F4-7E86-4A1A-B3EF-1C33BB61617A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A0BD0F0-F76D-4CC3-B9EE-7DD1A1D19759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A0BD0F0-F76D-4CC3-B9EE-7DD1A1D19759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A0BD0F0-F76D-4CC3-B9EE-7DD1A1D19759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A0BD0F0-F76D-4CC3-B9EE-7DD1A1D19759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B933AC0-2A41-4D70-8FB4-C908A895C653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B933AC0-2A41-4D70-8FB4-C908A895C653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B933AC0-2A41-4D70-8FB4-C908A895C653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B933AC0-2A41-4D70-8FB4-C908A895C653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA89F36F-C912-41D9-A80A-237485130F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA89F36F-C912-41D9-A80A-237485130F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA89F36F-C912-41D9-A80A-237485130F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA89F36F-C912-41D9-A80A-237485130F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E981857-D209-4D07-A852-9EB7C8F922E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E981857-D209-4D07-A852-9EB7C8F922E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E981857-D209-4D07-A852-9EB7C8F922E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E981857-D209-4D07-A852-9EB7C8F922E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D81956-AF45-47D3-AF00-278940AA3372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D81956-AF45-47D3-AF00-278940AA3372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D81956-AF45-47D3-AF00-278940AA3372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D81956-AF45-47D3-AF00-278940AA3372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33EA09D2-BA43-4F87-82AA-870331425926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33EA09D2-BA43-4F87-82AA-870331425926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33EA09D2-BA43-4F87-82AA-870331425926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33EA09D2-BA43-4F87-82AA-870331425926}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal
