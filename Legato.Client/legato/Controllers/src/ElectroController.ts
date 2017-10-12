@@ -3,7 +3,7 @@ import { HttpService } from '../../Services/services-module';
 
 
 export default class ElectroController implements ng.IController {
-    guitars: Array<ElectroGuitar>;
+    guitars: ElectroGuitar[];
     static $inject = ["$scope", "HttpService"];
 
     constructor(private $scope: ng.IScope, private http: HttpService) {

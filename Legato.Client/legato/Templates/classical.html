@@ -1,5 +1,12 @@
 ﻿<div class="guitar-list">
     <ul ng-repeat="guitar in classicalCtrl.guitars">
-        <li>{{guitar.}}</li>
+        <li>
+            <div>{{guitar.vendor}}</div>
+            <div>{{guitar.model}}</div>
+            <div>{{guitar.mensura}}</div>
+            <div>{{guitar.stockPrice}}</div>
+            <div>{{guitar.stringType}}</div>
+            <br />
+        </li>
     </ul>
 </div>

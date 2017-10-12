@@ -9,7 +9,7 @@ namespace Legato.DAL.Models
     public class AcousticWesternGuitarModel : GuitarModel
     {
         [Required]
-        [ValidateStringNumberAttribute]
+        [ValidateStringNumber]
         public byte StringNumber { get; set; }
 
         [Required]

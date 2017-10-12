@@ -2,6 +2,6 @@
 {
     public class AcousticClassicalGuitarViewModel : GuitarViewModel
     {
-        public string StringType { get; }
+        public string StringType { get; set; }
     }
 }

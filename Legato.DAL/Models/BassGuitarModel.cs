@@ -9,11 +9,11 @@ namespace Legato.DAL.Models
     public class BassGuitarModel : GuitarModel
     {
         [Required]
-        [ValidateBassStringNumberAttribute]
+        [ValidateBassStringNumber]
         public byte StringNumber { get; set; }
 
         [Required]
-        [ValidateSoundboxAttribute]
+        [ValidateSoundbox]
         public string Soundbox { get; set; }
     }
 }

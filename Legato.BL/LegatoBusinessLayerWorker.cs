@@ -107,6 +107,11 @@ namespace Legato.BL
             return MiddlewareMappings.Map<List<BassGuitarDataModel>>(_repoProvider.BassGuitarRepository.FindByVendor(vendor));
         }
 
+        public ILegatoBusinessLayerWorker Get()
+        {
+            return new LegatoBusinessLayerWorker(_repoProvider);
+        }
+
         public virtual void Dispose(bool disposing)
         {
             if (disposing)

@@ -9,7 +9,7 @@ namespace Legato.DAL.Models
     public class AcousticClassicalGuitarModel : GuitarModel
     {
         [Required]
-        [ValidateClassicalGuitarStringTypeAttribute]
+        [ValidateClassicalGuitarStringType]
         public string StringType { get; set; }
     }
 }

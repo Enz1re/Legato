@@ -36,5 +36,7 @@ namespace Legato.BL
         IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByVendor(string vendor);
 
         IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendor(string vendor);
+
+        ILegatoBusinessLayerWorker Get();
     }
 }

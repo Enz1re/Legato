@@ -7,6 +7,6 @@ namespace Legato.MiddlewareContracts.DataContracts
     public class AcousticClassicalGuitarDataModel : GuitarDataModel
     {
         [DataMember]
-        public string StringType { get; }
+        public string StringType { get; set; }
     }
 }
