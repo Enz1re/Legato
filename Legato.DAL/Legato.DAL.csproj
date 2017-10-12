@@ -11,6 +11,8 @@
     <AssemblyName>Legato.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -81,10 +83,10 @@
     <Compile Include="Repositories\ElectroGuitarRepository.cs" />
     <Compile Include="Repositories\RepositoryProvider.cs" />
     <Compile Include="Util\CaseInsensitiveStringEqualityComparer.cs" />
-    <Compile Include="Validation\ValidateBassStringNumber.cs" />
-    <Compile Include="Validation\ValidateClassicalGuitarStringType.cs" />
-    <Compile Include="Validation\ValidateSoundbox.cs" />
-    <Compile Include="Validation\ValidateStringNumber.cs" />
+    <Compile Include="Validation\ValidateBassStringNumberAttribute.cs" />
+    <Compile Include="Validation\ValidateClassicalGuitarStringTypeAttribute.cs" />
+    <Compile Include="Validation\ValidateSoundboxAttribute.cs" />
+    <Compile Include="Validation\ValidateStringNumberAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

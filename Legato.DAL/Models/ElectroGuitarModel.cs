@@ -9,14 +9,14 @@ namespace Legato.DAL.Models
     public class ElectroGuitarModel : GuitarModel
     {
         [Required]
-        [ValidateStringNumber]
+        [ValidateStringNumberAttribute]
         public byte StringNumber { get; set; }
 
         [Required]
         public bool HasTremoloBar { get; set; }
 
         [Required]
-        [ValidateSoundbox]
+        [ValidateSoundboxAttribute]
         public string Soundbox { get; set; }
 
         [Required]

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.ComponentModel.DataAnnotations;
 
 
+[assembly: InternalsVisibleTo("Legato.DAL.Tests")]
 namespace Legato.DAL.Validation
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
-    sealed class ValidateStringNumber : ValidationAttribute
+    sealed class ValidateStringNumberAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {

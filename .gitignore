@@ -1,5 +1,6 @@
 .vs
 packages
+TestResults
 Legato.BL/bin
 Legato.BL/obj
 Legato.Client/node_modules

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Linq;
 using Legato.DAL.Util;
+using System.Runtime.CompilerServices;
 using System.ComponentModel.DataAnnotations;
 
 
+[assembly: InternalsVisibleTo("Legato.DAL.Tests")]
 namespace Legato.DAL.Validation
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
-    sealed class ValidateSoundbox : ValidationAttribute
+    sealed class ValidateSoundboxAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {

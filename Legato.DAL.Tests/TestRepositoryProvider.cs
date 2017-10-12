@@ -52,142 +52,60 @@ namespace Legato.DAL.Tests
         /*
          * Get guitars by vendors
          */
-
-        // Acoustic classical guitars
-        [TestMethod]
-        public void GetTwoLuceroAcousticClassicalGuitars()
+        [DataTestMethod]
+        [DataRow("lucero", 2)]
+        [DataRow("kremona", 1)]
+        [DataRow("lyons", 1)]
+        [DataRow("rogue", 0)]
+        [DataRow("yamaha", 0)]
+        public void GetAcousticClassicalGuitarsWithQuantity(string vName, int quantity)
         {
-            var luceroGuitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendor("lucero");
-            Assert.AreEqual(luceroGuitars.Count(), 2);
+            var guitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendor(vName);
+            Assert.AreEqual(guitars.Count(), quantity);
         }
 
-        [TestMethod]
-        public void GetOneKremonaAcousticClassicalGuitar()
+        [DataTestMethod]
+        [DataRow("rogue", 4)]
+        [DataRow("lucero", 0)]
+        [DataRow("kremona", 0)]
+        [DataRow("lyons", 0)]
+        [DataRow("yamaha", 0)]
+        public void GetAcousticWesternGuitarsWithQuantity(string vName, int quantity)
         {
-            var kremonaGuitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendor("kremona");
-            Assert.AreEqual(kremonaGuitars.Count(), 1);
+            var guitars = _repoProvider.AcousticWesternGuitarRepository.FindByVendor(vName);
+            Assert.AreEqual(guitars.Count(), quantity);
+        }
+        
+        [DataTestMethod]
+        [DataRow("friedman", 1)]
+        [DataRow("the loar", 1)]
+        [DataRow("b.c. rich", 1)]
+        [DataRow("rogue", 1)]
+        [DataRow("lucero", 0)]
+        [DataRow("mitchell", 0)]
+        [DataRow("kremona", 0)]
+        [DataRow("lyons", 0)]
+        [DataRow("yamaha", 0)]
+        public void GetElectricGuitarsWithQuantity(string vName, int quantity)
+        {
+            var guitars = _repoProvider.ElectroGuitarRepository.FindByVendor(vName);
+            Assert.AreEqual(guitars.Count(), quantity);
         }
 
-        [TestMethod]
-        public void GetOneLyonsAcousticClassicalGuitar()
+        [DataTestMethod]
+        [DataRow("b.c. rich", 1)]
+        [DataRow("hofner", 1)]
+        [DataRow("mitchell", 1)]
+        [DataRow("rogue", 1)]
+        [DataRow("lucero", 0)]
+        [DataRow("the loar", 0)]
+        [DataRow("kremona", 0)]
+        [DataRow("lyons", 0)]
+        [DataRow("yamaha", 0)]
+        public void GetBassGuitarsWithQuantity(string vName, int quantity)
         {
-            var lyonsGuitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendor("lyons");
-            Assert.AreEqual(lyonsGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetNoRogueAcousticClassicalGuitars()
-        {
-            var rogueGuitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendor("rogue");
-            Assert.AreEqual(rogueGuitars.Count(), 0);
-        }
-
-        [TestMethod]
-        public void GetNoYamahaAcousticClassicalGuitars()
-        {
-            var yamahaGuitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendor("yamaha");
-            Assert.AreEqual(yamahaGuitars.Count(), 0);
-        }
-
-        // Acoustic western guitars
-        [TestMethod]
-        public void GetFourRogueAcousticWesternGuitars()
-        {
-            var rogueGuitars = _repoProvider.AcousticWesternGuitarRepository.FindByVendor("rogue");
-            Assert.AreEqual(rogueGuitars.Count(), 4);
-        }
-
-        [TestMethod]
-        public void GetNoLuceroAcousticWesternGuitars()
-        {
-            var luceroGuitars = _repoProvider.AcousticWesternGuitarRepository.FindByVendor("lucero");
-            Assert.AreEqual(luceroGuitars.Count(), 0);
-        }
-
-        [TestMethod]
-        public void GetNoYamahaAcousticWesternGuitars()
-        {
-            var yamahaGuitars = _repoProvider.AcousticWesternGuitarRepository.FindByVendor("yamaha");
-            Assert.AreEqual(yamahaGuitars.Count(), 0);
-        }
-
-        // Electric guitars
-        [TestMethod]
-        public void GetOneBCRichElectricGuitar()
-        {
-            var bcRichGuitars = _repoProvider.ElectroGuitarRepository.FindByVendor("b.c. rich");
-            Assert.AreEqual(bcRichGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetOneFriedmanElectricGuitar()
-        {
-            var friedmanGuitars = _repoProvider.ElectroGuitarRepository.FindByVendor("Friedman");
-            Assert.AreEqual(friedmanGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetOneRogueElectricGuitar()
-        {
-            var rogueGuitars = _repoProvider.ElectroGuitarRepository.FindByVendor("rogue");
-            Assert.AreEqual(rogueGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetOneTheLoarElectricGuitar()
-        {
-            var theLoarGuitars = _repoProvider.ElectroGuitarRepository.FindByVendor("The loar");
-            Assert.AreEqual(theLoarGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetNoYamahaElectricGuitars()
-        {
-            var yamahaGuitars = _repoProvider.ElectroGuitarRepository.FindByVendor("yamaha");
-            Assert.AreEqual(yamahaGuitars.Count(), 0);
-        }
-
-        // Bass guitars
-        [TestMethod]
-        public void GetOneBCRichBassGuitar()
-        {
-            var bcRichGuitars = _repoProvider.BassGuitarRepository.FindByVendor("B.C. Rich");
-            Assert.AreEqual(bcRichGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetOneHofnerBassGuitar()
-        {
-            var hofnerGuitars = _repoProvider.BassGuitarRepository.FindByVendor("hofner");
-            Assert.AreEqual(hofnerGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetOneMitchellBassGuitar()
-        {
-            var mitchellGuitars = _repoProvider.BassGuitarRepository.FindByVendor("mitchell");
-            Assert.AreEqual(mitchellGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetOneRogueBassGuitar()
-        {
-            var rogueGuitars = _repoProvider.BassGuitarRepository.FindByVendor("rogue");
-            Assert.AreEqual(rogueGuitars.Count(), 1);
-        }
-
-        [TestMethod]
-        public void GetNoLuceroBassGuitars()
-        {
-            var luceroGuitars = _repoProvider.BassGuitarRepository.FindByVendor("lucero");
-            Assert.AreEqual(luceroGuitars.Count(), 0);
-        }
-
-        [TestMethod]
-        public void GetNoYamahaBassGuitars()
-        {
-            var yamahaGuitars = _repoProvider.BassGuitarRepository.FindByVendor("yamaha");
-            Assert.AreEqual(yamahaGuitars.Count(), 0);
+            var guitars = _repoProvider.BassGuitarRepository.FindByVendor(vName);
+            Assert.AreEqual(guitars.Count(), quantity);
         }
     }
 }
