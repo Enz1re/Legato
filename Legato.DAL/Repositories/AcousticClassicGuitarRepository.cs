@@ -5,8 +5,10 @@ using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Runtime.CompilerServices;
 
 
+[assembly: InternalsVisibleTo("Legato.DAL.Tests")]
 namespace Legato.DAL.Repositories
 {
     class AcousticClassicalGuitarRepository : IAcousticClassicalGuitarRepository
