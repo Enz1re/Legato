@@ -13,7 +13,11 @@ namespace Legato.ServiceDAL
         {
             var mapperConfiguration = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<GuitarDataModel, GuitarViewModel>();
+                cfg.CreateMap<GuitarDataModel, GuitarViewModel>()
+                    .Include<AcousticClassicalGuitarDataModel, AcousticClassicalGuitarViewModel>()
+                    .Include<AcousticWesternGuitarDataModel, AcousticWesternGuitarViewModel>()
+                    .Include<ElectroGuitarDataModel, ElectroGuitarViewModel>()
+                    .Include<BassGuitarDataModel, BassGuitarViewModel>();
                 cfg.CreateMap<AcousticClassicalGuitarDataModel, AcousticClassicalGuitarViewModel>();
                 cfg.CreateMap<AcousticWesternGuitarDataModel, AcousticWesternGuitarViewModel>();
                 cfg.CreateMap<ElectroGuitarDataModel, ElectroGuitarViewModel>();
@@ -25,7 +29,7 @@ namespace Legato.ServiceDAL
 
         public static TDestination Map<TDestination>(object sourceData)
         {
-            return _mapper.Map<TDestination>(sourceData);
+            return (TDestination)_mapper.Map(sourceData, sourceData.GetType(), typeof(TDestination));
         }
     }
 }
