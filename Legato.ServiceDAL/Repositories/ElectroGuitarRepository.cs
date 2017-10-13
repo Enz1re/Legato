@@ -17,6 +17,16 @@ namespace Legato.ServiceDAL.Repositories
             _service = service;
         }
 
+        public IEnumerable<ElectroGuitarDataModel> GetAll()
+        {
+            return _service.GetAllElectroGuitars();
+        }
+
+        public IEnumerable<string> GetVendors()
+        {
+            return _service.GetBassGuitarVendors();
+        }
+        
         public IEnumerable<ElectroGuitarDataModel> FindByCost(short from, short to)
         {
             return _service.GetElectroGuitarsByPrice(from, to);
@@ -25,11 +35,6 @@ namespace Legato.ServiceDAL.Repositories
         public IEnumerable<ElectroGuitarDataModel> FindByVendor(string vendor)
         {
             return _service.GetElectroGuitarsByVendor(vendor);
-        }
-
-        public IEnumerable<ElectroGuitarDataModel> GetAll()
-        {
-            return _service.GetAllElectroGuitars();
         }
     }
 }

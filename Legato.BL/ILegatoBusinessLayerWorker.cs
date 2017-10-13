@@ -9,31 +9,41 @@ namespace Legato.BL
     {
         IEnumerable<GuitarDataModel> GetAllGuitars();
 
+        IEnumerable<string> GetAllVendors();
+
         IEnumerable<GuitarDataModel> GetGuitarsByPrice(short from, short to);
-
-        IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
-
-        IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to);
-
-        IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to);
-
-        IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByPrice(short from, short to);
-
-        IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars();
-
-        IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars();
-
-        IEnumerable<ElectroGuitarDataModel> GetAllElectroGuitars();
-
-        IEnumerable<BassGuitarDataModel> GetAllBassGuitars();
 
         IEnumerable<GuitarDataModel> GetGuitarsByVendor(string vendor);
 
+        IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars();
+
+        IEnumerable<string> GetAcousticClassicalGuitarVendors();
+
+        IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
+
         IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendor(string vendor);
+
+        IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars();
+
+        IEnumerable<string> GetAcousticWesternGuitarVendors();
+
+        IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to);
 
         IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor);
 
+        IEnumerable<ElectroGuitarDataModel> GetAllElectricGuitars();
+
+        IEnumerable<string> GetElectricGuitarVendors();
+
+        IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByPrice(short from, short to);
+
         IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByVendor(string vendor);
+
+        IEnumerable<BassGuitarDataModel> GetAllBassGuitars();
+
+        IEnumerable<string> GetBassGuitarVendors();
+
+        IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to);
 
         IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendor(string vendor);
 

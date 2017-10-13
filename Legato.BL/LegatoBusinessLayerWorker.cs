@@ -24,10 +24,15 @@ namespace Legato.BL
 
             guitars.AddRange(GetAllAcousticClassicalGuitars());
             guitars.AddRange(GetAllAcousticWesternGuitars());
-            guitars.AddRange(GetAllElectroGuitars());
+            guitars.AddRange(GetAllElectricGuitars());
             guitars.AddRange(GetAllBassGuitars());
 
             return guitars;
+        }
+
+        public IEnumerable<string> GetAllVendors()
+        {
+            return GetAllGuitars().Select(guitar => guitar.Vendor).Distinct();
         }
 
         public IEnumerable<GuitarDataModel> GetGuitarsByPrice(short from, short to)
@@ -38,6 +43,11 @@ namespace Legato.BL
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to)
         {
             return GetAllAcousticClassicalGuitars().Where(g => from <= g.StockPrice && g.StockPrice <= to);
+        }
+
+        public IEnumerable<string> GetAcousticClassicalGuitarVendors()
+        {
+            return GetAllAcousticClassicalGuitars().Select(guitar => guitar.Vendor).Distinct();
         }
 
         public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to)
@@ -52,7 +62,7 @@ namespace Legato.BL
 
         public IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByPrice(short from, short to)
         {
-            return GetAllElectroGuitars().Where(g => from <= g.StockPrice && g.StockPrice <= to);
+            return GetAllElectricGuitars().Where(g => from <= g.StockPrice && g.StockPrice <= to);
         }
 
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars()
@@ -65,14 +75,29 @@ namespace Legato.BL
             return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(_repoProvider.AcousticWesternGuitarRepository.GetAll());
         }
 
-        public IEnumerable<ElectroGuitarDataModel> GetAllElectroGuitars()
+        public IEnumerable<string> GetAcousticWesternGuitarVendors()
+        {
+            return GetAllAcousticWesternGuitars().Select(guitar => guitar.Vendor).Distinct();
+        }
+
+        public IEnumerable<ElectroGuitarDataModel> GetAllElectricGuitars()
         {
             return MiddlewareMappings.Map<List<ElectroGuitarDataModel>>(_repoProvider.ElectroGuitarRepository.GetAll());
+        }
+
+        public IEnumerable<string> GetElectricGuitarVendors()
+        {
+            return GetAllElectricGuitars().Select(guitar => guitar.Vendor).Distinct();
         }
 
         public IEnumerable<BassGuitarDataModel> GetAllBassGuitars()
         {
             return MiddlewareMappings.Map<List<BassGuitarDataModel>>(_repoProvider.BassGuitarRepository.GetAll());
+        }
+
+        public IEnumerable<string> GetBassGuitarVendors()
+        {
+            return GetAllBassGuitars().Select(guitar => guitar.Vendor).Distinct();
         }
 
         public IEnumerable<GuitarDataModel> GetGuitarsByVendor(string vendor)

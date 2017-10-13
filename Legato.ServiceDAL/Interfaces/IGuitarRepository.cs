@@ -1,5 +1,4 @@
-﻿using Legato.MiddlewareContracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 
 namespace Legato.ServiceDAL.Interfaces
@@ -7,6 +6,8 @@ namespace Legato.ServiceDAL.Interfaces
     public interface IGuitarRepository<T>
     {
         IEnumerable<T> GetAll();
+
+        IEnumerable<string> GetVendors();
 
         IEnumerable<T> FindByVendor(string vendor);
 

@@ -8,13 +8,21 @@ namespace Legato.Service
     {
         IEnumerable<GuitarViewModel> GetAllGuitars();
 
+        IEnumerable<string> GetAllVendors();
+
         IEnumerable<GuitarViewModel> GetGuitarsByPrice(short from, short to);
 
+        IEnumerable<string> GetAcousticClassicalGuitarVendors();
+
         IEnumerable<AcousticClassicalGuitarViewModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
+
+        IEnumerable<string> GetAcousticWesternGuitarVendors();
 
         IEnumerable<AcousticWesternGuitarViewModel> GetAcousticWesternGuitarsByPrice(short from, short to);
 
         IEnumerable<BassGuitarViewModel> GetBassGuitarsByPrice(short from, short to);
+
+        IEnumerable<string> GetElectricGuitarVendors();
 
         IEnumerable<ElectroGuitarViewModel> GetElectroGuitarsByPrice(short from, short to);
 
@@ -23,6 +31,8 @@ namespace Legato.Service
         IEnumerable<AcousticWesternGuitarViewModel> GetAllAcousticWesternGuitars();
 
         IEnumerable<ElectroGuitarViewModel> GetAllElectroGuitars();
+
+        IEnumerable<string> GetBassGuitarVendors();
 
         IEnumerable<BassGuitarViewModel> GetAllBassGuitars();
 

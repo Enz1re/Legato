@@ -158,8 +158,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BassController.cs" />
     <Compile Include="Controllers\ClassicalController.cs" />
-    <Compile Include="Controllers\ElectroController.cs" />
-    <Compile Include="Controllers\GuitarController.cs" />
+    <Compile Include="Controllers\ElectricController.cs" />
+    <Compile Include="Controllers\GuitarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WesternController.cs" />
     <Compile Include="LegatoServiceDI.cs" />

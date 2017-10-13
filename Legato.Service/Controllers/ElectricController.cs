@@ -5,11 +5,11 @@ using Legato.ServiceDAL.ViewModels;
 
 namespace Legato.Service.Controllers
 {
-    public class ElectroController : ApiController
+    public class ElectricController : ApiController
     {
         private ILegatoServiceWorker _serviceWorker;
 
-        public ElectroController(ILegatoServiceWorker serviceWorker)
+        public ElectricController(ILegatoServiceWorker serviceWorker)
         {
             _serviceWorker = serviceWorker;
         }
@@ -19,11 +19,19 @@ namespace Legato.Service.Controllers
             return _serviceWorker.GetAllElectroGuitars();
         }
 
+        [Route("api/Electric/Vendors")]
+        public IEnumerable<string> GetVendors()
+        {
+            return _serviceWorker.GetElectricGuitarVendors();
+        }
+
+        [Route("api/Electric/{vendor}")]
         public IEnumerable<ElectroGuitarViewModel> Get(string vendor)
         {
             return _serviceWorker.GetElectroGuitarsByVendor(vendor);
         }
 
+        [Route("api/Electric/{from}/{to}")]
         public IEnumerable<ElectroGuitarViewModel> Get(short from, short to)
         {
             return _serviceWorker.GetElectroGuitarsByPrice(from, to);

@@ -1,6 +1,4 @@
-﻿using Ninject;
-using System.Web.Http;
-using Ninject.Web.Common;
+﻿using System.Web.Http;
 
 
 namespace Legato.Service
@@ -13,8 +11,7 @@ namespace Legato.Service
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}"
             );
         }
     }

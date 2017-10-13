@@ -11,7 +11,7 @@ namespace Legato.ServiceDAL.Interfaces
 
         IGuitarRepository<AcousticWesternGuitarDataModel> WesternAcousticGuitars { get; }
 
-        IGuitarRepository<ElectroGuitarDataModel> ElectroGuitars { get; }
+        IGuitarRepository<ElectroGuitarDataModel> ElectricGuitars { get; }
 
         IGuitarRepository<BassGuitarDataModel> BassGuitars { get; }
     }

@@ -19,11 +19,19 @@ namespace Legato.Service.Controllers
             return _serviceWorker.GetAllAcousticClassicalGuitars();
         }
 
+        [Route("api/Classical/Vendors")]
+        public IEnumerable<string> GetVendors()
+        {
+            return _serviceWorker.GetAcousticClassicalGuitarVendors();
+        }
+
+        [Route("api/Classical/{vendor}")]
         public IEnumerable<AcousticClassicalGuitarViewModel> Get(string vendor)
         {
             return _serviceWorker.GetAcousticClassicalGuitarsByVendor(vendor);
         }
 
+        [Route("api/Classical/{from}/{to}")]
         public IEnumerable<AcousticClassicalGuitarViewModel> Get(short from, short to)
         {
             return _serviceWorker.GetAcousticClassicalGuitarsByPrice(from, to);

@@ -19,11 +19,19 @@ namespace Legato.Service.Controllers
             return _serviceWorker.GetAllBassGuitars();
         }
 
+        [Route("api/Bass/Vendors")]
+        public IEnumerable<string> GetVendors()
+        {
+            return _serviceWorker.GetBassGuitarVendors();
+        }
+
+        [Route("api/Bass/{vendor}")]
         public IEnumerable<BassGuitarViewModel> Get(string vendor)
         {
             return _serviceWorker.GetBassGuitarsByVendor(vendor);
         }
 
+        [Route("api/Bass/{from}/{to}")]
         public IEnumerable<BassGuitarViewModel> Get(short from, short to)
         {
             return _serviceWorker.GetBassGuitarsByPrice(from, to);
