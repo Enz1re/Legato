@@ -1,7 +1,7 @@
 ﻿import Guitar from '../Models/Guitar';
 import ClassicalGuitar from '../Models/ClassicalGuitar';
 import WesternGuitar from '../Models/WesternGuitar';
-import ElectroGuitar from '../Models/ElectroGuitar';
+import ElectricGuitar from '../Models/ElectricGuitar';
 import BassGuitar from '../Models/BassGuitar';
 
 
@@ -10,6 +10,12 @@ interface IHttpService {
     getAllGuitars(): ng.IPromise<Guitar[]>;
     getGuitarsByVendor(vendor: string): ng.IPromise<Guitar[]>;
     getGuitarsByPrice(from: number, to: number): ng.IPromise<Guitar[]>;
+    // Vendors
+    getAllVendors(): ng.IPromise<string[]>;
+    getClassicalGuitarVendors(): ng.IPromise<string[]>;
+    getWesternGuitarVendors(): ng.IPromise<string[]>;
+    getElectricGuitarVendors(): ng.IPromise<string[]>;
+    getBassGuitarVendors(): ng.IPromise<string[]>;
     // Classical guitars
     getAllClassicalGuitars(): ng.IPromise<ClassicalGuitar[]>;
     getClassicalGuitarsByVendor(vendor: string): ng.IPromise<ClassicalGuitar[]>;
@@ -18,10 +24,10 @@ interface IHttpService {
     getAllWesternGuitars(): ng.IPromise<WesternGuitar[]>;
     getWesternGuitarsByVendor(vendor: string): ng.IPromise<WesternGuitar[]>;
     getWesternGuitarsByPrice(from: number, to: number): ng.IPromise<WesternGuitar[]>;
-    // Electro guitars
-    getAllElectroGuitars(): ng.IPromise<ElectroGuitar[]>;
-    getElectroGuitarsByVendor(vendor: string): ng.IPromise<ElectroGuitar[]>;
-    getElectroGuitarsByPrice(from: number, to: number): ng.IPromise<ElectroGuitar[]>;
+    // Electric guitars
+    getAllElectricGuitars(): ng.IPromise<ElectricGuitar[]>;
+    getElectricGuitarsByVendor(vendor: string): ng.IPromise<ElectricGuitar[]>;
+    getElectricGuitarsByPrice(from: number, to: number): ng.IPromise<ElectricGuitar[]>;
     // Bass guitars
     getAllBassGuitars(): ng.IPromise<BassGuitar[]>;
     getBassGuitarsByVendor(vendor: string): ng.IPromise<BassGuitar[]>;

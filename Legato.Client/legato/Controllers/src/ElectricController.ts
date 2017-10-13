@@ -1,13 +1,13 @@
-﻿import ElectroGuitar from '../../Models/ElectroGuitar';
+﻿import ElectricGuitar from '../../Models/ElectricGuitar';
 import { HttpService } from '../../Services/services-module';
 
 
-export default class ElectroController implements ng.IController {
-    guitars: ElectroGuitar[];
+export default class ElectricController implements ng.IController {
+    guitars: ElectricGuitar[];
     static $inject = ["$scope", "HttpService"];
 
     constructor(private $scope: ng.IScope, private http: HttpService) {
-        this.http.getAllElectroGuitars().then(guitars => {
+        this.http.getAllElectricGuitars().then(guitars => {
             this.guitars = guitars;
         });
     }

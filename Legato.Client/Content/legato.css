@@ -16,6 +16,19 @@ body {
     font-size: 20px !important;
 }
 
+button {
+    width: 5em !important;
+}
+
+select {
+    width: 179px;
+}
+
+.top-panel-container {
+    width: 100%;
+    display: block;
+}
+
 .top-panel {
     top: 0;
     left: 0;
@@ -52,4 +65,42 @@ body {
 
 .site-name-signature {
     font-size: 2em;
+}
+
+.main-container {
+    clear: both;
+    display: flex;
+}
+
+.find-by-cost-title {
+    padding-bottom: 1em;
+}
+
+.left-panel {
+    width: 14em;
+    height: 100%;
+    display: block;
+    padding-top: 2em;
+    text-align: center;
+}
+
+.main-panel {
+    width: 100%;
+    display: block;
+}
+
+.vendors-title {
+    padding-bottom: 0.5em;
+}
+
+.vendors-container {
+    width: 44%;
+    margin: 0 auto;
+    overflow-y: auto;
+    max-height: 200px;
+    text-align: start;
+}
+
+.button-container {
+    margin: 4em;
 }

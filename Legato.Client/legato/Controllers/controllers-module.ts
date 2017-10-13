@@ -3,7 +3,7 @@
 import MainController from './src/MainController';
 import ClassicalController from './src/ClassicalController';
 import WesternController from './src/WesternController';
-import ElectroController from './src/ElectroController';
+import ElectricController from './src/ElectricController';
 import BassController from './src/BassController';
 
 const controllersModuleName = 'legato.controllers';
@@ -12,14 +12,14 @@ angular.module(controllersModuleName, [])
     .controller('MainController', MainController)
     .controller('ClassicalController', ClassicalController)
     .controller('WesternController', WesternController)
-    .controller('ElectroController', ElectroController)
+    .controller('ElectricController', ElectricController)
     .controller('BassController', BassController);
 
 export {
     MainController,
     ClassicalController,
     WesternController,
-    ElectroController,
+    ElectricController,
     BassController
 };
 

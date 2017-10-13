@@ -26,7 +26,7 @@ export class Router {
             })
             .state('/electro', {
                 templateUrl: '../Templates/electro.html',
-                controller: controllers.ElectroController,
+                controller: controllers.ElectricController,
                 controllerAs: 'electroCtrl'
             })
             .state('/bass', {

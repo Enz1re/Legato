@@ -1,6 +1,6 @@
 ﻿export default class Guitar {
-    vendor: string;
-    model: string;
-    mensura: number;
-    stockPrice: number;
+    Vendor: string;
+    Model: string;
+    Mensura: number;
+    StockPrice: number;
 }

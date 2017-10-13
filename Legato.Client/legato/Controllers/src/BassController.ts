@@ -11,4 +11,6 @@ export default class BassController implements ng.IController {
             this.guitars = guitars;
         });
     }
+
+
 }
