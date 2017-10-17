@@ -1,4 +1,4 @@
-﻿export class Vendor {
+﻿export default class Vendor {
     name: string;
     selected: boolean;
 

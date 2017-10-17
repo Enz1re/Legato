@@ -5,6 +5,7 @@ import ClassicalController from './src/ClassicalController';
 import WesternController from './src/WesternController';
 import ElectricController from './src/ElectricController';
 import BassController from './src/BassController';
+import GuitarController from './src/GuitarController';
 
 const controllersModuleName = 'legato.controllers';
 
@@ -20,7 +21,8 @@ export {
     ClassicalController,
     WesternController,
     ElectricController,
-    BassController
+    BassController,
+    GuitarController
 };
 
 export default controllersModuleName;

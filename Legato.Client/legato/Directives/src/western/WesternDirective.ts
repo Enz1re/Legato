@@ -1,11 +1,12 @@
-﻿import { WesternController } from '../../Controllers/controllers-module';
+﻿import { WesternController } from '../../../Controllers/controllers-module';
+
 
 export default function westernDirective(): ng.IDirective {
     return {
         restrict: 'E',
         controller: WesternController,
         controllerAs: 'westernCtrl',
-        templateUrl: 'legato/Templates/western.html',
+        templateUrl: 'legato/Directives/src/western/western.html',
         scope: {},
     }
 }

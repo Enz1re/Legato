@@ -2,5 +2,6 @@
     Vendor: string;
     Model: string;
     Mensura: number;
-    StockPrice: number;
+    Price: number;
+    ImgPath: string;
 }

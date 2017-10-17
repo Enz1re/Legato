@@ -1,10 +1,10 @@
 ﻿import angular from 'angular';
 
-import MainDirective from './src/MainDirective';
-import ClassicalDirective from './src/ClassicalDirective';
-import WesternDirective from './src/WesternDirective';
-import ElectricDirective from './src/ElectricDirective';
-import BassDirective from './src/BassDirective';
+import MainDirective from './src/legato/MainDirective';
+import ClassicalDirective from './src/classical/ClassicalDirective';
+import WesternDirective from './src/western/WesternDirective';
+import ElectricDirective from './src/electric/ElectricDirective';
+import BassDirective from './src/bass/BassDirective';
 
 const directivesModuleName = 'legato.directives';
 

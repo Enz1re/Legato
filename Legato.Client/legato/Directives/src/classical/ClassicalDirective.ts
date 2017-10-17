@@ -1,11 +1,12 @@
-﻿import { ClassicalController } from '../../Controllers/controllers-module';
+﻿import { ClassicalController } from '../../../Controllers/controllers-module';
+
 
 export default function classicalDirective(): ng.IDirective {
     return {
         restrict: 'E',
         controller: ClassicalController,
         controllerAs: 'classicalCtrl',
-        templateUrl: 'legato/Templates/classical.html',
+        templateUrl: 'legato/Directives/src/classical/classical.html',
         scope: {},
     }
 }

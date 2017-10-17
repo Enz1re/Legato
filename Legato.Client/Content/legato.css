@@ -16,6 +16,14 @@ body {
     font-size: 20px !important;
 }
 
+ol {
+    list-style: none;
+}
+
+ul {
+    list-style: none;
+}
+
 button {
     width: 5em !important;
 }
@@ -84,7 +92,7 @@ select {
     text-align: center;
 }
 
-.main-panel {
+#main-panel {
     width: 100%;
     display: block;
 }
@@ -103,4 +111,19 @@ select {
 
 .button-container {
     margin: 4em;
+}
+
+.guitar-container {
+    width: 300px;
+    height: 500px;
+}
+
+.guitarimg-container {
+    width: 200px;
+    height: 400px;
+}
+
+.guitarimg {
+    width: 100%;
+    height: 100%;
 }

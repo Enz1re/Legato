@@ -1,5 +1,5 @@
-﻿import { Vendor } from '../../Models/Vendor';
-import { Price } from '../../Models/Price';
+﻿import Price from '../../Models/Price';
+import Vendor from '../../Models/Vendor';
 import { HttpService } from '../../Services/services-module';
 
 
@@ -11,7 +11,7 @@ export default class MainController implements ng.IController {
     static $inject = ["$scope", "HttpService"];
 
     constructor(private $scope: ng.IScope, private http: HttpService) {
-        
+        this.refreshVendorListForClassicalGuitars();
     }
 
     refreshVendorList(guitarTypeName: string) {
