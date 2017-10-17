@@ -55,11 +55,11 @@
     <Content Include="fonts\Dosis\Dosis-SemiBold.ttf" />
     <Content Include="package.json" />
     <Content Include="systemjs.config.js" />
-    <Content Include="legato\Templates\bass.html" />
-    <Content Include="legato\Templates\classical.html" />
-    <Content Include="legato\Templates\electric.html" />
-    <Content Include="legato\Templates\main.html" />
-    <Content Include="legato\Templates\western.html" />
+    <Content Include="legato\Directives\src\bass\bass.html" />
+    <Content Include="legato\Directives\src\classical\classical.html" />
+    <Content Include="legato\Directives\src\electric\electric.html" />
+    <Content Include="legato\Directives\src\legato\main.html" />
+    <Content Include="legato\Directives\src\western\western.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -70,11 +70,16 @@
     <TypeScriptCompile Include="legato\Controllers\src\MainController.ts" />
     <TypeScriptCompile Include="legato\Controllers\src\WesternController.ts" />
     <TypeScriptCompile Include="legato\Directives\directives-module.ts" />
-    <TypeScriptCompile Include="legato\Directives\src\BassDirective.ts" />
-    <TypeScriptCompile Include="legato\Directives\src\ClassicalDirective.ts" />
-    <TypeScriptCompile Include="legato\Directives\src\ElectricDirective.ts" />
-    <TypeScriptCompile Include="legato\Directives\src\MainDirective.ts" />
-    <TypeScriptCompile Include="legato\Directives\src\WesternDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\bass\BassDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\classical\ClassicalDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\electric\ElectricDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\legato\MainDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\western\WesternDirective.ts" />
+    <TypeScriptCompile Include="legato\Filters\filters-module.ts" />
+    <TypeScriptCompile Include="legato\Filters\src\BooleanFilter.ts" />
+    <TypeScriptCompile Include="legato\Filters\src\PriceFilter.ts" />
+    <TypeScriptCompile Include="legato\Filters\src\SortByFilter.ts" />
+    <TypeScriptCompile Include="legato\Filters\src\VendorFilter.ts" />
     <TypeScriptCompile Include="legato\Interfaces\iHttpService.ts" />
     <TypeScriptCompile Include="legato\legato-module.ts" />
     <TypeScriptCompile Include="legato\Models\BassGuitar.ts" />
