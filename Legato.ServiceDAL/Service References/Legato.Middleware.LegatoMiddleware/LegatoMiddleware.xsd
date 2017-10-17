@@ -10,7 +10,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Mensura" type="xs:short" />
       <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="StockPrice" type="xs:short" />
+      <xs:element minOccurs="0" name="Price" type="xs:short" />
       <xs:element minOccurs="0" name="Vendor" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

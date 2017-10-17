@@ -37,12 +37,12 @@ namespace Legato.BL
 
         public IEnumerable<GuitarDataModel> GetGuitarsByPrice(short from, short to)
         {
-            return GetAllGuitars().Where(g => from <= g.StockPrice && g.StockPrice <= to);
+            return GetAllGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to)
         {
-            return GetAllAcousticClassicalGuitars().Where(g => from <= g.StockPrice && g.StockPrice <= to);
+            return GetAllAcousticClassicalGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
         public IEnumerable<string> GetAcousticClassicalGuitarVendors()
@@ -52,17 +52,17 @@ namespace Legato.BL
 
         public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to)
         {
-            return GetAllAcousticWesternGuitars().Where(g => from <= g.StockPrice && g.StockPrice <= to);
+            return GetAllAcousticWesternGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
         public IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to)
         {
-            return GetAllBassGuitars().Where(g => from <= g.StockPrice && g.StockPrice <= to);
+            return GetAllBassGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
         public IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByPrice(short from, short to)
         {
-            return GetAllElectricGuitars().Where(g => from <= g.StockPrice && g.StockPrice <= to);
+            return GetAllElectricGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars()

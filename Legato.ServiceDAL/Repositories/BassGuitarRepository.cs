@@ -24,7 +24,7 @@ namespace Legato.ServiceDAL.Repositories
 
         public IEnumerable<string> GetVendors()
         {
-            return _service.GetElectricGuitarVendors();
+            return _service.GetBassGuitarVendors();
         }
 
         public IEnumerable<BassGuitarDataModel> FindByCost(short from, short to)

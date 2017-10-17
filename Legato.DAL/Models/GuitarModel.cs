@@ -20,6 +20,8 @@ namespace Legato.DAL.Models
         public short Mensura { get; set; }
 
         [Required]
-        public int StockPrice { get; set; }
+        public int Price { get; set; }
+
+        public string ImgPath { get; set; }
     }
 }

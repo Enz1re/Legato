@@ -16,6 +16,9 @@ namespace Legato.MiddlewareContracts.DataContracts
         public short Mensura { get; set; }
 
         [DataMember]
-        public int StockPrice { get; set; }
+        public int Price { get; set; }
+
+        [DataMember]
+        public string ImgPath { get; set; }
     }
 }
