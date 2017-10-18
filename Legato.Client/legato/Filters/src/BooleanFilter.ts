@@ -1,9 +1,9 @@
 ﻿export default function booleanFilter() {
     return (input: boolean) => {
-        if (input) {
-            return "Yes";
-        } else {
-            return "No";
+        if (typeof input !== "boolean") {
+            return input;
         }
+
+        return input ? "Yes" : "No";
     }
 }
