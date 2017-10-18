@@ -1,14 +1,16 @@
-﻿<div class="guitar-list">
-    <ul>
-        <li ng-repeat="guitar in westernCtrl.guitars">
-            <div class="guitar-container">
-                <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.ImgPath}}"></div>
-                <div>{{guitar.Vendor}} {{guitar.Model}}</div>
-                <div>Mensura: {{guitar.Mensura}} mm</div>
-                <div>Price: {{guitar.Price}} UAH</div>
-                <div>Strings: {{guitar.StringNumber}}</div>
-                <div>String caliber: {{guitar.StringCaliber}}</div>
-            </div>
-        </li>
-    </ul>
+﻿<div class="guitar-list-container">
+    <div class="guitar-grid">
+        <ul>
+            <li ng-repeat="guitar in westernCtrl.guitars | byPrice:westernCtrl.price | byVendors:westernCtrl.vendors | sortBy:westernCtrl.sortBy:westernCtrl.sortDirection">
+                <div class="guitar-container">
+                    <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.ImgPath}}"></div>
+                    <div>{{guitar.Vendor}} {{guitar.Model}}</div>
+                    <div>Mensura: {{guitar.Mensura}} mm</div>
+                    <div>Price: {{guitar.Price}} UAH</div>
+                    <div>Strings: {{guitar.StringNumber}}</div>
+                    <div>String caliber: {{guitar.StringCaliber}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>

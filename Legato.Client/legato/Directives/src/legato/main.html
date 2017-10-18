@@ -25,13 +25,23 @@
                 <div><input type="checkbox" ng-model="vendor.selected"> {{vendor.name}}</div>
             </div>
             <p></p>
-            <div>Sort by:</div>
+            <div>Sort – <input type="checkbox" ng-model="mainCtrl.sorting.required"/></div>
             <p></p>
-            <div>
-                <select ng-model="mainCtrl.sortName">
-                    <option title="Vendor">Vendor</option>
-                    <option title="Price">Price</option>
-                </select>
+            <div ng-if="mainCtrl.sorting.required">
+                <div>By:</div>
+                <p></p>
+                <div>
+                    <select ng-model="mainCtrl.sorting.name">
+                        <option title="Vendor">Vendor</option>
+                        <option title="Price">Price</option>
+                    </select>
+                    <div ng-if="mainCtrl.sorting.name === 'Price'">
+                        <select ng-model="mainCtrl.sorting.direction">
+                            <option title="Ascending">Ascending</option>
+                            <option title="Descending">Descending</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="button-container">
                 <button ng-click="mainCtrl.broadcastButtonClick()" class="btn btn-primary">Go!</button>
@@ -40,16 +50,16 @@
     </div>
     <div id="main-panel">
         <uib-tabset active="activeJustified" type="pills" justified="true">
-            <uib-tab select="mainCtrl.refreshVendorList('Classical acoustic')" index="0" heading="Classical acoustic">
+            <uib-tab select="mainCtrl.refreshVendorList('classical')" index="0" heading="Classical acoustic">
                 <classical></classical>
             </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('Western acoustic')" index="1" heading="Western acoustic">
+            <uib-tab select="mainCtrl.refreshVendorList('western')" index="1" heading="Western acoustic">
                 <western></western>
             </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('Electric')" index="2" heading="Electric">
+            <uib-tab select="mainCtrl.refreshVendorList('electric')" index="2" heading="Electric">
                 <electric></electric>
             </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('Bass')" index="3" heading="Bass">
+            <uib-tab select="mainCtrl.refreshVendorList('bass')" index="3" heading="Bass">
                 <bass></bass>
             </uib-tab>
         </uib-tabset>

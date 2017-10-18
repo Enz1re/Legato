@@ -2,7 +2,7 @@
     name: string;
     selected: boolean;
 
-    constructor(name: string, selected = false) {
+    constructor(name: string, selected = true) {
         this.name = name;
         this.selected = selected;
     }

@@ -87,6 +87,7 @@
     <TypeScriptCompile Include="legato\Models\ElectricGuitar.ts" />
     <TypeScriptCompile Include="legato\Models\Guitar.ts" />
     <TypeScriptCompile Include="legato\Models\Price.ts" />
+    <TypeScriptCompile Include="legato\Models\Sorting.ts" />
     <TypeScriptCompile Include="legato\Models\Vendor.ts" />
     <TypeScriptCompile Include="legato\Models\WesternGuitar.ts" />
     <TypeScriptCompile Include="legato\Routes\Router.ts" />

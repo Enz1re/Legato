@@ -16,12 +16,17 @@ body {
     font-size: 20px !important;
 }
 
-ol {
+ol, ul {
     list-style: none;
+    overflow: hidden;
 }
 
-ul {
-    list-style: none;
+li {
+    float: left;
+}
+
+li:nth-child(4n) + li {
+    clear: both;
 }
 
 button {
@@ -30,6 +35,10 @@ button {
 
 select {
     width: 179px;
+}
+
+div {
+    cursor: default;
 }
 
 .top-panel-container {
@@ -113,14 +122,39 @@ select {
     margin: 4em;
 }
 
+.guitar-list-container {
+    height: 100%;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.guitar-grid {
+    margin: 1.44em;
+}
+
 .guitar-container {
+    margin: 2em;
     width: 300px;
-    height: 500px;
+    height: 550px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+.guitar-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    overflow: scroll;
+    overflow-x: auto;
 }
 
 .guitarimg-container {
-    width: 200px;
+    width: 180px;
     height: 400px;
+    margin: 0 auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .guitarimg {

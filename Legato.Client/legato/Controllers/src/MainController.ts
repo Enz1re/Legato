@@ -1,45 +1,53 @@
 ﻿import Price from '../../Models/Price';
 import Vendor from '../../Models/Vendor';
+import Sorting from '../../Models/Sorting';
 import { HttpService } from '../../Services/services-module';
 
 
 export default class MainController implements ng.IController {
     private price: Price = new Price();
     private vendors: Vendor[] = [];
-    private sortName = "Vendor";
-    private $$activeTabName = "Classical acoustic";
+    private sorting: Sorting = new Sorting();
+    private $$activeTab = "classical";
     static $inject = ["$scope", "HttpService"];
 
     constructor(private $scope: ng.IScope, private http: HttpService) {
         this.refreshVendorListForClassicalGuitars();
+        this.sorting = { required: false, name: "Vendor", direction: "Ascending" };
     }
 
     refreshVendorList(guitarTypeName: string) {
-        if (this.$$activeTabName === guitarTypeName) {
+        if (this.$$activeTab === guitarTypeName) {
             return;
         }
 
         this.vendors = [];
-        this.$$activeTabName = guitarTypeName;
+        this.$$activeTab = guitarTypeName;
 
         switch (guitarTypeName) {
-            case 'Classical acoustic':
+            case 'classical':
                 this.refreshVendorListForClassicalGuitars();
                 break;
-            case 'Western acoustic':
+            case 'western':
                 this.refreshVendorListForWesternGuitars();
                 break;
-            case 'Electric':
+            case 'electric':
                 this.refreshVendorListForElectricGuitars();
                 break;
-            case 'Bass':
+            case 'bass':
                 this.refreshVendorListForBassGuitars();
                 break;
         }
     }
 
     broadcastButtonClick() {
-        this.$scope.$broadcast('click', [this.price, this.getCheckedVendors(), this.sortName]);
+        // copy all values to prevent model inside child controllers
+        this.$scope.$broadcast(this.$$activeTab, {
+            price: { from: this.price.from, to: this.price.to },
+            vendors: this.getCheckedVendors(),
+            sortBy: this.sorting.required ? this.sorting.name.toString() : "",
+            sortDirection: this.sorting.direction
+        });
     }
 
     private getCheckedVendors() {
