@@ -4,7 +4,7 @@
 export default function priceFilter() {
     return (items: Guitar[], price?: any) => {
         // check if price object is valid
-        if (!price || Object.keys(price).length === 0 || Object.keys(price).length > 2 || ('from' in price && 'to' in price)) {
+        if (!price || Object.keys(price).length === 0 || Object.keys(price).length > 2) {
             return items;
         }
         if (price.from > price.to) {

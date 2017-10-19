@@ -2,11 +2,11 @@ import sortByFilter from './SortByFilter';
 import Guitar from '../../Models/Guitar';
 
 
-function compareArrays(first: Guitar[], second: Guitar[], prop: string) {
-    expect(first.length).toBe(second.length);
-    for (let i = 0; i < first.length; i++) {
-        expect(first[i][prop]).toEqual(second[i][prop]);
-    }
+function compareArrays(sample: Guitar[], test: Guitar[], prop: string) {
+    expect(sample.length).toBe(test.length);
+    const sampleList = sample.map(g => g[prop]);
+    const testList = test.map(g => g[prop]);
+    sampleList.forEach(price => expect(testList).toContain(price));
 }
 
 
@@ -29,12 +29,12 @@ describe("SortByFilter", () => {
 
     it("doesn't sort an array when no property given", () => {
         const sortedTest = filter(guitars);
-        compareArrays(sortedTest, guitars, vendor);
+        compareArrays(guitars, sortedTest, vendor);
     });
 
     it("doesn't sort an array when sorting by price with no direction given", () => {
         const sortedTest = filter(guitars, price);
-        compareArrays(sortedTest, guitars, price);
+        compareArrays(guitars, sortedTest, price);
     });
 
     it("sorts an array by vendor", () => {
@@ -49,7 +49,7 @@ describe("SortByFilter", () => {
             { Vendor: "Rogue", Model: "", Mensura: 0, Price: 988, ImgPath: "" },
             { Vendor: "Yamaha", Model: "", Mensura: 0, Price: 1211, ImgPath: "" },
         ];
-        compareArrays(sortedTest, sortedExact, vendor);
+        compareArrays(sortedExact, sortedTest, vendor);
     });
 
     it("sorts an array by price ascendingly", () => {
@@ -64,7 +64,7 @@ describe("SortByFilter", () => {
             { Vendor: "Kremona", Model: "", Mensura: 0, Price: 10233, ImgPath: "" },
             { Vendor: "Lucero", Model: "", Mensura: 0, Price: 20101, ImgPath: "" },
         ];
-        compareArrays(sortedTest, sortedExact, price);
+        compareArrays(sortedExact, sortedTest, price);
     });
 
     it("sorts an array by price descendingly", () => {
@@ -79,6 +79,6 @@ describe("SortByFilter", () => {
             { Vendor: "Yamaha", Model: "", Mensura: 0, Price: 1211, ImgPath: "" },
             { Vendor: "Rogue", Model: "", Mensura: 0, Price: 988, ImgPath: "" },
         ];
-        compareArrays(guitars, sortedExact, price);
+        compareArrays(sortedExact, sortedTest, price);
     });
 });

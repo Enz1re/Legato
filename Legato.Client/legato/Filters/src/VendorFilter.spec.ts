@@ -2,11 +2,11 @@ import vendorFilter from './VendorFilter';
 import Guitar from '../../Models/Guitar';
 
 
-function compareArrays(first: Guitar[], second: Guitar[]) {
-    expect(first.length).toBe(second.length);
-    for (let i = 0; i < first.length; i++) {
-        expect(first[i].Vendor).toEqual(second[i].Vendor);
-    }
+function compareArrays(sample: Guitar[], test: Guitar[]) {
+    expect(sample.length).toBe(test.length);
+    const sampleList = sample.map(g => g.Vendor);
+    const testList = test.map(g => g.Vendor);
+    sampleList.forEach(price => expect(testList).toContain(price));
 }
 
 describe("VendorFilter", () => {
@@ -33,19 +33,19 @@ describe("VendorFilter", () => {
     it("returns no records for vendor B.C. Rich", () => {
         const filteredTest = filter(guitars, ['B.C. Rich']);
         const filteredExact = [];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns no records for vendor The Loar", () => {
         const filteredTest = filter(guitars, ['The Loar']);
         const filteredExact = [];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays([], filteredTest);
     });
 
     it("returns no records for vendors B.C. Rich, The Loar", () => {
         const filteredTest = filter(guitars, ['B.C. Rich', 'The Loar']);
         const filteredExact = [];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays([], filteredTest);
     });
 
     it("returns one record for vendor Lucero", () => {
@@ -53,7 +53,7 @@ describe("VendorFilter", () => {
         const filteredExact = [
             { Vendor: "Lucero", Model: "", Mensura: 0, Price: 20101, ImgPath: "" }
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns one record for vendor Rogue", () => {
@@ -61,7 +61,7 @@ describe("VendorFilter", () => {
         const filteredExact = [
             { Vendor: "Rogue", Model: "", Mensura: 0, Price: 3333, ImgPath: "" }
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns two records for vendors Lucero, Rogue", () => {
@@ -70,7 +70,7 @@ describe("VendorFilter", () => {
             { Vendor: "Lucero", Model: "", Mensura: 0, Price: 20101, ImgPath: "" },
             { Vendor: "Rogue", Model: "", Mensura: 0, Price: 3333, ImgPath: "" }
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns four records for vendor Yamaha", () => {
@@ -81,7 +81,7 @@ describe("VendorFilter", () => {
             { Vendor: "Yamaha", Model: "", Mensura: 0, Price: 1211, ImgPath: "" },
             { Vendor: "Yamaha", Model: "", Mensura: 0, Price: 33101, ImgPath: "" },
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns six records for vendors Lucero, Rogue, Yamaha", () => {
@@ -94,7 +94,7 @@ describe("VendorFilter", () => {
             { Vendor: "Rogue", Model: "", Mensura: 0, Price: 3333, ImgPath: "" },
             { Vendor: "Yamaha", Model: "", Mensura: 0, Price: 33101, ImgPath: "" },
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns two records for vendor Mitchell", () => {
@@ -103,7 +103,7 @@ describe("VendorFilter", () => {
             { Vendor: "Mitchell", Model: "", Mensura: 0, Price: 3673, ImgPath: "" },
             { Vendor: "Mitchell", Model: "", Mensura: 0, Price: 3673, ImgPath: "" },
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns four records for vendor Hofner", () => {
@@ -114,7 +114,7 @@ describe("VendorFilter", () => {
             { Vendor: "Hofner", Model: "", Mensura: 0, Price: 1000, ImgPath: "" },
             { Vendor: "Hofner", Model: "", Mensura: 0, Price: 11111, ImgPath: "" }
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns two records for vendor Kremona", () => {
@@ -123,7 +123,7 @@ describe("VendorFilter", () => {
             { Vendor: "Kremona", Model: "", Mensura: 0, Price: 10233, ImgPath: "" },
             { Vendor: "Kremona", Model: "", Mensura: 0, Price: 7488, ImgPath: "" }
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns eight records for vendors Mitchell, Hofner, Kremona", () => {
@@ -138,11 +138,11 @@ describe("VendorFilter", () => {
             { Vendor: "Kremona", Model: "", Mensura: 0, Price: 7488, ImgPath: "" },
             { Vendor: "Hofner", Model: "", Mensura: 0, Price: 11111, ImgPath: "" }
         ];
-        compareArrays(filteredTest, filteredExact);
+        compareArrays(filteredExact, filteredTest);
     });
 
     it("returns sixteen records for vendors Yamaha, Hofner, Mitchell, Kremona, Lucero, Friedman, Rogue", () => {
         const filteredTest = filter(guitars, ['Yamaha', 'Hofner', 'Mitchell', 'Kremona', 'Lucero', 'Friedman', 'Rogue']);
-        compareArrays(filteredTest, guitars);
+        compareArrays(guitars, filteredTest);
     });
 });
