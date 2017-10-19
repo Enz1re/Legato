@@ -77,8 +77,12 @@
     <TypeScriptCompile Include="legato\Directives\src\western\WesternDirective.ts" />
     <TypeScriptCompile Include="legato\Filters\filters-module.ts" />
     <TypeScriptCompile Include="legato\Filters\src\BooleanFilter.ts" />
+    <TypeScriptCompile Include="legato\Filters\src\BooleanFitler.spec.ts" />
+    <TypeScriptCompile Include="legato\Filters\src\PriceFilter.spec.ts" />
     <TypeScriptCompile Include="legato\Filters\src\PriceFilter.ts" />
+    <TypeScriptCompile Include="legato\Filters\src\SortByFilter.spec.ts" />
     <TypeScriptCompile Include="legato\Filters\src\SortByFilter.ts" />
+    <TypeScriptCompile Include="legato\Filters\src\VendorFilter.spec.ts" />
     <TypeScriptCompile Include="legato\Filters\src\VendorFilter.ts" />
     <TypeScriptCompile Include="legato\Interfaces\iHttpService.ts" />
     <TypeScriptCompile Include="legato\legato-module.ts" />

@@ -2,7 +2,7 @@
 
 
 export default function sortByFilter() {
-    return (items: Guitar[], fieldName: string, direction: string) => {
+    return (items: Guitar[], fieldName?: string, direction?: string) => {
         if (!fieldName) {
             return items;
         }

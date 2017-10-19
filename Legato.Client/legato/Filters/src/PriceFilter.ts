@@ -1,11 +1,13 @@
 ﻿import Guitar from '../../Models/Guitar';
-import Price from '../../Models/Price';
 
 
 export default function priceFilter() {
-    return (items: Guitar[], price: Price) => {
-        // check if price object is defined and it has at least one property set
-        if (!price || Object.keys(price).length === 0) {
+    return (items: Guitar[], price?: any) => {
+        // check if price object is valid
+        if (!price || Object.keys(price).length === 0 || Object.keys(price).length > 2 || ('from' in price && 'to' in price)) {
+            return items;
+        }
+        if (price.from > price.to) {
             return items;
         }
 
@@ -17,7 +19,7 @@ export default function priceFilter() {
         }
         if (!to) {
             // get the largest price if it is not set for defaults
-            to = items.sort((g1, g2) => g1.Price - g2.Price)[items.length - 1].Price;
+            to = items.sort((g1, g2) => g2.Price - g1.Price)[0].Price;
         }
 
         return items.filter(guitar => from <= guitar.Price && guitar.Price <= to);
