@@ -13,11 +13,12 @@
     <div class="left-panel">
         <div>
             <div class="find-by-cost-title">Find by cost</div>
-            <form name="price">
+            <form name="price" ng-model="mainCtrl.price" legato-validate-price>
                 <div>From:</div>
-                <input ng-model="mainCtrl.price.from" type="number" />
+                <input type="number" ng-model="mainCtrl.price.from" />
                 <div>To:</div>
-                <input ng-model="mainCtrl.price.to" type="number" />
+                <input type="number" ng-model="mainCtrl.price.to" />
+                <div class="error" ng-if="$form.invalid && $form.touched">'To' value has to be greater than 'from'</div>
             </form>
             <p></p>
             <div class="vendors-title">Vendors:</div>

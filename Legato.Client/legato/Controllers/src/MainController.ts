@@ -46,7 +46,7 @@ export default class MainController implements ng.IController {
             price: { from: this.price.from, to: this.price.to },
             vendors: this.getCheckedVendors(),
             sortBy: this.sorting.required ? this.sorting.name.toString() : "",
-            sortDirection: this.sorting.direction
+            sortDirection: this.sorting.required ? this.sorting.direction.toString() : ""
         });
     }
 

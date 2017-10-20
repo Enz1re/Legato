@@ -73,6 +73,7 @@
     <TypeScriptCompile Include="legato\Directives\src\bass\BassDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\classical\ClassicalDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\electric\ElectricDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\validatePrice\LegatoValidatePriceDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\legato\MainDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\western\WesternDirective.ts" />
     <TypeScriptCompile Include="legato\Filters\filters-module.ts" />

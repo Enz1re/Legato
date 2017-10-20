@@ -5,6 +5,7 @@ import ClassicalDirective from './src/classical/ClassicalDirective';
 import WesternDirective from './src/western/WesternDirective';
 import ElectricDirective from './src/electric/ElectricDirective';
 import BassDirective from './src/bass/BassDirective';
+import LegatoValidatePriceDirective from './src/validatePrice/LegatoValidatePriceDirective';
 
 const directivesModuleName = 'legato.directives';
 
@@ -13,7 +14,8 @@ angular.module(directivesModuleName, [])
     .directive('classical', ClassicalDirective)
     .directive('western', WesternDirective)
     .directive('electric', ElectricDirective)
-    .directive('bass', BassDirective);
+    .directive('bass', BassDirective)
+    .directive('legatoValidatePrice', LegatoValidatePriceDirective);
 
 export {
     MainDirective,
