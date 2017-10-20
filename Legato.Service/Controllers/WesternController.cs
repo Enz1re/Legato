@@ -36,5 +36,11 @@ namespace Legato.Service.Controllers
         {
             return _serviceWorker.GetAcousticWesternGuitarsByPrice(from, to);
         }
+
+        public new void Dispose()
+        {
+            base.Dispose();
+            _serviceWorker.Dispose();
+        }
     }
 }

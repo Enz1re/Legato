@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9adf7f4d-42d2-4871-90f0-fce6fae7cf48" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
-    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
-    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -19,14 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:59435/LegatoMiddleware.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/LegatoMiddleware.svc/mex/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="LegatoMiddleware.disco" MetadataType="Disco" ID="a419b259-a393-4259-87ef-38d184bb1a48" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?disco" />
-    <MetadataFile FileName="LegatoMiddleware.xsd" MetadataType="Schema" ID="1c72a9ed-95b9-4ee0-8d84-d8e788b6fa35" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?xsd=xsd2" />
-    <MetadataFile FileName="LegatoMiddleware.wsdl" MetadataType="Wsdl" ID="d658067c-3e64-4347-86c4-b770bc61455b" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?wsdl" />
-    <MetadataFile FileName="LegatoMiddleware1.xsd" MetadataType="Schema" ID="c3b7dc02-706d-4f48-be1e-66da376bad1f" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?xsd=xsd0" />
-    <MetadataFile FileName="LegatoMiddleware2.xsd" MetadataType="Schema" ID="af314a34-cdd3-4e9e-8f4a-c3ec29e9437f" SourceId="1" SourceUrl="http://localhost:59435/LegatoMiddleware.svc?xsd=xsd1" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="7ed53933-a7a2-4ef8-9c13-d96a5ee5453e" SourceId="1" SourceUrl="http://localhost/LegatoMiddleware.svc/mex/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="6c705594-4391-48ba-99c0-75257143d634" SourceId="1" SourceUrl="http://localhost/LegatoMiddleware.svc/mex/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="daadfce9-c06d-4e27-9492-739f9eab6159" SourceId="1" SourceUrl="http://localhost/LegatoMiddleware.svc/mex/mex" />
+    <MetadataFile FileName="Legato.MiddlewareContracts.DataContracts.xsd" MetadataType="Schema" ID="5d32e378-7fea-4a77-b249-c52a827aeab2" SourceId="1" SourceUrl="http://localhost/LegatoMiddleware.svc/mex/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="c344a35a-80ec-49cc-bd0e-b5d4c76020a2" SourceId="1" SourceUrl="http://localhost/LegatoMiddleware.svc/mex/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

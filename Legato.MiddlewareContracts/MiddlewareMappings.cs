@@ -9,11 +9,6 @@ namespace Legato.ServiceContracts
     {
         private static IMapper _mapper;
 
-        static MiddlewareMappings()
-        {
-            CreateMappings();
-        }
-
         public static void CreateMappings()
         {
             var mapperConfiguration = new MapperConfiguration(cfg =>

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Legato.ServiceDAL.ViewModels;
 
 
 namespace Legato.Service
 {
-    public interface ILegatoServiceWorker
+    public interface ILegatoServiceWorker : IDisposable
     {
         IEnumerable<GuitarViewModel> GetAllGuitars();
 

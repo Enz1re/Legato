@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 
 namespace Legato.ServiceDAL.Interfaces
 {
-    public interface IGuitarRepository<T>
+    public interface IGuitarRepository<T> : IDisposable
     {
         IEnumerable<T> GetAll();
 

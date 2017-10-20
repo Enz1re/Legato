@@ -114,5 +114,10 @@ namespace Legato.Service
         {
             return ServiceMappings.Map<List<BassGuitarViewModel>>(_unitOfWork.BassGuitars.FindByVendor(vendor));
         }
+
+        public void Dispose()
+        {
+            _unitOfWork.Dispose();
+        }
     }
 }

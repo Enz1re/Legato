@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using System.Collections.Generic;
-using Legato.MiddlewareContracts;
 using Legato.ServiceDAL.Interfaces;
+using Legato.ServiceDAL.LegatoMiddleware;
 using Legato.MiddlewareContracts.DataContracts;
 
 
@@ -9,12 +9,13 @@ namespace Legato.ServiceDAL.Repositories
 {
     class AcousticClassicalGuitarRepository : IGuitarRepository<AcousticClassicalGuitarDataModel>
     {
-        private ILegatoMiddleware _service;
+        private LegatoMiddlewareClient _service;
 
         [Inject]
-        public AcousticClassicalGuitarRepository(ILegatoMiddleware service)
+        public AcousticClassicalGuitarRepository(LegatoMiddlewareClient service)
         {
             _service = service;
+            _service.Open();
         }
 
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAll()
@@ -35,6 +36,11 @@ namespace Legato.ServiceDAL.Repositories
         public IEnumerable<AcousticClassicalGuitarDataModel> FindByVendor(string vendor)
         {
             return _service.GetAcousticClassicalGuitarsByVendor(vendor);
+        }
+
+        public void Dispose()
+        {
+            _service.Close();
         }
     }
 }

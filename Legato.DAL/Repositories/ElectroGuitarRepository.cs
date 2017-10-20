@@ -47,7 +47,7 @@ namespace Legato.DAL.Repositories
 
         public IEnumerable<ElectroGuitarModel> GetAll()
         {
-            return _context.ElectroGuitars;
+            return _context.ElectroGuitars.ToList();
         }
 
         public void Update(ElectroGuitarModel item)

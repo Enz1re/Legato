@@ -48,7 +48,7 @@ namespace Legato.DAL.Repositories
 
         public IEnumerable<AcousticWesternGuitarModel> GetAll()
         {
-            return _context.WesternAcousticGuitars;
+            return _context.WesternAcousticGuitars.ToList();
         }
 
         public void Update(AcousticWesternGuitarModel item)

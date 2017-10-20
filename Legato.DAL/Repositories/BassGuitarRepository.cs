@@ -48,7 +48,7 @@ namespace Legato.DAL.Repositories
 
         public IEnumerable<BassGuitarModel> GetAll()
         {
-            return _context.BassGuitars;
+            return _context.BassGuitars.ToList();
         }
 
         public void Update(BassGuitarModel item)

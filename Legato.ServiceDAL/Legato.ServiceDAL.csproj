@@ -39,6 +39,7 @@
       <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Legato.ServiceContracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -85,14 +86,17 @@
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.ElectroGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.GuitarDataModel.datasource" />
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\LegatoMiddleware.wsdl" />
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\LegatoMiddleware.xsd">
+    <None Include="Service References\Legato.Middleware.LegatoMiddleware\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\LegatoMiddleware1.xsd">
+    <None Include="Service References\Legato.Middleware.LegatoMiddleware\Legato.MiddlewareContracts.DataContracts.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\LegatoMiddleware2.xsd">
+    <None Include="Service References\Legato.Middleware.LegatoMiddleware\service.wsdl" />
+    <None Include="Service References\Legato.Middleware.LegatoMiddleware\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Legato.Middleware.LegatoMiddleware\service1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -111,9 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Legato.Middleware.LegatoMiddleware\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\LegatoMiddleware.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Legato.Middleware.LegatoMiddleware\configuration91.svcinfo" />

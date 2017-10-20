@@ -1,9 +1,10 @@
-﻿using Legato.MiddlewareContracts.DataContracts;
+﻿using System;
+using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.ServiceDAL.Interfaces
 {
-    public interface IServiceRepositoryProvider
+    public interface IServiceRepositoryProvider : IDisposable
     {
         IGuitarRepository<GuitarDataModel> GuitarRepository { get; }
 

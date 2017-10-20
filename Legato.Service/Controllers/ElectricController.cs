@@ -36,5 +36,11 @@ namespace Legato.Service.Controllers
         {
             return _serviceWorker.GetElectroGuitarsByPrice(from, to);
         }
+
+        public new void Dispose()
+        {
+            base.Dispose();
+            _serviceWorker.Dispose();
+        }
     }
 }

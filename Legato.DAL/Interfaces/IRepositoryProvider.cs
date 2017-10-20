@@ -1,6 +1,9 @@
-﻿namespace Legato.DAL.Interfaces
+﻿using System;
+
+
+namespace Legato.DAL.Interfaces
 {
-    public interface IRepositoryProvider
+    public interface IRepositoryProvider : IDisposable
     {
         IAcousticClassicalGuitarRepository AcousticClassicalGuitarRepository { get; }
 
