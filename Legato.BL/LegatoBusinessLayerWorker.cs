@@ -67,7 +67,6 @@ namespace Legato.BL
 
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars()
         {
-            var s = _repoProvider.AcousticClassicalGuitarRepository.GetAll();
             return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(_repoProvider.AcousticClassicalGuitarRepository.GetAll());
         }
 

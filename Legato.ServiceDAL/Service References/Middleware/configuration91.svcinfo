@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Y8cuPeAiKfkb4zJ8l+U4FJkiLyA=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="xxHn8Bdtd693QAlSZ2nL68oaox0=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_ILegatoMiddleware">
       <properties>
@@ -127,7 +127,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_ILegatoMiddleware" contract="Legato.Middleware.LegatoMiddleware.ILegatoMiddleware" bindingType="wsHttpBinding" address="http://localhost/LegatoMiddleware.svc" bindingConfiguration="WSHttpBinding_ILegatoMiddleware">
+    <endpoint name="WSHttpBinding_ILegatoMiddleware" contract="Middleware.ILegatoMiddleware" bindingType="wsHttpBinding" address="http://localhost/LegatoMiddleware.svc" bindingConfiguration="WSHttpBinding_ILegatoMiddleware">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost/LegatoMiddleware.svc</serializedValue>
@@ -142,7 +142,7 @@
           <serializedValue>WSHttpBinding_ILegatoMiddleware</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>Legato.Middleware.LegatoMiddleware.ILegatoMiddleware</serializedValue>
+          <serializedValue>Middleware.ILegatoMiddleware</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

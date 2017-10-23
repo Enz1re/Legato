@@ -43,7 +43,7 @@ namespace Legato.DAL.Repositories
 
         public IEnumerable<AcousticClassicalGuitarModel> FindByVendor(string vendor)
         {
-            return _context.ClassicAcousticGuitars.Where(g => g.Vendor == vendor);
+            return _context.ClassicAcousticGuitars.Where(g => g.Vendor == vendor).ToList();
         }
 
         public IEnumerable<AcousticClassicalGuitarModel> GetAll()

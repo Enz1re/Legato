@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using Legato.ServiceDAL.Interfaces;
+using Legato.ServiceDAL.Middleware;
 using Legato.ServiceDAL.Repositories;
-using Legato.ServiceDAL.LegatoMiddleware;
 using Legato.MiddlewareContracts.DataContracts;
 
 

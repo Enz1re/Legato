@@ -59,6 +59,11 @@
     <Compile Include="Interfaces\IGuitarRepository.cs" />
     <Compile Include="Interfaces\IGuitarUnitOfWork.cs" />
     <Compile Include="Interfaces\IServiceRepositoryProvider.cs" />
+    <Compile Include="Service References\Middleware\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ServiceMappings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcousticClassicGuitarRepository.cs" />
@@ -67,11 +72,6 @@
     <Compile Include="Repositories\ElectroGuitarRepository.cs" />
     <Compile Include="Repositories\GuitarRepository.cs" />
     <Compile Include="Repositories\RepositoryProvider.cs" />
-    <Compile Include="Service References\Legato.Middleware.LegatoMiddleware\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\AcousticClassicalGuitarViewModel.cs" />
     <Compile Include="ViewModels\AcousticWesternGuitarViewModel.cs" />
     <Compile Include="ViewModels\BassGuitarViewModel.cs" />
@@ -79,24 +79,24 @@
     <Compile Include="ViewModels\GuitarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.ElectroGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.GuitarDataModel.datasource" />
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\Arrays.xsd">
+    <None Include="Service References\Middleware\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\Legato.MiddlewareContracts.DataContracts.xsd">
+    <None Include="Service References\Middleware\Legato.MiddlewareContracts.DataContracts.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\service.wsdl" />
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\service.xsd">
+    <None Include="Service References\Middleware\service.wsdl" />
+    <None Include="Service References\Middleware\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\service1.xsd">
+    <None Include="Service References\Middleware\service1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -114,16 +114,16 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\Legato.Middleware.LegatoMiddleware\" />
+    <WCFMetadataStorage Include="Service References\Middleware\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\configuration91.svcinfo" />
+    <None Include="Service References\Middleware\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\configuration.svcinfo" />
+    <None Include="Service References\Middleware\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Legato.Middleware.LegatoMiddleware\Reference.svcmap">
+    <None Include="Service References\Middleware\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
