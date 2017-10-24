@@ -1,4 +1,5 @@
 ﻿using Ninject;
+using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
 
 
@@ -6,28 +7,28 @@ namespace Legato.DAL.Repositories
 {
     public class RepositoryProvider : IRepositoryProvider
     {
-        private IAcousticClassicalGuitarRepository _acousticClassicalGuitarRepo;
-        private IAcousticWesternGuitarRepository _acousticWesternGuitarRepo;
-        private IElectricGuitarRepository _electricGuitarRepo;
-        private IBassGuitarRepository _bassGuitarRepo;
+        private IGuitarRepository<AcousticClassicalGuitarModel> _acousticClassicalGuitarRepo;
+        private IGuitarRepository<AcousticWesternGuitarModel> _acousticWesternGuitarRepo;
+        private IGuitarRepository<ElectricGuitarModel> _electricGuitarRepo;
+        private IGuitarRepository<BassGuitarModel> _bassGuitarRepo;
 
         [Inject]
-        public RepositoryProvider(IAcousticClassicalGuitarRepository acousticClassicalGuitarRepo, IAcousticWesternGuitarRepository acousticWesternGuitarRepo,
-            IElectricGuitarRepository electroGuitarRepo, IBassGuitarRepository bassGuitarRepo)
+        public RepositoryProvider(IGuitarRepository<AcousticClassicalGuitarModel> acousticClassicalGuitarRepo, IGuitarRepository<AcousticWesternGuitarModel> acousticWesternGuitarRepo,
+            IGuitarRepository<ElectricGuitarModel> electricGuitarRepo, IGuitarRepository<BassGuitarModel> bassGuitarRepo)
         {
             _acousticClassicalGuitarRepo = acousticClassicalGuitarRepo;
             _acousticWesternGuitarRepo = acousticWesternGuitarRepo;
-            _electricGuitarRepo = electroGuitarRepo;
+            _electricGuitarRepo = electricGuitarRepo;
             _bassGuitarRepo = bassGuitarRepo;
         }
 
-        public IAcousticClassicalGuitarRepository AcousticClassicalGuitarRepository => _acousticClassicalGuitarRepo;
+        public IGuitarRepository<AcousticClassicalGuitarModel> AcousticClassicalGuitarRepository => _acousticClassicalGuitarRepo;
 
-        public IAcousticWesternGuitarRepository AcousticWesternGuitarRepository => _acousticWesternGuitarRepo;
+        public IGuitarRepository<AcousticWesternGuitarModel> AcousticWesternGuitarRepository => _acousticWesternGuitarRepo;
 
-        public IElectricGuitarRepository ElectricGuitarRepository => _electricGuitarRepo;
+        public IGuitarRepository<ElectricGuitarModel> ElectricGuitarRepository => _electricGuitarRepo;
 
-        public IBassGuitarRepository BassGuitarRepository => _bassGuitarRepo;
+        public IGuitarRepository<BassGuitarModel> BassGuitarRepository => _bassGuitarRepo;
 
         public void Dispose()
         {

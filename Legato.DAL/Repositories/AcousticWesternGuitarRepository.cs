@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Legato.DAL.Tests")]
 namespace Legato.DAL.Repositories
 {
-    class AcousticWesternGuitarRepository : IAcousticWesternGuitarRepository
+    class AcousticWesternGuitarRepository : IGuitarRepository<AcousticWesternGuitarModel>
     {
         private IGuitarContext _context;
 

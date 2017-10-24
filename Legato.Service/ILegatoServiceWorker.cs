@@ -5,7 +5,7 @@ using Legato.ServiceDAL.ViewModels;
 
 namespace Legato.Service
 {
-    public interface ILegatoServiceWorker : IDisposable
+    public interface ILegatoServiceWorker
     {
         IEnumerable<GuitarViewModel> GetAllGuitars();
 
@@ -25,13 +25,13 @@ namespace Legato.Service
 
         IEnumerable<string> GetElectricGuitarVendors();
 
-        IEnumerable<ElectroGuitarViewModel> GetElectroGuitarsByPrice(short from, short to);
+        IEnumerable<ElectricGuitarViewModel> GetElectricGuitarsByPrice(short from, short to);
 
         IEnumerable<AcousticClassicalGuitarViewModel> GetAllAcousticClassicalGuitars();
 
         IEnumerable<AcousticWesternGuitarViewModel> GetAllAcousticWesternGuitars();
 
-        IEnumerable<ElectroGuitarViewModel> GetAllElectroGuitars();
+        IEnumerable<ElectricGuitarViewModel> GetAllElectricGuitars();
 
         IEnumerable<string> GetBassGuitarVendors();
 
@@ -43,7 +43,7 @@ namespace Legato.Service
 
         IEnumerable<AcousticWesternGuitarViewModel> GetAcousticWesternGuitarsByVendor(string vendor);
 
-        IEnumerable<ElectroGuitarViewModel> GetElectroGuitarsByVendor(string vendor);
+        IEnumerable<ElectricGuitarViewModel> GetElectricGuitarsByVendor(string vendor);
 
         IEnumerable<BassGuitarViewModel> GetBassGuitarsByVendor(string vendor);
     }

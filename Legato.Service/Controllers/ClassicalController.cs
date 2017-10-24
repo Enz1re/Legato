@@ -36,11 +36,5 @@ namespace Legato.Service.Controllers
         {
             return _serviceWorker.GetAcousticClassicalGuitarsByPrice(from, to);
         }
-
-        public new void Dispose()
-        {
-            base.Dispose();
-            _serviceWorker.Dispose();
-        }
     }
 }

@@ -65,9 +65,9 @@ namespace Legato.Service
             return _unitOfWork.ElectricGuitars.GetVendors();
         }
 
-        public IEnumerable<ElectroGuitarViewModel> GetElectroGuitarsByPrice(short from, short to)
+        public IEnumerable<ElectricGuitarViewModel> GetElectricGuitarsByPrice(short from, short to)
         {
-            return ServiceMappings.Map<List<ElectroGuitarViewModel>>(_unitOfWork.ElectricGuitars.FindByCost(from, to));
+            return ServiceMappings.Map<List<ElectricGuitarViewModel>>(_unitOfWork.ElectricGuitars.FindByCost(from, to));
         }
 
         public IEnumerable<AcousticClassicalGuitarViewModel> GetAllAcousticClassicalGuitars()
@@ -85,9 +85,9 @@ namespace Legato.Service
             return _unitOfWork.BassGuitars.GetVendors();
         }
 
-        public IEnumerable<ElectroGuitarViewModel> GetAllElectroGuitars()
+        public IEnumerable<ElectricGuitarViewModel> GetAllElectricGuitars()
         {
-            return ServiceMappings.Map<List<ElectroGuitarViewModel>>(_unitOfWork.ElectricGuitars.GetAll());
+            return ServiceMappings.Map<List<ElectricGuitarViewModel>>(_unitOfWork.ElectricGuitars.GetAll());
         }
 
         public IEnumerable<BassGuitarViewModel> GetAllBassGuitars()
@@ -105,19 +105,14 @@ namespace Legato.Service
             return ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.FindByVendor(vendor));
         }
 
-        public IEnumerable<ElectroGuitarViewModel> GetElectroGuitarsByVendor(string vendor)
+        public IEnumerable<ElectricGuitarViewModel> GetElectricGuitarsByVendor(string vendor)
         {
-            return ServiceMappings.Map<List<ElectroGuitarViewModel>>(_unitOfWork.ElectricGuitars.FindByVendor(vendor));
+            return ServiceMappings.Map<List<ElectricGuitarViewModel>>(_unitOfWork.ElectricGuitars.FindByVendor(vendor));
         }
 
         public IEnumerable<BassGuitarViewModel> GetBassGuitarsByVendor(string vendor)
         {
             return ServiceMappings.Map<List<BassGuitarViewModel>>(_unitOfWork.BassGuitars.FindByVendor(vendor));
-        }
-
-        public void Dispose()
-        {
-            _unitOfWork.Dispose();
         }
     }
 }

@@ -23,11 +23,6 @@ namespace Legato.ServiceDAL
 
         public IGuitarRepository<BassGuitarDataModel> BassGuitars => _repositoryProvider.BassGuitarRepository;
 
-        public IGuitarRepository<ElectroGuitarDataModel> ElectricGuitars => _repositoryProvider.ElectroGuitarRepository;
-
-        public void Dispose()
-        {
-            _repositoryProvider.Dispose();
-        }
+        public IGuitarRepository<ElectricGuitarDataModel> ElectricGuitars => _repositoryProvider.ElectricGuitarRepository;
     }
 }

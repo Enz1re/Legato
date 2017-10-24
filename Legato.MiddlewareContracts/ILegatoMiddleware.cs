@@ -45,16 +45,16 @@ namespace Legato.MiddlewareContracts
         IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor);
 
         [OperationContract]
-        IEnumerable<ElectroGuitarDataModel> GetAllElectroGuitars();
+        IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars();
 
         [OperationContract]
         IEnumerable<string> GetElectricGuitarVendors();
 
         [OperationContract]
-        IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByPrice(short from, short to);
+        IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to);
 
         [OperationContract]
-        IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByVendor(string vendor);
+        IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor);
 
         [OperationContract]
         IEnumerable<BassGuitarDataModel> GetAllBassGuitars();

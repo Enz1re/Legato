@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using Legato.BL;
 using Ninject.Web.Common;
-using Legato.ServiceContracts;
+using Legato.MiddlewareContracts;
 
 
 namespace Legato.Middleware

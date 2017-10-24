@@ -7,8 +7,8 @@
     <ProjectGuid>{B7D81956-AF45-47D3-AF00-278940AA3372}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Legato.ServiceContracts</RootNamespace>
-    <AssemblyName>Legato.ServiceContracts</AssemblyName>
+    <RootNamespace>Legato.MiddlewareContracts</RootNamespace>
+    <AssemblyName>Legato.MiddlewareContracts</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,7 +49,7 @@
     <Compile Include="DataContracts\AcousticClassicalGuitarDataModel.cs" />
     <Compile Include="DataContracts\AcousticWesternGuitarDataModel.cs" />
     <Compile Include="DataContracts\BassGuitarDataModel.cs" />
-    <Compile Include="DataContracts\ElectroGuitarDataModel.cs" />
+    <Compile Include="DataContracts\ElectricGuitarDataModel.cs" />
     <Compile Include="DataContracts\GuitarDataModel.cs" />
     <Compile Include="ILegatoMiddleware.cs" />
     <Compile Include="MiddlewareMappings.cs" />

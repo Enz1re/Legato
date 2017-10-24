@@ -10,18 +10,18 @@ namespace Legato.ServiceDAL.Repositories
         private IGuitarRepository<GuitarDataModel> _guitarRepo;
         private IGuitarRepository<AcousticClassicalGuitarDataModel> _acousticClassicalGuitarRepo;
         private IGuitarRepository<AcousticWesternGuitarDataModel> _acousticWesternGuitarRepo;
-        private IGuitarRepository<ElectroGuitarDataModel> _electroGuitarRepo;
+        private IGuitarRepository<ElectricGuitarDataModel> _electricGuitarRepo;
         private IGuitarRepository<BassGuitarDataModel> _bassGuitarRepo;
 
         [Inject]
         public RepositoryProvider(IGuitarRepository<GuitarDataModel> guitarRepo, IGuitarRepository<AcousticClassicalGuitarDataModel> acousticClassicalGuitarRepo,
-            IGuitarRepository<AcousticWesternGuitarDataModel> acousticWesternGuitarRepo, IGuitarRepository<ElectroGuitarDataModel> electroGuitarRepo,
+            IGuitarRepository<AcousticWesternGuitarDataModel> acousticWesternGuitarRepo, IGuitarRepository<ElectricGuitarDataModel> electricGuitarRepo,
             IGuitarRepository<BassGuitarDataModel> bassGuitarRepo)
         {
             _guitarRepo = guitarRepo;
             _acousticClassicalGuitarRepo = acousticClassicalGuitarRepo;
             _acousticWesternGuitarRepo = acousticWesternGuitarRepo;
-            _electroGuitarRepo = electroGuitarRepo;
+            _electricGuitarRepo = electricGuitarRepo;
             _bassGuitarRepo = bassGuitarRepo;
         }
 
@@ -31,17 +31,8 @@ namespace Legato.ServiceDAL.Repositories
 
         public IGuitarRepository<AcousticWesternGuitarDataModel> AcousticWesternGuitarRepository => _acousticWesternGuitarRepo;
 
-        public IGuitarRepository<ElectroGuitarDataModel> ElectroGuitarRepository => _electroGuitarRepo;
+        public IGuitarRepository<ElectricGuitarDataModel> ElectricGuitarRepository => _electricGuitarRepo;
 
         public IGuitarRepository<BassGuitarDataModel> BassGuitarRepository => _bassGuitarRepo;
-
-        public void Dispose()
-        {
-            _guitarRepo.Dispose();
-            _acousticClassicalGuitarRepo.Dispose();
-            _acousticWesternGuitarRepo.Dispose();
-            _electroGuitarRepo.Dispose();
-            _bassGuitarRepo.Dispose();
-        }
     }
 }

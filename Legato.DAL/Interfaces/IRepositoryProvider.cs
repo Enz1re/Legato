@@ -1,16 +1,17 @@
 ﻿using System;
+using Legato.DAL.Models;
 
 
 namespace Legato.DAL.Interfaces
 {
     public interface IRepositoryProvider : IDisposable
     {
-        IAcousticClassicalGuitarRepository AcousticClassicalGuitarRepository { get; }
+        IGuitarRepository<AcousticClassicalGuitarModel> AcousticClassicalGuitarRepository { get; }
 
-        IAcousticWesternGuitarRepository AcousticWesternGuitarRepository { get; }
+        IGuitarRepository<AcousticWesternGuitarModel> AcousticWesternGuitarRepository { get; }
 
-        IBassGuitarRepository BassGuitarRepository { get; }
+        IGuitarRepository<BassGuitarModel> BassGuitarRepository { get; }
 
-        IElectricGuitarRepository ElectricGuitarRepository { get; }
+        IGuitarRepository<ElectricGuitarModel> ElectricGuitarRepository { get; }
     }
 }

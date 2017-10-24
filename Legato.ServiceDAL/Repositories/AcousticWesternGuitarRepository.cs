@@ -15,7 +15,7 @@ namespace Legato.ServiceDAL.Repositories
         public AcousticWesternGuitarRepository(LegatoMiddlewareClient client)
         {
             _client = client;
-            _client.Open();
+            //_client.Open();
         }
 
         public IEnumerable<AcousticWesternGuitarDataModel> GetAll()
@@ -40,7 +40,7 @@ namespace Legato.ServiceDAL.Repositories
 
         public void Dispose()
         {
-            _client.Close();
+            //_client.Close();
         }
     }
 }

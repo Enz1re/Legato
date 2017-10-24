@@ -14,9 +14,9 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
-        public IEnumerable<ElectroGuitarViewModel> Get()
+        public IEnumerable<ElectricGuitarViewModel> Get()
         {
-            return _serviceWorker.GetAllElectroGuitars();
+            return _serviceWorker.GetAllElectricGuitars();
         }
 
         [Route("api/Electric/Vendors")]
@@ -26,21 +26,15 @@ namespace Legato.Service.Controllers
         }
 
         [Route("api/Electric/{vendor}")]
-        public IEnumerable<ElectroGuitarViewModel> Get(string vendor)
+        public IEnumerable<ElectricGuitarViewModel> Get(string vendor)
         {
-            return _serviceWorker.GetElectroGuitarsByVendor(vendor);
+            return _serviceWorker.GetElectricGuitarsByVendor(vendor);
         }
 
         [Route("api/Electric/{from}/{to}")]
-        public IEnumerable<ElectroGuitarViewModel> Get(short from, short to)
+        public IEnumerable<ElectricGuitarViewModel> Get(short from, short to)
         {
-            return _serviceWorker.GetElectroGuitarsByPrice(from, to);
-        }
-
-        public new void Dispose()
-        {
-            base.Dispose();
-            _serviceWorker.Dispose();
+            return _serviceWorker.GetElectricGuitarsByPrice(from, to);
         }
     }
 }

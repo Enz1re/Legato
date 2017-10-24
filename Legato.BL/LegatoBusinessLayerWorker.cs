@@ -1,8 +1,8 @@
 ﻿using Ninject;
 using System.Linq;
 using Legato.DAL.Interfaces;
-using Legato.ServiceContracts;
 using System.Collections.Generic;
+using Legato.MiddlewareContracts;
 using Legato.MiddlewareContracts.DataContracts;
 
 
@@ -60,7 +60,7 @@ namespace Legato.BL
             return GetAllBassGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
-        public IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByPrice(short from, short to)
+        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to)
         {
             return GetAllElectricGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
@@ -80,9 +80,9 @@ namespace Legato.BL
             return GetAllAcousticWesternGuitars().Select(guitar => guitar.Vendor).Distinct();
         }
 
-        public IEnumerable<ElectroGuitarDataModel> GetAllElectricGuitars()
+        public IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars()
         {
-            return MiddlewareMappings.Map<List<ElectroGuitarDataModel>>(_repoProvider.ElectroGuitarRepository.GetAll());
+            return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(_repoProvider.ElectricGuitarRepository.GetAll());
         }
 
         public IEnumerable<string> GetElectricGuitarVendors()
@@ -106,7 +106,7 @@ namespace Legato.BL
 
             guitarsByVendor.AddRange(GetAcousticClassicalGuitarsByVendor(vendor));
             guitarsByVendor.AddRange(GetAcousticWesternGuitarsByVendor(vendor));
-            guitarsByVendor.AddRange(GetElectroGuitarsByVendor(vendor));
+            guitarsByVendor.AddRange(GetElectricGuitarsByVendor(vendor));
             guitarsByVendor.AddRange(GetBassGuitarsByVendor(vendor));
 
             return guitarsByVendor;
@@ -122,9 +122,9 @@ namespace Legato.BL
             return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(_repoProvider.AcousticWesternGuitarRepository.FindByVendor(vendor));
         }
 
-        public IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByVendor(string vendor)
+        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor)
         {
-            return MiddlewareMappings.Map<List<ElectroGuitarDataModel>>(_repoProvider.ElectroGuitarRepository.FindByVendor(vendor));
+            return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(_repoProvider.ElectricGuitarRepository.FindByVendor(vendor));
         }
 
         public IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendor(string vendor)

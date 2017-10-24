@@ -12,10 +12,10 @@ namespace Legato.DAL
         {
             kernel.Bind<IGuitarContext>().To<GuitarContext>()
                 .WithConstructorArgument("connectionString", "DumbshitConnection");
-            kernel.Bind<IAcousticClassicalGuitarRepository>().To<AcousticClassicalGuitarRepository>();
-            kernel.Bind<IAcousticWesternGuitarRepository>().To<AcousticWesternGuitarRepository>();
-            kernel.Bind<IBassGuitarRepository>().To<BassGuitarRepository>();
-            kernel.Bind<IElectricGuitarRepository>().To<ElectricGuitarRepository>();
+            kernel.Bind<IGuitarRepository<AcousticClassicalGuitarModel>>().To<AcousticClassicalGuitarRepository>();
+            kernel.Bind<IGuitarRepository<AcousticWesternGuitarModel>>().To<AcousticWesternGuitarRepository>();
+            kernel.Bind<IGuitarRepository<BassGuitarModel>>().To<BassGuitarRepository>();
+            kernel.Bind<IGuitarRepository<ElectricGuitarModel>>().To<ElectricGuitarRepository>();
             kernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
         }
     }

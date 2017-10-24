@@ -3,7 +3,7 @@ using Legato.DAL.Models;
 using Legato.MiddlewareContracts.DataContracts;
 
 
-namespace Legato.ServiceContracts
+namespace Legato.MiddlewareContracts
 {
     public static class MiddlewareMappings
     {
@@ -14,13 +14,13 @@ namespace Legato.ServiceContracts
             var mapperConfiguration = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<GuitarModel, GuitarDataModel>()
-                    .Include< AcousticClassicalGuitarModel, AcousticClassicalGuitarDataModel >()
+                    .Include<AcousticClassicalGuitarModel, AcousticClassicalGuitarDataModel>()
                     .Include<AcousticWesternGuitarModel, AcousticWesternGuitarDataModel>()
-                    .Include<ElectroGuitarModel, ElectroGuitarDataModel>()
+                    .Include<ElectricGuitarModel, ElectricGuitarDataModel>()
                     .Include<BassGuitarModel, BassGuitarDataModel>();
                 cfg.CreateMap<AcousticClassicalGuitarModel, AcousticClassicalGuitarDataModel>();
                 cfg.CreateMap<AcousticWesternGuitarModel, AcousticWesternGuitarDataModel>();
-                cfg.CreateMap<ElectroGuitarModel, ElectroGuitarDataModel>();
+                cfg.CreateMap<ElectricGuitarModel, ElectricGuitarDataModel>();
                 cfg.CreateMap<BassGuitarModel, BassGuitarDataModel>();
             });
 

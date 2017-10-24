@@ -31,13 +31,13 @@ namespace Legato.BL
 
         IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor);
 
-        IEnumerable<ElectroGuitarDataModel> GetAllElectricGuitars();
+        IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars();
 
         IEnumerable<string> GetElectricGuitarVendors();
 
-        IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByPrice(short from, short to);
+        IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to);
 
-        IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByVendor(string vendor);
+        IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor);
 
         IEnumerable<BassGuitarDataModel> GetAllBassGuitars();
 

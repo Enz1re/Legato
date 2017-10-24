@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.ServiceDAL.Interfaces
 {
-    public interface IGuitarRepository<T> : IDisposable
+    public interface IGuitarRepository<TGuitar> where TGuitar: GuitarDataModel
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<TGuitar> GetAll();
 
         IEnumerable<string> GetVendors();
 
-        IEnumerable<T> FindByVendor(string vendor);
+        IEnumerable<TGuitar> FindByVendor(string vendor);
 
-        IEnumerable<T> FindByCost(short from, short to);
+        IEnumerable<TGuitar> FindByCost(short from, short to);
     }
 }

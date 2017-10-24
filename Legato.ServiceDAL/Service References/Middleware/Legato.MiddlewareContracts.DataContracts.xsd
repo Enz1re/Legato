@@ -16,12 +16,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GuitarDataModel" nillable="true" type="tns:GuitarDataModel" />
-  <xs:complexType name="ArrayOfAcousticClassicalGuitarDataModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticClassicalGuitarDataModel" nillable="true" type="tns:AcousticClassicalGuitarDataModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfAcousticClassicalGuitarDataModel" nillable="true" type="tns:ArrayOfAcousticClassicalGuitarDataModel" />
   <xs:complexType name="AcousticClassicalGuitarDataModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:GuitarDataModel">
@@ -32,12 +26,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AcousticClassicalGuitarDataModel" nillable="true" type="tns:AcousticClassicalGuitarDataModel" />
-  <xs:complexType name="ArrayOfAcousticWesternGuitarDataModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticWesternGuitarDataModel" nillable="true" type="tns:AcousticWesternGuitarDataModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfAcousticWesternGuitarDataModel" nillable="true" type="tns:ArrayOfAcousticWesternGuitarDataModel" />
   <xs:complexType name="AcousticWesternGuitarDataModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:GuitarDataModel">
@@ -49,13 +37,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AcousticWesternGuitarDataModel" nillable="true" type="tns:AcousticWesternGuitarDataModel" />
-  <xs:complexType name="ArrayOfElectroGuitarDataModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ElectroGuitarDataModel" nillable="true" type="tns:ElectroGuitarDataModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfElectroGuitarDataModel" nillable="true" type="tns:ArrayOfElectroGuitarDataModel" />
-  <xs:complexType name="ElectroGuitarDataModel">
+  <xs:complexType name="ElectricGuitarDataModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:GuitarDataModel">
         <xs:sequence>
@@ -67,13 +49,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="ElectroGuitarDataModel" nillable="true" type="tns:ElectroGuitarDataModel" />
-  <xs:complexType name="ArrayOfBassGuitarDataModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="BassGuitarDataModel" nillable="true" type="tns:BassGuitarDataModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfBassGuitarDataModel" nillable="true" type="tns:ArrayOfBassGuitarDataModel" />
+  <xs:element name="ElectricGuitarDataModel" nillable="true" type="tns:ElectricGuitarDataModel" />
   <xs:complexType name="BassGuitarDataModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:GuitarDataModel">
@@ -85,4 +61,28 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BassGuitarDataModel" nillable="true" type="tns:BassGuitarDataModel" />
+  <xs:complexType name="ArrayOfAcousticClassicalGuitarDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticClassicalGuitarDataModel" nillable="true" type="tns:AcousticClassicalGuitarDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAcousticClassicalGuitarDataModel" nillable="true" type="tns:ArrayOfAcousticClassicalGuitarDataModel" />
+  <xs:complexType name="ArrayOfAcousticWesternGuitarDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticWesternGuitarDataModel" nillable="true" type="tns:AcousticWesternGuitarDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAcousticWesternGuitarDataModel" nillable="true" type="tns:ArrayOfAcousticWesternGuitarDataModel" />
+  <xs:complexType name="ArrayOfElectricGuitarDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ElectricGuitarDataModel" nillable="true" type="tns:ElectricGuitarDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfElectricGuitarDataModel" nillable="true" type="tns:ArrayOfElectricGuitarDataModel" />
+  <xs:complexType name="ArrayOfBassGuitarDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BassGuitarDataModel" nillable="true" type="tns:BassGuitarDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBassGuitarDataModel" nillable="true" type="tns:ArrayOfBassGuitarDataModel" />
 </xs:schema>

@@ -18,22 +18,22 @@ namespace Legato.DAL.Models
             _context = context;
         }
 
-        public IAcousticClassicalGuitarRepository ClassicAcousticGuitars
+        public IGuitarRepository<AcousticClassicalGuitarModel> ClassicAcousticGuitars
         {
             get { return _repositoryProvider.AcousticClassicalGuitarRepository; }
         }
 
-        public IAcousticWesternGuitarRepository WesternAcousticGuitars
+        public IGuitarRepository<AcousticWesternGuitarModel> WesternAcousticGuitars
         {
             get { return _repositoryProvider.AcousticWesternGuitarRepository; }
         }
 
-        public IBassGuitarRepository BassGuitars
+        public IGuitarRepository<BassGuitarModel> BassGuitars
         {
             get { return _repositoryProvider.BassGuitarRepository; }
         }
 
-        public IElectricGuitarRepository ElectricGuitars
+        public IGuitarRepository<ElectricGuitarModel> ElectricGuitars
         {
             get { return _repositoryProvider.ElectricGuitarRepository; }
         }

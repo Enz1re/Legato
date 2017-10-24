@@ -1,10 +1,9 @@
-﻿using System;
-using Legato.MiddlewareContracts.DataContracts;
+﻿using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.ServiceDAL.Interfaces
 {
-    public interface IGuitarUnitOfWork : IDisposable
+    public interface IGuitarUnitOfWork
     {
         IGuitarRepository<GuitarDataModel> GuitarsCommon { get; }
 
@@ -12,7 +11,7 @@ namespace Legato.ServiceDAL.Interfaces
 
         IGuitarRepository<AcousticWesternGuitarDataModel> WesternAcousticGuitars { get; }
 
-        IGuitarRepository<ElectroGuitarDataModel> ElectricGuitars { get; }
+        IGuitarRepository<ElectricGuitarDataModel> ElectricGuitars { get; }
 
         IGuitarRepository<BassGuitarDataModel> BassGuitars { get; }
     }

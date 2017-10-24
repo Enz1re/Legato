@@ -12,10 +12,10 @@ namespace Legato.DAL.Tests
         {
             Bind<IGuitarContext>().To<GuitarContext>()
                 .WithConstructorArgument("connectionString", "TestConnection");
-            Bind<IAcousticClassicalGuitarRepository>().To<AcousticClassicalGuitarRepository>();
-            Bind<IAcousticWesternGuitarRepository>().To<AcousticWesternGuitarRepository>();
-            Bind<IBassGuitarRepository>().To<BassGuitarRepository>();
-            Bind<IElectricGuitarRepository>().To<ElectricGuitarRepository>();
+            Bind<IGuitarRepository<AcousticClassicalGuitarModel>>().To<AcousticClassicalGuitarRepository>();
+            Bind<IGuitarRepository<AcousticWesternGuitarModel>>().To<AcousticWesternGuitarRepository>();
+            Bind<IGuitarRepository<BassGuitarModel>>().To<BassGuitarRepository>();
+            Bind<IGuitarRepository<ElectricGuitarModel>>().To<ElectricGuitarRepository>();
             Bind<IRepositoryProvider>().To<RepositoryProvider>();
         }
     }

@@ -4,6 +4,10 @@
 namespace Legato.MiddlewareContracts.DataContracts
 {
     [DataContract]
+    [KnownType(typeof(AcousticClassicalGuitarDataModel))]
+    [KnownType(typeof(AcousticWesternGuitarDataModel))]
+    [KnownType(typeof(ElectricGuitarDataModel))]
+    [KnownType(typeof(BassGuitarDataModel))]
     public abstract class GuitarDataModel
     {
         [DataMember]

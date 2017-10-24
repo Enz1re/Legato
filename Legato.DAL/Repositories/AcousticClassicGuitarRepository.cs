@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Legato.DAL.Tests")]
 namespace Legato.DAL.Repositories
 {
-    class AcousticClassicalGuitarRepository : IAcousticClassicalGuitarRepository
+    class AcousticClassicalGuitarRepository : IGuitarRepository<AcousticClassicalGuitarModel>
     {
         private IGuitarContext _context;
 

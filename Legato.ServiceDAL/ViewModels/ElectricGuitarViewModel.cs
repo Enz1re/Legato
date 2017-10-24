@@ -1,6 +1,6 @@
 ﻿namespace Legato.ServiceDAL.ViewModels
 {
-    public class ElectroGuitarViewModel : GuitarViewModel
+    public class ElectricGuitarViewModel : GuitarViewModel
     {
         public byte StringNumber { get; set; }
 

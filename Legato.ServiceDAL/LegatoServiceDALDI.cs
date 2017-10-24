@@ -16,7 +16,7 @@ namespace Legato.ServiceDAL
             kernel.Bind<IGuitarRepository<AcousticClassicalGuitarDataModel>>().To<AcousticClassicalGuitarRepository>();
             kernel.Bind<IGuitarRepository<AcousticWesternGuitarDataModel>>().To<AcousticWesternGuitarRepository>();
             kernel.Bind<IGuitarRepository<BassGuitarDataModel>>().To<BassGuitarRepository>();
-            kernel.Bind<IGuitarRepository<ElectroGuitarDataModel>>().To<ElectroGuitarRepository>();
+            kernel.Bind<IGuitarRepository<ElectricGuitarDataModel>>().To<ElectricGuitarRepository>();
             kernel.Bind<IServiceRepositoryProvider>().To<RepositoryProvider>();
         }
     }

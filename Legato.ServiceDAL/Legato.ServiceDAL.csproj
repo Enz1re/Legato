@@ -39,7 +39,6 @@
       <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Legato.ServiceContracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -69,13 +68,13 @@
     <Compile Include="Repositories\AcousticClassicGuitarRepository.cs" />
     <Compile Include="Repositories\AcousticWesternGuitarRepository.cs" />
     <Compile Include="Repositories\BassGuitarRepository.cs" />
-    <Compile Include="Repositories\ElectroGuitarRepository.cs" />
+    <Compile Include="Repositories\ElectricGuitarRepository.cs" />
     <Compile Include="Repositories\GuitarRepository.cs" />
     <Compile Include="Repositories\RepositoryProvider.cs" />
     <Compile Include="ViewModels\AcousticClassicalGuitarViewModel.cs" />
     <Compile Include="ViewModels\AcousticWesternGuitarViewModel.cs" />
     <Compile Include="ViewModels\BassGuitarViewModel.cs" />
-    <Compile Include="ViewModels\ElectroGuitarViewModel.cs" />
+    <Compile Include="ViewModels\ElectricGuitarViewModel.cs" />
     <Compile Include="ViewModels\GuitarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

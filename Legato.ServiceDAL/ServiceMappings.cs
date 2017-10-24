@@ -16,11 +16,11 @@ namespace Legato.ServiceDAL
                 cfg.CreateMap<GuitarDataModel, GuitarViewModel>()
                     .Include<AcousticClassicalGuitarDataModel, AcousticClassicalGuitarViewModel>()
                     .Include<AcousticWesternGuitarDataModel, AcousticWesternGuitarViewModel>()
-                    .Include<ElectroGuitarDataModel, ElectroGuitarViewModel>()
+                    .Include<ElectricGuitarDataModel, ElectricGuitarViewModel>()
                     .Include<BassGuitarDataModel, BassGuitarViewModel>();
                 cfg.CreateMap<AcousticClassicalGuitarDataModel, AcousticClassicalGuitarViewModel>();
                 cfg.CreateMap<AcousticWesternGuitarDataModel, AcousticWesternGuitarViewModel>();
-                cfg.CreateMap<ElectroGuitarDataModel, ElectroGuitarViewModel>();
+                cfg.CreateMap<ElectricGuitarDataModel, ElectricGuitarViewModel>();
                 cfg.CreateMap<BassGuitarDataModel, BassGuitarViewModel>();
             });
 

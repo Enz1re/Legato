@@ -4,7 +4,7 @@
 namespace Legato.MiddlewareContracts.DataContracts
 {
     [DataContract]
-    public class ElectroGuitarDataModel : GuitarDataModel
+    public class ElectricGuitarDataModel : GuitarDataModel
     {
         [DataMember]
         public byte StringNumber { get; set; }

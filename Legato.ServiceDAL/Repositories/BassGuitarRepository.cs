@@ -15,7 +15,6 @@ namespace Legato.ServiceDAL.Repositories
         public BassGuitarRepository(LegatoMiddlewareClient client)
         {
             _client = client;
-            _client.Open();
         }
 
         public IEnumerable<BassGuitarDataModel> GetAll()
@@ -36,11 +35,6 @@ namespace Legato.ServiceDAL.Repositories
         public IEnumerable<BassGuitarDataModel> FindByVendor(string vendor)
         {
             return _client.GetBassGuitarsByVendor(vendor);
-        }
-
-        public void Dispose()
-        {
-            _client.Close();
         }
     }
 }

@@ -161,15 +161,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllElectroGuitars">
+  <xs:element name="GetAllElectricGuitars">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllElectroGuitarsResponse">
+  <xs:element name="GetAllElectricGuitarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllElectroGuitarsResult" nillable="true" type="q13:ArrayOfElectroGuitarDataModel" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllElectricGuitarsResult" nillable="true" type="q13:ArrayOfElectricGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -185,7 +185,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetElectroGuitarsByPrice">
+  <xs:element name="GetElectricGuitarsByPrice">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="from" type="xs:short" />
@@ -193,24 +193,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetElectroGuitarsByPriceResponse">
+  <xs:element name="GetElectricGuitarsByPriceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectroGuitarsByPriceResult" nillable="true" type="q15:ArrayOfElectroGuitarDataModel" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectricGuitarsByPriceResult" nillable="true" type="q15:ArrayOfElectricGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetElectroGuitarsByVendor">
+  <xs:element name="GetElectricGuitarsByVendor">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="vendor" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetElectroGuitarsByVendorResponse">
+  <xs:element name="GetElectricGuitarsByVendorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectroGuitarsByVendorResult" nillable="true" type="q16:ArrayOfElectroGuitarDataModel" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectricGuitarsByVendorResult" nillable="true" type="q16:ArrayOfElectricGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

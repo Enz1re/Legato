@@ -61,11 +61,8 @@
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="DatabaseInitializer.cs" />
+    <Compile Include="Interfaces\IGuitarRepository.cs" />
     <Compile Include="LegatoDALDI.cs" />
-    <Compile Include="Interfaces\IAcousticClassicGuitarRepository.cs" />
-    <Compile Include="Interfaces\IAcousticWesternGuitarRepository.cs" />
-    <Compile Include="Interfaces\IBassGuitarRepository.cs" />
-    <Compile Include="Interfaces\IElectroGuitarRepository.cs" />
     <Compile Include="Interfaces\IGuitarContext.cs" />
     <Compile Include="Interfaces\IGuitarUnitOfWork.cs" />
     <Compile Include="Interfaces\IRepositoryProvider.cs" />
@@ -80,7 +77,7 @@
     <Compile Include="Repositories\AcousticClassicGuitarRepository.cs" />
     <Compile Include="Repositories\AcousticWesternGuitarRepository.cs" />
     <Compile Include="Repositories\BassGuitarRepository.cs" />
-    <Compile Include="Repositories\ElectroGuitarRepository.cs" />
+    <Compile Include="Repositories\ElectricGuitarRepository.cs" />
     <Compile Include="Repositories\RepositoryProvider.cs" />
     <Compile Include="Util\CaseInsensitiveStringEqualityComparer.cs" />
     <Compile Include="Validation\ValidateBassStringNumberAttribute.cs" />
