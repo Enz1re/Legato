@@ -38,7 +38,7 @@ namespace Legato.DAL.Tests
         [TestMethod]
         public void ReturnFourElectricGuitars()
         {
-            var guitars = _repoProvider.ElectroGuitarRepository.GetAll();
+            var guitars = _repoProvider.ElectricGuitarRepository.GetAll();
             Assert.AreEqual(guitars.Count(), 4);
         }
 
@@ -88,7 +88,7 @@ namespace Legato.DAL.Tests
         [DataRow("yamaha", 0)]
         public void GetElectricGuitarsWithQuantity(string vName, int quantity)
         {
-            var guitars = _repoProvider.ElectroGuitarRepository.FindByVendor(vName);
+            var guitars = _repoProvider.ElectricGuitarRepository.FindByVendor(vName);
             Assert.AreEqual(guitars.Count(), quantity);
         }
 

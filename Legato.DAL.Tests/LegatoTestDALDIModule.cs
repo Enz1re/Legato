@@ -15,7 +15,7 @@ namespace Legato.DAL.Tests
             Bind<IAcousticClassicalGuitarRepository>().To<AcousticClassicalGuitarRepository>();
             Bind<IAcousticWesternGuitarRepository>().To<AcousticWesternGuitarRepository>();
             Bind<IBassGuitarRepository>().To<BassGuitarRepository>();
-            Bind<IElectroGuitarRepository>().To<ElectroGuitarRepository>();
+            Bind<IElectricGuitarRepository>().To<ElectricGuitarRepository>();
             Bind<IRepositoryProvider>().To<RepositoryProvider>();
         }
     }

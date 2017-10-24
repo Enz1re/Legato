@@ -71,6 +71,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="LegatoTestDALDIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCaseInsensitiveStringEqualityComparer.cs" />
