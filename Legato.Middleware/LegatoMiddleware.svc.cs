@@ -97,7 +97,7 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<ElectroGuitarDataModel> GetAllElectroGuitars()
+        public IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars()
         {
             using (var worker = _blWorker.Get())
             {
@@ -129,11 +129,11 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByPrice(short from, short to)
+        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetElectroGuitarsByPrice(from, to);
+                return worker.GetElectricGuitarsByPrice(from, to);
             }
         }
 
@@ -161,11 +161,11 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<ElectroGuitarDataModel> GetElectroGuitarsByVendor(string vendor)
+        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetElectroGuitarsByVendor(vendor);
+                return worker.GetElectricGuitarsByVendor(vendor);
             }
         }
 
