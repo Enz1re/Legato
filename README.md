@@ -15,7 +15,6 @@ IIS
    In order to set this, go to IIS Manager->Application Pools, right-click on the pool you chose, go to Advanced Settings->Process Model.
    Change Identity from 'ApplicationPoolIdentity' to 'LocalSystem'.
 
-MS SQL Server
 Legato uses MS SQL Server databases. Install MSSQL if it is not installed.
 
 ## Installing components
