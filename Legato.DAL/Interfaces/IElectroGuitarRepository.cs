@@ -5,17 +5,17 @@ using System.Collections.Generic;
 
 namespace Legato.DAL.Interfaces
 {
-    public interface IElectroGuitarRepository : IDisposable
+    public interface IElectricGuitarRepository : IDisposable
     {
-        IEnumerable<ElectroGuitarModel> GetAll();
+        IEnumerable<ElectricGuitarModel> GetAll();
 
-        IEnumerable<ElectroGuitarModel> FindByVendor(string vendor);
+        IEnumerable<ElectricGuitarModel> FindByVendor(string vendor);
 
-        ElectroGuitarModel Get(string vendor, string model);
+        ElectricGuitarModel Get(string vendor, string model);
 
-        void Create(ElectroGuitarModel item);
+        void Create(ElectricGuitarModel item);
 
-        void Update(ElectroGuitarModel item);
+        void Update(ElectricGuitarModel item);
 
         void Delete(string vendor, string model);
     }

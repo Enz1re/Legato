@@ -72,7 +72,7 @@
     <Compile Include="Models\AcousticClassicalGuitarModel.cs" />
     <Compile Include="Models\AcousticWesternGuitarModel.cs" />
     <Compile Include="Models\BassGuitarModel.cs" />
-    <Compile Include="Models\ElectroGuitarModel.cs" />
+    <Compile Include="Models\ElectricGuitarModel.cs" />
     <Compile Include="Models\GuitarModel.cs" />
     <Compile Include="Models\GuitarContext.cs" />
     <Compile Include="Models\GuitarUnitOfWork.cs" />

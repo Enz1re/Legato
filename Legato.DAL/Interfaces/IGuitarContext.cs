@@ -14,7 +14,7 @@ namespace Legato.DAL.Interfaces
 
         DbSet<BassGuitarModel> BassGuitars { get; set; }
 
-        DbSet<ElectroGuitarModel> ElectroGuitars { get; set; }
+        DbSet<ElectricGuitarModel> ElectricGuitars { get; set; }
 
         int SaveChanges();
 

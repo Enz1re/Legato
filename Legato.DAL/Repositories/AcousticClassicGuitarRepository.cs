@@ -1,5 +1,4 @@
-﻿using System;
-using Ninject;
+﻿using Ninject;
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
@@ -13,7 +12,6 @@ namespace Legato.DAL.Repositories
 {
     class AcousticClassicalGuitarRepository : IAcousticClassicalGuitarRepository
     {
-        private bool _disposed;
         private IGuitarContext _context;
 
         [Inject]
@@ -56,27 +54,9 @@ namespace Legato.DAL.Repositories
             _context.ClassicAcousticGuitars.AddOrUpdate(item);
         }
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-                _disposed = true;
-            }
-        }
-
-        ~AcousticClassicalGuitarRepository()
-        {
-            Dispose(false);
-        }
-
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            _context.Dispose();
         }
     }
 }

@@ -33,9 +33,9 @@ namespace Legato.DAL.Models
             get { return _repositoryProvider.BassGuitarRepository; }
         }
 
-        public IElectroGuitarRepository ElectroGuitars
+        public IElectricGuitarRepository ElectricGuitars
         {
-            get { return _repositoryProvider.ElectroGuitarRepository; }
+            get { return _repositoryProvider.ElectricGuitarRepository; }
         }
 
         public void Commit()

@@ -11,7 +11,7 @@ namespace Legato.DAL.Interfaces
 
         IBassGuitarRepository BassGuitars { get; }
 
-        IElectroGuitarRepository ElectroGuitars { get; }
+        IElectricGuitarRepository ElectricGuitars { get; }
 
         void Commit();
     }

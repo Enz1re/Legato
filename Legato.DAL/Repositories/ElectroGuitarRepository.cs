@@ -10,71 +10,53 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Legato.DAL.Tests")]
 namespace Legato.DAL.Repositories
 {
-    class ElectroGuitarRepository : IElectroGuitarRepository
+    class ElectricGuitarRepository : IElectricGuitarRepository
     {
-        private bool _disposed;
         private IGuitarContext _context;
 
         [Inject]
-        public ElectroGuitarRepository(IGuitarContext context)
+        public ElectricGuitarRepository(IGuitarContext context)
         {
             _context = context;
         }
 
-        public void Create(ElectroGuitarModel item)
+        public void Create(ElectricGuitarModel item)
         {
-            _context.ElectroGuitars.Add(item);
+            _context.ElectricGuitars.Add(item);
         }
 
         public void Delete(string vendor, string model)
         {
-            var selectedGuitar = _context.ElectroGuitars.SingleOrDefault(g => g.Vendor == vendor && g.Model == model);
+            var selectedGuitar = _context.ElectricGuitars.SingleOrDefault(g => g.Vendor == vendor && g.Model == model);
             if (selectedGuitar != null)
             {
-                _context.ElectroGuitars.Remove(selectedGuitar);
+                _context.ElectricGuitars.Remove(selectedGuitar);
             }
         }
 
-        public ElectroGuitarModel Get(string vendor, string model)
+        public ElectricGuitarModel Get(string vendor, string model)
         {
-            return _context.ElectroGuitars.SingleOrDefault(g => g.Vendor == vendor && g.Model == model);
+            return _context.ElectricGuitars.SingleOrDefault(g => g.Vendor == vendor && g.Model == model);
         }
 
-        public IEnumerable<ElectroGuitarModel> FindByVendor(string vendor)
+        public IEnumerable<ElectricGuitarModel> FindByVendor(string vendor)
         {
-            return _context.ElectroGuitars.Where(g => g.Vendor == vendor).ToList();
+            return _context.ElectricGuitars.Where(g => g.Vendor == vendor).ToList();
         }
 
-        public IEnumerable<ElectroGuitarModel> GetAll()
+        public IEnumerable<ElectricGuitarModel> GetAll()
         {
-            return _context.ElectroGuitars.ToList();
+            return _context.ElectricGuitars.ToList();
         }
 
-        public void Update(ElectroGuitarModel item)
+        public void Update(ElectricGuitarModel item)
         {
-            _context.ElectroGuitars.AddOrUpdate(item);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-                _disposed = true;
-            }
-        }
-
-        ~ElectroGuitarRepository()
-        {
-            Dispose(false);
+            _context.ElectricGuitars.AddOrUpdate(item);
         }
 
         public void Dispose()
         {
-            Dispose(true);
+            _context.Dispose();
         }
     }
 }

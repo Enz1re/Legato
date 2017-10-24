@@ -8,12 +8,12 @@ namespace Legato.DAL.Repositories
     {
         private IAcousticClassicalGuitarRepository _acousticClassicalGuitarRepo;
         private IAcousticWesternGuitarRepository _acousticWesternGuitarRepo;
-        private IElectroGuitarRepository _electricGuitarRepo;
+        private IElectricGuitarRepository _electricGuitarRepo;
         private IBassGuitarRepository _bassGuitarRepo;
 
         [Inject]
         public RepositoryProvider(IAcousticClassicalGuitarRepository acousticClassicalGuitarRepo, IAcousticWesternGuitarRepository acousticWesternGuitarRepo,
-            IElectroGuitarRepository electroGuitarRepo, IBassGuitarRepository bassGuitarRepo)
+            IElectricGuitarRepository electroGuitarRepo, IBassGuitarRepository bassGuitarRepo)
         {
             _acousticClassicalGuitarRepo = acousticClassicalGuitarRepo;
             _acousticWesternGuitarRepo = acousticWesternGuitarRepo;
@@ -25,7 +25,7 @@ namespace Legato.DAL.Repositories
 
         public IAcousticWesternGuitarRepository AcousticWesternGuitarRepository => _acousticWesternGuitarRepo;
 
-        public IElectroGuitarRepository ElectroGuitarRepository => _electricGuitarRepo;
+        public IElectricGuitarRepository ElectricGuitarRepository => _electricGuitarRepo;
 
         public IBassGuitarRepository BassGuitarRepository => _bassGuitarRepo;
 

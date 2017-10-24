@@ -13,7 +13,6 @@ namespace Legato.DAL.Repositories
 {
     class AcousticWesternGuitarRepository : IAcousticWesternGuitarRepository
     {
-        private bool _disposed = false;
         private IGuitarContext _context;
 
         [Inject]
@@ -55,28 +54,10 @@ namespace Legato.DAL.Repositories
         {
             _context.WesternAcousticGuitars.AddOrUpdate(item);
         }
-        
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-                _disposed = true;
-            }
-        }
-
-        ~AcousticWesternGuitarRepository()
-        {
-            Dispose(false);
-        }
 
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            _context.Dispose();
         }
     }
 }

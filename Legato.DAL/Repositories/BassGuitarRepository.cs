@@ -13,7 +13,6 @@ namespace Legato.DAL.Repositories
 {
     class BassGuitarRepository : IBassGuitarRepository
     {
-        private bool _disposed;
         private IGuitarContext _context;
 
         [Inject]
@@ -56,27 +55,9 @@ namespace Legato.DAL.Repositories
             _context.BassGuitars.AddOrUpdate(item);
         }
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-                _disposed = true;
-            }
-        }
-
-        ~BassGuitarRepository()
-        {
-            Dispose(false);
-        }
-
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            _context.Dispose();
         }
     }
 }

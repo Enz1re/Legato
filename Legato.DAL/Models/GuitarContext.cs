@@ -16,7 +16,7 @@ namespace Legato.DAL.Models
         
         public DbSet<BassGuitarModel> BassGuitars { get; set; }
 
-        public DbSet<ElectroGuitarModel> ElectroGuitars { get; set; }
+        public DbSet<ElectricGuitarModel> ElectricGuitars { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

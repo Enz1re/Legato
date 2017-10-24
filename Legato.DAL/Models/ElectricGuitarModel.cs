@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Legato.DAL.Models
 {
-    [Table("Electro")]
-    public class ElectroGuitarModel : GuitarModel
+    [Table("Electric")]
+    public class ElectricGuitarModel : GuitarModel
     {
         [Required]
         [ValidateStringNumber]
