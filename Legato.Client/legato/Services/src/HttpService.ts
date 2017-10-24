@@ -16,107 +16,107 @@ export default class HttpService implements IHttpService {
 
     // All guitars
     getAllGuitars(): ng.IPromise<Guitar[]> {
-        return this.$http.get("http://localhost:63231/api/Guitars")
+        return this.$http.get("http://localhost/api/Guitars")
             .then(result => result.data as Guitar[]);
     }
 
     getGuitarsByVendor(vendor: string): ng.IPromise<Guitar[]> {
-        return this.$http.get("http://localhost:63231/api/Guitars", { data: { vendor: vendor } })
+        return this.$http.get("http://localhost/api/Guitars", { data: { vendor: vendor } })
             .then(result => result.data as Guitar[]);
     }
 
     getGuitarsByPrice(from: number, to: number): ng.IPromise<Guitar[]> {
-        return this.$http.get("http://localhost:63231/api/Guitars", { data: { from: from, to: to } })
+        return this.$http.get("http://localhost/api/Guitars", { data: { from: from, to: to } })
             .then(result => result.data as Guitar[]);
     }
 
     // Vendors
     getAllVendors(): ng.IPromise<string[]> {
-        return this.$http.get("http://localhost:63231/api/Guitars/Vendors")
+        return this.$http.get("http://localhost/api/Guitars/Vendors")
             .then(result => result.data as string[]);
     }
 
     getClassicalGuitarVendors(): ng.IPromise<string[]> {
-        return this.$http.get("http://localhost:63231/api/Classical/Vendors")
+        return this.$http.get("http://localhost/api/Classical/Vendors")
             .then(result => result.data as string[]);
     }
 
     getWesternGuitarVendors(): ng.IPromise<string[]> {
-        return this.$http.get("http://localhost:63231/api/Western/Vendors")
+        return this.$http.get("http://localhost/api/Western/Vendors")
             .then(result => result.data as string[]);
     }
 
     getElectricGuitarVendors(): ng.IPromise<string[]> {
-        return this.$http.get("http://localhost:63231/api/Electric/Vendors")
+        return this.$http.get("http://localhost/api/Electric/Vendors")
             .then(result => result.data as string[]);
     }
 
     getBassGuitarVendors(): ng.IPromise<string[]> {
-        return this.$http.get("http://localhost:63231/api/Bass/Vendors")
+        return this.$http.get("http://localhost/api/Bass/Vendors")
             .then(result => result.data as string[]);
     }
 
     // Classical guitars
     getAllClassicalGuitars(): ng.IPromise<ClassicalGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Classical")
+        return this.$http.get("http://localhost/api/Classical")
             .then(result => result.data as ClassicalGuitar[]);
     }
 
     getClassicalGuitarsByVendor(vendor: string): ng.IPromise<ClassicalGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Classical", { data: { vendor: vendor } })
+        return this.$http.get("http://localhost/api/Classical", { data: { vendor: vendor } })
             .then(result => result.data as ClassicalGuitar[]);
     }
 
     getClassicalGuitarsByPrice(from: number, to: number): ng.IPromise<ClassicalGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Classical", { data: { from: from, to: to } })
+        return this.$http.get("http://localhost/api/Classical", { data: { from: from, to: to } })
             .then(result => result.data as ClassicalGuitar[]);
     }
 
     // Western guitars
     getAllWesternGuitars(): ng.IPromise<WesternGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Western")
+        return this.$http.get("http://localhost/api/Western")
             .then(result => result.data as WesternGuitar[]);
     }
 
     getWesternGuitarsByVendor(vendor: string): ng.IPromise<WesternGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Western", { data: { vendor: vendor } })
+        return this.$http.get("http://localhost/api/Western", { data: { vendor: vendor } })
             .then(result => result.data as WesternGuitar[]);
     }
 
     getWesternGuitarsByPrice(from: number, to: number): ng.IPromise<WesternGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Western", { data: { from: from, to: to } })
+        return this.$http.get("http://localhost/api/Western", { data: { from: from, to: to } })
             .then(result => result.data as WesternGuitar[]);
     }
 
     // Electric guitars
     getAllElectricGuitars(): ng.IPromise<ElectricGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Electric")
+        return this.$http.get("http://localhost/api/Electric")
             .then(result => result.data as ElectricGuitar[]);
     }
 
     getElectricGuitarsByVendor(vendor: string): ng.IPromise<ElectricGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Electric", { data: { vendor: vendor } })
+        return this.$http.get("http://localhost/api/Electric", { data: { vendor: vendor } })
             .then(result => result.data as ElectricGuitar[]);
     }
 
     getElectricGuitarsByPrice(from: number, to: number): ng.IPromise<ElectricGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Electric", { data: { from: from, to: to } })
+        return this.$http.get("http://localhost/api/Electric", { data: { from: from, to: to } })
             .then(result => result.data as ElectricGuitar[]);
     }
 
     // Bass guitars
     getAllBassGuitars(): ng.IPromise<BassGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Bass")
+        return this.$http.get("http://localhost/api/Bass")
             .then(result => result.data as BassGuitar[]);
     }
 
     getBassGuitarsByVendor(vendor: string): ng.IPromise<BassGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Bass", { data: { vendor: vendor } })
+        return this.$http.get("http://localhost/api/Bass", { data: { vendor: vendor } })
             .then(result => result.data as BassGuitar[]);
     }
 
     getBassGuitarsByPrice(from: number, to: number): ng.IPromise<BassGuitar[]> {
-        return this.$http.get("http://localhost:63231/api/Bass", { data: { from: from, to: to } })
+        return this.$http.get("http://localhost/api/Bass", { data: { from: from, to: to } })
             .then(result => result.data as BassGuitar[]);
     }
 }

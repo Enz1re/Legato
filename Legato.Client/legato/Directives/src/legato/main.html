@@ -18,7 +18,9 @@
                 <input type="number" ng-model="mainCtrl.price.from" />
                 <div>To:</div>
                 <input type="number" ng-model="mainCtrl.price.to" />
-                <div class="error" ng-if="$form.invalid && $form.touched">'To' value has to be greater than 'from'</div>
+                <div ng-if="price.$invalid">
+                    <small class="error">'To' value has to be greater than 'from'</small>
+                </div>
             </form>
             <p></p>
             <div class="vendors-title">Vendors:</div>
@@ -45,7 +47,7 @@
                 </div>
             </div>
             <div class="button-container">
-                <button ng-click="mainCtrl.broadcastButtonClick()" class="btn btn-primary">Go!</button>
+                <button ng-disabled="price.$invalid" ng-click="mainCtrl.broadcastButtonClick()" class="btn btn-primary">Go!</button>
             </div>
         </div>
     </div>
