@@ -1,11 +1,14 @@
-﻿import Guitar from '../Models/Guitar';
-import ClassicalGuitar from '../Models/ClassicalGuitar';
-import WesternGuitar from '../Models/WesternGuitar';
-import ElectricGuitar from '../Models/ElectricGuitar';
-import BassGuitar from '../Models/BassGuitar';
+﻿import Guitar from '../../Models/Guitar';
+import ClassicalGuitar from '../../Models/ClassicalGuitar';
+import WesternGuitar from '../../Models/WesternGuitar';
+import ElectricGuitar from '../../Models/ElectricGuitar';
+import BassGuitar from '../../Models/BassGuitar';
 
 
-interface IHttpService {
+export interface IHttpService {
+    hasPendingRequests(): boolean;
+    getHtmlContents(url: string): ng.IPromise<string>;
+
     // All guitars
     getAllGuitars(): ng.IPromise<Guitar[]>;
     getGuitarsByVendor(vendor: string): ng.IPromise<Guitar[]>;

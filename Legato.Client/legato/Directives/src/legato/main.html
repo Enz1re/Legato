@@ -24,6 +24,11 @@
             </form>
             <p></p>
             <div class="vendors-title">Vendors:</div>
+            <div ng-if="mainCtrl.error" class="error">
+                <small>
+                    Error processing your request. Please try again later.
+                </small>
+            </div>
             <div class="vendors-container" ng-repeat="vendor in mainCtrl.vendors">
                 <div><input type="checkbox" ng-model="vendor.selected"> {{vendor.name}}</div>
             </div>
@@ -51,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div id="main-panel">
+    <div id="main-panel" ng-animate-children>
         <uib-tabset active="activeJustified" type="pills" justified="true">
             <uib-tab select="mainCtrl.refreshVendorList('classical')" index="0" heading="Classical acoustic">
                 <classical></classical>

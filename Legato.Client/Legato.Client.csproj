@@ -53,6 +53,7 @@
     <Content Include="fonts\Dosis\Dosis-Medium.ttf" />
     <Content Include="fonts\Dosis\Dosis-Regular.ttf" />
     <Content Include="fonts\Dosis\Dosis-SemiBold.ttf" />
+    <Content Include="legato\Directives\src\loading\loader.html" />
     <Content Include="package.json" />
     <Content Include="systemjs.config.js" />
     <Content Include="legato\Directives\src\bass\bass.html" />
@@ -73,6 +74,8 @@
     <TypeScriptCompile Include="legato\Directives\src\bass\BassDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\classical\ClassicalDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\electric\ElectricDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\loading\LegatoLoaderDirective.ts" />
+    <TypeScriptCompile Include="legato\Directives\src\loading\LegatoLoadingDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\validatePrice\LegatoValidatePriceDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\legato\MainDirective.ts" />
     <TypeScriptCompile Include="legato\Directives\src\western\WesternDirective.ts" />
@@ -85,7 +88,8 @@
     <TypeScriptCompile Include="legato\Filters\src\SortByFilter.ts" />
     <TypeScriptCompile Include="legato\Filters\src\VendorFilter.spec.ts" />
     <TypeScriptCompile Include="legato\Filters\src\VendorFilter.ts" />
-    <TypeScriptCompile Include="legato\Interfaces\iHttpService.ts" />
+    <TypeScriptCompile Include="legato\Interfaces\interfaces.ts" />
+    <TypeScriptCompile Include="legato\Interfaces\src\iHttpService.ts" />
     <TypeScriptCompile Include="legato\legato-module.ts" />
     <TypeScriptCompile Include="legato\Models\BassGuitar.ts" />
     <TypeScriptCompile Include="legato\Models\ClassicalGuitar.ts" />

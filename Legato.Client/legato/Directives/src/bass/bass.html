@@ -1,4 +1,7 @@
 ﻿<div class="guitar-list-container">
+    <div ng-if="bassCtrl.error" class="error">
+        Error processing your request. Please try again later.
+    </div>
     <div class="guitar-grid">
         <ul>
             <li ng-repeat="guitar in bassCtrl.guitars | byPrice:bassCtrl.price | byVendors:bassCtrl.vendors | sortBy:bassCtrl.sortBy:bassCtrl.sortDirection">

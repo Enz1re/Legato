@@ -4,7 +4,7 @@ import WesternGuitar from '../../Models/WesternGuitar';
 import ElectricGuitar from '../../Models/ElectricGuitar';
 import BassGuitar from '../../Models/BassGuitar';
 
-import IHttpService from '../../interfaces/iHttpService';
+import { IHttpService } from '../../interfaces/interfaces';
 
 
 export default class HttpService implements IHttpService {
@@ -12,6 +12,14 @@ export default class HttpService implements IHttpService {
 
     constructor (private $http: ng.IHttpService) {
 
+    }
+
+    hasPendingRequests() {
+        return this.$http.pendingRequests.length > 0;
+    }
+
+    getHtmlContents(url: string): ng.IPromise<string> {
+        return this.$http.get(url).then(response => response.data as string);
     }
 
     // All guitars

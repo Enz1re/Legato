@@ -1,4 +1,7 @@
-﻿<div class="guitar-list-container">
+﻿<div class="guitar-list-container" legato-loader>
+    <div ng-if="electricCtrl.error" class="error">
+        Error processing your request. Please try again later.
+    </div>
     <div class="guitar-grid">
         <ul>
             <li ng-repeat="guitar in electricCtrl.guitars | byPrice:electricCtrl.price | byVendors:electricCtrl.vendors | sortBy:electricCtrl.sortBy:electricCtrl.sortDirection">
