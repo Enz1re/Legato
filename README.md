@@ -20,18 +20,14 @@ Legato uses MS SQL Server databases. Install MSSQL if it is not installed.
 ## Installing components
 
 Clone Git repository, open 'Legato' solution with Visual Studio (2015 or higher is recommended).
-Legato Middleware Service:
+
 1. Right-click at Legato.Middleware project.
 2. Check 'Publish'.
 3. Create custom publish profile. Name it however you want, e.g. 'LegatoMiddleware'.
    Enter server name 'localhost', site name: 'Legato Middleware Service'. Click 'Publish'.
-
-Legato Service:
-1. Right-click at Legato.Service project.
-2. Check 'Publish'.
-3. Create one more custom profile. Name it however you want. Enter server name 'localhost' and site name 'Legato Service. Click 'Publish'.
-
-Legato Client:
-1. Go to Legato.Client folder via command line.
-2. Type 'npm install' to install application dependencies.
-3. Type 'npm start' to start and application.
+4. Right-click at Legato.Service project.
+5. Check 'Publish'.
+6. Create one more custom profile. Name it however you want. Enter server name 'localhost' and site name 'Legato Service. Click 'Publish'.
+7. Go to Legato.Client folder via command line.
+8. Type 'npm install' to install application dependencies.
+9. Type 'npm start' to start and application.
