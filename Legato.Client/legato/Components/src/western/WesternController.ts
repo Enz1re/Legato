@@ -1,11 +1,11 @@
-﻿import Price from '../../Models/Price';
-import BassGuitar from '../../Models/BassGuitar';
+﻿import Price from '../../../Models/Price';
+import WesternGuitar from '../../../Models/WesternGuitar';
 
-import { IHttpService } from '../../Interfaces/interfaces';
+import { IHttpService } from '../../../Interfaces/interfaces';
 
 
-export default class BassController implements ng.IController {
-    private guitars: BassGuitar[] = [];
+export class WesternController implements ng.IController {
+    private guitars: WesternGuitar[] = [];
     private price: Price;
     private vendors: string[];
     private sortBy: string;
@@ -15,13 +15,13 @@ export default class BassController implements ng.IController {
     static $inject = ["$scope", "$cacheFactory", "HttpService"];
 
     constructor($scope: ng.IScope, $cacheFactory: ng.ICacheFactoryService, private http: IHttpService) {
-        this.$$cache = $cacheFactory('bass');
-        let cachedGuitars = this.$$cache.get<BassGuitar[]>('guitars');
+        this.$$cache = $cacheFactory('western');
+        let cachedGuitars = this.$$cache.get<WesternGuitar[]>('guitars');
 
         if (cachedGuitars) {
             this.guitars = cachedGuitars;
         } else {
-            this.http.getAllBassGuitars().then(guitars => {
+            this.http.getAllWesternGuitars().then(guitars => {
                 this.guitars = guitars;
                 this.$$cache.put('guitars', this.guitars);
             }).catch(err => {
@@ -29,7 +29,7 @@ export default class BassController implements ng.IController {
             });
         }
 
-        $scope.$on('bass', (e, params) => {
+        $scope.$on('western', (e, params) => {
             this.price = params.price;
             this.vendors = params.vendors;
             this.sortBy = params.sortBy;

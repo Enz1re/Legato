@@ -1,5 +1,5 @@
-﻿import { IHttpService } from './src/iHttpService';
+﻿import { IGuitarService } from './src/IGuitarService';
 
 export {
-    IHttpService
+    IGuitarService
 };

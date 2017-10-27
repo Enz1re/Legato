@@ -5,10 +5,7 @@ import ElectricGuitar from '../../Models/ElectricGuitar';
 import BassGuitar from '../../Models/BassGuitar';
 
 
-export interface IHttpService {
-    hasPendingRequests(): boolean;
-    getHtmlContents(url: string): ng.IPromise<string>;
-
+export interface IGuitarResource {
     // All guitars
     getAllGuitars(): ng.IPromise<Guitar[]>;
     getGuitarsByVendor(vendor: string): ng.IPromise<Guitar[]>;
@@ -37,4 +34,4 @@ export interface IHttpService {
     getBassGuitarsByPrice(from: number, to: number): ng.IPromise<BassGuitar[]>;
 }
 
-export default IHttpService;
+export default IGuitarResource;

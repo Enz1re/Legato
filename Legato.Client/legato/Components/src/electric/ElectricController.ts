@@ -1,10 +1,10 @@
-﻿import Price from '../../Models/Price';
-import ElectricGuitar from '../../Models/ElectricGuitar';
+﻿import Price from '../../../Models/Price';
+import ElectricGuitar from '../../../Models/ElectricGuitar';
 
-import { IHttpService } from '../../Interfaces/interfaces';
+import { IHttpService } from '../../../Interfaces/interfaces';
 
 
-export default class ElectricController implements ng.IController {
+export class ElectricController implements ng.IController {
     private guitars: ElectricGuitar[] = [];
     private price: Price;
     private vendors: string[];

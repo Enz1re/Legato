@@ -1,11 +1,11 @@
-﻿import Price from '../../Models/Price';
-import Vendor from '../../Models/Vendor';
-import Sorting from '../../Models/Sorting';
+﻿import Price from '../../../Models/Price';
+import Vendor from '../../../Models/Vendor';
+import Sorting from '../../../Models/Sorting';
 
-import { IHttpService } from '../../Interfaces/interfaces';
+import { IHttpService } from '../../../Interfaces/interfaces';
 
 
-export default class MainController implements ng.IController {
+export class MainController implements ng.IController {
     private price: Price = new Price();
     private vendors: Vendor[] = [];
     private sorting: Sorting = new Sorting();

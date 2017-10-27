@@ -4,10 +4,10 @@ import WesternGuitar from '../../Models/WesternGuitar';
 import ElectricGuitar from '../../Models/ElectricGuitar';
 import BassGuitar from '../../Models/BassGuitar';
 
-import { IHttpService } from '../../interfaces/interfaces';
+import { IGuitarService } from '../../interfaces/interfaces';
 
 
-export default class HttpService implements IHttpService {
+export default class GuitarService implements IGuitarService {
     static $inject = ['$http'];
 
     constructor (private $http: ng.IHttpService) {

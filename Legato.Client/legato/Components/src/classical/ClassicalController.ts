@@ -1,10 +1,10 @@
-﻿import Price from '../../Models/Price';
-import ClassicalGuitar from '../../Models/ClassicalGuitar';
+﻿import Price from '../../../Models/Price';
+import ClassicalGuitar from '../../../Models/ClassicalGuitar';
 
-import { IHttpService } from '../../Interfaces/interfaces';
+import { IHttpService } from '../../../Interfaces/interfaces';
 
 
-export default class ClassicalController implements ng.IController {
+export class ClassicalController implements ng.IController {
     private guitars: ClassicalGuitar[] = [];
     private price: Price;
     private vendors: string[];

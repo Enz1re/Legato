@@ -9,10 +9,16 @@ import { LegatoValidatePriceDirective } from './src/validatePrice/LegatoValidate
 import { LegatoLoadingDirective } from './src/loading/LegatoLoadingDirective';
 import { LegatoLoaderDirective } from './src/loading/LegatoLoaderDirective';
 
+import { MainController } from './src/legato/MainController';
+import { ClassicalController } from './src/classical/ClassicalController';
+import { WesternController } from './src/western/WesternController';
+import { ElectricController } from './src/electric/ElectricController';
+import { BassController } from './src/bass/BassController';
 
 const directivesModuleName = 'legato.directives';
 
 angular.module(directivesModuleName, [])
+    // directive declarations
     .directive('legato', MainDirective.create())
     .directive('classical', ClassicalDirective.create())
     .directive('western', WesternDirective.create())
@@ -20,17 +26,12 @@ angular.module(directivesModuleName, [])
     .directive('bass', BassDirective.create())
     .directive('legatoValidatePrice', LegatoValidatePriceDirective.create())
     .directive('legatoLoading', LegatoLoadingDirective.create())
-    .directive('legatoLoader', LegatoLoaderDirective.create());
-
-export {
-    MainDirective,
-    ClassicalDirective,
-    WesternDirective,
-    ElectricDirective,
-    BassDirective,
-    LegatoValidatePriceDirective,
-    LegatoLoadingDirective,
-    LegatoLoaderDirective
-};
+    .directive('legatoLoader', LegatoLoaderDirective.create())
+    // controller declarations
+    .controller('MainController', MainController)
+    .controller('ClassicalController', ClassicalController)
+    .controller('WesternController', WesternController)
+    .controller('ElectricController', ElectricController)
+    .controller('BassController', BassController);
 
 export default directivesModuleName;
