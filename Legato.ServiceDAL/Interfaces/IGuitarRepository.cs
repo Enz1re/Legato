@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Legato.ServiceDAL.ViewModels;
 using Legato.MiddlewareContracts.DataContracts;
 
 
@@ -8,7 +9,7 @@ namespace Legato.ServiceDAL.Interfaces
     {
         IEnumerable<TGuitar> GetAll();
 
-        IEnumerable<string> GetVendors();
+        IEnumerable<VendorViewModel> GetVendors();
 
         IEnumerable<TGuitar> FindByVendor(string vendor);
 

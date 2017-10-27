@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Legato.Service.ReturnTypes;
 using Legato.ServiceDAL.ViewModels;
 
 
@@ -9,21 +9,21 @@ namespace Legato.Service
     {
         IEnumerable<GuitarViewModel> GetAllGuitars();
 
-        IEnumerable<string> GetAllVendors();
+        VendorList GetAllVendors();
 
         IEnumerable<GuitarViewModel> GetGuitarsByPrice(short from, short to);
 
-        IEnumerable<string> GetAcousticClassicalGuitarVendors();
+        VendorList GetAcousticClassicalGuitarVendors();
 
         IEnumerable<AcousticClassicalGuitarViewModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
 
-        IEnumerable<string> GetAcousticWesternGuitarVendors();
+        VendorList GetAcousticWesternGuitarVendors();
 
         IEnumerable<AcousticWesternGuitarViewModel> GetAcousticWesternGuitarsByPrice(short from, short to);
 
         IEnumerable<BassGuitarViewModel> GetBassGuitarsByPrice(short from, short to);
 
-        IEnumerable<string> GetElectricGuitarVendors();
+        VendorList GetElectricGuitarVendors();
 
         IEnumerable<ElectricGuitarViewModel> GetElectricGuitarsByPrice(short from, short to);
 
@@ -33,7 +33,7 @@ namespace Legato.Service
 
         IEnumerable<ElectricGuitarViewModel> GetAllElectricGuitars();
 
-        IEnumerable<string> GetBassGuitarVendors();
+        VendorList GetBassGuitarVendors();
 
         IEnumerable<BassGuitarViewModel> GetAllBassGuitars();
 

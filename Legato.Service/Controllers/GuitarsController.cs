@@ -1,6 +1,7 @@
 ﻿using Ninject;
 using System.Web.Http;
 using System.Collections.Generic;
+using Legato.Service.ReturnTypes;
 using Legato.ServiceDAL.ViewModels;
 
 
@@ -16,15 +17,15 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
-        public IEnumerable<GuitarViewModel> Get()
+        public VendorList Get()
         {
-            return _serviceWorker.GetAllGuitars();
+            return new VendorList { Guitars = _serviceWorker.GetAllGuitars() };
         }
 
         [Route("api/Guitars/Vendors")]
-        public IEnumerable<string> GetVendors()
+        public VendorList GetVendors()
         {
-            return _serviceWorker.GetAllVendors();
+            return new VendorList { Guitars = _serviceWorker.GetAllVendors() };
         }
 
         [Route("api/Guitars/{from}/{to}")]

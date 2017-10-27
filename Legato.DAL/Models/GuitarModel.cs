@@ -6,14 +6,11 @@ namespace Legato.DAL.Models
 {
     public abstract class GuitarModel
     {
-        [Key]
         [Required]
-        [Column(Order = 1)]
-        public string Vendor { get; set; }
+        [ForeignKey("Vendor")]
+        public VendorModel Vendor { get; set; }
 
-        [Key]
         [Required]
-        [Column(Order = 2)]
         public string Model { get; set; }
 
         [Required]

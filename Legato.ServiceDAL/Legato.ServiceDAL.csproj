@@ -76,6 +76,7 @@
     <Compile Include="ViewModels\BassGuitarViewModel.cs" />
     <Compile Include="ViewModels\ElectricGuitarViewModel.cs" />
     <Compile Include="ViewModels\GuitarViewModel.cs" />
+    <Compile Include="ViewModels\VendorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -15,6 +15,13 @@ IIS
    In order to set this, go to IIS Manager->Application Pools, right-click on the pool you chose, go to Advanced Settings->Process Model.
    Change Identity from 'ApplicationPoolIdentity' to 'LocalSystem'.
 
+Typescript & npm
+1. As long as project uses typescript, you should install Typescript for Visual Studio extenstion.
+   For VS2015: https://www.microsoft.com/en-us/download/details.aspx?id=48593
+   For VS2017: https://www.microsoft.com/en-us/download/details.aspx?id=55258
+2. To use project with npm, you need to install npm.
+   To install it go to https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm.
+
 Legato uses MS SQL Server databases. Install MSSQL if it is not installed.
 
 ## Installing components
