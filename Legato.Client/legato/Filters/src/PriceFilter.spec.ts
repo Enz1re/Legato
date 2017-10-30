@@ -1,6 +1,6 @@
-import priceFilter from './PriceFilter';
-import Guitar from '../../Models/Guitar';
-import Price from '../../Models/Price';
+import priceFilter from "./PriceFilter";
+import { Guitar } from "../../Models/models";
+import { Price } from "../../Models/models";
 
 
 function compareArrays(sample: Guitar[], test: Guitar[]) {

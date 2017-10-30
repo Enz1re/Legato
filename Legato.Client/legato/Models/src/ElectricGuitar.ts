@@ -1,4 +1,5 @@
-﻿import Guitar from './Guitar';
+﻿import Guitar from "./Guitar";
+
 
 export default class ElectricGuitar extends Guitar {
     StringNumber: 6 | 7 | 8 | 10 | 12;

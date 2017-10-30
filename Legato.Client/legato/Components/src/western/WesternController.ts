@@ -1,7 +1,7 @@
-﻿import Price from '../../../Models/Price';
-import WesternGuitar from '../../../Models/WesternGuitar';
+﻿import { Price } from "../../../Models/models";
+import { WesternGuitar } from "../../../Models/models";
 
-import { IHttpService } from '../../../Interfaces/interfaces';
+import { IGuitarService } from "../../../Interfaces/interfaces";
 
 
 export class WesternController implements ng.IController {
@@ -11,29 +11,24 @@ export class WesternController implements ng.IController {
     private sortBy: string;
     private sortDirection: string;
     private error = false;
-    private $$cache: ng.ICacheObject;
-    static $inject = ["$scope", "$cacheFactory", "HttpService"];
+    static $inject = ["$scope", "WesternGuitarService"];
 
-    constructor($scope: ng.IScope, $cacheFactory: ng.ICacheFactoryService, private http: IHttpService) {
-        this.$$cache = $cacheFactory('western');
-        let cachedGuitars = this.$$cache.get<WesternGuitar[]>('guitars');
+    constructor($scope: ng.IScope, private service: IGuitarService<WesternGuitar>) {
+        this.loadGuitarList();
 
-        if (cachedGuitars) {
-            this.guitars = cachedGuitars;
-        } else {
-            this.http.getAllWesternGuitars().then(guitars => {
-                this.guitars = guitars;
-                this.$$cache.put('guitars', this.guitars);
-            }).catch(err => {
-                this.error = true;
-            });
-        }
-
-        $scope.$on('western', (e, params) => {
+        $scope.$on("western", (e, params) => {
             this.price = params.price;
             this.vendors = params.vendors;
             this.sortBy = params.sortBy;
             this.sortDirection = params.sortDirection;
+        });
+    }
+
+    private loadGuitarList() {
+        this.service.getAllGuitars().then(guitars => {
+            this.guitars = guitars;
+        }).catch(err => {
+            this.error = true;
         });
     }
 }

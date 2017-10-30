@@ -1,5 +1,12 @@
-﻿import { IGuitarService } from './src/IGuitarService';
+﻿import { IGuitarResource } from "./src/IGuitarResource";
+import { IGuitarService } from "./src/IGuitarService";
+import { IVendorService } from "./src/IVendorService";
+import { ICacheService } from "./src/ICacheService";
+
 
 export {
-    IGuitarService
+    IGuitarResource,
+    IGuitarService,
+    IVendorService,
+    ICacheService
 };

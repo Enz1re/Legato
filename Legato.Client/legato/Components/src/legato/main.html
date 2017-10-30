@@ -19,7 +19,7 @@
                 <div>To:</div>
                 <input type="number" ng-model="mainCtrl.price.to" />
                 <div ng-if="price.$invalid">
-                    <small class="error">'To' value has to be greater than 'from'</small>
+                    <small class="error">"To" value has to be greater than "from"</small>
                 </div>
             </form>
             <p></p>
@@ -43,7 +43,7 @@
                         <option title="Vendor">Vendor</option>
                         <option title="Price">Price</option>
                     </select>
-                    <div ng-if="mainCtrl.sorting.name === 'Price'">
+                    <div ng-if="mainCtrl.sorting.name === "Price"">
                         <select ng-model="mainCtrl.sorting.direction">
                             <option title="Ascending">Ascending</option>
                             <option title="Descending">Descending</option>
@@ -58,16 +58,16 @@
     </div>
     <div id="main-panel" ng-animate-children>
         <uib-tabset active="activeJustified" type="pills" justified="true">
-            <uib-tab select="mainCtrl.refreshVendorList('classical')" index="0" heading="Classical acoustic">
+            <uib-tab select="mainCtrl.refreshVendorList("classical")" index="0" heading="Classical acoustic">
                 <classical></classical>
             </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('western')" index="1" heading="Western acoustic">
+            <uib-tab select="mainCtrl.refreshVendorList("western")" index="1" heading="Western acoustic">
                 <western></western>
             </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('electric')" index="2" heading="Electric">
+            <uib-tab select="mainCtrl.refreshVendorList("electric")" index="2" heading="Electric">
                 <electric></electric>
             </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('bass')" index="3" heading="Bass">
+            <uib-tab select="mainCtrl.refreshVendorList("bass")" index="3" heading="Bass">
                 <bass></bass>
             </uib-tab>
         </uib-tabset>

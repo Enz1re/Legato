@@ -1,8 +1,8 @@
 ﻿export class BassDirective implements ng.IDirective {
-    restrict = 'E';
-    controller = 'BassController';
-    controllerAs = 'bassCtrl';
-    templateUrl = 'legato/Directives/src/bass/bass.html';
+    restrict = "E";
+    controller = "BassController";
+    controllerAs = "bassCtrl";
+    templateUrl = "legato/Directives/src/bass/bass.html";
     scope = {};
 
     static create(): ng.IDirectiveFactory {

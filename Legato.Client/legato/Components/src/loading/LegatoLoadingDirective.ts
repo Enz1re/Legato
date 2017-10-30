@@ -1,5 +1,5 @@
 ﻿export class LegatoLoadingDirective implements ng.IDirective {
-    restrict = 'C';
+    restrict = "C";
 
     constructor(private $animate: ng.animate.IAnimateService) {
         
@@ -14,7 +14,7 @@
 
     static create(): ng.IDirectiveFactory {
         const directive: ng.IDirectiveFactory = ($animate: ng.animate.IAnimateService) => new LegatoLoadingDirective($animate);
-        directive.$inject = ['$animate'];
+        directive.$inject = ["$animate"];
         return directive;
     }
 }

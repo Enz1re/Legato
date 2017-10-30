@@ -1,4 +1,5 @@
-﻿import Guitar from './Guitar';
+﻿import Guitar from "./Guitar";
+
 
 export default class WesternGuitar extends Guitar {
     StringNumber: 6 | 7 | 8 | 10 | 12;

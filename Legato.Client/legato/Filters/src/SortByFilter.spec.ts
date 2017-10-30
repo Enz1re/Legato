@@ -1,5 +1,5 @@
-import sortByFilter from './SortByFilter';
-import Guitar from '../../Models/Guitar';
+import sortByFilter from "./SortByFilter";
+import { Guitar } from "../../Models/models";
 
 
 function compareArrays(sample: Guitar[], test: Guitar[], prop: string) {
@@ -27,12 +27,12 @@ describe("SortByFilter", () => {
         { Vendor: "Hofner", Model: "", Mensura: 0, Price: 3880, ImgPath: "" },
     ];
 
-    it("doesn't sort an array when no property given", () => {
+    it("doesn"t sort an array when no property given", () => {
         const sortedTest = filter(guitars);
         compareArrays(guitars, sortedTest, vendor);
     });
 
-    it("doesn't sort an array when sorting by price with no direction given", () => {
+    it("doesn"t sort an array when sorting by price with no direction given", () => {
         const sortedTest = filter(guitars, price);
         compareArrays(guitars, sortedTest, price);
     });

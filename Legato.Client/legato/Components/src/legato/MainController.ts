@@ -1,8 +1,8 @@
-﻿import Price from '../../../Models/Price';
-import Vendor from '../../../Models/Vendor';
-import Sorting from '../../../Models/Sorting';
+﻿import { Price } from "../../../Models/models";
+import { Vendor } from "../../../Models/models";
+import { Sorting } from "../../../Models/models";
 
-import { IHttpService } from '../../../Interfaces/interfaces';
+import { IVendorService } from "../../../Interfaces/interfaces";
 
 
 export class MainController implements ng.IController {
@@ -11,11 +11,9 @@ export class MainController implements ng.IController {
     private sorting: Sorting = new Sorting();
     private error = false;
     private $$activeTab = "classical";
-    private $$cache: ng.ICacheObject;
-    static $inject = ["$scope", "$cacheFactory", "HttpService"];
+    static $inject = ["$scope", "VendorService"];
 
-    constructor(private $scope: ng.IScope, $cacheFactory: ng.ICacheFactoryService, private http: IHttpService) {
-        this.$$cache = $cacheFactory('main');
+    constructor(private $scope: ng.IScope, private vendorService: IVendorService) {
         this.refreshVendorListForClassicalGuitars();
         this.sorting = { required: false, name: "Vendor", direction: "Ascending" };
     }
@@ -29,16 +27,16 @@ export class MainController implements ng.IController {
         this.$$activeTab = guitarTypeName;
 
         switch (guitarTypeName) {
-            case 'classical':
+            case "classical":
                 this.refreshVendorListForClassicalGuitars();
                 break;
-            case 'western':
+            case "western":
                 this.refreshVendorListForWesternGuitars();
                 break;
-            case 'electric':
+            case "electric":
                 this.refreshVendorListForElectricGuitars();
                 break;
-            case 'bass':
+            case "bass":
                 this.refreshVendorListForBassGuitars();
                 break;
         }
@@ -58,8 +56,8 @@ export class MainController implements ng.IController {
         let vendors = [];
 
         for (let v of this.vendors) {
-            if (v.selected) {
-                vendors.push(v.name);
+            if (v.IsSelected) {
+                vendors.push(v.Name);
             }
         }
 
@@ -67,68 +65,34 @@ export class MainController implements ng.IController {
     }
 
     private refreshVendorListForClassicalGuitars() {
-        let cachedVendors = this.$$cache.get<string[]>('classicalVendors');
-
-        if (cachedVendors) {
-            this.addVendors(cachedVendors);
-        } else {
-            this.http.getClassicalGuitarVendors().then(vendors => {
-                this.$$cache.put('classicalVendors', vendors);
-                this.addVendors(vendors);
-            }).catch(err => {
-                this.error = true;
-            });
-        }
+        this.vendorService.getClassicalGuitarVendors().then(vendors => {
+            this.vendors = vendors;
+        }).catch(err => {
+            this.error = true;
+        });
     }
 
     private refreshVendorListForWesternGuitars() {
-        let cachedVendors = this.$$cache.get<string[]>('westernVendors');
-
-        if (cachedVendors) {
-            this.addVendors(cachedVendors);
-        } else {
-            this.http.getWesternGuitarVendors().then(vendors => {
-                this.$$cache.put('westernVendors', vendors);
-                this.addVendors(vendors);
-            }).catch(err => {
-                this.error = true;
-            });
-        }
+        this.vendorService.getWesternGuitarVendors().then(vendors => {
+            this.vendors = vendors;
+        }).catch(err => {
+            this.error = true;
+        });
     }
 
     private refreshVendorListForElectricGuitars() {
-        let cachedVendors = this.$$cache.get<string[]>('electricVendors');
-
-        if (cachedVendors) {
-            this.addVendors(cachedVendors);
-        } else {
-            this.http.getElectricGuitarVendors().then(vendors => {
-                this.$$cache.put('electricVendors', vendors);
-                this.addVendors(vendors);
-            }).catch(err => {
-                this.error = true;
-            });
-        }
+        this.vendorService.getElectricGuitarVendors().then(vendors => {
+            this.vendors = vendors;
+        }).catch(err => {
+            this.error = true;
+        });
     }
 
     private refreshVendorListForBassGuitars() {
-        let cachedVendors = this.$$cache.get<string[]>('bassVendors');
-
-        if (cachedVendors) {
-            this.addVendors(cachedVendors);
-        } else {
-            this.http.getBassGuitarVendors().then(vendors => {
-                this.$$cache.put('bassVendors', vendors);
-                this.addVendors(vendors);
-            }).catch(err => {
-                this.error = true;
-            });
-        }
-    }
-
-    private addVendors(vendors: string[]) {
-        for (let vendor of vendors) {
-            this.vendors.push(new Vendor(vendor));
-        }
+        this.vendorService.getBassGuitarVendors().then(vendors => {
+            this.vendors = vendors;
+        }).catch(err => {
+            this.error = true;
+        });
     }
 }

@@ -1,8 +1,8 @@
 ﻿export class ClassicalDirective implements ng.IDirective {
-    restrict = 'E';
-    controller = 'ClassicalController';
-    controllerAs = 'classicalCtrl';
-    templateUrl = 'legato/Directives/src/classical/classical.html';
+    restrict = "E";
+    controller = "ClassicalController";
+    controllerAs = "classicalCtrl";
+    templateUrl = "legato/Directives/src/classical/classical.html";
     scope = {};
 
     static create(): ng.IDirectiveFactory {

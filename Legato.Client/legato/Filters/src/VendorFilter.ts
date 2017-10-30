@@ -1,4 +1,4 @@
-﻿import Guitar from '../../Models/Guitar';
+﻿import { Guitar } from "../../Models/models";
 
 
 export default function vendorFilter() {

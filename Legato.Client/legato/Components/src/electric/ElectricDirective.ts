@@ -1,8 +1,8 @@
 ﻿export class ElectricDirective implements ng.IDirective {
-    restrict = 'E';
-    controller = 'ElectricController';
-    controllerAs = 'electricCtrl';
-    templateUrl = 'legato/Directives/src/electric/electric.html';
+    restrict = "E";
+    controller = "ElectricController";
+    controllerAs = "electricCtrl";
+    templateUrl = "legato/Directives/src/electric/electric.html";
     scope = {};
 
     static create(): ng.IDirectiveFactory {
