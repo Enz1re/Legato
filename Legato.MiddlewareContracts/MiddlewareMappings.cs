@@ -22,6 +22,7 @@ namespace Legato.MiddlewareContracts
                 cfg.CreateMap<AcousticWesternGuitarModel, AcousticWesternGuitarDataModel>();
                 cfg.CreateMap<ElectricGuitarModel, ElectricGuitarDataModel>();
                 cfg.CreateMap<BassGuitarModel, BassGuitarDataModel>();
+                cfg.CreateMap<VendorModel, VendorDataModel>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();

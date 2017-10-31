@@ -18,6 +18,8 @@ namespace Legato.DAL.Models
 
         public DbSet<ElectricGuitarModel> ElectricGuitars { get; set; }
 
+        public DbSet<VendorModel> Vendors { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Database.SetInitializer(new DatabaseInitializer());

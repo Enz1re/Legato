@@ -69,7 +69,6 @@
     <Compile Include="Repositories\AcousticWesternGuitarRepository.cs" />
     <Compile Include="Repositories\BassGuitarRepository.cs" />
     <Compile Include="Repositories\ElectricGuitarRepository.cs" />
-    <Compile Include="Repositories\GuitarRepository.cs" />
     <Compile Include="Repositories\RepositoryProvider.cs" />
     <Compile Include="ViewModels\AcousticClassicalGuitarViewModel.cs" />
     <Compile Include="ViewModels\AcousticWesternGuitarViewModel.cs" />
@@ -86,9 +85,7 @@
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.ElectroGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.GuitarDataModel.datasource" />
-    <None Include="Service References\Middleware\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.VendorDataModel.datasource" />
     <None Include="Service References\Middleware\Legato.MiddlewareContracts.DataContracts.xsd">
       <SubType>Designer</SubType>
     </None>

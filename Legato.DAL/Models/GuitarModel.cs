@@ -6,9 +6,9 @@ namespace Legato.DAL.Models
 {
     public abstract class GuitarModel
     {
-        [Required]
-        [ForeignKey("Vendor")]
-        public VendorModel Vendor { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
         [Required]
         public string Model { get; set; }
@@ -18,6 +18,9 @@ namespace Legato.DAL.Models
 
         [Required]
         public int Price { get; set; }
+
+        [Required]
+        public virtual VendorModel Vendor { get; set; }
 
         public string ImgPath { get; set; }
     }

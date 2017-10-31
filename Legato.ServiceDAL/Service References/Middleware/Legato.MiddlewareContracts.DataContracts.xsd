@@ -1,21 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfGuitarDataModel">
+  <xs:complexType name="ArrayOfAcousticClassicalGuitarDataModel">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="GuitarDataModel" nillable="true" type="tns:GuitarDataModel" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticClassicalGuitarDataModel" nillable="true" type="tns:AcousticClassicalGuitarDataModel" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfGuitarDataModel" nillable="true" type="tns:ArrayOfGuitarDataModel" />
-  <xs:complexType name="GuitarDataModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ImgPath" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Mensura" type="xs:short" />
-      <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Price" type="xs:int" />
-      <xs:element minOccurs="0" name="Vendor" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GuitarDataModel" nillable="true" type="tns:GuitarDataModel" />
+  <xs:element name="ArrayOfAcousticClassicalGuitarDataModel" nillable="true" type="tns:ArrayOfAcousticClassicalGuitarDataModel" />
   <xs:complexType name="AcousticClassicalGuitarDataModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:GuitarDataModel">
@@ -26,6 +16,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AcousticClassicalGuitarDataModel" nillable="true" type="tns:AcousticClassicalGuitarDataModel" />
+  <xs:complexType name="GuitarDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImgPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mensura" type="xs:short" />
+      <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:int" />
+      <xs:element minOccurs="0" name="Vendor" nillable="true" type="tns:VendorDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GuitarDataModel" nillable="true" type="tns:GuitarDataModel" />
+  <xs:complexType name="VendorDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VendorDataModel" nillable="true" type="tns:VendorDataModel" />
   <xs:complexType name="AcousticWesternGuitarDataModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:GuitarDataModel">
@@ -61,12 +67,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BassGuitarDataModel" nillable="true" type="tns:BassGuitarDataModel" />
-  <xs:complexType name="ArrayOfAcousticClassicalGuitarDataModel">
+  <xs:complexType name="ArrayOfVendorDataModel">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticClassicalGuitarDataModel" nillable="true" type="tns:AcousticClassicalGuitarDataModel" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VendorDataModel" nillable="true" type="tns:VendorDataModel" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfAcousticClassicalGuitarDataModel" nillable="true" type="tns:ArrayOfAcousticClassicalGuitarDataModel" />
+  <xs:element name="ArrayOfVendorDataModel" nillable="true" type="tns:ArrayOfVendorDataModel" />
   <xs:complexType name="ArrayOfAcousticWesternGuitarDataModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticWesternGuitarDataModel" nillable="true" type="tns:AcousticWesternGuitarDataModel" />

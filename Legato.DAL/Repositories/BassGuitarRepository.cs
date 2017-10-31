@@ -28,7 +28,7 @@ namespace Legato.DAL.Repositories
 
         public void Delete(string vendor, string model)
         {
-            var selectedGuitar = _context.BassGuitars.SingleOrDefault(g => g.Vendor == vendor && g.Model == model);
+            var selectedGuitar = _context.BassGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
             if (selectedGuitar != null)
             {
                 _context.BassGuitars.Remove(selectedGuitar);
@@ -37,12 +37,12 @@ namespace Legato.DAL.Repositories
 
         public BassGuitarModel Get(string vendor, string model)
         {
-            return _context.BassGuitars.SingleOrDefault(g => g.Vendor == vendor && g.Model == model);
+            return _context.BassGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
         }
 
         public IEnumerable<BassGuitarModel> FindByVendor(string vendor)
         {
-            return _context.BassGuitars.Where(g => g.Vendor == vendor).ToList();
+            return _context.BassGuitars.Where(g => g.Vendor.Name == vendor).ToList();
         }
 
         public IEnumerable<BassGuitarModel> GetAll()

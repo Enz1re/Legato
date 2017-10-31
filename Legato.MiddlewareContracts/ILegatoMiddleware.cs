@@ -9,22 +9,10 @@ namespace Legato.MiddlewareContracts
     public interface ILegatoMiddleware
     {
         [OperationContract]
-        IEnumerable<GuitarDataModel> GetAllGuitars();
-
-        [OperationContract]
-        IEnumerable<string> GetAllVendors();
-
-        [OperationContract]
-        IEnumerable<GuitarDataModel> GetGuitarsByPrice(short from, short to);
-
-        [OperationContract]
-        IEnumerable<GuitarDataModel> GetGuitarsByVendor(string vendor);
-
-        [OperationContract]
         IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars();
 
         [OperationContract]
-        IEnumerable<string> GetAcousticClassicalGuitarVendors();
+        IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors();
 
         [OperationContract]
         IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
@@ -36,7 +24,7 @@ namespace Legato.MiddlewareContracts
         IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars();
 
         [OperationContract]
-        IEnumerable<string> GetAcousticWesternGuitarVendors();
+        IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors();
 
         [OperationContract]
         IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to);
@@ -48,7 +36,7 @@ namespace Legato.MiddlewareContracts
         IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars();
 
         [OperationContract]
-        IEnumerable<string> GetElectricGuitarVendors();
+        IEnumerable<VendorDataModel> GetElectricGuitarVendors();
 
         [OperationContract]
         IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to);
@@ -60,7 +48,7 @@ namespace Legato.MiddlewareContracts
         IEnumerable<BassGuitarDataModel> GetAllBassGuitars();
 
         [OperationContract]
-        IEnumerable<string> GetBassGuitarVendors();
+        IEnumerable<VendorDataModel> GetBassGuitarVendors();
 
         [OperationContract]
         IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to);

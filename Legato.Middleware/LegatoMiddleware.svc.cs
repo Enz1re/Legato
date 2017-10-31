@@ -17,38 +17,6 @@ namespace Legato.Middleware
             _blWorker = blWorker;
         }
 
-        public IEnumerable<GuitarDataModel> GetAllGuitars()
-        {
-            using (var worker = _blWorker.Get())
-            {
-                return worker.GetAllGuitars();
-            }
-        }
-
-        public IEnumerable<string> GetAllVendors()
-        {
-            using (var worker = _blWorker.Get())
-            {
-                return worker.GetAllVendors();
-            }
-        }
-
-        public IEnumerable<GuitarDataModel> GetGuitarsByPrice(short from, short to)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                return worker.GetGuitarsByPrice(from, to);
-            }
-        }
-
-        public IEnumerable<GuitarDataModel> GetGuitarsByVendor(string vendor)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                return worker.GetGuitarsByVendor(vendor);
-            }
-        }
-
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars()
         {
             using (var worker = _blWorker.Get())
@@ -57,7 +25,7 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<string> GetAcousticClassicalGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors()
         {
             using (var worker = _blWorker.Get())
             {
@@ -73,7 +41,7 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<string> GetAcousticWesternGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors()
         {
             using (var worker = _blWorker.Get())
             {
@@ -89,7 +57,7 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<string> GetElectricGuitarVendors()
+        public IEnumerable<VendorDataModel> GetElectricGuitarVendors()
         {
             using (var worker = _blWorker.Get())
             {
@@ -113,7 +81,7 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<string> GetBassGuitarVendors()
+        public IEnumerable<VendorDataModel> GetBassGuitarVendors()
         {
             using (var worker = _blWorker.Get())
             {

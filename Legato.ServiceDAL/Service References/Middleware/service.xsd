@@ -1,60 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" />
-  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:element name="GetAllGuitars">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllGuitarsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllGuitarsResult" nillable="true" type="q1:ArrayOfGuitarDataModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllVendors">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllVendorsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllVendorsResult" nillable="true" type="q2:ArrayOfstring" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetGuitarsByPrice">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="from" type="xs:short" />
-        <xs:element minOccurs="0" name="to" type="xs:short" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetGuitarsByPriceResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetGuitarsByPriceResult" nillable="true" type="q3:ArrayOfGuitarDataModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetGuitarsByVendor">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="vendor" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetGuitarsByVendorResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetGuitarsByVendorResult" nillable="true" type="q4:ArrayOfGuitarDataModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetAllAcousticClassicalGuitars">
     <xs:complexType>
       <xs:sequence />
@@ -63,7 +9,7 @@
   <xs:element name="GetAllAcousticClassicalGuitarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllAcousticClassicalGuitarsResult" nillable="true" type="q5:ArrayOfAcousticClassicalGuitarDataModel" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllAcousticClassicalGuitarsResult" nillable="true" type="q1:ArrayOfAcousticClassicalGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -75,7 +21,7 @@
   <xs:element name="GetAcousticClassicalGuitarVendorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAcousticClassicalGuitarVendorsResult" nillable="true" type="q6:ArrayOfstring" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticClassicalGuitarVendorsResult" nillable="true" type="q2:ArrayOfVendorDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -90,7 +36,7 @@
   <xs:element name="GetAcousticClassicalGuitarsByPriceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticClassicalGuitarsByPriceResult" nillable="true" type="q7:ArrayOfAcousticClassicalGuitarDataModel" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticClassicalGuitarsByPriceResult" nillable="true" type="q3:ArrayOfAcousticClassicalGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -104,7 +50,7 @@
   <xs:element name="GetAcousticClassicalGuitarsByVendorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticClassicalGuitarsByVendorResult" nillable="true" type="q8:ArrayOfAcousticClassicalGuitarDataModel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticClassicalGuitarsByVendorResult" nillable="true" type="q4:ArrayOfAcousticClassicalGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -116,7 +62,7 @@
   <xs:element name="GetAllAcousticWesternGuitarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllAcousticWesternGuitarsResult" nillable="true" type="q9:ArrayOfAcousticWesternGuitarDataModel" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllAcousticWesternGuitarsResult" nillable="true" type="q5:ArrayOfAcousticWesternGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -128,7 +74,7 @@
   <xs:element name="GetAcousticWesternGuitarVendorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAcousticWesternGuitarVendorsResult" nillable="true" type="q10:ArrayOfstring" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticWesternGuitarVendorsResult" nillable="true" type="q6:ArrayOfVendorDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -143,7 +89,7 @@
   <xs:element name="GetAcousticWesternGuitarsByPriceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticWesternGuitarsByPriceResult" nillable="true" type="q11:ArrayOfAcousticWesternGuitarDataModel" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticWesternGuitarsByPriceResult" nillable="true" type="q7:ArrayOfAcousticWesternGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -157,7 +103,7 @@
   <xs:element name="GetAcousticWesternGuitarsByVendorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticWesternGuitarsByVendorResult" nillable="true" type="q12:ArrayOfAcousticWesternGuitarDataModel" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAcousticWesternGuitarsByVendorResult" nillable="true" type="q8:ArrayOfAcousticWesternGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -169,7 +115,7 @@
   <xs:element name="GetAllElectricGuitarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllElectricGuitarsResult" nillable="true" type="q13:ArrayOfElectricGuitarDataModel" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllElectricGuitarsResult" nillable="true" type="q9:ArrayOfElectricGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -181,7 +127,7 @@
   <xs:element name="GetElectricGuitarVendorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetElectricGuitarVendorsResult" nillable="true" type="q14:ArrayOfstring" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectricGuitarVendorsResult" nillable="true" type="q10:ArrayOfVendorDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -196,7 +142,7 @@
   <xs:element name="GetElectricGuitarsByPriceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectricGuitarsByPriceResult" nillable="true" type="q15:ArrayOfElectricGuitarDataModel" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectricGuitarsByPriceResult" nillable="true" type="q11:ArrayOfElectricGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -210,7 +156,7 @@
   <xs:element name="GetElectricGuitarsByVendorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectricGuitarsByVendorResult" nillable="true" type="q16:ArrayOfElectricGuitarDataModel" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetElectricGuitarsByVendorResult" nillable="true" type="q12:ArrayOfElectricGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -222,7 +168,7 @@
   <xs:element name="GetAllBassGuitarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllBassGuitarsResult" nillable="true" type="q17:ArrayOfBassGuitarDataModel" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetAllBassGuitarsResult" nillable="true" type="q13:ArrayOfBassGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -234,7 +180,7 @@
   <xs:element name="GetBassGuitarVendorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBassGuitarVendorsResult" nillable="true" type="q18:ArrayOfstring" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetBassGuitarVendorsResult" nillable="true" type="q14:ArrayOfVendorDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -249,7 +195,7 @@
   <xs:element name="GetBassGuitarsByPriceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetBassGuitarsByPriceResult" nillable="true" type="q19:ArrayOfBassGuitarDataModel" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetBassGuitarsByPriceResult" nillable="true" type="q15:ArrayOfBassGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -263,7 +209,7 @@
   <xs:element name="GetBassGuitarsByVendorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetBassGuitarsByVendorResult" nillable="true" type="q20:ArrayOfBassGuitarDataModel" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetBassGuitarsByVendorResult" nillable="true" type="q16:ArrayOfBassGuitarDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

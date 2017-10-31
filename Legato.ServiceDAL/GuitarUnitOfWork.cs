@@ -15,8 +15,6 @@ namespace Legato.ServiceDAL
             _repositoryProvider = repositoryProvider;
         }
 
-        public IGuitarRepository<GuitarDataModel> GuitarsCommon => _repositoryProvider.GuitarRepository;
-
         public IGuitarRepository<AcousticClassicalGuitarDataModel> ClassicAcousticGuitars => _repositoryProvider.AcousticClassicalGuitarRepository;
 
         public IGuitarRepository<AcousticWesternGuitarDataModel> WesternAcousticGuitars => _repositoryProvider.AcousticWesternGuitarRepository;

@@ -7,17 +7,9 @@ namespace Legato.BL
 {
     public interface ILegatoBusinessLayerWorker : IDisposable
     {
-        IEnumerable<GuitarDataModel> GetAllGuitars();
-
-        IEnumerable<string> GetAllVendors();
-
-        IEnumerable<GuitarDataModel> GetGuitarsByPrice(short from, short to);
-
-        IEnumerable<GuitarDataModel> GetGuitarsByVendor(string vendor);
-
         IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars();
 
-        IEnumerable<string> GetAcousticClassicalGuitarVendors();
+        IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors();
 
         IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
 
@@ -25,7 +17,7 @@ namespace Legato.BL
 
         IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars();
 
-        IEnumerable<string> GetAcousticWesternGuitarVendors();
+        IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors();
 
         IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to);
 
@@ -33,7 +25,7 @@ namespace Legato.BL
 
         IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars();
 
-        IEnumerable<string> GetElectricGuitarVendors();
+        IEnumerable<VendorDataModel> GetElectricGuitarVendors();
 
         IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to);
 
@@ -41,7 +33,7 @@ namespace Legato.BL
 
         IEnumerable<BassGuitarDataModel> GetAllBassGuitars();
 
-        IEnumerable<string> GetBassGuitarVendors();
+        IEnumerable<VendorDataModel> GetBassGuitarVendors();
 
         IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to);
 

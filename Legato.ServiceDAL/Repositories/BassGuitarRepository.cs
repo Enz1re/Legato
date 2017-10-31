@@ -22,7 +22,7 @@ namespace Legato.ServiceDAL.Repositories
             return _client.GetAllBassGuitars();
         }
 
-        public IEnumerable<string> GetVendors()
+        public IEnumerable<VendorDataModel> GetVendors()
         {
             return _client.GetBassGuitarVendors();
         }
