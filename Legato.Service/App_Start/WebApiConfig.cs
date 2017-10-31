@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using Newtonsoft.Json;
+using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 
 
 namespace Legato.Service
@@ -13,6 +15,9 @@ namespace Legato.Service
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}"
             );
+
+            config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Include;
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }

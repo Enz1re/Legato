@@ -1,6 +1,6 @@
-﻿using System.Web.Http;
-using System.Collections.Generic;
-using Legato.ServiceDAL.ViewModels;
+﻿using Ninject;
+using System.Web.Http;
+using Legato.Service.ReturnTypes;
 
 
 namespace Legato.Service.Controllers
@@ -9,30 +9,31 @@ namespace Legato.Service.Controllers
     {
         private ILegatoServiceWorker _serviceWorker;
 
+        [Inject]
         public BassController(ILegatoServiceWorker serviceWorker)
         {
             _serviceWorker = serviceWorker;
         }
 
-        public IEnumerable<BassGuitarViewModel> Get()
+        public GuitarList Get()
         {
             return _serviceWorker.GetAllBassGuitars();
         }
 
         [Route("api/Bass/Vendors")]
-        public IEnumerable<string> GetVendors()
+        public VendorList GetVendors()
         {
             return _serviceWorker.GetBassGuitarVendors();
         }
 
         [Route("api/Bass/{vendor}")]
-        public IEnumerable<BassGuitarViewModel> Get(string vendor)
+        public GuitarList Get(string vendor)
         {
             return _serviceWorker.GetBassGuitarsByVendor(vendor);
         }
 
         [Route("api/Bass/{from}/{to}")]
-        public IEnumerable<BassGuitarViewModel> Get(short from, short to)
+        public GuitarList Get(short from, short to)
         {
             return _serviceWorker.GetBassGuitarsByPrice(from, to);
         }
