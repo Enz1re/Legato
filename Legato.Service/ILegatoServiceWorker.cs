@@ -1,50 +1,40 @@
-﻿using System.Collections.Generic;
-using Legato.Service.ReturnTypes;
-using Legato.ServiceDAL.ViewModels;
+﻿using Legato.Service.ReturnTypes;
 
 
 namespace Legato.Service
 {
     public interface ILegatoServiceWorker
     {
-        IEnumerable<GuitarViewModel> GetAllGuitars();
-
-        VendorList GetAllVendors();
-
-        IEnumerable<GuitarViewModel> GetGuitarsByPrice(short from, short to);
-
         VendorList GetAcousticClassicalGuitarVendors();
 
-        IEnumerable<AcousticClassicalGuitarViewModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
+        GuitarList GetAcousticClassicalGuitarsByPrice(short from, short to);
 
         VendorList GetAcousticWesternGuitarVendors();
 
-        IEnumerable<AcousticWesternGuitarViewModel> GetAcousticWesternGuitarsByPrice(short from, short to);
+        GuitarList GetAcousticWesternGuitarsByPrice(short from, short to);
 
-        IEnumerable<BassGuitarViewModel> GetBassGuitarsByPrice(short from, short to);
+        GuitarList GetBassGuitarsByPrice(short from, short to);
 
         VendorList GetElectricGuitarVendors();
 
-        IEnumerable<ElectricGuitarViewModel> GetElectricGuitarsByPrice(short from, short to);
+        GuitarList GetElectricGuitarsByPrice(short from, short to);
 
-        IEnumerable<AcousticClassicalGuitarViewModel> GetAllAcousticClassicalGuitars();
+        GuitarList GetAllAcousticClassicalGuitars();
 
-        IEnumerable<AcousticWesternGuitarViewModel> GetAllAcousticWesternGuitars();
+        GuitarList GetAllAcousticWesternGuitars();
 
-        IEnumerable<ElectricGuitarViewModel> GetAllElectricGuitars();
+        GuitarList GetAllElectricGuitars();
 
         VendorList GetBassGuitarVendors();
 
-        IEnumerable<BassGuitarViewModel> GetAllBassGuitars();
+        GuitarList GetAllBassGuitars();
 
-        IEnumerable<GuitarViewModel> GetGuitarsByVendor(string vendor);
+        GuitarList GetAcousticClassicalGuitarsByVendor(string vendor);
 
-        IEnumerable<AcousticClassicalGuitarViewModel> GetAcousticClassicalGuitarsByVendor(string vendor);
+        GuitarList GetAcousticWesternGuitarsByVendor(string vendor);
 
-        IEnumerable<AcousticWesternGuitarViewModel> GetAcousticWesternGuitarsByVendor(string vendor);
+        GuitarList GetElectricGuitarsByVendor(string vendor);
 
-        IEnumerable<ElectricGuitarViewModel> GetElectricGuitarsByVendor(string vendor);
-
-        IEnumerable<BassGuitarViewModel> GetBassGuitarsByVendor(string vendor);
+        GuitarList GetBassGuitarsByVendor(string vendor);
     }
 }
