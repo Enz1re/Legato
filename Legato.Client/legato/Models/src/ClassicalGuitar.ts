@@ -2,5 +2,5 @@
 
 
 export default class ClassicalGuitar extends Guitar {
-    StringType: "Nylon" | "Fluorocarbon";
+    stringType: "Nylon" | "Fluorocarbon";
 }

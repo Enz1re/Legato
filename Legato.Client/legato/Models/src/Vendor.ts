@@ -1,4 +1,4 @@
 ﻿export default class Vendor {
-    Name: string;
-    IsSelected: boolean;
+    name: string;
+    isSelected: boolean;
 }
