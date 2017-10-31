@@ -2,7 +2,7 @@
     restrict = "E";
     controller = "BassController";
     controllerAs = "bassCtrl";
-    templateUrl = "legato/Directives/src/bass/bass.html";
+    templateUrl = "legato/Components/src/bass/bass.html";
     scope = {};
 
     static create(): ng.IDirectiveFactory {

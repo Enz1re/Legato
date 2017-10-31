@@ -96,11 +96,12 @@
     <TypeScriptCompile Include="legato\Models\src\ClassicalGuitar.ts" />
     <TypeScriptCompile Include="legato\Models\src\ElectricGuitar.ts" />
     <TypeScriptCompile Include="legato\Models\src\Guitar.ts" />
+    <TypeScriptCompile Include="legato\Models\src\GuitarList.ts" />
     <TypeScriptCompile Include="legato\Models\src\Price.ts" />
     <TypeScriptCompile Include="legato\Models\src\Sorting.ts" />
     <TypeScriptCompile Include="legato\Models\src\Vendor.ts" />
+    <TypeScriptCompile Include="legato\Models\src\VendorList.ts" />
     <TypeScriptCompile Include="legato\Models\src\WesternGuitar.ts" />
-    <TypeScriptCompile Include="legato\Routes\Router.ts" />
     <TypeScriptCompile Include="legato\Services\src\BassGuitarService.ts" />
     <TypeScriptCompile Include="legato\Services\src\CacheService.ts" />
     <TypeScriptCompile Include="legato\Services\src\ClassicalGuitarService.ts" />

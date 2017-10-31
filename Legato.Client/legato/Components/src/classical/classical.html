@@ -1,4 +1,4 @@
-﻿<div class="guitar-list-container" legato-loader>
+﻿<div class="guitar-list-container">
     <div ng-if="classicalCtrl.error" class="error ">
         Error processing your request. Please try again later.
     </div>
@@ -6,11 +6,11 @@
         <ul>
             <li ng-repeat="guitar in classicalCtrl.guitars | byPrice:classicalCtrl.price | byVendors:classicalCtrl.vendors | sortBy:classicalCtrl.sortBy:classicalCtrl.sortDirection">
                 <div class="guitar-container">
-                    <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.ImgPath}}"></div>
-                    <div>{{guitar.Vendor}} {{guitar.Model}}</div>
-                    <div>Mensura: {{guitar.Mensura}} mm</div>
-                    <div>Price: {{guitar.Price}} UAH</div>
-                    <div>String type: {{guitar.StringType}}</div>
+                    <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
+                    <div>{{guitar.vendor.name}} {{guitar.model}}</div>
+                    <div>Mensura: {{guitar.mensura}} mm</div>
+                    <div>Price: {{guitar.price}} UAH</div>
+                    <div>String type: {{guitar.stringType}}</div>
                 </div>
             </li>
         </ul>

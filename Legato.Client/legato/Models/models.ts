@@ -6,6 +6,8 @@ import WesternGuitar from "./src/WesternGuitar";
 import Price from "./src/Price";
 import Sorting from "./src/Sorting";
 import Vendor from "./src/Vendor";
+import VendorList from "./src/VendorList";
+import GuitarList from "./src/GuitarList";
 
 
 export {
@@ -16,5 +18,7 @@ export {
     WesternGuitar,
     Price,
     Sorting,
-    Vendor
+    Vendor,
+    VendorList,
+    GuitarList
 };

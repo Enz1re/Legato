@@ -19,9 +19,9 @@ export default function priceFilter() {
         }
         if (!to) {
             // get the largest price if it is not set for defaults
-            to = items.sort((g1, g2) => g2.Price - g1.Price)[0].Price;
+            to = items.sort((g1, g2) => g2.price - g1.price)[0].price;
         }
-
-        return items.filter(guitar => from <= guitar.Price && guitar.Price <= to);
+        
+        return items.filter(guitar => from <= guitar.price && guitar.price <= to);
     }
 }

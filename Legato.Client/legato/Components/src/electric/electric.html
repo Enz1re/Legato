@@ -1,4 +1,4 @@
-﻿<div class="guitar-list-container" legato-loader>
+﻿<div class="guitar-list-container" >
     <div ng-if="electricCtrl.error" class="error">
         Error processing your request. Please try again later.
     </div>
@@ -6,14 +6,14 @@
         <ul>
             <li ng-repeat="guitar in electricCtrl.guitars | byPrice:electricCtrl.price | byVendors:electricCtrl.vendors | sortBy:electricCtrl.sortBy:electricCtrl.sortDirection">
                 <div class="guitar-container">
-                    <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.ImgPath}}"></div>
-                    <div>{{guitar.Vendor}} {{guitar.Model}}</div>
-                    <div>Mensura: {{guitar.Mensura}} mm</div>
-                    <div>Price: {{guitar.Price}} UAH</div>
-                    <div>Strings: {{guitar.StringNumber}}</div>
-                    <div>Tremolo bar: {{guitar.HasTremoloBar | boolean}}</div>
-                    <div>Soundbox: {{guitar.SoundBox}}</div>
-                    <div>String caliber: {{guitar.StringCaliber}}</div>
+                    <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
+                    <div>{{guitar.vendor.name}} {{guitar.model}}</div>
+                    <div>Mensura: {{guitar.mensura}} mm</div>
+                    <div>Price: {{guitar.price}} UAH</div>
+                    <div>Strings: {{guitar.stringNumber}}</div>
+                    <div>Tremolo bar: {{guitar.hasTremoloBar | boolean}}</div>
+                    <div>Soundbox: {{guitar.soundBox}}</div>
+                    <div>String caliber: {{guitar.stringCaliber}}</div>
                 </div>
             </li>
         </ul>

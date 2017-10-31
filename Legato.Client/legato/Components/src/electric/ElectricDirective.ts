@@ -2,7 +2,7 @@
     restrict = "E";
     controller = "ElectricController";
     controllerAs = "electricCtrl";
-    templateUrl = "legato/Directives/src/electric/electric.html";
+    templateUrl = "legato/Components/src/electric/electric.html";
     scope = {};
 
     static create(): ng.IDirectiveFactory {

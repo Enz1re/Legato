@@ -2,7 +2,7 @@
     restrict = "E";
     controller = "MainController";
     controllerAs = "mainCtrl";
-    templateUrl = "legato/Directives/src/legato/main.html";
+    templateUrl = "legato/Components/src/legato/main.html";
     scope = {};
 
     static create(): ng.IDirectiveFactory {

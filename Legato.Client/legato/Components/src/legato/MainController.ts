@@ -56,8 +56,8 @@ export class MainController implements ng.IController {
         let vendors = [];
 
         for (let v of this.vendors) {
-            if (v.IsSelected) {
-                vendors.push(v.Name);
+            if (v.isSelected) {
+                vendors.push(v.name);
             }
         }
 

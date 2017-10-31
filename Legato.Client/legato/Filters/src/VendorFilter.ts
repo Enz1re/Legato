@@ -9,7 +9,7 @@ export default function vendorFilter() {
         if (vendors.length === 0) {
             return [];
         }
-
-        return items.filter(guitar => vendors.indexOf(guitar.Vendor) !== -1);
+        
+        return items.filter(guitar => vendors.indexOf(guitar.vendor.name) !== -1);
     }
 }
