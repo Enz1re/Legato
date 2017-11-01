@@ -51,7 +51,6 @@
     <Compile Include="DataContracts\BassGuitarDataModel.cs" />
     <Compile Include="DataContracts\ElectricGuitarDataModel.cs" />
     <Compile Include="DataContracts\GuitarDataModel.cs" />
-    <Compile Include="DataContracts\VendorDataModel.cs" />
     <Compile Include="ILegatoMiddleware.cs" />
     <Compile Include="MiddlewareMappings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

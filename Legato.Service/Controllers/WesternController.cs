@@ -1,6 +1,5 @@
 ﻿using Ninject;
 using System.Web.Http;
-using Legato.Service.ReturnTypes;
 
 
 namespace Legato.Service.Controllers
@@ -15,27 +14,37 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
-        public GuitarList Get()
+        [GuitarFilter]
+        [Route("api/Western/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get(int lowerBound, int upperBound)
         {
-            return _serviceWorker.GetAllAcousticWesternGuitars();
+            return Ok(_serviceWorker.GetAllAcousticWesternGuitars(lowerBound, upperBound));
         }
 
         [Route("api/Western/Vendors")]
-        public VendorList GetVendors()
+        public IHttpActionResult GetVendors()
         {
-            return _serviceWorker.GetAcousticWesternGuitarVendors();
+            return Ok(_serviceWorker.GetAcousticWesternGuitarVendors());
         }
 
-        [Route("api/Western/{vendor}")]
-        public GuitarList Get(string vendor)
+        [Route("api/Western/Quantity")]
+        public IHttpActionResult GetAmount()
         {
-            return _serviceWorker.GetAcousticWesternGuitarsByVendor(vendor);
+            return Ok(_serviceWorker.GetAcousticWesternGuitarAmount());
         }
 
-        [Route("api/Western/{from}/{to}")]
-        public GuitarList Get(short from, short to)
+        [GuitarFilter]
+        [Route("api/Western/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get([FromUri]string[] vendors, int lowerBound, int upperBound)
         {
-            return _serviceWorker.GetAcousticWesternGuitarsByPrice(from, to);
+            return Ok(_serviceWorker.GetAcousticWesternGuitarsByVendors(vendors, lowerBound, upperBound));
+        }
+
+        [GuitarFilter]
+        [Route("api/Western/{from}/{to}/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get(int from, int to, int lowerBound, int upperBound)
+        {
+            return Ok(_serviceWorker.GetAcousticWesternGuitarsByPrice(from, to, lowerBound, upperBound));
         }
     }
 }

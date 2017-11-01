@@ -6,12 +6,14 @@ namespace Legato.ServiceDAL.Interfaces
 {
     public interface IGuitarRepository<TGuitar> where TGuitar: GuitarDataModel
     {
-        IEnumerable<TGuitar> GetAll();
+        IEnumerable<TGuitar> GetAll(int lowerBound, int upperBound);
 
-        IEnumerable<VendorDataModel> GetVendors();
+        IEnumerable<string> GetVendors();
 
-        IEnumerable<TGuitar> FindByVendor(string vendor);
+        int GetAmount();
 
-        IEnumerable<TGuitar> FindByCost(short from, short to);
+        IEnumerable<TGuitar> FindByVendors(string[] vendors, int lowerBound, int upperBound);
+
+        IEnumerable<TGuitar> FindByCost(int from, int to, int lowerBound, int upperBound);
     }
 }

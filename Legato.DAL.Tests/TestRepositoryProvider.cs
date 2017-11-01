@@ -2,7 +2,7 @@
 using System.Linq;
 using Legato.DAL.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Diagnostics;
 
 namespace Legato.DAL.Tests
 {
@@ -53,58 +53,58 @@ namespace Legato.DAL.Tests
          * Get guitars by vendors
          */
         [DataTestMethod]
-        [DataRow("lucero", 2)]
-        [DataRow("kremona", 1)]
-        [DataRow("lyons", 1)]
-        [DataRow("rogue", 0)]
-        [DataRow("yamaha", 0)]
-        public void GetAcousticClassicalGuitarsWithQuantity(string vName, int quantity)
+        [DataRow(2, "lucero")]
+        [DataRow(1, "kremona")]
+        [DataRow(1, "lyons")]
+        [DataRow(0, "rogue")]
+        [DataRow(0, "yamaha")]
+        public void GetAcousticClassicalGuitarsWithQuantity(int quantity, object[] vNames)
         {
-            var guitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendor(vName);
+            var guitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendors(vNames as string[]);
             Assert.AreEqual(guitars.Count(), quantity);
         }
 
         [DataTestMethod]
-        [DataRow("rogue", 4)]
-        [DataRow("lucero", 0)]
-        [DataRow("kremona", 0)]
-        [DataRow("lyons", 0)]
-        [DataRow("yamaha", 0)]
-        public void GetAcousticWesternGuitarsWithQuantity(string vName, int quantity)
+        [DataRow(4, "rogue")]
+        [DataRow(0, "lucero")]
+        [DataRow(0, "kremona")]
+        [DataRow(0, "lyons")]
+        [DataRow(0, "yamaha")]
+        public void GetAcousticWesternGuitarsWithQuantity(int quantity, object[] vNames)
         {
-            var guitars = _repoProvider.AcousticWesternGuitarRepository.FindByVendor(vName);
+            var guitars = _repoProvider.AcousticWesternGuitarRepository.FindByVendors(vNames as string[]);
             Assert.AreEqual(guitars.Count(), quantity);
         }
         
         [DataTestMethod]
-        [DataRow("friedman", 1)]
-        [DataRow("the loar", 1)]
-        [DataRow("b.c. rich", 1)]
-        [DataRow("rogue", 1)]
-        [DataRow("lucero", 0)]
-        [DataRow("mitchell", 0)]
-        [DataRow("kremona", 0)]
-        [DataRow("lyons", 0)]
-        [DataRow("yamaha", 0)]
-        public void GetElectricGuitarsWithQuantity(string vName, int quantity)
+        [DataRow(1, "friedman")]
+        [DataRow(1, "the loar")]
+        [DataRow(1, "b.c. rich")]
+        [DataRow(1, "rogue")]
+        [DataRow(0, "lucero")]
+        [DataRow(0, "mitchell")]
+        [DataRow(0, "kremona")]
+        [DataRow(0, "lyons")]
+        [DataRow(0, "yamaha")]
+        public void GetElectricGuitarsWithQuantity(int quantity, object[] vNames)
         {
-            var guitars = _repoProvider.ElectricGuitarRepository.FindByVendor(vName);
+            var guitars = _repoProvider.ElectricGuitarRepository.FindByVendors(vNames as string[]);
             Assert.AreEqual(guitars.Count(), quantity);
         }
 
         [DataTestMethod]
-        [DataRow("b.c. rich", 1)]
-        [DataRow("hofner", 1)]
-        [DataRow("mitchell", 1)]
-        [DataRow("rogue", 1)]
-        [DataRow("lucero", 0)]
-        [DataRow("the loar", 0)]
-        [DataRow("kremona", 0)]
-        [DataRow("lyons", 0)]
-        [DataRow("yamaha", 0)]
-        public void GetBassGuitarsWithQuantity(string vName, int quantity)
+        [DataRow(1, "b.c. rich")]
+        [DataRow(1, "hofner")]
+        [DataRow(1, "mitchell")]
+        [DataRow(1, "rogue")]
+        [DataRow(0, "lucero")]
+        [DataRow(0, "the loar")]
+        [DataRow(0, "kremona")]
+        [DataRow(0, "lyons")]
+        [DataRow(0, "yamaha")]
+        public void GetBassGuitarsWithQuantity(int quantity, object[] vNames)
         {
-            var guitars = _repoProvider.BassGuitarRepository.FindByVendor(vName);
+            var guitars = _repoProvider.BassGuitarRepository.FindByVendors(vNames as string[]);
             Assert.AreEqual(guitars.Count(), quantity);
         }
     }

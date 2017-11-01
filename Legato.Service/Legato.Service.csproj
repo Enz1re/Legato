@@ -161,6 +161,7 @@
     <Compile Include="Controllers\ElectricController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WesternController.cs" />
+    <Compile Include="GuitarFilter.cs" />
     <Compile Include="LegatoServiceDI.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,6 +170,7 @@
     <Compile Include="LegatoServiceWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnTypes\GuitarList.cs" />
+    <Compile Include="ReturnTypes\Amount.cs" />
     <Compile Include="ReturnTypes\VendorList.cs" />
   </ItemGroup>
   <ItemGroup>

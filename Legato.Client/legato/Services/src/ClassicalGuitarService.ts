@@ -28,13 +28,13 @@ export default class ClassicalGuitarService extends ServiceBase implements IGuit
         }
     }
 
-    getGuitarsByVendor(vendor: string): ng.IPromise<ClassicalGuitar[]> {
+    getGuitarsByVendors(vendors: string[]): ng.IPromise<ClassicalGuitar[]> {
         const cachedData = this.$$cache.get<ClassicalGuitar[]>("guitarsByVendor");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getClassicalGuitarsByVendor(vendor).then(guitars => {
+            return this.resource.getClassicalGuitarsByVendors(vendors).then(guitars => {
                 this.$$cache.put("guitarsByVendor", guitars);
                 return guitars;
             });
@@ -50,6 +50,19 @@ export default class ClassicalGuitarService extends ServiceBase implements IGuit
             return this.resource.getClassicalGuitarsByPrice(from, to).then(guitars => {
                 this.$$cache.put("guitarsByPrice", guitars);
                 return guitars;
+            });
+        }
+    }
+
+    getAmount(): ng.IPromise<number> {
+        const cachedData = this.$$cache.get<number>("guitarQuantity");
+
+        if (cachedData) {
+            return this.resolveCachedData(cachedData);
+        } else {
+            return this.resource.getClassicalGuitarQuantity().then(q => {
+                this.$$cache.put("guitarQuantity", q);
+                return q;
             });
         }
     }

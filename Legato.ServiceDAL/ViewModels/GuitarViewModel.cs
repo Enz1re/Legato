@@ -2,7 +2,7 @@
 {
     public abstract class GuitarViewModel
     {
-        public VendorViewModel Vendor { get; set; }
+        public string Vendor { get; set; }
 
         public string Model { get; set; }
 

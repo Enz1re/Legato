@@ -17,24 +17,29 @@ namespace Legato.ServiceDAL.Repositories
             _client = client;
         }
 
-        public IEnumerable<BassGuitarDataModel> GetAll()
+        public IEnumerable<BassGuitarDataModel> GetAll(int lowerBound, int upperBound)
         {
-            return _client.GetAllBassGuitars();
+            return _client.GetAllBassGuitars(lowerBound, upperBound);
         }
 
-        public IEnumerable<VendorDataModel> GetVendors()
+        public IEnumerable<string> GetVendors()
         {
             return _client.GetBassGuitarVendors();
         }
 
-        public IEnumerable<BassGuitarDataModel> FindByCost(short from, short to)
+        public int GetAmount()
         {
-            return _client.GetBassGuitarsByPrice(from, to);
+            return _client.GetBassGuitarQuantity();
         }
 
-        public IEnumerable<BassGuitarDataModel> FindByVendor(string vendor)
+        public IEnumerable<BassGuitarDataModel> FindByCost(int from, int to, int lowerBound, int upperBound)
         {
-            return _client.GetBassGuitarsByVendor(vendor);
+            return _client.GetBassGuitarsByPrice(from, to, lowerBound, upperBound);
+        }
+
+        public IEnumerable<BassGuitarDataModel> FindByVendors(string[] vendors, int lowerBound, int upperBound)
+        {
+            return _client.GetBassGuitarsByVendors(vendors, lowerBound, upperBound);
         }
     }
 }

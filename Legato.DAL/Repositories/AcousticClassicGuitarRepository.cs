@@ -2,7 +2,6 @@
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
-using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Runtime.CompilerServices;
 
@@ -39,14 +38,24 @@ namespace Legato.DAL.Repositories
             return _context.ClassicAcousticGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
         }
 
-        public IEnumerable<AcousticClassicalGuitarModel> FindByVendor(string vendor)
+        public IQueryable<AcousticClassicalGuitarModel> FindByVendors(string[] vendors)
         {
-            return _context.ClassicAcousticGuitars.Where(g => g.Vendor.Name == vendor).ToList();
+            return _context.ClassicAcousticGuitars.Where(g => vendors.Contains(g.Vendor.Name)).OrderBy(g => g.Id);
         }
 
-        public IEnumerable<AcousticClassicalGuitarModel> GetAll()
+        public IQueryable<AcousticClassicalGuitarModel> FindByPrice(int from, int to)
         {
-            return _context.ClassicAcousticGuitars.ToList();
+            return _context.ClassicAcousticGuitars.Where(g => from <= g.Price && g.Price <= to).OrderBy(g => g.Id);
+        }
+
+        public IQueryable<AcousticClassicalGuitarModel> GetAll()
+        {
+            return _context.ClassicAcousticGuitars;
+        }
+
+        public int GetItemAmount()
+        {
+            return _context.ClassicAcousticGuitars.Count();
         }
 
         public void Update(AcousticClassicalGuitarModel item)

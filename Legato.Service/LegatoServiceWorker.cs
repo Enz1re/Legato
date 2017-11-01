@@ -18,82 +18,210 @@ namespace Legato.Service
 
         public VendorList GetAcousticClassicalGuitarVendors()
         {
-            return new VendorList { Vendors = ServiceMappings.Map<List<VendorViewModel>>(_unitOfWork.ClassicAcousticGuitars.GetVendors()) };
+            return new VendorList
+            {
+                Vendors = ServiceMappings.Map<List<string>>
+                (
+                    _unitOfWork.ClassicAcousticGuitars.GetVendors()
+                )
+            };
         }
 
-        public GuitarList GetAcousticClassicalGuitarsByPrice(short from, short to)
+        public GuitarList GetAcousticClassicalGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.FindByCost(from, to)) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>
+                (
+                    _unitOfWork.ClassicAcousticGuitars.FindByCost(from, to, lowerBound, upperBound)
+                )
+            };
+        }
+
+        public Amount GetAcousticClassicalGuitarAmount()
+        {
+            return new Amount
+            {
+                Quantity = _unitOfWork.ClassicAcousticGuitars.GetAmount()
+            };
         }
 
         public VendorList GetAcousticWesternGuitarVendors()
         {
-            return new VendorList { Vendors = ServiceMappings.Map<List<VendorViewModel>>(_unitOfWork.WesternAcousticGuitars.GetVendors()) };
+            return new VendorList
+            {
+                Vendors = ServiceMappings.Map<List<string>>
+                (
+                    _unitOfWork.WesternAcousticGuitars.GetVendors()
+                )
+            };
         }
 
-        public GuitarList GetAcousticWesternGuitarsByPrice(short from, short to)
+        public GuitarList GetAcousticWesternGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.FindByCost(from, to)) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>
+                (
+                    _unitOfWork.WesternAcousticGuitars.FindByCost(from, to, lowerBound, upperBound)
+                )
+            };
         }
 
-        public GuitarList GetBassGuitarsByPrice(short from, short to)
+        public Amount GetAcousticWesternGuitarAmount()
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<BassGuitarViewModel>>(_unitOfWork.BassGuitars.FindByCost(from, to)) };
+            return new Amount
+            {
+                Quantity = _unitOfWork.WesternAcousticGuitars.GetAmount()
+            };
+        }
+
+        public GuitarList GetBassGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
+        {
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<BassGuitarViewModel>>
+                (
+                    _unitOfWork.BassGuitars.FindByCost(from, to, lowerBound, upperBound)
+                )
+            };
         }
 
         public VendorList GetElectricGuitarVendors()
         {
-            return new VendorList { Vendors = ServiceMappings.Map<List<VendorViewModel>>(_unitOfWork.ElectricGuitars.GetVendors()) };
+            return new VendorList
+            {
+                Vendors = ServiceMappings.Map<List<string>>
+                (
+                    _unitOfWork.ElectricGuitars.GetVendors()
+                )
+            };
         }
 
-        public GuitarList GetElectricGuitarsByPrice(short from, short to)
+        public Amount GetElectricGuitarAmount()
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<ElectricGuitarViewModel>>(_unitOfWork.ElectricGuitars.FindByCost(from, to)) };
+            return new Amount
+            {
+                Quantity = _unitOfWork.ElectricGuitars.GetAmount()
+            };
         }
 
-        public GuitarList GetAllAcousticClassicalGuitars()
+        public GuitarList GetElectricGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.GetAll()) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<ElectricGuitarViewModel>>
+                (
+                    _unitOfWork.ElectricGuitars.FindByCost(from, to, lowerBound, upperBound)
+                )
+            };
         }
 
-        public GuitarList GetAllAcousticWesternGuitars()
+        public GuitarList GetAllAcousticClassicalGuitars(int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.GetAll()) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>
+                (
+                    _unitOfWork.ClassicAcousticGuitars.GetAll(lowerBound, upperBound)
+                )
+            };
+        }
+
+        public GuitarList GetAllAcousticWesternGuitars(int lowerBound, int upperBound)
+        {
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>
+                (
+                    _unitOfWork.WesternAcousticGuitars.GetAll(lowerBound, upperBound)
+                )
+            };
+        }
+
+        public Amount GetBassGuitarAmount()
+        {
+            return new Amount
+            {
+                Quantity = _unitOfWork.BassGuitars.GetAmount()
+            };
         }
 
         public VendorList GetBassGuitarVendors()
         {
-            return new VendorList { Vendors = ServiceMappings.Map<List<VendorViewModel>>(_unitOfWork.BassGuitars.GetVendors()) };
+            return new VendorList
+            {
+                Vendors = ServiceMappings.Map<List<string>>
+                (
+                    _unitOfWork.BassGuitars.GetVendors()
+                )
+            };
         }
 
-        public GuitarList GetAllElectricGuitars()
+        public GuitarList GetAllElectricGuitars(int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<ElectricGuitarViewModel>>(_unitOfWork.ElectricGuitars.GetAll()) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<ElectricGuitarViewModel>>
+                (
+                    _unitOfWork.ElectricGuitars.GetAll(lowerBound, upperBound)
+                )
+            };
         }
 
-        public GuitarList GetAllBassGuitars()
+        public GuitarList GetAllBassGuitars(int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<BassGuitarViewModel>>(_unitOfWork.BassGuitars.GetAll()) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<BassGuitarViewModel>>
+                (
+                    _unitOfWork.BassGuitars.GetAll(lowerBound, upperBound)
+                )
+            };
         }
 
-        public GuitarList GetAcousticClassicalGuitarsByVendor(string vendor)
+        public GuitarList GetAcousticClassicalGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>(_unitOfWork.ClassicAcousticGuitars.FindByVendor(vendor)) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>
+                (
+                    _unitOfWork.ClassicAcousticGuitars.FindByVendors(vendors, lowerBound, upperBound)
+                )
+            };
         }
 
-        public GuitarList GetAcousticWesternGuitarsByVendor(string vendor)
+        public GuitarList GetAcousticWesternGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>(_unitOfWork.WesternAcousticGuitars.FindByVendor(vendor)) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>
+                (
+                    _unitOfWork.WesternAcousticGuitars.FindByVendors(vendors, lowerBound, upperBound)
+                )
+            };
         }
 
-        public GuitarList GetElectricGuitarsByVendor(string vendor)
+        public GuitarList GetElectricGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<ElectricGuitarViewModel>>(_unitOfWork.ElectricGuitars.FindByVendor(vendor)) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<ElectricGuitarViewModel>>
+                (
+                    _unitOfWork.ElectricGuitars.FindByVendors(vendors, lowerBound, upperBound)
+                )
+            };
         }
 
-        public GuitarList GetBassGuitarsByVendor(string vendor)
+        public GuitarList GetBassGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
         {
-            return new GuitarList { Guitars = ServiceMappings.Map<List<BassGuitarViewModel>>(_unitOfWork.BassGuitars.FindByVendor(vendor)) };
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<BassGuitarViewModel>>
+                (
+                    _unitOfWork.BassGuitars.FindByVendors(vendors, lowerBound, upperBound)
+                )
+            };
         }
     }
 }
