@@ -1,7 +1,9 @@
-﻿using Ninject;
+﻿using System;
+using Ninject;
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Runtime.CompilerServices;
 
@@ -38,24 +40,14 @@ namespace Legato.DAL.Repositories
             return _context.BassGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
         }
 
-        public IQueryable<BassGuitarModel> FindByVendors(string[] vendors)
+        public IEnumerable<BassGuitarModel> FindByVendor(string vendor)
         {
-            return _context.BassGuitars.Where(g => vendors.Contains(g.Vendor.Name)).OrderBy(g => g.Id);
+            return _context.BassGuitars.Where(g => g.Vendor.Name == vendor).ToList();
         }
 
-        public IQueryable<BassGuitarModel> FindByPrice(int from, int to)
+        public IEnumerable<BassGuitarModel> GetAll()
         {
-            return _context.BassGuitars.Where(g => from <= g.Price && g.Price <= to).OrderBy(g => g.Id);
-        }
-
-        public IQueryable<BassGuitarModel> GetAll()
-        {
-            return _context.BassGuitars;
-        }
-
-        public int GetItemAmount()
-        {
-            return _context.BassGuitars.Count();
+            return _context.BassGuitars.ToList();
         }
 
         public void Update(BassGuitarModel item)

@@ -28,13 +28,13 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
         }
     }
 
-    getGuitarsByVendors(vendors: string[]): ng.IPromise<WesternGuitar[]> {
+    getGuitarsByVendor(vendor: string): ng.IPromise<WesternGuitar[]> {
         const cachedData = this.$$cache.get<WesternGuitar[]>("guitarsByVendor");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getWesternGuitarsByVendors(vendors).then(guitars => {
+            return this.resource.getWesternGuitarsByVendor(vendor).then(guitars => {
                 this.$$cache.put("guitarsByVendor", guitars);
                 return guitars;
             });
@@ -50,19 +50,6 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
             return this.resource.getWesternGuitarsByPrice(from, to).then(guitars => {
                 this.$$cache.put("guitarsByPrice", guitars);
                 return guitars;
-            });
-        }
-    }
-
-    getAmount(): ng.IPromise<number> {
-        const cachedData = this.$$cache.get<number>("guitarQuantity");
-
-        if (cachedData) {
-            return this.resolveCachedData(cachedData);
-        } else {
-            return this.resource.getWesternGuitarQuantity().then(q => {
-                this.$$cache.put("guitarQuantity", q);
-                return q;
             });
         }
     }

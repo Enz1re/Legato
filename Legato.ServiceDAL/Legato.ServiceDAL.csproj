@@ -75,6 +75,7 @@
     <Compile Include="ViewModels\BassGuitarViewModel.cs" />
     <Compile Include="ViewModels\ElectricGuitarViewModel.cs" />
     <Compile Include="ViewModels\GuitarViewModel.cs" />
+    <Compile Include="ViewModels\VendorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -85,9 +86,6 @@
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.ElectroGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.GuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.VendorDataModel.datasource" />
-    <None Include="Service References\Middleware\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\Middleware\Legato.MiddlewareContracts.DataContracts.xsd">
       <SubType>Designer</SubType>
     </None>

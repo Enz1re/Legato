@@ -17,15 +17,15 @@ namespace Legato.Middleware
             _blWorker = blWorker;
         }
 
-        public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars(int lowerBound, int upperBound)
+        public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars()
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAllAcousticClassicalGuitars(lowerBound, upperBound);
+                return worker.GetAllAcousticClassicalGuitars();
             }
         }
 
-        public IEnumerable<string> GetAcousticClassicalGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors()
         {
             using (var worker = _blWorker.Get())
             {
@@ -33,23 +33,15 @@ namespace Legato.Middleware
             }
         }
 
-        public int GetAcousticClassicalGuitarQuantity()
+        public IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars()
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAcousticClassicalGuitarAmount();
+                return worker.GetAllAcousticWesternGuitars();
             }
         }
 
-        public IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars(int lowerBound, int upperBound)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                return worker.GetAllAcousticWesternGuitars(lowerBound, upperBound);
-            }
-        }
-
-        public IEnumerable<string> GetAcousticWesternGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors()
         {
             using (var worker = _blWorker.Get())
             {
@@ -57,23 +49,15 @@ namespace Legato.Middleware
             }
         }
 
-        public int GetAcousticWesternGuitarQuantity()
+        public IEnumerable<BassGuitarDataModel> GetAllBassGuitars()
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAcousticWesternGuitarAmount();
+                return worker.GetAllBassGuitars();
             }
         }
 
-        public IEnumerable<BassGuitarDataModel> GetAllBassGuitars(int lowerBound, int upperBound)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                return worker.GetAllBassGuitars(lowerBound, upperBound);
-            }
-        }
-
-        public IEnumerable<string> GetElectricGuitarVendors()
+        public IEnumerable<VendorDataModel> GetElectricGuitarVendors()
         {
             using (var worker = _blWorker.Get())
             {
@@ -81,31 +65,23 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars(int lowerBound, int upperBound)
+        public IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars()
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAllElectricGuitars(lowerBound, upperBound);
+                return worker.GetAllElectricGuitars();
             }
         }
 
-        public int GetElectricGuitarQuantity()
+        public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetElectriGuitarAmount();
+                return worker.GetAcousticClassicalGuitarsByPrice(from, to);
             }
         }
 
-        public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                return worker.GetAcousticClassicalGuitarsByPrice(from, to, lowerBound, upperBound);
-            }
-        }
-
-        public IEnumerable<string> GetBassGuitarVendors()
+        public IEnumerable<VendorDataModel> GetBassGuitarVendors()
         {
             using (var worker = _blWorker.Get())
             {
@@ -113,67 +89,59 @@ namespace Legato.Middleware
             }
         }
 
-        public int GetBassGuitarQuantity()
+        public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetBassGuitarAmount();
+                return worker.GetAcousticWesternGuitarsByPrice(from, to);
             }
         }
 
-        public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
+        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAcousticWesternGuitarsByPrice(from, to, lowerBound, upperBound);
+                return worker.GetElectricGuitarsByPrice(from, to);
             }
         }
 
-        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
+        public IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetElectricGuitarsByPrice(from, to, lowerBound, upperBound);
+                return worker.GetBassGuitarsByPrice(from, to);
             }
         }
 
-        public IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
+        public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendor(string vendor)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetBassGuitarsByPrice(from, to, lowerBound, upperBound);
+                return worker.GetAcousticClassicalGuitarsByVendor(vendor);
             }
         }
 
-        public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
+        public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAcousticClassicalGuitarsByVendors(vendors, lowerBound, upperBound);
+                return worker.GetAcousticWesternGuitarsByVendor(vendor);
             }
         }
 
-        public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
+        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAcousticWesternGuitarsByVendors(vendors, lowerBound, upperBound);
+                return worker.GetElectricGuitarsByVendor(vendor);
             }
         }
 
-        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
+        public IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendor(string vendor)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetElectricGuitarsByVendors(vendors, lowerBound, upperBound);
-            }
-        }
-
-        public IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                return worker.GetBassGuitarsByVendors(vendors, lowerBound, upperBound);
+                return worker.GetBassGuitarsByVendor(vendor);
             }
         }
     }

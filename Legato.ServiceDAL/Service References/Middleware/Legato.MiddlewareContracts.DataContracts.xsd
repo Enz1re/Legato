@@ -22,10 +22,16 @@
       <xs:element minOccurs="0" name="Mensura" type="xs:short" />
       <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Price" type="xs:int" />
-      <xs:element minOccurs="0" name="Vendor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vendor" nillable="true" type="tns:VendorDataModel" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GuitarDataModel" nillable="true" type="tns:GuitarDataModel" />
+  <xs:complexType name="VendorDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VendorDataModel" nillable="true" type="tns:VendorDataModel" />
   <xs:complexType name="AcousticWesternGuitarDataModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:GuitarDataModel">
@@ -61,6 +67,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BassGuitarDataModel" nillable="true" type="tns:BassGuitarDataModel" />
+  <xs:complexType name="ArrayOfVendorDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VendorDataModel" nillable="true" type="tns:VendorDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVendorDataModel" nillable="true" type="tns:ArrayOfVendorDataModel" />
   <xs:complexType name="ArrayOfAcousticWesternGuitarDataModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticWesternGuitarDataModel" nillable="true" type="tns:AcousticWesternGuitarDataModel" />

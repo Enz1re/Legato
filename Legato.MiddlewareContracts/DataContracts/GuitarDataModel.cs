@@ -11,7 +11,7 @@ namespace Legato.MiddlewareContracts.DataContracts
     public abstract class GuitarDataModel
     {
         [DataMember]
-        public string Vendor { get; set; }
+        public VendorDataModel Vendor { get; set; }
 
         [DataMember]
         public string Model { get; set; }
