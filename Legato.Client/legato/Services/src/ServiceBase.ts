@@ -5,8 +5,8 @@
         
     }
 
-    resolveCachedData<T>(cachedData: T) {
-        const deferred = this.qServ.defer<T>();
+    resolveCachedData<T>(cachedData: T[]) {
+        const deferred = this.qServ.defer<T[]>();
         deferred.resolve(cachedData);
         return deferred.promise;
     }

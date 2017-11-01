@@ -3,7 +3,7 @@
         Error processing your request. Please try again later.
     </div>
     <div class="guitar-grid">
-        <ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true">
+        <ul>
             <li ng-repeat="guitar in bassCtrl.guitars | byPrice:bassCtrl.price | byVendors:bassCtrl.vendors | sortBy:bassCtrl.sortBy:bassCtrl.sortDirection">
                 <div class="guitar-container">
                     <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>

@@ -2,11 +2,9 @@
 
 
 export interface IGuitarService<TGuitar extends Guitar> {
-    getAllGuitars(lowerBound: number, upperBound: number): ng.IPromise<TGuitar[]>;
+    getAllGuitars(): ng.IPromise<TGuitar[]>;
 
-    getGuitarsByVendors(vendors: string[], lowerBound: number, upperBound: number): ng.IPromise<TGuitar[]>;
+    getGuitarsByVendor(vendor: string): ng.IPromise<TGuitar[]>;
 
-    getGuitarsByPrice(from: number, to: number, lowerBound: number, upperBound: number): ng.IPromise<TGuitar[]>;
-
-    getAmount(): ng.IPromise<number>;
+    getGuitarsByPrice(from: number, to: number): ng.IPromise<TGuitar[]>;
 }
