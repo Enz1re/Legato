@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Legato.ServiceDAL.ViewModels;
 
 
 namespace Legato.Service.ReturnTypes
 {
     public class VendorList
     {
-        public IEnumerable<string> Vendors { get; set; }
+        public IEnumerable<VendorViewModel> Vendors { get; set; }
     }
 }

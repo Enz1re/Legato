@@ -7,45 +7,37 @@ namespace Legato.BL
 {
     public interface ILegatoBusinessLayerWorker : IDisposable
     {
-        IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars(int lowerBound, int upperBound);
+        IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars();
 
-        IEnumerable<string> GetAcousticClassicalGuitarVendors();
+        IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors();
 
-        IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
+        IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
 
-        IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
+        IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendor(string vendor);
 
-        int GetAcousticClassicalGuitarAmount();
+        IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars();
 
-        IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars(int lowerBound, int upperBound);
+        IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors();
 
-        IEnumerable<string> GetAcousticWesternGuitarVendors();
+        IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to);
 
-        IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
+        IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor);
 
-        IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
+        IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars();
 
-        int GetAcousticWesternGuitarAmount();
+        IEnumerable<VendorDataModel> GetElectricGuitarVendors();
 
-        IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars(int lowerBound, int upperBound);
+        IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to);
 
-        IEnumerable<string> GetElectricGuitarVendors();
+        IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor);
 
-        IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
+        IEnumerable<BassGuitarDataModel> GetAllBassGuitars();
 
-        IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
+        IEnumerable<VendorDataModel> GetBassGuitarVendors();
 
-        int GetElectriGuitarAmount();
+        IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to);
 
-        IEnumerable<BassGuitarDataModel> GetAllBassGuitars(int lowerBound, int upperBound);
-
-        IEnumerable<string> GetBassGuitarVendors();
-
-        IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
-
-        IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
-
-        int GetBassGuitarAmount();
+        IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendor(string vendor);
 
         ILegatoBusinessLayerWorker Get();
     }

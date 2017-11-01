@@ -5,44 +5,36 @@ namespace Legato.Service
 {
     public interface ILegatoServiceWorker
     {
-        GuitarList GetAllAcousticClassicalGuitars(int lowerBound, int upperBound);
-
         VendorList GetAcousticClassicalGuitarVendors();
 
-        GuitarList GetAcousticClassicalGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
-
-        GuitarList GetAcousticClassicalGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
-
-        Amount GetAcousticClassicalGuitarAmount();
-
-        GuitarList GetAllAcousticWesternGuitars(int lowerBound, int upperBound);
+        GuitarList GetAcousticClassicalGuitarsByPrice(short from, short to);
 
         VendorList GetAcousticWesternGuitarVendors();
 
-        GuitarList GetAcousticWesternGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
+        GuitarList GetAcousticWesternGuitarsByPrice(short from, short to);
 
-        GuitarList GetAcousticWesternGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
-
-        Amount GetAcousticWesternGuitarAmount();
-
-        GuitarList GetAllElectricGuitars(int lowerBound, int upperBound);
+        GuitarList GetBassGuitarsByPrice(short from, short to);
 
         VendorList GetElectricGuitarVendors();
 
-        GuitarList GetElectricGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
+        GuitarList GetElectricGuitarsByPrice(short from, short to);
 
-        GuitarList GetElectricGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
+        GuitarList GetAllAcousticClassicalGuitars();
 
-        Amount GetElectricGuitarAmount();
+        GuitarList GetAllAcousticWesternGuitars();
 
-        GuitarList GetAllBassGuitars(int lowerBound, int upperBound);
+        GuitarList GetAllElectricGuitars();
 
         VendorList GetBassGuitarVendors();
 
-        GuitarList GetBassGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
+        GuitarList GetAllBassGuitars();
 
-        GuitarList GetBassGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
+        GuitarList GetAcousticClassicalGuitarsByVendor(string vendor);
 
-        Amount GetBassGuitarAmount();
+        GuitarList GetAcousticWesternGuitarsByVendor(string vendor);
+
+        GuitarList GetElectricGuitarsByVendor(string vendor);
+
+        GuitarList GetBassGuitarsByVendor(string vendor);
     }
 }

@@ -18,168 +18,84 @@ namespace Legato.BL
             _repoProvider = repoProvider;
         }
 
-        public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
+        public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to)
         {
-            var guitars = _repoProvider.AcousticClassicalGuitarRepository.FindByPrice(from, to)
-                              .Skip(lowerBound)
-                              .Take(upperBound - lowerBound)
-                              .ToList();
-            return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(guitars);
+            return GetAllAcousticClassicalGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
-        public IEnumerable<string> GetAcousticClassicalGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors()
         {
-            return _repoProvider.AcousticClassicalGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
+            return GetAllAcousticClassicalGuitars().Select(guitar => guitar.Vendor).Distinct(new VendorEqualityComparer());
         }
 
-        public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
+        public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to)
         {
-            var guitars = _repoProvider.AcousticWesternGuitarRepository.FindByPrice(from, to)
-                              .Skip(lowerBound)
-                              .Take(upperBound - lowerBound)
-                              .ToList();
-            return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(guitars);
+            return GetAllAcousticWesternGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
-        public int GetAcousticClassicalGuitarAmount()
+        public IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to)
         {
-            return _repoProvider.AcousticClassicalGuitarRepository.GetItemAmount();
+            return GetAllBassGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
-        public IEnumerable<BassGuitarDataModel> GetBassGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
+        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to)
         {
-            var guitars = _repoProvider.BassGuitarRepository.FindByPrice(from, to)
-                                 .Skip(lowerBound)
-                                 .Take(upperBound - lowerBound)
-                                 .ToList();
-            return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars);
+            return GetAllElectricGuitars().Where(g => from <= g.Price && g.Price <= to);
         }
 
-        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByPrice(int from, int to, int lowerBound, int upperBound)
+        public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars()
         {
-            var guitars = _repoProvider.ElectricGuitarRepository.FindByPrice(from, to)
-                                 .Skip(lowerBound)
-                                 .Take(upperBound - lowerBound)
-                                 .ToList();
-            return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(guitars);
+            return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(_repoProvider.AcousticClassicalGuitarRepository.GetAll());
         }
 
-        public IEnumerable<AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars(int lowerBound, int upperBound)
+        public IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars()
         {
-            var guitars = _repoProvider.AcousticClassicalGuitarRepository.GetAll()
-                              .Skip(lowerBound)
-                              .Take(upperBound - lowerBound)
-                              .ToList();
-            return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(guitars);
+            return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(_repoProvider.AcousticWesternGuitarRepository.GetAll());
         }
 
-        public int GetAcousticWesternGuitarAmount()
+        public IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors()
         {
-            return _repoProvider.AcousticWesternGuitarRepository.GetItemAmount();
+            return GetAllAcousticWesternGuitars().Select(guitar => guitar.Vendor).Distinct(new VendorEqualityComparer());
         }
 
-        public IEnumerable<AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars(int lowerBound, int upperBound)
+        public IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars()
         {
-            var guitars = _repoProvider.AcousticWesternGuitarRepository.GetAll()
-                              .Skip(lowerBound)
-                              .Take(upperBound - lowerBound)
-                              .ToList();
-            return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(guitars);
+            return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(_repoProvider.ElectricGuitarRepository.GetAll());
         }
 
-        public IEnumerable<string> GetAcousticWesternGuitarVendors()
+        public IEnumerable<VendorDataModel> GetElectricGuitarVendors()
         {
-            return _repoProvider.AcousticWesternGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
+            return GetAllElectricGuitars().Select(guitar => guitar.Vendor).Distinct(new VendorEqualityComparer());
         }
 
-        public IEnumerable<ElectricGuitarDataModel> GetAllElectricGuitars(int lowerBound, int upperBound)
+        public IEnumerable<BassGuitarDataModel> GetAllBassGuitars()
         {
-            var guitars = _repoProvider.ElectricGuitarRepository.GetAll()
-                              .Skip(lowerBound)
-                              .Take(upperBound - lowerBound)
-                              .ToList();
-            return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(guitars);
+            return MiddlewareMappings.Map<List<BassGuitarDataModel>>(_repoProvider.BassGuitarRepository.GetAll());
         }
 
-        public IEnumerable<string> GetElectricGuitarVendors()
+        public IEnumerable<VendorDataModel> GetBassGuitarVendors()
         {
-            return _repoProvider.ElectricGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
+            return GetAllBassGuitars().Select(guitar => guitar.Vendor).Distinct(new VendorEqualityComparer());
         }
 
-        public IEnumerable<BassGuitarDataModel> GetAllBassGuitars(int lowerBound, int upperBound)
+        public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendor(string vendor)
         {
-            var guitars = _repoProvider.BassGuitarRepository.GetAll()
-                              .Skip(lowerBound)
-                              .Take(upperBound - lowerBound)
-                              .ToList();
-            return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars);
+            return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(_repoProvider.AcousticClassicalGuitarRepository.FindByVendor(vendor));
         }
 
-        public IEnumerable<string> GetBassGuitarVendors()
+        public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor)
         {
-            return _repoProvider.BassGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
+            return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(_repoProvider.AcousticWesternGuitarRepository.FindByVendor(vendor));
         }
 
-        public int GetElectriGuitarAmount()
+        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor)
         {
-            return _repoProvider.ElectricGuitarRepository.GetItemAmount();
+            return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(_repoProvider.ElectricGuitarRepository.FindByVendor(vendor));
         }
 
-        public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
+        public IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendor(string vendor)
         {
-            var guitars = _repoProvider.AcousticClassicalGuitarRepository.FindByVendors(vendors)
-                              .Skip(lowerBound)
-                              .Take(upperBound - lowerBound)
-                              .ToList();
-            return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(guitars);
-        }
-
-        public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
-        {
-            var guitars = _repoProvider.AcousticWesternGuitarRepository.FindByVendors(vendors)
-                                 .Skip(lowerBound)
-                                 .Take(upperBound - lowerBound)
-                                 .ToList();
-            return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(guitars);
-        }
-
-        public IEnumerable<ElectricGuitarDataModel> GetElectricGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
-        {
-            var guitars = _repoProvider.ElectricGuitarRepository.FindByVendors(vendors)
-                                 .Skip(lowerBound)
-                                 .Take(upperBound - lowerBound)
-                                 .ToList();
-            return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(guitars);
-        }
-
-        public int GetBassGuitarAmount()
-        {
-            return _repoProvider.BassGuitarRepository.GetItemAmount();
-        }
-
-        public IEnumerable<BassGuitarDataModel> GetBassGuitarsByVendors(string[] vendors, int lowerBound, int upperBound)
-        {
-            var guitars = _repoProvider.BassGuitarRepository.FindByVendors(vendors)
-                                 .Skip(lowerBound)
-                                 .Take(upperBound - lowerBound)
-                                 .ToList();
-            return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars);
+            return MiddlewareMappings.Map<List<BassGuitarDataModel>>(_repoProvider.BassGuitarRepository.FindByVendor(vendor));
         }
 
         public ILegatoBusinessLayerWorker Get()

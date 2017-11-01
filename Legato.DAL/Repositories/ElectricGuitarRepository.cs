@@ -2,6 +2,7 @@
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Runtime.CompilerServices;
 
@@ -38,24 +39,14 @@ namespace Legato.DAL.Repositories
             return _context.ElectricGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
         }
 
-        public IQueryable<ElectricGuitarModel> FindByVendors(string[] vendors)
+        public IEnumerable<ElectricGuitarModel> FindByVendor(string vendor)
         {
-            return _context.ElectricGuitars.Where(g => vendors.Contains(g.Vendor.Name)).OrderBy(g => g.Id);
+            return _context.ElectricGuitars.Where(g => g.Vendor.Name == vendor).ToList();
         }
 
-        public IQueryable<ElectricGuitarModel> FindByPrice(int from, int to)
+        public IEnumerable<ElectricGuitarModel> GetAll()
         {
-            return _context.ElectricGuitars.Where(g => from <= g.Price && g.Price <= to).OrderBy(g => g.Id);
-        }
-
-        public IQueryable<ElectricGuitarModel> GetAll()
-        {
-            return _context.ElectricGuitars;
-        }
-
-        public int GetItemAmount()
-        {
-            return _context.ElectricGuitars.Count();
+            return _context.ElectricGuitars.ToList();
         }
 
         public void Update(ElectricGuitarModel item)

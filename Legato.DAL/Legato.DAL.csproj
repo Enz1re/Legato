@@ -66,16 +66,10 @@
     <Compile Include="Interfaces\IGuitarContext.cs" />
     <Compile Include="Interfaces\IGuitarUnitOfWork.cs" />
     <Compile Include="Interfaces\IRepositoryProvider.cs" />
-    <Compile Include="Migrations\201711010846006_Initial.cs" />
-    <Compile Include="Migrations\201711010846006_Initial.Designer.cs">
-      <DependentUpon>201711010846006_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AcousticClassicalGuitarModel.cs" />
     <Compile Include="Models\AcousticWesternGuitarModel.cs" />
     <Compile Include="Models\BassGuitarModel.cs" />
     <Compile Include="Models\ElectricGuitarModel.cs" />
-    <Compile Include="Models\GuitarContextFactory.cs" />
     <Compile Include="Models\GuitarModel.cs" />
     <Compile Include="Models\GuitarContext.cs" />
     <Compile Include="Models\GuitarUnitOfWork.cs" />
@@ -95,11 +89,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711010846006_Initial.resx">
-      <DependentUpon>201711010846006_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

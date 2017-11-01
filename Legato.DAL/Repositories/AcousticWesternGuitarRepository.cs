@@ -1,7 +1,9 @@
-﻿using Ninject;
+﻿using System;
+using Ninject;
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Runtime.CompilerServices;
 
@@ -38,24 +40,14 @@ namespace Legato.DAL.Repositories
             return _context.WesternAcousticGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
         }
 
-        public IQueryable<AcousticWesternGuitarModel> FindByVendors(string[] vendors)
+        public IEnumerable<AcousticWesternGuitarModel> FindByVendor(string vendor)
         {
-            return _context.WesternAcousticGuitars.Where(g => vendors.Contains(g.Vendor.Name)).OrderBy(g => g.Id);
+            return _context.WesternAcousticGuitars.Where(g => g.Vendor.Name == vendor).ToList();
         }
 
-        public IQueryable<AcousticWesternGuitarModel> FindByPrice(int from, int to)
+        public IEnumerable<AcousticWesternGuitarModel> GetAll()
         {
-            return _context.WesternAcousticGuitars.Where(g => from <= g.Price && g.Price <= to).OrderBy(g => g.Id);
-        }
-
-        public IQueryable<AcousticWesternGuitarModel> GetAll()
-        {
-            return _context.WesternAcousticGuitars.OrderBy(g => g.Id);
-        }
-
-        public int GetItemAmount()
-        {
-            return _context.WesternAcousticGuitars.Count();
+            return _context.WesternAcousticGuitars.ToList();
         }
 
         public void Update(AcousticWesternGuitarModel item)

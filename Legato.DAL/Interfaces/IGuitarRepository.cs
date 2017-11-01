@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Linq;
 using Legato.DAL.Models;
+using System.Collections.Generic;
 
 
 namespace Legato.DAL.Interfaces
 {
     public interface IGuitarRepository<TGuitar> : IDisposable where TGuitar: GuitarModel
     {
-        IQueryable<TGuitar> GetAll();
+        IEnumerable<TGuitar> GetAll();
 
-        IQueryable<TGuitar> FindByVendors(string[] vendor);
-
-        IQueryable<TGuitar> FindByPrice(int from, int to);
+        IEnumerable<TGuitar> FindByVendor(string vendor);
 
         TGuitar Get(string vendor, string model);
-
-        int GetItemAmount();
 
         void Create(TGuitar item);
 
