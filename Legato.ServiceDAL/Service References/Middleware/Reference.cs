@@ -16,100 +16,126 @@ namespace Legato.ServiceDAL.Middleware {
     public interface ILegatoMiddleware {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAllAcousticClassicalGuitars", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAllAcousticClassicalGuitarsResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars();
+        Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[] GetAllAcousticClassicalGuitars(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAllAcousticClassicalGuitars", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAllAcousticClassicalGuitarsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel>> GetAllAcousticClassicalGuitarsAsync();
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[]> GetAllAcousticClassicalGuitarsAsync(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarVendorsResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel> GetAcousticClassicalGuitarVendors();
+        string[] GetAcousticClassicalGuitarVendors();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarVendorsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel>> GetAcousticClassicalGuitarVendorsAsync();
+        System.Threading.Tasks.Task<string[]> GetAcousticClassicalGuitarVendorsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByPrice", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByPriceResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to);
+        Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[] GetAcousticClassicalGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByPrice", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByPriceResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel>> GetAcousticClassicalGuitarsByPriceAsync(short from, short to);
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[]> GetAcousticClassicalGuitarsByPriceAsync(int from, int to, int lowerBound, int upperBound);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByVendor", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByVendorResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendor(string vendor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByVendorsResponse" +
+            "")]
+        Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[] GetAcousticClassicalGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByVendor", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByVendorResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel>> GetAcousticClassicalGuitarsByVendorAsync(string vendor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsByVendorsResponse" +
+            "")]
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[]> GetAcousticClassicalGuitarsByVendorsAsync(string[] vendors, int lowerBound, int upperBound);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarQuantityResponse")]
+        int GetAcousticClassicalGuitarQuantity();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarQuantityResponse")]
+        System.Threading.Tasks.Task<int> GetAcousticClassicalGuitarQuantityAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAllAcousticWesternGuitars", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAllAcousticWesternGuitarsResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars();
+        Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[] GetAllAcousticWesternGuitars(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAllAcousticWesternGuitars", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAllAcousticWesternGuitarsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel>> GetAllAcousticWesternGuitarsAsync();
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[]> GetAllAcousticWesternGuitarsAsync(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarVendorsResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel> GetAcousticWesternGuitarVendors();
+        string[] GetAcousticWesternGuitarVendors();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarVendorsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel>> GetAcousticWesternGuitarVendorsAsync();
+        System.Threading.Tasks.Task<string[]> GetAcousticWesternGuitarVendorsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByPrice", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByPriceResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to);
+        Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[] GetAcousticWesternGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByPrice", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByPriceResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel>> GetAcousticWesternGuitarsByPriceAsync(short from, short to);
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[]> GetAcousticWesternGuitarsByPriceAsync(int from, int to, int lowerBound, int upperBound);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByVendor", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByVendorResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByVendorsResponse")]
+        Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[] GetAcousticWesternGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByVendor", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByVendorResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel>> GetAcousticWesternGuitarsByVendorAsync(string vendor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarsByVendorsResponse")]
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[]> GetAcousticWesternGuitarsByVendorsAsync(string[] vendors, int lowerBound, int upperBound);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarQuantityResponse")]
+        int GetAcousticWesternGuitarQuantity();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarQuantityResponse")]
+        System.Threading.Tasks.Task<int> GetAcousticWesternGuitarQuantityAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAllElectricGuitars", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAllElectricGuitarsResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel> GetAllElectricGuitars();
+        Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[] GetAllElectricGuitars(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAllElectricGuitars", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAllElectricGuitarsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel>> GetAllElectricGuitarsAsync();
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[]> GetAllElectricGuitarsAsync(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarVendorsResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel> GetElectricGuitarVendors();
+        string[] GetElectricGuitarVendors();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarVendorsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel>> GetElectricGuitarVendorsAsync();
+        System.Threading.Tasks.Task<string[]> GetElectricGuitarVendorsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByPrice", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByPriceResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to);
+        Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[] GetElectricGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByPrice", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByPriceResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel>> GetElectricGuitarsByPriceAsync(short from, short to);
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[]> GetElectricGuitarsByPriceAsync(int from, int to, int lowerBound, int upperBound);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByVendor", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByVendorResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByVendorsResponse")]
+        Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[] GetElectricGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByVendor", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByVendorResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel>> GetElectricGuitarsByVendorAsync(string vendor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsByVendorsResponse")]
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[]> GetElectricGuitarsByVendorsAsync(string[] vendors, int lowerBound, int upperBound);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarQuantityResponse")]
+        int GetElectricGuitarQuantity();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarQuantityResponse")]
+        System.Threading.Tasks.Task<int> GetElectricGuitarQuantityAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAllBassGuitars", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAllBassGuitarsResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel> GetAllBassGuitars();
+        Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[] GetAllBassGuitars(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetAllBassGuitars", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetAllBassGuitarsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel>> GetAllBassGuitarsAsync();
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[]> GetAllBassGuitarsAsync(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarVendorsResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel> GetBassGuitarVendors();
+        string[] GetBassGuitarVendors();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarVendorsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel>> GetBassGuitarVendorsAsync();
+        System.Threading.Tasks.Task<string[]> GetBassGuitarVendorsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByPrice", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByPriceResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to);
+        Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[] GetBassGuitarsByPrice(int from, int to, int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByPrice", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByPriceResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel>> GetBassGuitarsByPriceAsync(short from, short to);
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[]> GetBassGuitarsByPriceAsync(int from, int to, int lowerBound, int upperBound);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByVendor", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByVendorResponse")]
-        System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel> GetBassGuitarsByVendor(string vendor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByVendorsResponse")]
+        Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[] GetBassGuitarsByVendors(string[] vendors, int lowerBound, int upperBound);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByVendor", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByVendorResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel>> GetBassGuitarsByVendorAsync(string vendor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByVendors", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarsByVendorsResponse")]
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[]> GetBassGuitarsByVendorsAsync(string[] vendors, int lowerBound, int upperBound);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarQuantityResponse")]
+        int GetBassGuitarQuantity();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarQuantityResponse")]
+        System.Threading.Tasks.Task<int> GetBassGuitarQuantityAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -139,132 +165,164 @@ namespace Legato.ServiceDAL.Middleware {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel> GetAllAcousticClassicalGuitars() {
-            return base.Channel.GetAllAcousticClassicalGuitars();
+        public Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[] GetAllAcousticClassicalGuitars(int lowerBound, int upperBound) {
+            return base.Channel.GetAllAcousticClassicalGuitars(lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel>> GetAllAcousticClassicalGuitarsAsync() {
-            return base.Channel.GetAllAcousticClassicalGuitarsAsync();
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[]> GetAllAcousticClassicalGuitarsAsync(int lowerBound, int upperBound) {
+            return base.Channel.GetAllAcousticClassicalGuitarsAsync(lowerBound, upperBound);
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel> GetAcousticClassicalGuitarVendors() {
+        public string[] GetAcousticClassicalGuitarVendors() {
             return base.Channel.GetAcousticClassicalGuitarVendors();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel>> GetAcousticClassicalGuitarVendorsAsync() {
+        public System.Threading.Tasks.Task<string[]> GetAcousticClassicalGuitarVendorsAsync() {
             return base.Channel.GetAcousticClassicalGuitarVendorsAsync();
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByPrice(short from, short to) {
-            return base.Channel.GetAcousticClassicalGuitarsByPrice(from, to);
+        public Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[] GetAcousticClassicalGuitarsByPrice(int from, int to, int lowerBound, int upperBound) {
+            return base.Channel.GetAcousticClassicalGuitarsByPrice(from, to, lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel>> GetAcousticClassicalGuitarsByPriceAsync(short from, short to) {
-            return base.Channel.GetAcousticClassicalGuitarsByPriceAsync(from, to);
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[]> GetAcousticClassicalGuitarsByPriceAsync(int from, int to, int lowerBound, int upperBound) {
+            return base.Channel.GetAcousticClassicalGuitarsByPriceAsync(from, to, lowerBound, upperBound);
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitarsByVendor(string vendor) {
-            return base.Channel.GetAcousticClassicalGuitarsByVendor(vendor);
+        public Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[] GetAcousticClassicalGuitarsByVendors(string[] vendors, int lowerBound, int upperBound) {
+            return base.Channel.GetAcousticClassicalGuitarsByVendors(vendors, lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel>> GetAcousticClassicalGuitarsByVendorAsync(string vendor) {
-            return base.Channel.GetAcousticClassicalGuitarsByVendorAsync(vendor);
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel[]> GetAcousticClassicalGuitarsByVendorsAsync(string[] vendors, int lowerBound, int upperBound) {
+            return base.Channel.GetAcousticClassicalGuitarsByVendorsAsync(vendors, lowerBound, upperBound);
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel> GetAllAcousticWesternGuitars() {
-            return base.Channel.GetAllAcousticWesternGuitars();
+        public int GetAcousticClassicalGuitarQuantity() {
+            return base.Channel.GetAcousticClassicalGuitarQuantity();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel>> GetAllAcousticWesternGuitarsAsync() {
-            return base.Channel.GetAllAcousticWesternGuitarsAsync();
+        public System.Threading.Tasks.Task<int> GetAcousticClassicalGuitarQuantityAsync() {
+            return base.Channel.GetAcousticClassicalGuitarQuantityAsync();
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel> GetAcousticWesternGuitarVendors() {
+        public Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[] GetAllAcousticWesternGuitars(int lowerBound, int upperBound) {
+            return base.Channel.GetAllAcousticWesternGuitars(lowerBound, upperBound);
+        }
+        
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[]> GetAllAcousticWesternGuitarsAsync(int lowerBound, int upperBound) {
+            return base.Channel.GetAllAcousticWesternGuitarsAsync(lowerBound, upperBound);
+        }
+        
+        public string[] GetAcousticWesternGuitarVendors() {
             return base.Channel.GetAcousticWesternGuitarVendors();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel>> GetAcousticWesternGuitarVendorsAsync() {
+        public System.Threading.Tasks.Task<string[]> GetAcousticWesternGuitarVendorsAsync() {
             return base.Channel.GetAcousticWesternGuitarVendorsAsync();
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByPrice(short from, short to) {
-            return base.Channel.GetAcousticWesternGuitarsByPrice(from, to);
+        public Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[] GetAcousticWesternGuitarsByPrice(int from, int to, int lowerBound, int upperBound) {
+            return base.Channel.GetAcousticWesternGuitarsByPrice(from, to, lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel>> GetAcousticWesternGuitarsByPriceAsync(short from, short to) {
-            return base.Channel.GetAcousticWesternGuitarsByPriceAsync(from, to);
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[]> GetAcousticWesternGuitarsByPriceAsync(int from, int to, int lowerBound, int upperBound) {
+            return base.Channel.GetAcousticWesternGuitarsByPriceAsync(from, to, lowerBound, upperBound);
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel> GetAcousticWesternGuitarsByVendor(string vendor) {
-            return base.Channel.GetAcousticWesternGuitarsByVendor(vendor);
+        public Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[] GetAcousticWesternGuitarsByVendors(string[] vendors, int lowerBound, int upperBound) {
+            return base.Channel.GetAcousticWesternGuitarsByVendors(vendors, lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel>> GetAcousticWesternGuitarsByVendorAsync(string vendor) {
-            return base.Channel.GetAcousticWesternGuitarsByVendorAsync(vendor);
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel[]> GetAcousticWesternGuitarsByVendorsAsync(string[] vendors, int lowerBound, int upperBound) {
+            return base.Channel.GetAcousticWesternGuitarsByVendorsAsync(vendors, lowerBound, upperBound);
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel> GetAllElectricGuitars() {
-            return base.Channel.GetAllElectricGuitars();
+        public int GetAcousticWesternGuitarQuantity() {
+            return base.Channel.GetAcousticWesternGuitarQuantity();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel>> GetAllElectricGuitarsAsync() {
-            return base.Channel.GetAllElectricGuitarsAsync();
+        public System.Threading.Tasks.Task<int> GetAcousticWesternGuitarQuantityAsync() {
+            return base.Channel.GetAcousticWesternGuitarQuantityAsync();
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel> GetElectricGuitarVendors() {
+        public Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[] GetAllElectricGuitars(int lowerBound, int upperBound) {
+            return base.Channel.GetAllElectricGuitars(lowerBound, upperBound);
+        }
+        
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[]> GetAllElectricGuitarsAsync(int lowerBound, int upperBound) {
+            return base.Channel.GetAllElectricGuitarsAsync(lowerBound, upperBound);
+        }
+        
+        public string[] GetElectricGuitarVendors() {
             return base.Channel.GetElectricGuitarVendors();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel>> GetElectricGuitarVendorsAsync() {
+        public System.Threading.Tasks.Task<string[]> GetElectricGuitarVendorsAsync() {
             return base.Channel.GetElectricGuitarVendorsAsync();
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel> GetElectricGuitarsByPrice(short from, short to) {
-            return base.Channel.GetElectricGuitarsByPrice(from, to);
+        public Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[] GetElectricGuitarsByPrice(int from, int to, int lowerBound, int upperBound) {
+            return base.Channel.GetElectricGuitarsByPrice(from, to, lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel>> GetElectricGuitarsByPriceAsync(short from, short to) {
-            return base.Channel.GetElectricGuitarsByPriceAsync(from, to);
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[]> GetElectricGuitarsByPriceAsync(int from, int to, int lowerBound, int upperBound) {
+            return base.Channel.GetElectricGuitarsByPriceAsync(from, to, lowerBound, upperBound);
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel> GetElectricGuitarsByVendor(string vendor) {
-            return base.Channel.GetElectricGuitarsByVendor(vendor);
+        public Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[] GetElectricGuitarsByVendors(string[] vendors, int lowerBound, int upperBound) {
+            return base.Channel.GetElectricGuitarsByVendors(vendors, lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel>> GetElectricGuitarsByVendorAsync(string vendor) {
-            return base.Channel.GetElectricGuitarsByVendorAsync(vendor);
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.ElectricGuitarDataModel[]> GetElectricGuitarsByVendorsAsync(string[] vendors, int lowerBound, int upperBound) {
+            return base.Channel.GetElectricGuitarsByVendorsAsync(vendors, lowerBound, upperBound);
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel> GetAllBassGuitars() {
-            return base.Channel.GetAllBassGuitars();
+        public int GetElectricGuitarQuantity() {
+            return base.Channel.GetElectricGuitarQuantity();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel>> GetAllBassGuitarsAsync() {
-            return base.Channel.GetAllBassGuitarsAsync();
+        public System.Threading.Tasks.Task<int> GetElectricGuitarQuantityAsync() {
+            return base.Channel.GetElectricGuitarQuantityAsync();
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel> GetBassGuitarVendors() {
+        public Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[] GetAllBassGuitars(int lowerBound, int upperBound) {
+            return base.Channel.GetAllBassGuitars(lowerBound, upperBound);
+        }
+        
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[]> GetAllBassGuitarsAsync(int lowerBound, int upperBound) {
+            return base.Channel.GetAllBassGuitarsAsync(lowerBound, upperBound);
+        }
+        
+        public string[] GetBassGuitarVendors() {
             return base.Channel.GetBassGuitarVendors();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.VendorDataModel>> GetBassGuitarVendorsAsync() {
+        public System.Threading.Tasks.Task<string[]> GetBassGuitarVendorsAsync() {
             return base.Channel.GetBassGuitarVendorsAsync();
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel> GetBassGuitarsByPrice(short from, short to) {
-            return base.Channel.GetBassGuitarsByPrice(from, to);
+        public Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[] GetBassGuitarsByPrice(int from, int to, int lowerBound, int upperBound) {
+            return base.Channel.GetBassGuitarsByPrice(from, to, lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel>> GetBassGuitarsByPriceAsync(short from, short to) {
-            return base.Channel.GetBassGuitarsByPriceAsync(from, to);
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[]> GetBassGuitarsByPriceAsync(int from, int to, int lowerBound, int upperBound) {
+            return base.Channel.GetBassGuitarsByPriceAsync(from, to, lowerBound, upperBound);
         }
         
-        public System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel> GetBassGuitarsByVendor(string vendor) {
-            return base.Channel.GetBassGuitarsByVendor(vendor);
+        public Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[] GetBassGuitarsByVendors(string[] vendors, int lowerBound, int upperBound) {
+            return base.Channel.GetBassGuitarsByVendors(vendors, lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel>> GetBassGuitarsByVendorAsync(string vendor) {
-            return base.Channel.GetBassGuitarsByVendorAsync(vendor);
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel[]> GetBassGuitarsByVendorsAsync(string[] vendors, int lowerBound, int upperBound) {
+            return base.Channel.GetBassGuitarsByVendorsAsync(vendors, lowerBound, upperBound);
+        }
+        
+        public int GetBassGuitarQuantity() {
+            return base.Channel.GetBassGuitarQuantity();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetBassGuitarQuantityAsync() {
+            return base.Channel.GetBassGuitarQuantityAsync();
         }
     }
 }

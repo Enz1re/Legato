@@ -1,6 +1,5 @@
 ﻿using Ninject;
 using System.Web.Http;
-using Legato.Service.ReturnTypes;
 
 
 namespace Legato.Service.Controllers
@@ -15,27 +14,37 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
-        public GuitarList Get()
+        [GuitarFilter]
+        [Route("api/Classical/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get(int lowerBound, int upperBound)
         {
-            return _serviceWorker.GetAllAcousticClassicalGuitars();
+            return Ok(_serviceWorker.GetAllAcousticClassicalGuitars(lowerBound, upperBound));
         }
 
         [Route("api/Classical/Vendors")]
-        public VendorList GetVendors()
+        public IHttpActionResult GetVendors()
         {
-            return _serviceWorker.GetAcousticClassicalGuitarVendors();
+            return Ok(_serviceWorker.GetAcousticClassicalGuitarVendors());
         }
 
-        [Route("api/Classical/{vendor}")]
-        public GuitarList Get(string vendor)
+        [Route("api/Classical/Quantity")]
+        public IHttpActionResult GetAmount()
         {
-            return _serviceWorker.GetAcousticClassicalGuitarsByVendor(vendor);
+            return Ok(_serviceWorker.GetAcousticClassicalGuitarAmount());
         }
 
-        [Route("api/Classical/{from}/{to}")]
-        public GuitarList Get(short from, short to)
+        [GuitarFilter]
+        [Route("api/Classical/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get([FromUri]string[] vendors, int lowerBound, int upperBound)
         {
-            return _serviceWorker.GetAcousticClassicalGuitarsByPrice(from, to);
+            return Ok(_serviceWorker.GetAcousticClassicalGuitarsByVendors(vendors, lowerBound, upperBound));
+        }
+
+        [GuitarFilter]
+        [Route("api/Classical/{from}/{to}/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get(int from, int to, int lowerBound, int upperBound)
+        {
+            return Ok(_serviceWorker.GetAcousticClassicalGuitarsByPrice(from, to, lowerBound, upperBound));
         }
     }
 }

@@ -28,13 +28,13 @@ export default class ElectricGuitarService extends ServiceBase implements IGuita
         }
     }
 
-    getGuitarsByVendor(vendor: string): ng.IPromise<ElectricGuitar[]> {
+    getGuitarsByVendors(vendors: string[]): ng.IPromise<ElectricGuitar[]> {
         const cachedData = this.$$cache.get<ElectricGuitar[]>("guitarsByVendor");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getElectricGuitarsByVendor(vendor).then(guitars => {
+            return this.resource.getElectricGuitarsByVendors(vendors).then(guitars => {
                 this.$$cache.put("guitarsByVendor", guitars);
                 return guitars;
             });
@@ -50,6 +50,19 @@ export default class ElectricGuitarService extends ServiceBase implements IGuita
             return this.resource.getElectricGuitarsByPrice(from, to).then(guitars => {
                 this.$$cache.put("guitarsByPrice", guitars);
                 return guitars;
+            });
+        }
+    }
+
+    getAmount(): ng.IPromise<number> {
+        const cachedData = this.$$cache.get<number>("guitarQuantity");
+
+        if (cachedData) {
+            return this.resolveCachedData(cachedData);
+        } else {
+            return this.resource.getElectricGuitarQuantity().then(q => {
+                this.$$cache.put("guitarQuantity", q);
+                return q;
             });
         }
     }

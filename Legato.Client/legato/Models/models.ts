@@ -8,6 +8,7 @@ import Sorting from "./src/Sorting";
 import Vendor from "./src/Vendor";
 import VendorList from "./src/VendorList";
 import GuitarList from "./src/GuitarList";
+import Amount from "./src/Amount";
 
 
 export {
@@ -20,5 +21,6 @@ export {
     Sorting,
     Vendor,
     VendorList,
-    GuitarList
+    GuitarList,
+    Amount
 };

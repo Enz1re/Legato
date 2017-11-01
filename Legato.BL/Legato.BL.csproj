@@ -48,7 +48,6 @@
     <Compile Include="ILegatoBusinessLayerWorker.cs" />
     <Compile Include="LegatoBusinessLayerWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VendorEqualityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Legato.DAL\Legato.DAL.csproj">

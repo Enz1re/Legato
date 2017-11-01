@@ -92,6 +92,7 @@
     <TypeScriptCompile Include="legato\Interfaces\src\IVendorService.ts" />
     <TypeScriptCompile Include="legato\legato-module.ts" />
     <TypeScriptCompile Include="legato\Models\models.ts" />
+    <TypeScriptCompile Include="legato\Models\src\Amount.ts" />
     <TypeScriptCompile Include="legato\Models\src\BassGuitar.ts" />
     <TypeScriptCompile Include="legato\Models\src\ClassicalGuitar.ts" />
     <TypeScriptCompile Include="legato\Models\src\ElectricGuitar.ts" />

@@ -9,5 +9,7 @@
         internal static byte[] BassStringNumbers => new byte[] { 1, 4, 5, 7, 8, 10 };
 
         internal static string[] ClassicalGuitarStringTypes => new[] { "Nylon", "Fluorocarbon" };
+
+        internal static string DefaultConnectionStringName => "DumbshitConnection";
     }
 }

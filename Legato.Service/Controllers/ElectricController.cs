@@ -1,6 +1,5 @@
 ﻿using Ninject;
 using System.Web.Http;
-using Legato.Service.ReturnTypes;
 
 
 namespace Legato.Service.Controllers
@@ -15,27 +14,37 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
-        public GuitarList Get()
+        [GuitarFilter]
+        [Route("api/Electric/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get(int lowerBound, int upperBound)
         {
-            return _serviceWorker.GetAllElectricGuitars();
+            return Ok(_serviceWorker.GetAllElectricGuitars(lowerBound, upperBound));
         }
 
         [Route("api/Electric/Vendors")]
-        public VendorList GetVendors()
+        public IHttpActionResult GetVendors()
         {
-            return _serviceWorker.GetElectricGuitarVendors();
+            return Ok(_serviceWorker.GetElectricGuitarVendors());
         }
 
-        [Route("api/Electric/{vendor}")]
-        public GuitarList Get(string vendor)
+        [Route("api/Electric/Quantity")]
+        public IHttpActionResult GetAmount()
         {
-            return _serviceWorker.GetElectricGuitarsByVendor(vendor);
+            return Ok(_serviceWorker.GetElectricGuitarAmount());
         }
 
-        [Route("api/Electric/{from}/{to}")]
-        public GuitarList Get(short from, short to)
+        [GuitarFilter]
+        [Route("api/Electric/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get([FromUri]string[] vendors, int lowerBound, int upperBound)
         {
-            return _serviceWorker.GetElectricGuitarsByPrice(from, to);
+            return Ok(_serviceWorker.GetElectricGuitarsByVendors(vendors, lowerBound, upperBound));
+        }
+
+        [GuitarFilter]
+        [Route("api/Electric/{from}/{to}/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get(int from, int to, int lowerBound, int upperBound)
+        {
+            return Ok(_serviceWorker.GetElectricGuitarsByPrice(from, to, lowerBound, upperBound));
         }
     }
 }
