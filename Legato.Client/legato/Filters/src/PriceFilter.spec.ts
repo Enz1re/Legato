@@ -14,14 +14,14 @@ function compareArrays(sample: Guitar[], test: Guitar[]) {
 describe("PriceFilter", () => {
     const filter = priceFilter();
     const guitars: Guitar[] = [
-        { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-        { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-        { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-        { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-        { vendor: "Kremona", model: "", mensura: 0, price: 10233, imgPath: "" },
-        { vendor: "Lucero", model: "", mensura: 0, price: 20101, imgPath: "" },
-        { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-        { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" },
+        { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+        { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+        { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+        { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+        { vendor: { name: "Kremona", isSelected: true }, model: "", mensura: 0, price: 10233, imgPath: "" },
+        { vendor: { name: "Lucero", isSelected: true }, model: "", mensura: 0, price: 20101, imgPath: "" },
+        { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+        { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" },
     ];
 
     it("returns all records without filtering if no price given", () => {
@@ -47,14 +47,14 @@ describe("PriceFilter", () => {
     it("returns one record in range 0-1210", () => {
         const price = { from: 0, to: 1210 };
         const filteredTest = filter(guitars, price);
-        const filteredExact = [{ vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" }];
+        const filteredExact = [{ vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" }];
         compareArrays(filteredExact, filteredTest);
     });
 
     it("returns one record in range *min*-1210", () => {
         const price = { to: 1210 };
         const filteredTest = filter(guitars, price);
-        const filteredExact = [{ vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" }];
+        const filteredExact = [{ vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" }];
         compareArrays(filteredExact, filteredTest);
     });
 
@@ -62,8 +62,8 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 1211 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -72,8 +72,8 @@ describe("PriceFilter", () => {
         const price = { to: 1211 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -82,8 +82,8 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 1300 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -92,8 +92,8 @@ describe("PriceFilter", () => {
         const price = { to: 1300 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -102,8 +102,8 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 1652 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -112,8 +112,8 @@ describe("PriceFilter", () => {
         const price = { to: 1652 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -122,9 +122,9 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 1653 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -133,9 +133,9 @@ describe("PriceFilter", () => {
         const price = { to: 1653 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -144,11 +144,11 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 4000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -157,11 +157,11 @@ describe("PriceFilter", () => {
         const price = { to: 4000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -170,12 +170,12 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 7000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -184,12 +184,12 @@ describe("PriceFilter", () => {
         const price = { to: 7000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -198,12 +198,12 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 10232 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -212,12 +212,12 @@ describe("PriceFilter", () => {
         const price = { to: 10232 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -226,13 +226,13 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 10233 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Kremona", model: "", mensura: 0, price: 10233, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Kremona", isSelected: true }, model: "", mensura: 0, price: 10233, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -241,13 +241,13 @@ describe("PriceFilter", () => {
         const price = { to: 10233 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Kremona", model: "", mensura: 0, price: 10233, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Kremona", isSelected: true }, model: "", mensura: 0, price: 10233, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -256,14 +256,14 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 20101 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Kremona", model: "", mensura: 0, price: 10233, imgPath: "" },
-            { vendor: "Lucero", model: "", mensura: 0, price: 20101, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Kremona", isSelected: true }, model: "", mensura: 0, price: 10233, imgPath: "" },
+            { vendor: { name: "Lucero", isSelected: true }, model: "", mensura: 0, price: 20101, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -272,14 +272,14 @@ describe("PriceFilter", () => {
         const price = { to: 20101 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Kremona", model: "", mensura: 0, price: 10233, imgPath: "" },
-            { vendor: "Lucero", model: "", mensura: 0, price: 20101, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Kremona", isSelected: true }, model: "", mensura: 0, price: 10233, imgPath: "" },
+            { vendor: { name: "Lucero", isSelected: true }, model: "", mensura: 0, price: 20101, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -294,14 +294,14 @@ describe("PriceFilter", () => {
         const price = { from: 0, to: 30000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Kremona", model: "", mensura: 0, price: 10233, imgPath: "" },
-            { vendor: "Lucero", model: "", mensura: 0, price: 20101, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Kremona", isSelected: true }, model: "", mensura: 0, price: 10233, imgPath: "" },
+            { vendor: { name: "Lucero", isSelected: true }, model: "", mensura: 0, price: 20101, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -310,14 +310,14 @@ describe("PriceFilter", () => {
         const price = { to: 30000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Kremona", model: "", mensura: 0, price: 10233, imgPath: "" },
-            { vendor: "Lucero", model: "", mensura: 0, price: 20101, imgPath: "" },
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Kremona", isSelected: true }, model: "", mensura: 0, price: 10233, imgPath: "" },
+            { vendor: { name: "Lucero", isSelected: true }, model: "", mensura: 0, price: 20101, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -326,8 +326,8 @@ describe("PriceFilter", () => {
         const price = { from: 988, to: 1300 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -336,9 +336,9 @@ describe("PriceFilter", () => {
         const price = { from: 988, to: 1653 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -347,11 +347,11 @@ describe("PriceFilter", () => {
         const price = { from: 988, to: 4000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "Rogue", model: "", mensura: 0, price: 988, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "Rogue", isSelected: true }, model: "", mensura: 0, price: 988, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -360,10 +360,10 @@ describe("PriceFilter", () => {
         const price = { from: 1211, to: 4000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Yamaha", model: "", mensura: 0, price: 1211, imgPath: "" },
-            { vendor: "B.C. Rich", model: "", mensura: 0, price: 1653, imgPath: "" },
-            { vendor: "Mitchell", model: "", mensura: 0, price: 3673, imgPath: "" },
-            { vendor: "Hofner", model: "", mensura: 0, price: 3880, imgPath: "" }
+            { vendor: { name: "Yamaha", isSelected: true }, model: "", mensura: 0, price: 1211, imgPath: "" },
+            { vendor: { name: "B.C. Rich", isSelected: true }, model: "", mensura: 0, price: 1653, imgPath: "" },
+            { vendor: { name: "Mitchell", isSelected: true }, model: "", mensura: 0, price: 3673, imgPath: "" },
+            { vendor: { name: "Hofner", isSelected: true }, model: "", mensura: 0, price: 3880, imgPath: "" }
         ];
         compareArrays(filteredExact, filteredTest);
     });
@@ -372,7 +372,7 @@ describe("PriceFilter", () => {
         const price = { from: 3900, to: 10000 };
         const filteredTest = filter(guitars, price);
         const filteredExact = [
-            { vendor: "Friedman", model: "", mensura: 0, price: 6111, imgPath: "" },
+            { vendor: { name: "Friedman", isSelected: true }, model: "", mensura: 0, price: 6111, imgPath: "" },
         ];
         compareArrays(filteredExact, filteredTest);
     });
