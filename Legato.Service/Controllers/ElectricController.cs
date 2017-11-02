@@ -28,15 +28,16 @@ namespace Legato.Service.Controllers
         }
 
         [Route("api/Electric/Quantity")]
-        public IHttpActionResult GetAmount()
+        public IHttpActionResult GetQuantity()
         {
             return Ok(_serviceWorker.GetElectricGuitarAmount());
         }
 
         [GuitarFilter]
-        [Route("api/Electric/{lowerBound}/{upperBound}")]
-        public IHttpActionResult Get([FromUri]string[] vendors, int lowerBound, int upperBound)
+        [Route("api/Electric/{vendorsString}/{lowerBound}/{upperBound}")]
+        public IHttpActionResult Get(string vendorsString, int lowerBound, int upperBound)
         {
+            var vendors = vendorsString.Split(',');
             return Ok(_serviceWorker.GetElectricGuitarsByVendors(vendors, lowerBound, upperBound));
         }
 
