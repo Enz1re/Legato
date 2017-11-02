@@ -21,7 +21,7 @@ ol, ul {
     overflow: hidden;
 }
 
-li {
+.guitar-li {
     float: left;
 }
 
@@ -320,4 +320,9 @@ div.messaging {
 .guitarimg {
     width: 100%;
     height: 100%;
+}
+
+.pagination-container {
+    width: 100%;
+    text-align: center;
 }

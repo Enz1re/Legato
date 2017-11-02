@@ -3,11 +3,23 @@
         Error processing your request. Please try again later.
     </div>
     <div class="guitar-grid">
+        <div class="pagination-container">
+            <ul uib-pagination
+                total-items="westernCtrl.paging.total"
+                ng-change="westernCtrl.onPageChanged()"
+                next-text=">>"
+                previous-text="<<"
+                items-per-page="westernCtrl.paging.itemsToShow"
+                max-size="10"
+                ng-model="westernCtrl.paging.currentPage"
+                boundary-links="true"
+                rotate="true" />
+        </div>
         <ul>
-            <li ng-repeat="guitar in westernCtrl.guitars | byPrice:westernCtrl.price | byVendors:westernCtrl.vendors | sortBy:westernCtrl.sortBy:westernCtrl.sortDirection">
+            <li class="guitar-li" ng-repeat="guitar in westernCtrl.guitars | byPrice:westernCtrl.price | byVendors:westernCtrl.vendors | sortBy:westernCtrl.sortBy:westernCtrl.sortDirection">
                 <div class="guitar-container">
                     <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
-                    <div>{{guitar.vendor.name}} {{guitar.model}}</div>
+                    <div>{{guitar.vendor}} {{guitar.model}}</div>
                     <div>Mensura: {{guitar.mensura}} mm</div>
                     <div>Price: {{guitar.price}} UAH</div>
                     <div>Strings: {{guitar.stringNumber}}</div>
@@ -15,5 +27,17 @@
                 </div>
             </li>
         </ul>
+        <div class="pagination-container">
+            <ul uib-pagination
+                total-items="westernCtrl.paging.total"
+                ng-change="westernCtrl.onPageChanged()"
+                next-text=">>"
+                previous-text="<<"
+                items-per-page="westernCtrl.paging.itemsToShow"
+                max-size="10"
+                ng-model="westernCtrl.paging.currentPage"
+                boundary-links="true"
+                rotate="true" />
+        </div>
     </div>
 </div>

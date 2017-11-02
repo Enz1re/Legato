@@ -2,5 +2,5 @@
 
 
 export default class VendorList {
-    vendors: Vendor[];
+    vendors: string[];
 }

@@ -1,10 +1,16 @@
-﻿import { IGuitarResource } from "../../Interfaces/interfaces";
-import { IGuitarService } from "../../Interfaces/interfaces";
-import { ICacheService } from "../../Interfaces/interfaces";
+﻿import {
+    IGuitarResource,
+    IGuitarService,
+    ICacheService
+} from "../../Interfaces/interfaces";
+
+import {
+    Price,
+    Paging,
+    ClassicalGuitar
+} from "../../Models/models";
 
 import { ServiceBase } from "../src/ServiceBase";
-
-import { ClassicalGuitar } from "../../Models/models";
 
 
 export default class ClassicalGuitarService extends ServiceBase implements IGuitarService<ClassicalGuitar> {
@@ -15,39 +21,39 @@ export default class ClassicalGuitarService extends ServiceBase implements IGuit
         this.$$cache = cache.create("classicalGuitarCache");
     }
 
-    getAllGuitars(): ng.IPromise<ClassicalGuitar[]> {
+    getAllGuitars(paging: Paging): ng.IPromise<ClassicalGuitar[]> {
         const cachedData = this.$$cache.get<ClassicalGuitar[]>("guitars");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getAllClassicalGuitars().then(guitars => {
+            return this.resource.getAllClassicalGuitars(paging).then(guitars => {
                 this.$$cache.put("guitars", guitars);
                 return guitars;
             });
         }
     }
 
-    getGuitarsByVendors(vendors: string[]): ng.IPromise<ClassicalGuitar[]> {
+    getGuitarsByVendors(vendors: string[], paging: Paging): ng.IPromise<ClassicalGuitar[]> {
         const cachedData = this.$$cache.get<ClassicalGuitar[]>("guitarsByVendor");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getClassicalGuitarsByVendors(vendors).then(guitars => {
+            return this.resource.getClassicalGuitarsByVendors(vendors, paging).then(guitars => {
                 this.$$cache.put("guitarsByVendor", guitars);
                 return guitars;
             });
         }
     }
 
-    getGuitarsByPrice(from: number, to: number): ng.IPromise<ClassicalGuitar[]> {
+    getGuitarsByPrice(price: Price, paging: Paging): ng.IPromise<ClassicalGuitar[]> {
         const cachedData = this.$$cache.get<ClassicalGuitar[]>("guitarsByPrice");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getClassicalGuitarsByPrice(from, to).then(guitars => {
+            return this.resource.getClassicalGuitarsByPrice(price, paging).then(guitars => {
                 this.$$cache.put("guitarsByPrice", guitars);
                 return guitars;
             });

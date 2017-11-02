@@ -1,5 +1,7 @@
 ﻿import {
+    Price,
     Guitar, 
+    Paging,
     Vendor,
     BassGuitar,
     WesternGuitar,
@@ -10,30 +12,30 @@
 
 export interface IGuitarResource {
     // vendors
-    getAllVendors(): ng.IPromise<Vendor[]>;
-    getClassicalGuitarVendors(): ng.IPromise<Vendor[]>;
-    getWesternGuitarVendors(): ng.IPromise<Vendor[]>;
-    getElectricGuitarVendors(): ng.IPromise<Vendor[]>;
-    getBassGuitarVendors(): ng.IPromise<Vendor[]>;
+    getAllVendors(): ng.IPromise<string[]>;
+    getClassicalGuitarVendors(): ng.IPromise<string[]>;
+    getWesternGuitarVendors(): ng.IPromise<string[]>;
+    getElectricGuitarVendors(): ng.IPromise<string[]>;
+    getBassGuitarVendors(): ng.IPromise<string[]>;
     // classical guitars
-    getAllClassicalGuitars(): ng.IPromise<ClassicalGuitar[]>;
-    getClassicalGuitarsByVendors(vendors: string[]): ng.IPromise<ClassicalGuitar[]>;
-    getClassicalGuitarsByPrice(from: number, to: number): ng.IPromise<ClassicalGuitar[]>;
+    getAllClassicalGuitars(paging: Paging): ng.IPromise<ClassicalGuitar[]>;
+    getClassicalGuitarsByVendors(vendors: string[], paging: Paging): ng.IPromise<ClassicalGuitar[]>;
+    getClassicalGuitarsByPrice(price: Price, paging: Paging): ng.IPromise<ClassicalGuitar[]>;
     getClassicalGuitarQuantity(): ng.IPromise<number>;
     // western guitars
-    getAllWesternGuitars(): ng.IPromise<WesternGuitar[]>;
-    getWesternGuitarsByVendors(vendors: string[]): ng.IPromise<WesternGuitar[]>;
-    getWesternGuitarsByPrice(from: number, to: number): ng.IPromise<WesternGuitar[]>;
+    getAllWesternGuitars(paging: Paging): ng.IPromise<WesternGuitar[]>;
+    getWesternGuitarsByVendors(vendors: string[], paging: Paging): ng.IPromise<WesternGuitar[]>;
+    getWesternGuitarsByPrice(price: Price, paging: Paging): ng.IPromise<WesternGuitar[]>;
     getWesternGuitarQuantity(): ng.IPromise<number>;
     // electric guitars
-    getAllElectricGuitars(): ng.IPromise<ElectricGuitar[]>;
-    getElectricGuitarsByVendors(vendors: string[]): ng.IPromise<ElectricGuitar[]>;
-    getElectricGuitarsByPrice(from: number, to: number): ng.IPromise<ElectricGuitar[]>;
+    getAllElectricGuitars(paging: Paging): ng.IPromise<ElectricGuitar[]>;
+    getElectricGuitarsByVendors(vendors: string[], paging: Paging): ng.IPromise<ElectricGuitar[]>;
+    getElectricGuitarsByPrice(price: Price, paging: Paging): ng.IPromise<ElectricGuitar[]>;
     getElectricGuitarQuantity(): ng.IPromise<number>;
     // bass guitars
-    getAllBassGuitars(): ng.IPromise<BassGuitar[]>;
-    getBassGuitarsByVendors(vendors: string[]): ng.IPromise<BassGuitar[]>;
-    getBassGuitarsByPrice(from: number, to: number): ng.IPromise<BassGuitar[]>;
+    getAllBassGuitars(paging: Paging): ng.IPromise<BassGuitar[]>;
+    getBassGuitarsByVendors(vendors: string[], paging: Paging): ng.IPromise<BassGuitar[]>;
+    getBassGuitarsByPrice(price: Price, paging: Paging): ng.IPromise<BassGuitar[]>;
     getBassGuitarQuantity(): ng.IPromise<number>;
 }
 

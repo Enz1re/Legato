@@ -22,8 +22,9 @@ export default class VendorService extends ServiceBase implements IVendorService
             return this.resolveCachedData(cachedData);
         } else {
             return this.resource.getAllVendors().then(vendors => {
-                this.$$cache.put("vendors", vendors);
-                return vendors;
+                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
+                this.$$cache.put("vendors", vendorArray);
+                return vendorArray;
             });
         }
     }
@@ -35,8 +36,9 @@ export default class VendorService extends ServiceBase implements IVendorService
             return this.resolveCachedData(cachedData);
         } else {
             return this.resource.getClassicalGuitarVendors().then(vendors => {
-                this.$$cache.put("classicalVendors", vendors);
-                return vendors;
+                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
+                this.$$cache.put("classicalVendors", vendorArray);
+                return vendorArray;
             });
         }
     }
@@ -48,8 +50,9 @@ export default class VendorService extends ServiceBase implements IVendorService
             return this.resolveCachedData(cachedData);
         } else {
             return this.resource.getWesternGuitarVendors().then(vendors => {
-                this.$$cache.put("westernVendors", vendors);
-                return vendors;
+                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
+                this.$$cache.put("westernVendors", vendorArray);
+                return vendorArray;
             });
         }
     }
@@ -61,8 +64,9 @@ export default class VendorService extends ServiceBase implements IVendorService
             return this.resolveCachedData(cachedData);
         } else {
             return this.resource.getElectricGuitarVendors().then(vendors => {
-                this.$$cache.put("electricVendors", vendors);
-                return vendors;
+                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
+                this.$$cache.put("electricVendors", vendorArray);
+                return vendorArray;
             });
         }
     }
@@ -74,8 +78,9 @@ export default class VendorService extends ServiceBase implements IVendorService
             return this.resolveCachedData(cachedData);
         } else {
             return this.resource.getBassGuitarVendors().then(vendors => {
-                this.$$cache.put("bassVendors", vendors);
-                return vendors;
+                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
+                this.$$cache.put("bassVendors", vendorArray);
+                return vendorArray;
             });
         }
     }
