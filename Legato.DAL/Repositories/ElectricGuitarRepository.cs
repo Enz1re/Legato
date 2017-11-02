@@ -50,7 +50,7 @@ namespace Legato.DAL.Repositories
 
         public IQueryable<ElectricGuitarModel> GetAll()
         {
-            return _context.ElectricGuitars;
+            return _context.ElectricGuitars.OrderBy(g => g.Id);
         }
 
         public int GetItemAmount()
