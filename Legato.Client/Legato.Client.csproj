@@ -67,6 +67,7 @@
     <TypeScriptCompile Include="legato\Components\src\classical\ClassicalController.ts" />
     <TypeScriptCompile Include="legato\Components\src\electric\ElectricController.ts" />
     <TypeScriptCompile Include="legato\Components\src\legato\MainController.ts" />
+    <TypeScriptCompile Include="legato\Components\src\smoothScroll\LegatoSmoothScrollDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\western\WesternController.ts" />
     <TypeScriptCompile Include="legato\Components\components-module.ts" />
     <TypeScriptCompile Include="legato\Components\src\bass\BassDirective.ts" />
@@ -96,6 +97,7 @@
     <TypeScriptCompile Include="legato\Models\src\BassGuitar.ts" />
     <TypeScriptCompile Include="legato\Models\src\ClassicalGuitar.ts" />
     <TypeScriptCompile Include="legato\Models\src\ElectricGuitar.ts" />
+    <TypeScriptCompile Include="legato\Models\src\Filter.ts" />
     <TypeScriptCompile Include="legato\Models\src\Guitar.ts" />
     <TypeScriptCompile Include="legato\Models\src\GuitarList.ts" />
     <TypeScriptCompile Include="legato\Models\src\Paging.ts" />

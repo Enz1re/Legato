@@ -21,40 +21,14 @@ export default class ElectricGuitarService extends ServiceBase implements IGuita
         this.$$cache = cache.create("electricGuitarCache");
     }
 
-    getAllGuitars(paging: Paging): ng.IPromise<ElectricGuitar[]> {
+    getGuitars(price: Price, vendors: string[], paging: Paging): ng.IPromise<ElectricGuitar[]> {
         const cachedData = this.$$cache.get<ElectricGuitar[]>("guitars");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getAllElectricGuitars(paging).then(guitars => {
+            return this.resource.getElectricGuitars({ priceFilter: price, vendorFilter: { vendors: vendors } }, paging).then(guitars => {
                 this.$$cache.put("guitars", guitars);
-                return guitars;
-            });
-        }
-    }
-
-    getGuitarsByVendors(vendors: string[], paging: Paging): ng.IPromise<ElectricGuitar[]> {
-        const cachedData = this.$$cache.get<ElectricGuitar[]>("guitarsByVendor");
-
-        if (cachedData) {
-            return this.resolveCachedData(cachedData);
-        } else {
-            return this.resource.getElectricGuitarsByVendors(vendors, paging).then(guitars => {
-                this.$$cache.put("guitarsByVendor", guitars);
-                return guitars;
-            });
-        }
-    }
-
-    getGuitarsByPrice(price: Price, paging: Paging): ng.IPromise<ElectricGuitar[]> {
-        const cachedData = this.$$cache.get<ElectricGuitar[]>("guitarsByPrice");
-
-        if (cachedData) {
-            return this.resolveCachedData(cachedData);
-        } else {
-            return this.resource.getElectricGuitarsByPrice(price, paging).then(guitars => {
-                this.$$cache.put("guitarsByPrice", guitars);
                 return guitars;
             });
         }

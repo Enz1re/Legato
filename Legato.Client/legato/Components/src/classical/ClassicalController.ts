@@ -13,21 +13,19 @@ export class ClassicalController implements ng.IController {
     private sortDirection: string;
     private error = false;
     private paging: Paging = new Paging(0, 20);
-    static $inject = ["$scope", "$window", "ClassicalGuitarService"];
+    static $inject = ["$scope", "ClassicalGuitarService"];
 
-    constructor($scope: ng.IScope, private $window: ng.IWindowService, private service: IGuitarService<ClassicalGuitar>) {
+    constructor($scope: ng.IScope, private service: IGuitarService<ClassicalGuitar>) {
         this.init();
-        this.loadGuitarList();
         
         $scope.$on("classical", (e, params) => {
             this.price = params.price;
             this.vendors = params.vendors;
-            this.sortBy = params.sortBy;
-            this.sortDirection = params.sortDirection;
+            this.loadGuitarList();
         });
     }
 
-    onPageChanged(isLowerPagination: boolean = false) {
+    onPageChanged() {
         this.paging.lowerBound = this.paging.currentPage * this.paging.itemsToShow;
         this.paging.upperBound = this.paging.currentPage * this.paging.itemsToShow + 20;
         this.loadGuitarList();
@@ -39,10 +37,12 @@ export class ClassicalController implements ng.IController {
         }).catch(err => {
             this.error = true;
         });
+
+        this.loadGuitarList();
     }
 
     private loadGuitarList() {
-        this.service.getAllGuitars(this.paging).then(guitars => {
+        this.service.getGuitars(this.price, this.vendors, this.paging).then(guitars => {
             this.guitars = guitars;
         }).catch(err => {
             this.error = true;

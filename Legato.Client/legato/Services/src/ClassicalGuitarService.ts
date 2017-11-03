@@ -21,40 +21,14 @@ export default class ClassicalGuitarService extends ServiceBase implements IGuit
         this.$$cache = cache.create("classicalGuitarCache");
     }
 
-    getAllGuitars(paging: Paging): ng.IPromise<ClassicalGuitar[]> {
+    getGuitars(price: Price, vendors: string[], paging: Paging): ng.IPromise<ClassicalGuitar[]> {
         const cachedData = this.$$cache.get<ClassicalGuitar[]>("guitars");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getAllClassicalGuitars(paging).then(guitars => {
+            return this.resource.getClassicalGuitars({ priceFilter: price, vendorFilter: { vendors: vendors } }, paging).then(guitars => {
                 this.$$cache.put("guitars", guitars);
-                return guitars;
-            });
-        }
-    }
-
-    getGuitarsByVendors(vendors: string[], paging: Paging): ng.IPromise<ClassicalGuitar[]> {
-        const cachedData = this.$$cache.get<ClassicalGuitar[]>("guitarsByVendor");
-
-        if (cachedData) {
-            return this.resolveCachedData(cachedData);
-        } else {
-            return this.resource.getClassicalGuitarsByVendors(vendors, paging).then(guitars => {
-                this.$$cache.put("guitarsByVendor", guitars);
-                return guitars;
-            });
-        }
-    }
-
-    getGuitarsByPrice(price: Price, paging: Paging): ng.IPromise<ClassicalGuitar[]> {
-        const cachedData = this.$$cache.get<ClassicalGuitar[]>("guitarsByPrice");
-
-        if (cachedData) {
-            return this.resolveCachedData(cachedData);
-        } else {
-            return this.resource.getClassicalGuitarsByPrice(price, paging).then(guitars => {
-                this.$$cache.put("guitarsByPrice", guitars);
                 return guitars;
             });
         }

@@ -10,6 +10,7 @@ import VendorList from "./src/VendorList";
 import GuitarList from "./src/GuitarList";
 import Amount from "./src/Amount";
 import Paging from "./src/Paging";
+import Filter from "./src/Filter";
 
 
 export {
@@ -19,6 +20,7 @@ export {
     ElectricGuitar,
     WesternGuitar,
     Price,
+    Filter,
     Sorting,
     Vendor,
     VendorList,

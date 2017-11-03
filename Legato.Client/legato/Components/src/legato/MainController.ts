@@ -52,7 +52,7 @@ export class MainController implements ng.IController {
         });
     }
 
-    private getCheckedVendors() {
+    private getCheckedVendors(): string[] {
         let vendors = [];
 
         for (let v of this.vendors) {

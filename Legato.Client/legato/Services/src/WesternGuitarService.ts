@@ -21,45 +21,19 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
         this.$$cache = cache.create("westernGuitarCache");
     }
 
-    getAllGuitars(paging: Paging): ng.IPromise<WesternGuitar[]> {
+    getGuitars(price: Price, vendors: string[], paging: Paging): ng.IPromise<WesternGuitar[]> {
         const cachedData = this.$$cache.get<WesternGuitar[]>("guitars");
 
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
-            return this.resource.getAllWesternGuitars(paging).then(guitars => {
+            return this.resource.getWesternGuitars({ priceFilter: price, vendorFilter: { vendors: vendors } }, paging).then(guitars => {
                 this.$$cache.put("guitars", guitars);
                 return guitars;
             });
         }
     }
-
-    getGuitarsByVendors(vendors: string[], paging: Paging): ng.IPromise<WesternGuitar[]> {
-        const cachedData = this.$$cache.get<WesternGuitar[]>("guitarsByVendor");
-
-        if (cachedData) {
-            return this.resolveCachedData(cachedData);
-        } else {
-            return this.resource.getWesternGuitarsByVendors(vendors, paging).then(guitars => {
-                this.$$cache.put("guitarsByVendor", guitars);
-                return guitars;
-            });
-        }
-    }
-
-    getGuitarsByPrice(price: Price, paging: Paging): ng.IPromise<WesternGuitar[]> {
-        const cachedData = this.$$cache.get<WesternGuitar[]>("guitarsByPrice");
-
-        if (cachedData) {
-            return this.resolveCachedData(cachedData);
-        } else {
-            return this.resource.getWesternGuitarsByPrice(price, paging).then(guitars => {
-                this.$$cache.put("guitarsByPrice", guitars);
-                return guitars;
-            });
-        }
-    }
-
+    
     getAmount(): ng.IPromise<number> {
         const cachedData = this.$$cache.get<number>("guitarQuantity");
 

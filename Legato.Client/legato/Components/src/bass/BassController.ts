@@ -22,8 +22,7 @@ export class BassController implements ng.IController {
         $scope.$on("bass", (e, params) => {
             this.price = params.price;
             this.vendors = params.vendors;
-            this.sortBy = params.sortBy;
-            this.sortDirection = params.sortDirection;
+            this.loadGuitarList();
         });
     }
 
@@ -42,7 +41,7 @@ export class BassController implements ng.IController {
     }
 
     private loadGuitarList() {
-        this.service.getAllGuitars(this.paging).then(guitars => {
+        this.service.getGuitars(this.price, this.vendors, this.paging).then(guitars => {
             this.guitars = guitars;
         }).catch(err => {
             this.error = true;

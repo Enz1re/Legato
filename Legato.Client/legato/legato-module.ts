@@ -9,4 +9,6 @@ import filters from "./Filters/filters-module";
 
 angular.module("legato", [uiRouter, ngAnimate, uiBootstrap, services, components, filters]);
 
-angular.bootstrap(document.documentElement, ["legato"]);
+angular.element(document).ready(() => {
+    angular.bootstrap(document.documentElement, ["legato"]);
+});
