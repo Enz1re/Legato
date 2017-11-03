@@ -9,9 +9,11 @@ namespace Legato.DAL.Interfaces
     {
         IQueryable<TGuitar> GetAll();
 
-        IQueryable<TGuitar> FindByVendors(string[] vendor);
+        IQueryable<TGuitar> FindByVendors(string[] vendors);
 
         IQueryable<TGuitar> FindByPrice(int from, int to);
+
+        IQueryable<TGuitar> FindByVendorsAndPrice(string[] vendors, int priceFrom, int priceTo);
 
         TGuitar Get(string vendor, string model);
 

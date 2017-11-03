@@ -50,7 +50,10 @@
     <Compile Include="DataContracts\AcousticWesternGuitarDataModel.cs" />
     <Compile Include="DataContracts\BassGuitarDataModel.cs" />
     <Compile Include="DataContracts\ElectricGuitarDataModel.cs" />
+    <Compile Include="DataContracts\FilterDataModel.cs" />
     <Compile Include="DataContracts\GuitarDataModel.cs" />
+    <Compile Include="DataContracts\PriceFilterDataModel.cs" />
+    <Compile Include="DataContracts\VendorFilterDataModel.cs" />
     <Compile Include="ILegatoMiddleware.cs" />
     <Compile Include="MiddlewareMappings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

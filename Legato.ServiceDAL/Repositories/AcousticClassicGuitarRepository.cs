@@ -17,9 +17,9 @@ namespace Legato.ServiceDAL.Repositories
             _client = client;
         }
 
-        public IEnumerable<AcousticClassicalGuitarDataModel> GetAll(int lowerBound, int upperBound)
+        public IEnumerable<AcousticClassicalGuitarDataModel> Get(FilterDataModel filter, int lowerBound, int upperBound)
         {
-            return _client.GetAllAcousticClassicalGuitars(lowerBound, upperBound);
+            return _client.GetAcousticClassicalGuitars(filter, lowerBound, upperBound);
         }
 
         public IEnumerable<string> GetVendors()
@@ -30,16 +30,6 @@ namespace Legato.ServiceDAL.Repositories
         public int GetAmount()
         {
             return _client.GetAcousticClassicalGuitarQuantity();
-        }
-
-        public IEnumerable<AcousticClassicalGuitarDataModel> FindByCost(int from, int to, int lowerBound, int upperBound)
-        {
-            return _client.GetAcousticClassicalGuitarsByPrice(from, to, lowerBound, upperBound);
-        }
-
-        public IEnumerable<AcousticClassicalGuitarDataModel> FindByVendors(string[] vendors, int lowerBound, int upperBound)
-        {
-            return _client.GetAcousticClassicalGuitarsByVendors(vendors, lowerBound, upperBound);
         }
     }
 }

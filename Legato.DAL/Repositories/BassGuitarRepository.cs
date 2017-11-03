@@ -53,6 +53,15 @@ namespace Legato.DAL.Repositories
             return _context.BassGuitars.OrderBy(g => g.Id);
         }
 
+        public IQueryable<BassGuitarModel> FindByVendorsAndPrice(string[] vendors, int priceFrom, int priceTo)
+        {
+            return _context.BassGuitars.Where
+            (
+                g => vendors.Contains(g.Vendor.Name) && (priceFrom <= g.Price && g.Price <= priceTo)
+            )
+            .OrderBy(g => g.Id);
+        }
+
         public int GetItemAmount()
         {
             return _context.BassGuitars.Count();

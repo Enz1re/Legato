@@ -48,6 +48,15 @@ namespace Legato.DAL.Repositories
             return _context.ClassicAcousticGuitars.Where(g => from <= g.Price && g.Price <= to).OrderBy(g => g.Id);
         }
 
+        public IQueryable<AcousticClassicalGuitarModel> FindByVendorsAndPrice(string[] vendors, int priceFrom, int priceTo)
+        {
+            return _context.ClassicAcousticGuitars.Where
+            (
+                g => vendors.Contains(g.Vendor.Name) && (priceFrom <= g.Price && g.Price <= priceTo)
+            )
+            .OrderBy(g => g.Id);
+        }
+
         public IQueryable<AcousticClassicalGuitarModel> GetAll()
         {
             return _context.ClassicAcousticGuitars.OrderBy(g => g.Id);

@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using System.Web.Http;
+using Legato.ServiceDAL.ViewModels;
 
 
 namespace Legato.Service.Controllers
@@ -16,9 +17,9 @@ namespace Legato.Service.Controllers
 
         [GuitarFilter]
         [Route("api/Bass/{lowerBound}/{upperBound}")]
-        public IHttpActionResult Get(int lowerBound, int upperBound)
+        public IHttpActionResult Get(FilterViewModel filter, int lowerBound, int upperBound)
         {
-            return Ok(_serviceWorker.GetAllBassGuitars(lowerBound, upperBound));
+            return Ok(_serviceWorker.GetBassGuitars(filter, lowerBound, upperBound));
         }
 
         [Route("api/Bass/Vendors")]
@@ -31,21 +32,6 @@ namespace Legato.Service.Controllers
         public IHttpActionResult GetQuantity()
         {
             return Ok(_serviceWorker.GetBassGuitarAmount());
-        }
-
-        [GuitarFilter]
-        [Route("api/Bass/{vendorsString}/{lowerBound}/{upperBound}")]
-        public IHttpActionResult Get(string vendorsString, int lowerBound, int upperBound)
-        {
-            var vendors = vendorsString.Split(',');
-            return Ok(_serviceWorker.GetBassGuitarsByVendors(vendors, lowerBound, upperBound));
-        }
-
-        [GuitarFilter]
-        [Route("api/Bass/{from}/{to}/{lowerBound}/{upperBound}")]
-        public IHttpActionResult Get(int from, int to, int lowerBound, int upperBound)
-        {
-            return Ok(_serviceWorker.GetBassGuitarsByPrice(from, to, lowerBound, upperBound));
         }
     }
 }

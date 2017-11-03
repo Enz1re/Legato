@@ -22,6 +22,9 @@ namespace Legato.ServiceDAL
                 cfg.CreateMap<AcousticWesternGuitarDataModel, AcousticWesternGuitarViewModel>();
                 cfg.CreateMap<ElectricGuitarDataModel, ElectricGuitarViewModel>();
                 cfg.CreateMap<BassGuitarDataModel, BassGuitarViewModel>();
+                cfg.CreateMap<PriceFilterViewModel, PriceFilterDataModel>();
+                cfg.CreateMap<VendorFilterViewModel, VendorFilterDataModel>();
+                cfg.CreateMap<FilterViewModel, FilterDataModel>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();

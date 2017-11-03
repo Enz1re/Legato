@@ -1,5 +1,7 @@
 ﻿using Ninject;
 using System.Web.Http;
+using Newtonsoft.Json;
+using Legato.ServiceDAL.ViewModels;
 
 
 namespace Legato.Service.Controllers
@@ -16,9 +18,11 @@ namespace Legato.Service.Controllers
 
         [GuitarFilter]
         [Route("api/Classical/{lowerBound}/{upperBound}")]
-        public IHttpActionResult Get(int lowerBound, int upperBound)
+        public IHttpActionResult Get([FromUri]string filterJson, int lowerBound, int upperBound)
         {
-            return Ok(_serviceWorker.GetAllAcousticClassicalGuitars(lowerBound, upperBound));
+            var filter = JsonConvert.DeserializeObject<FilterViewModel>(filterJson);
+
+            return Ok(_serviceWorker.GetAcousticClassicalGuitars(filter, lowerBound, upperBound));
         }
 
         [Route("api/Classical/Vendors")]
@@ -31,21 +35,6 @@ namespace Legato.Service.Controllers
         public IHttpActionResult GetQuantity()
         {
             return Ok(_serviceWorker.GetAcousticClassicalGuitarAmount());
-        }
-
-        [GuitarFilter]
-        [Route("api/Classical/{vendorsString}/{lowerBound}/{upperBound}")]
-        public IHttpActionResult Get(string vendorsString, int lowerBound, int upperBound)
-        {
-            var vendors = vendorsString.Split(',');
-            return Ok(_serviceWorker.GetAcousticClassicalGuitarsByVendors(vendors, lowerBound, upperBound));
-        }
-
-        [GuitarFilter]
-        [Route("api/Classical/{from}/{to}/{lowerBound}/{upperBound}")]
-        public IHttpActionResult Get(int from, int to, int lowerBound, int upperBound)
-        {
-            return Ok(_serviceWorker.GetAcousticClassicalGuitarsByPrice(from, to, lowerBound, upperBound));
         }
     }
 }
