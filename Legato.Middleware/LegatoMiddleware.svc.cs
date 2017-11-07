@@ -33,11 +33,22 @@ namespace Legato.Middleware
             }
         }
 
-        public int GetAcousticClassicalGuitarQuantity()
+        public int GetAcousticClassicalGuitarQuantity(FilterDataModel filter)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAcousticClassicalGuitarAmount();
+                return worker.GetAcousticClassicalGuitarAmount(filter);
+            }
+        }
+
+        public IEnumerable<AcousticClassicalGuitarDataModel> GetSortedAcousticClassicalGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            using (var worker = _blWorker.Get())
+            {
+                if (sorting.SortHeader == SortHeader.Price)
+                    return worker.GetSortedAcousticClassicalGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
+                else
+                    return worker.GetSortedAcousticClassicalGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
             }
         }
 
@@ -57,11 +68,22 @@ namespace Legato.Middleware
             }
         }
 
-        public int GetAcousticWesternGuitarQuantity()
+        public int GetAcousticWesternGuitarQuantity(FilterDataModel filter)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetAcousticWesternGuitarAmount();
+                return worker.GetAcousticWesternGuitarAmount(filter);
+            }
+        }
+
+        public IEnumerable<AcousticWesternGuitarDataModel> GetSortedAcousticWesternGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            using (var worker = _blWorker.Get())
+            {
+                if (sorting.SortHeader == SortHeader.Price)
+                    return worker.GetSortedAcousticWesternGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
+                else
+                    return worker.GetSortedAcousticWesternGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
             }
         }
 
@@ -81,11 +103,22 @@ namespace Legato.Middleware
             }
         }
 
-        public int GetElectricGuitarQuantity()
+        public int GetElectricGuitarQuantity(FilterDataModel filter)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetElectriGuitarAmount();
+                return worker.GetElectriGuitarAmount(filter);
+            }
+        }
+
+        public IEnumerable<ElectricGuitarDataModel> GetSortedElectricGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            using (var worker = _blWorker.Get())
+            {
+                if (sorting.SortHeader == SortHeader.Price)
+                    return worker.GetSortedElectricGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
+                else
+                    return worker.GetSortedElectricGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
             }
         }
 
@@ -105,11 +138,22 @@ namespace Legato.Middleware
             }
         }
 
-        public int GetBassGuitarQuantity()
+        public int GetBassGuitarQuantity(FilterDataModel filter)
         {
             using (var worker = _blWorker.Get())
             {
-                return worker.GetBassGuitarAmount();
+                return worker.GetBassGuitarAmount(filter);
+            }
+        }
+
+        public IEnumerable<BassGuitarDataModel> GetSortedBassGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            using (var worker = _blWorker.Get())
+            {
+                if (sorting.SortHeader == SortHeader.Price)
+                    return worker.GetSortedBassGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
+                else
+                    return worker.GetSortedBassGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
             }
         }
     }

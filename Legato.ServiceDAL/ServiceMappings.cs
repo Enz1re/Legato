@@ -13,18 +13,25 @@ namespace Legato.ServiceDAL
         {
             var mapperConfiguration = new MapperConfiguration(cfg =>
             {
+                cfg.AllowNullCollections = true;
+                cfg.AllowNullDestinationValues = true;
+
                 cfg.CreateMap<GuitarDataModel, GuitarViewModel>()
                     .Include<AcousticClassicalGuitarDataModel, AcousticClassicalGuitarViewModel>()
                     .Include<AcousticWesternGuitarDataModel, AcousticWesternGuitarViewModel>()
                     .Include<ElectricGuitarDataModel, ElectricGuitarViewModel>()
                     .Include<BassGuitarDataModel, BassGuitarViewModel>();
+
                 cfg.CreateMap<AcousticClassicalGuitarDataModel, AcousticClassicalGuitarViewModel>();
                 cfg.CreateMap<AcousticWesternGuitarDataModel, AcousticWesternGuitarViewModel>();
                 cfg.CreateMap<ElectricGuitarDataModel, ElectricGuitarViewModel>();
                 cfg.CreateMap<BassGuitarDataModel, BassGuitarViewModel>();
+
                 cfg.CreateMap<PriceFilterViewModel, PriceFilterDataModel>();
                 cfg.CreateMap<VendorFilterViewModel, VendorFilterDataModel>();
                 cfg.CreateMap<FilterViewModel, FilterDataModel>();
+
+                cfg.CreateMap<SortingViewModel, SortingDataModel>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();

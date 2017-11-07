@@ -28,6 +28,20 @@ namespace Legato.Service
             };
         }
 
+        public GuitarList GetSortedAcousticClassicalGuitars(FilterViewModel filter, int lowerBound, int upperBound, SortingViewModel sorting)
+        {
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<AcousticClassicalGuitarViewModel>>
+                (
+                    _unitOfWork.ClassicAcousticGuitars.GetSorted(ServiceMappings.Map<FilterDataModel>(filter),
+                                                                 lowerBound,
+                                                                 upperBound,
+                                                                 ServiceMappings.Map<SortingDataModel>(sorting))
+                )
+            };
+        }
+
         public VendorList GetAcousticClassicalGuitarVendors()
         {
             return new VendorList
@@ -39,11 +53,11 @@ namespace Legato.Service
             };
         }
 
-        public Amount GetAcousticClassicalGuitarAmount()
+        public Amount GetAcousticClassicalGuitarAmount(FilterViewModel filter)
         {
             return new Amount
             {
-                Quantity = _unitOfWork.ClassicAcousticGuitars.GetAmount()
+                Quantity = _unitOfWork.ClassicAcousticGuitars.GetAmount(ServiceMappings.Map<FilterDataModel>(filter))
             };
         }
 
@@ -54,6 +68,20 @@ namespace Legato.Service
                 Guitars = ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>
                 (
                     _unitOfWork.WesternAcousticGuitars.Get(ServiceMappings.Map<FilterDataModel>(filter), lowerBound, upperBound)
+                )
+            };
+        }
+
+        public GuitarList GetSortedAcousticWesternGuitars(FilterViewModel filter, int lowerBound, int upperBound, SortingViewModel sorting)
+        {
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<AcousticWesternGuitarViewModel>>
+                (
+                    _unitOfWork.WesternAcousticGuitars.GetSorted(ServiceMappings.Map<FilterDataModel>(filter),
+                                                                 lowerBound,
+                                                                 upperBound,
+                                                                 ServiceMappings.Map<SortingDataModel>(sorting))
                 )
             };
         }
@@ -69,11 +97,11 @@ namespace Legato.Service
             };
         }
 
-        public Amount GetAcousticWesternGuitarAmount()
+        public Amount GetAcousticWesternGuitarAmount(FilterViewModel filter)
         {
             return new Amount
             {
-                Quantity = _unitOfWork.WesternAcousticGuitars.GetAmount()
+                Quantity = _unitOfWork.WesternAcousticGuitars.GetAmount(ServiceMappings.Map<FilterDataModel>(filter))
             };
         }
 
@@ -84,6 +112,20 @@ namespace Legato.Service
                 Guitars = ServiceMappings.Map<List<ElectricGuitarViewModel>>
                 (
                     _unitOfWork.ElectricGuitars.Get(ServiceMappings.Map<FilterDataModel>(filter), lowerBound, upperBound)
+                )
+            };
+        }
+
+        public GuitarList GetSortedElectricGuitars(FilterViewModel filter, int lowerBound, int upperBound, SortingViewModel sorting)
+        {
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<ElectricGuitarViewModel>>
+                (
+                    _unitOfWork.ElectricGuitars.GetSorted(ServiceMappings.Map<FilterDataModel>(filter),
+                                                          lowerBound,
+                                                          upperBound,
+                                                          ServiceMappings.Map<SortingDataModel>(sorting))
                 )
             };
         }
@@ -99,11 +141,11 @@ namespace Legato.Service
             };
         }
 
-        public Amount GetElectricGuitarAmount()
+        public Amount GetElectricGuitarAmount(FilterViewModel filter)
         {
             return new Amount
             {
-                Quantity = _unitOfWork.ElectricGuitars.GetAmount()
+                Quantity = _unitOfWork.ElectricGuitars.GetAmount(ServiceMappings.Map<FilterDataModel>(filter))
             };
         }
 
@@ -114,6 +156,20 @@ namespace Legato.Service
                 Guitars = ServiceMappings.Map<List<BassGuitarViewModel>>
                 (
                     _unitOfWork.BassGuitars.Get(ServiceMappings.Map<FilterDataModel>(filter), lowerBound, upperBound)
+                )
+            };
+        }
+
+        public GuitarList GetSortedBassGuitars(FilterViewModel filter, int lowerBound, int upperBound, SortingViewModel sorting)
+        {
+            return new GuitarList
+            {
+                Guitars = ServiceMappings.Map<List<BassGuitarViewModel>>
+                (
+                    _unitOfWork.BassGuitars.GetSorted(ServiceMappings.Map<FilterDataModel>(filter),
+                                                      lowerBound,
+                                                      upperBound,
+                                                      ServiceMappings.Map<SortingDataModel>(sorting))
                 )
             };
         }
@@ -129,11 +185,11 @@ namespace Legato.Service
             };
         }
 
-        public Amount GetBassGuitarAmount()
+        public Amount GetBassGuitarAmount(FilterViewModel filter)
         {
             return new Amount
             {
-                Quantity = _unitOfWork.BassGuitars.GetAmount()
+                Quantity = _unitOfWork.BassGuitars.GetAmount(ServiceMappings.Map<FilterDataModel>(filter))
             };
         }
     }

@@ -82,6 +82,27 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BassGuitarDataModel" nillable="true" type="tns:BassGuitarDataModel" />
+  <xs:complexType name="SortingDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SortDirection" type="tns:SortDirection" />
+      <xs:element minOccurs="0" name="SortHeader" type="tns:SortHeader" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SortingDataModel" nillable="true" type="tns:SortingDataModel" />
+  <xs:simpleType name="SortDirection">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ascending" />
+      <xs:enumeration value="Descending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortDirection" nillable="true" type="tns:SortDirection" />
+  <xs:simpleType name="SortHeader">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Price" />
+      <xs:enumeration value="Vendor" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortHeader" nillable="true" type="tns:SortHeader" />
   <xs:complexType name="ArrayOfAcousticWesternGuitarDataModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticWesternGuitarDataModel" nillable="true" type="tns:AcousticWesternGuitarDataModel" />

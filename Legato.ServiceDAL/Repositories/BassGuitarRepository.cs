@@ -22,14 +22,19 @@ namespace Legato.ServiceDAL.Repositories
             return _client.GetBassGuitars(filter, lowerBound, upperBound);
         }
 
+        public IEnumerable<BassGuitarDataModel> GetSorted(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            return _client.GetSortedBassGuitars(filter, lowerBound, upperBound, sorting);
+        }
+
         public IEnumerable<string> GetVendors()
         {
             return _client.GetBassGuitarVendors();
         }
 
-        public int GetAmount()
+        public int GetAmount(FilterDataModel filter)
         {
-            return _client.GetBassGuitarQuantity();
+            return _client.GetBassGuitarQuantity(filter);
         }
     }
 }

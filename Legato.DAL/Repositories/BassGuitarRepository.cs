@@ -62,11 +62,6 @@ namespace Legato.DAL.Repositories
             .OrderBy(g => g.Id);
         }
 
-        public int GetItemAmount()
-        {
-            return _context.BassGuitars.Count();
-        }
-
         public void Update(BassGuitarModel item)
         {
             _context.BassGuitars.AddOrUpdate(item);

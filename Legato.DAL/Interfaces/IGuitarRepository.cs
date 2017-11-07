@@ -17,8 +17,6 @@ namespace Legato.DAL.Interfaces
 
         TGuitar Get(string vendor, string model);
 
-        int GetItemAmount();
-
         void Create(TGuitar item);
 
         void Update(TGuitar item);

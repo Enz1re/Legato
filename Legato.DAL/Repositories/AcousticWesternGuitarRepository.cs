@@ -62,11 +62,6 @@ namespace Legato.DAL.Repositories
             return _context.WesternAcousticGuitars.OrderBy(g => g.Id);
         }
 
-        public int GetItemAmount()
-        {
-            return _context.WesternAcousticGuitars.Count();
-        }
-
         public void Update(AcousticWesternGuitarModel item)
         {
             _context.WesternAcousticGuitars.AddOrUpdate(item);

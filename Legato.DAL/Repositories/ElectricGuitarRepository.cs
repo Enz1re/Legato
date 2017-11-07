@@ -62,11 +62,6 @@ namespace Legato.DAL.Repositories
             return _context.ElectricGuitars.OrderBy(g => g.Id);
         }
 
-        public int GetItemAmount()
-        {
-            return _context.ElectricGuitars.Count();
-        }
-
         public void Update(ElectricGuitarModel item)
         {
             _context.ElectricGuitars.AddOrUpdate(item);

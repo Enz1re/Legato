@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Newtonsoft.Json;
 using Legato.ServiceDAL.ViewModels;
+using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.Service.Controllers
@@ -20,9 +21,30 @@ namespace Legato.Service.Controllers
         [Route("api/Classical/{lowerBound}/{upperBound}")]
         public IHttpActionResult Get([FromUri]string filterJson, int lowerBound, int upperBound)
         {
-            var filter = JsonConvert.DeserializeObject<FilterViewModel>(filterJson);
-
+            var filter = JsonConvert.DeserializeObject<FilterViewModel>(filterJson, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Include
+            });
+            
             return Ok(_serviceWorker.GetAcousticClassicalGuitars(filter, lowerBound, upperBound));
+        }
+
+        [GuitarFilter]
+        [Route("api/Classical/{lowerBound}/{upperBound}/{sortHeader}/{sortDirection}")]
+        public IHttpActionResult GetSorted([FromUri]string filterJson, int lowerBound, int upperBound, string sortHeader, string sortDirection)
+        {
+            var filter = JsonConvert.DeserializeObject<FilterViewModel>(filterJson, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Include
+            });
+
+            var sorting = new SortingViewModel
+            {
+                SortHeader = (SortHeader)System.Enum.Parse(typeof(SortHeader), sortHeader),
+                SortDirection = (SortDirection)System.Enum.Parse(typeof(SortDirection), sortDirection)
+            };
+
+            return Ok(_serviceWorker.GetSortedAcousticClassicalGuitars(filter, lowerBound, upperBound, sorting));
         }
 
         [Route("api/Classical/Vendors")]
@@ -31,10 +53,16 @@ namespace Legato.Service.Controllers
             return Ok(_serviceWorker.GetAcousticClassicalGuitarVendors());
         }
 
+        [GuitarFilter]
         [Route("api/Classical/Quantity")]
-        public IHttpActionResult GetQuantity()
+        public IHttpActionResult GetQuantity([FromUri]string filterJson)
         {
-            return Ok(_serviceWorker.GetAcousticClassicalGuitarAmount());
+            var filter = JsonConvert.DeserializeObject<FilterViewModel>(filterJson, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Include
+            });
+
+            return Ok(_serviceWorker.GetAcousticClassicalGuitarAmount(filter));
         }
     }
 }
