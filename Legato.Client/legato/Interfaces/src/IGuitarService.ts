@@ -8,5 +8,7 @@
 export interface IGuitarService<TGuitar extends Guitar> {
     getGuitars(price: Price, vendors: string[], paging: Paging): ng.IPromise<TGuitar[]>;
 
-    getAmount(): ng.IPromise<number>;
+    getSortedGuitars(price: Price, vendors: string[], paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<TGuitar[]>;
+
+    getAmount(price: Price, vendors: string[]): ng.IPromise<number>;
 }

@@ -5,10 +5,23 @@
     currentPage: number;
     itemsToShow: number;
 
-    constructor(lowerBound: number, upperBound: number) {
-        this.lowerBound = lowerBound;
-        this.upperBound = upperBound;
-        this.currentPage = 0;
+    constructor() {
         this.itemsToShow = 20;
+        this.goToFirstPage();
+    }
+
+    goToFirstPage() {
+        this.currentPage = 1;
+        this.lowerBound = 0;
+        this.upperBound = this.itemsToShow;
+    }
+
+    goNext() {
+        this.lowerBound = (this.currentPage - 1) * this.itemsToShow;
+        this.upperBound = (this.currentPage - 1) * this.itemsToShow + this.itemsToShow;
+    }
+
+    toJsonString() {
+        return JSON.stringify({ lowerBound: this.lowerBound, upperBound: this.upperBound });
     }
 }

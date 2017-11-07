@@ -20,16 +20,20 @@ export interface IGuitarResource {
     getBassGuitarVendors(): ng.IPromise<string[]>;
     // classical guitars
     getClassicalGuitars(filter: Filter, paging: Paging): ng.IPromise<ClassicalGuitar[]>;
-    getClassicalGuitarQuantity(): ng.IPromise<number>;
+    getSortedClassicalGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string);
+    getClassicalGuitarQuantity(filter: Filter): ng.IPromise<number>;
     // western guitars
-    getWesternGuitars(filter: Filter,paging: Paging): ng.IPromise<WesternGuitar[]>;
-    getWesternGuitarQuantity(): ng.IPromise<number>;
+    getWesternGuitars(filter: Filter, paging: Paging): ng.IPromise<WesternGuitar[]>;
+    getSortedWesternGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<WesternGuitar[]>;
+    getWesternGuitarQuantity(filter: Filter): ng.IPromise<number>;
     // electric guitars
-    getElectricGuitars(filter: Filter,paging: Paging): ng.IPromise<ElectricGuitar[]>;
-    getElectricGuitarQuantity(): ng.IPromise<number>;
+    getElectricGuitars(filter: Filter, paging: Paging): ng.IPromise<ElectricGuitar[]>;
+    getSortedElectricGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<ElectricGuitar[]>;
+    getElectricGuitarQuantity(filter: Filter): ng.IPromise<number>;
     // bass guitars
-    getBassGuitars(filter: Filter,paging: Paging): ng.IPromise<BassGuitar[]>;
-    getBassGuitarQuantity(): ng.IPromise<number>;
+    getBassGuitars(filter: Filter, paging: Paging): ng.IPromise<BassGuitar[]>;
+    getSortedBassGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<BassGuitar[]>;
+    getBassGuitarQuantity(filter: Filter): ng.IPromise<number>;
 }
 
 export default IGuitarResource;

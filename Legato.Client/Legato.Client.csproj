@@ -65,6 +65,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="legato\Components\src\bass\BassController.ts" />
     <TypeScriptCompile Include="legato\Components\src\classical\ClassicalController.ts" />
+    <TypeScriptCompile Include="legato\Components\src\ControllerBase.ts" />
     <TypeScriptCompile Include="legato\Components\src\electric\ElectricController.ts" />
     <TypeScriptCompile Include="legato\Components\src\legato\MainController.ts" />
     <TypeScriptCompile Include="legato\Components\src\smoothScroll\LegatoSmoothScrollDirective.ts" />

@@ -1,6 +1,8 @@
-﻿import { Price } from "../../../Models/models";
-import { Vendor } from "../../../Models/models";
-import { Sorting } from "../../../Models/models";
+﻿import {
+    Price,
+    Vendor,
+    Sorting
+} from "../../../Models/models";
 
 import { IVendorService } from "../../../Interfaces/interfaces";
 
@@ -47,12 +49,11 @@ export class MainController implements ng.IController {
         this.$scope.$broadcast(this.$$activeTab, {
             price: { from: this.price.from, to: this.price.to },
             vendors: this.getCheckedVendors(),
-            sortBy: this.sorting.required ? this.sorting.name.toString() : "",
-            sortDirection: this.sorting.required ? this.sorting.direction.toString() : ""
+            sorting: this.sorting
         });
     }
 
-    private getCheckedVendors(): string[] {
+    private getCheckedVendors() {
         let vendors = [];
 
         for (let v of this.vendors) {
@@ -60,7 +61,7 @@ export class MainController implements ng.IController {
                 vendors.push(v.name);
             }
         }
-
+        
         return vendors;
     }
 

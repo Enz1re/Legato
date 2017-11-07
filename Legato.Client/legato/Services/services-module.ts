@@ -26,7 +26,7 @@ export {
     BassGuitarService,
     GuitarResource,
     VendorService,
-    CacheService
+    CacheService,
 };
 
 export default servicesModuleName;
