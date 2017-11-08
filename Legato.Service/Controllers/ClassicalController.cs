@@ -43,7 +43,7 @@ namespace Legato.Service.Controllers
                 SortHeader = (SortHeader)System.Enum.Parse(typeof(SortHeader), sortHeader),
                 SortDirection = (SortDirection)System.Enum.Parse(typeof(SortDirection), sortDirection)
             };
-
+            
             return Ok(_serviceWorker.GetSortedAcousticClassicalGuitars(filter, lowerBound, upperBound, sorting));
         }
 
