@@ -13,6 +13,7 @@
                 boundary-links="true"
                 rotate="true" />
         </div>
+        <legato-request-loader ng-if="classicalCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
         <ul ng-if="!classicalCtrl.error">
             <li class="guitar-li" ng-repeat="guitar in classicalCtrl.guitars">
                 <div class="guitar-container">
@@ -27,7 +28,7 @@
         <div ng-if="classicalCtrl.error" class="error">
             Error processing your request. Please try again later.
         </div>
-        <div ng-if="classicalCtrl.guitars.length === 0 && !classicalCtrl.error">
+        <div ng-if="classicalCtrl.noResults">
             No results found.
         </div>
         <div class="pagination-container">

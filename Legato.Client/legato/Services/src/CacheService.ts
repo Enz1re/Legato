@@ -9,8 +9,8 @@ export default class CacheService implements ICacheService {
 
     }
 
-    create(name: string): ng.ICacheObject {
-        this.instance = this.$cacheFactory(name);
+    create(name: string, capacity: number): ng.ICacheObject {
+        this.instance = this.$cacheFactory(name, { capacity: capacity });
         return this.instance;
     }
 

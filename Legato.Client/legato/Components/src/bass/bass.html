@@ -13,7 +13,8 @@
                 boundary-links="true"
                 rotate="true" />
         </div>
-        <ul ng-if="!classicalCtrl.error">
+        <legato-request-loader ng-if="bassCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
+        <ul ng-if="!bassCtrl.error">
             <li class="guitar-li" ng-repeat="guitar in bassCtrl.guitars">
                 <div class="guitar-container">
                     <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
@@ -25,10 +26,10 @@
                 </div>
             </li>
         </ul>
-        <div ng-if="classicalCtrl.error" class="error">
+        <div ng-if="bassCtrl.error" class="error">
             Error processing your request. Please try again later.
         </div>
-        <div ng-if="classicalCtrl.guitars.length === 0 && !classicalCtrl.error">
+        <div ng-if="bassCtrl.noResults">
             No results found.
         </div>
         <div class="pagination-container">

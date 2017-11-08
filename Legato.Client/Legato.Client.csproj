@@ -53,6 +53,7 @@
     <Content Include="fonts\Dosis\Dosis-Medium.ttf" />
     <Content Include="fonts\Dosis\Dosis-Regular.ttf" />
     <Content Include="fonts\Dosis\Dosis-SemiBold.ttf" />
+    <Content Include="legato\Components\src\loading\legatoLoader.html" />
     <Content Include="package.json" />
     <Content Include="systemjs.config.js" />
     <Content Include="legato\Components\src\bass\bass.html" />
@@ -68,6 +69,7 @@
     <TypeScriptCompile Include="legato\Components\src\ControllerBase.ts" />
     <TypeScriptCompile Include="legato\Components\src\electric\ElectricController.ts" />
     <TypeScriptCompile Include="legato\Components\src\legato\MainController.ts" />
+    <TypeScriptCompile Include="legato\Components\src\loading\LegatoRequestLoaderDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\smoothScroll\LegatoSmoothScrollDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\western\WesternController.ts" />
     <TypeScriptCompile Include="legato\Components\components-module.ts" />
@@ -78,6 +80,7 @@
     <TypeScriptCompile Include="legato\Components\src\validatePrice\LegatoValidatePriceDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\legato\MainDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\western\WesternDirective.ts" />
+    <TypeScriptCompile Include="legato\Constants.ts" />
     <TypeScriptCompile Include="legato\Filters\filters-module.ts" />
     <TypeScriptCompile Include="legato\Filters\src\BooleanFilter.ts" />
     <TypeScriptCompile Include="legato\Filters\src\BooleanFitler.spec.ts" />
@@ -91,6 +94,7 @@
     <TypeScriptCompile Include="legato\Interfaces\src\ICacheService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IGuitarResource.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IGuitarService.ts" />
+    <TypeScriptCompile Include="legato\Interfaces\src\IService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IVendorService.ts" />
     <TypeScriptCompile Include="legato\legato-module.ts" />
     <TypeScriptCompile Include="legato\Models\models.ts" />

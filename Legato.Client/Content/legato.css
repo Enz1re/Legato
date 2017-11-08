@@ -25,10 +25,6 @@ ol, ul {
     float: left;
 }
 
-li:nth-child(4n) + li {
-    clear: both;
-}
-
 button {
     width: 5em !important;
 }
@@ -80,25 +76,18 @@ div.messaging {
 /* Loading screen styles */
 
 #loading-wrapper {
-    position: fixed;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 0;
 }
 
-#loading-text {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    color: #999;
-    width: 100px;
-    height: 30px;
-    margin: -7px 0 0 -45px;
-    text-align: center;
-    font-family: inherit;
-    font-size: 20px;
+#loading-wrapper.small {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+#loading-wrapper.large {
+    padding-top: 7em;
+    padding-bottom: 7em;
 }
 
 #loading-content {
@@ -106,10 +95,21 @@ div.messaging {
     position: relative;
     left: 50%;
     top: 50%;
-    width: 170px;
-    height: 170px;
-    margin: -85px 0 0 -85px;
+    width: 0px;
+    height: 0px;
     border: 3px solid #F00;
+}
+
+#loading-content.small {
+    width: 50px !important;
+    height: 50px !important;
+    margin: 0 0 0 -25px;
+}
+
+#loading-content.large {
+    width: 170px !important;
+    height: 170px !important;
+    margin: 0 0 0 -85px;
 }
 
 #loading-content:after {
@@ -143,7 +143,7 @@ div.messaging {
     animation: loader 2s linear infinite;
 }
 
-#loading-content:before {
+#loading-content:after {
     border: 3px solid transparent;
     border-top-color: #D4CC6A;
     border-bottom-color: #D4CC6A;
@@ -154,7 +154,7 @@ div.messaging {
     animation: loader 3s linear infinite;
 }
 
-#loading-content:after {
+#loading-content:before {
     border: 3px solid transparent;
     border-top-color: #84417C;
     border-bottom-color: #84417C;
@@ -167,38 +167,31 @@ div.messaging {
 
 @-webkit-keyframes loaders {
     0% {
-        -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
     }
     100% {
-        -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
 }
 
 @keyframes loader {
     0% {
-        -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
     }
     100% {
-        -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
 }
 
-#content-wrapper {
-    color: #FFF;
-    position: fixed;
-    left: 0;
-    top: 20px;
-    width: 100%;
-    height: 100%;
-}
+/* Panels */
 
 .top-panel-container {
     width: 100%;

@@ -18,7 +18,7 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
 
     constructor(protected $q: ng.IQService, private cache: ICacheService, private resource: IGuitarResource) {
         super($q);
-        this.$$cache = cache.create("bassGuitarCache");
+        this.$$cache = cache.create("bassGuitarCache", 16);
     }
 
     getGuitars(price: Price, vendors: string[], paging: Paging): ng.IPromise<BassGuitar[]> {
@@ -28,9 +28,14 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
+            this.pendingRequests++;
             return this.resource.getBassGuitars({ priceFilter: price, vendorFilter: { vendors: vendors } }, paging).then(guitars => {
+                this.pendingRequests--;
                 this.$$cache.put(key, guitars);
                 return guitars;
+            }).catch(err => {
+                this.pendingRequests = 0;
+                throw err;
             });
         }
     }
@@ -42,14 +47,19 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
+            this.pendingRequests++;
             return this.resource.getSortedBassGuitars(
                 { priceFilter: price, vendorFilter: { vendors: vendors } },
                 paging,
                 sortHeader,
                 sortDirection
             ).then(guitars => {
+                this.pendingRequests--;
                 this.$$cache.put(key, guitars);
                 return guitars;
+            }).catch(err => {
+                this.pendingRequests = 0;
+                throw err;
             });
         }
     }
@@ -61,9 +71,14 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
         if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
+            this.pendingRequests++;
             return this.resource.getBassGuitarQuantity({ priceFilter: price, vendorFilter: { vendors: vendors } }).then(q => {
+                this.pendingRequests--;
                 this.$$cache.put(key, q);
                 return q;
+            }).catch(err => {
+                this.pendingRequests = 0;
+                throw err;
             });
         }
     }

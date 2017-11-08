@@ -1,9 +1,8 @@
 ﻿import { Vendor } from "../../Models/models";
+import { IService } from "../../Interfaces/interfaces";
 
 
-export interface IVendorService {
-    getAllVendors(): ng.IPromise<Vendor[]>;
-
+export interface IVendorService extends IService {
     getClassicalGuitarVendors(): ng.IPromise<Vendor[]>;
 
     getWesternGuitarVendors(): ng.IPromise<Vendor[]>;

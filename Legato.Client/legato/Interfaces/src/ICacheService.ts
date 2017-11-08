@@ -1,5 +1,5 @@
 ﻿export interface ICacheService {
-    create(name: string): ng.ICacheObject;
+    create(name: string, capacity: number): ng.ICacheObject;
 
     get<T>(key: string): T;
 

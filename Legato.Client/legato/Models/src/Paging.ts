@@ -21,7 +21,7 @@
         this.upperBound = (this.currentPage - 1) * this.itemsToShow + this.itemsToShow;
     }
 
-    toJsonString() {
+    toJSON() {
         return JSON.stringify({ lowerBound: this.lowerBound, upperBound: this.upperBound });
     }
 }
