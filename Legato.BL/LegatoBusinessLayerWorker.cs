@@ -51,12 +51,12 @@ namespace Legato.BL
             if (sortDirection == SortDirection.Ascending)
                 return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(guitars.OrderBy(g => g.Price)
                                                                                              .Skip(lowerBound)
-                                                                                             .Take(upperBound)
+                                                                                             .Take(upperBound - lowerBound)
                                                                                              .ToList());
             else
                 return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(guitars.OrderByDescending(g => g.Price)
                                                                                              .Skip(lowerBound)
-                                                                                             .Take(upperBound)
+                                                                                             .Take(upperBound - lowerBound)
                                                                                              .ToList());
         }
 
@@ -67,12 +67,12 @@ namespace Legato.BL
             if (sortDirection == SortDirection.Ascending)
                 return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(guitars.OrderBy(g => g.Vendor.Name)
                                                                                              .Skip(lowerBound)
-                                                                                             .Take(upperBound)
+                                                                                             .Take(upperBound - lowerBound)
                                                                                              .ToList());
             else
                 return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(guitars.OrderByDescending(g => g.Vendor.Name)
                                                                                              .Skip(lowerBound)
-                                                                                             .Take(upperBound)
+                                                                                             .Take(upperBound - lowerBound)
                                                                                              .ToList());
         }
 
@@ -108,12 +108,12 @@ namespace Legato.BL
             if (sortDirection == SortDirection.Ascending)
                 return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(guitars.OrderBy(g => g.Price)
                                                                                            .Skip(lowerBound)
-                                                                                           .Take(upperBound)
+                                                                                           .Take(upperBound - lowerBound)
                                                                                            .ToList());
             else
                 return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(guitars.OrderByDescending(g => g.Price)
                                                                                            .Skip(lowerBound)
-                                                                                           .Take(upperBound)
+                                                                                           .Take(upperBound - lowerBound)
                                                                                            .ToList());
         }
 
@@ -124,12 +124,12 @@ namespace Legato.BL
             if (sortDirection == SortDirection.Ascending)
                 return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(guitars.OrderBy(g => g.Vendor.Name)
                                                                                            .Skip(lowerBound)
-                                                                                           .Take(upperBound)
+                                                                                           .Take(upperBound - lowerBound)
                                                                                            .ToList());
             else
                 return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(guitars.OrderByDescending(g => g.Vendor.Name)
                                                                                            .Skip(lowerBound)
-                                                                                           .Take(upperBound)
+                                                                                           .Take(upperBound - lowerBound)
                                                                                            .ToList());
         }
 
@@ -165,12 +165,12 @@ namespace Legato.BL
             if (sortDirection == SortDirection.Ascending)
                 return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(guitars.OrderBy(g => g.Price)
                                                                                     .Skip(lowerBound)
-                                                                                    .Take(upperBound)
+                                                                                    .Take(upperBound - lowerBound)
                                                                                     .ToList());
             else
                 return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(guitars.OrderByDescending(g => g.Price)
                                                                                     .Skip(lowerBound)
-                                                                                    .Take(upperBound)
+                                                                                    .Take(upperBound - lowerBound)
                                                                                     .ToList());
         }
 
@@ -181,12 +181,12 @@ namespace Legato.BL
             if (sortDirection == SortDirection.Ascending)
                 return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(guitars.OrderBy(g => g.Vendor.Name)
                                                                                     .Skip(lowerBound)
-                                                                                    .Take(upperBound)
+                                                                                    .Take(upperBound - lowerBound)
                                                                                     .ToList());
             else
                 return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(guitars.OrderByDescending(g => g.Vendor.Name)
                                                                                     .Skip(lowerBound)
-                                                                                    .Take(upperBound)
+                                                                                    .Take(upperBound - lowerBound)
                                                                                     .ToList());
         }
 
@@ -222,12 +222,12 @@ namespace Legato.BL
             if (sortDirection == SortDirection.Ascending)
                 return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderBy(g => g.Price)
                                                                                 .Skip(lowerBound)
-                                                                                .Take(upperBound)
+                                                                                .Take(upperBound - lowerBound)
                                                                                 .ToList());
             else
                 return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderByDescending(g => g.Price)
                                                                                 .Skip(lowerBound)
-                                                                                .Take(upperBound)
+                                                                                .Take(upperBound - lowerBound)
                                                                                 .ToList());
         }
 
@@ -238,12 +238,12 @@ namespace Legato.BL
             if (sortDirection == SortDirection.Ascending)
                 return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderBy(g => g.Vendor.Name)
                                                                                 .Skip(lowerBound)
-                                                                                .Take(upperBound)
+                                                                                .Take(upperBound - lowerBound)
                                                                                 .ToList());
             else
                 return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderByDescending(g => g.Vendor.Name)
                                                                                 .Skip(lowerBound)
-                                                                                .Take(upperBound)
+                                                                                .Take(upperBound - lowerBound)
                                                                                 .ToList());
         }
 
