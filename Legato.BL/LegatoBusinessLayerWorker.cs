@@ -28,22 +28,6 @@ namespace Legato.BL
                                                                                          .ToList());
         }
 
-        public IEnumerable<string> GetAcousticClassicalGuitarVendors()
-        {
-            return _repoProvider.AcousticClassicalGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
-        }
-
-        public int GetAcousticClassicalGuitarAmount(FilterDataModel filter)
-        {
-            var guitars = ApplyFilteringFor(_repoProvider.AcousticClassicalGuitarRepository, filter);
-
-            return guitars.Count();
-        }
-
         public IEnumerable<AcousticClassicalGuitarDataModel> GetSortedAcousticClassicalGuitarsByPrice(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection)
         {
             var guitars = ApplyFilteringFor(_repoProvider.AcousticClassicalGuitarRepository, filter);
@@ -76,6 +60,22 @@ namespace Legato.BL
                                                                                              .ToList());
         }
 
+        public IEnumerable<string> GetAcousticClassicalGuitarVendors()
+        {
+            return _repoProvider.AcousticClassicalGuitarRepository
+                .GetAll()
+                .Select(guitar => guitar.Vendor.Name)
+                .Distinct()
+                .ToList();
+        }
+
+        public int GetAcousticClassicalGuitarAmount(FilterDataModel filter)
+        {
+            var guitars = ApplyFilteringFor(_repoProvider.AcousticClassicalGuitarRepository, filter);
+
+            return guitars.Count();
+        }
+
         public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitars(FilterDataModel filter, int lowerBound, int upperBound)
         {
             var guitars = ApplyFilteringFor(_repoProvider.AcousticWesternGuitarRepository, filter);
@@ -83,22 +83,6 @@ namespace Legato.BL
             return MiddlewareMappings.Map<List<AcousticWesternGuitarDataModel>>(guitars.Skip(lowerBound)
                                                                                        .Take(upperBound - lowerBound)
                                                                                        .ToList());
-        }
-
-        public IEnumerable<string> GetAcousticWesternGuitarVendors()
-        {
-            return _repoProvider.AcousticWesternGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
-        }
-
-        public int GetAcousticWesternGuitarAmount(FilterDataModel filter)
-        {
-            var guitars = ApplyFilteringFor(_repoProvider.AcousticWesternGuitarRepository, filter);
-
-            return guitars.Count();
         }
 
         public IEnumerable<AcousticWesternGuitarDataModel> GetSortedAcousticWesternGuitarsByPrice(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection)
@@ -133,6 +117,22 @@ namespace Legato.BL
                                                                                            .ToList());
         }
 
+        public IEnumerable<string> GetAcousticWesternGuitarVendors()
+        {
+            return _repoProvider.AcousticWesternGuitarRepository
+                .GetAll()
+                .Select(guitar => guitar.Vendor.Name)
+                .Distinct()
+                .ToList();
+        }
+
+        public int GetAcousticWesternGuitarAmount(FilterDataModel filter)
+        {
+            var guitars = ApplyFilteringFor(_repoProvider.AcousticWesternGuitarRepository, filter);
+
+            return guitars.Count();
+        }
+
         public IEnumerable<ElectricGuitarDataModel> GetElectricGuitars(FilterDataModel filter, int lowerBound, int upperBound)
         {
             var guitars = ApplyFilteringFor(_repoProvider.ElectricGuitarRepository, filter);
@@ -140,22 +140,6 @@ namespace Legato.BL
             return MiddlewareMappings.Map<List<ElectricGuitarDataModel>>(guitars.Skip(lowerBound)
                                                                                 .Take(upperBound - lowerBound)
                                                                                 .ToList());
-        }
-
-        public IEnumerable<string> GetElectricGuitarVendors()
-        {
-            return _repoProvider.ElectricGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
-        }
-
-        public int GetElectriGuitarAmount(FilterDataModel filter)
-        {
-            var guitars = ApplyFilteringFor(_repoProvider.ElectricGuitarRepository, filter);
-
-            return guitars.Count();
         }
 
         public IEnumerable<ElectricGuitarDataModel> GetSortedElectricGuitarsByPrice(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection)
@@ -190,6 +174,22 @@ namespace Legato.BL
                                                                                     .ToList());
         }
 
+        public IEnumerable<string> GetElectricGuitarVendors()
+        {
+            return _repoProvider.ElectricGuitarRepository
+                .GetAll()
+                .Select(guitar => guitar.Vendor.Name)
+                .Distinct()
+                .ToList();
+        }
+
+        public int GetElectriGuitarAmount(FilterDataModel filter)
+        {
+            var guitars = ApplyFilteringFor(_repoProvider.ElectricGuitarRepository, filter);
+
+            return guitars.Count();
+        }
+
         public IEnumerable<BassGuitarDataModel> GetBassGuitars(FilterDataModel filter, int lowerBound, int upperBound)
         {
             var guitars = ApplyFilteringFor(_repoProvider.BassGuitarRepository, filter);
@@ -197,6 +197,38 @@ namespace Legato.BL
             return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.Skip(lowerBound)
                                                                             .Take(upperBound - lowerBound)
                                                                             .ToList());
+        }
+
+        public IEnumerable<BassGuitarDataModel> GetSortedBassGuitarsByPrice(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection)
+        {
+            var guitars = ApplyFilteringFor(_repoProvider.BassGuitarRepository, filter);
+
+            if (sortDirection == SortDirection.Ascending)
+                return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderBy(g => g.Price)
+                                                                                .Skip(lowerBound)
+                                                                                .Take(upperBound - lowerBound)
+                                                                                .ToList());
+            else
+                return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderByDescending(g => g.Price)
+                                                                                .Skip(lowerBound)
+                                                                                .Take(upperBound - lowerBound)
+                                                                                .ToList());
+        }
+
+        public IEnumerable<BassGuitarDataModel> GetSortedBassGuitarsByVendor(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection)
+        {
+            var guitars = ApplyFilteringFor(_repoProvider.BassGuitarRepository, filter);
+
+            if (sortDirection == SortDirection.Ascending)
+                return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderBy(g => g.Vendor.Name)
+                                                                                .Skip(lowerBound)
+                                                                                .Take(upperBound - lowerBound)
+                                                                                .ToList());
+            else
+                return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderByDescending(g => g.Vendor.Name)
+                                                                                .Skip(lowerBound)
+                                                                                .Take(upperBound - lowerBound)
+                                                                                .ToList());
         }
 
         public IEnumerable<string> GetBassGuitarVendors()
@@ -213,38 +245,6 @@ namespace Legato.BL
             var guitars = ApplyFilteringFor(_repoProvider.BassGuitarRepository, filter);
 
             return guitars.Count();
-        }
-
-        public IEnumerable<BassGuitarDataModel> GetSortedBassGuitarsByPrice(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection)
-        {
-            var guitars = ApplyFilteringFor(_repoProvider.AcousticWesternGuitarRepository, filter);
-
-            if (sortDirection == SortDirection.Ascending)
-                return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderBy(g => g.Price)
-                                                                                .Skip(lowerBound)
-                                                                                .Take(upperBound - lowerBound)
-                                                                                .ToList());
-            else
-                return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderByDescending(g => g.Price)
-                                                                                .Skip(lowerBound)
-                                                                                .Take(upperBound - lowerBound)
-                                                                                .ToList());
-        }
-
-        public IEnumerable<BassGuitarDataModel> GetSortedBassGuitarsByVendor(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection)
-        {
-            var guitars = ApplyFilteringFor(_repoProvider.AcousticWesternGuitarRepository, filter);
-
-            if (sortDirection == SortDirection.Ascending)
-                return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderBy(g => g.Vendor.Name)
-                                                                                .Skip(lowerBound)
-                                                                                .Take(upperBound - lowerBound)
-                                                                                .ToList());
-            else
-                return MiddlewareMappings.Map<List<BassGuitarDataModel>>(guitars.OrderByDescending(g => g.Vendor.Name)
-                                                                                .Skip(lowerBound)
-                                                                                .Take(upperBound - lowerBound)
-                                                                                .ToList());
         }
 
         public ILegatoBusinessLayerWorker Get()
