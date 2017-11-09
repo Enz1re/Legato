@@ -71,7 +71,7 @@ export class MainController implements ng.IController {
         }
     }
 
-    broadcastButtonClick() {
+    broadcastRequestEvent() {
         const checkedVendors = this.getCheckedVendors();
 
         this.$scope.$broadcast(this.activeTab, {
@@ -81,6 +81,10 @@ export class MainController implements ng.IController {
             vendors: checkedVendors.length !== this.vendors.length ? checkedVendors : null,
             sorting: this.filtering[this.activeTab].sorting
         });
+    }
+
+    broadcastButtonClick() {
+        this.broadcastRequestEvent();
     }
 
     private getCheckedVendors() {

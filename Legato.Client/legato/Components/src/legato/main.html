@@ -13,7 +13,7 @@
     <div class="left-panel">
         <div>
             <div class="find-by-cost-title">Find by cost</div>
-            <form name="price" ng-model="mainCtrl.filtering[mainCtrl.activeTab].price" legato-validate-price>
+            <form name="price" ng-model="mainCtrl.filtering[mainCtrl.activeTab].price" legato-validate-price legato-load-on-change>
                 <div>From:</div>
                 <input type="number" ng-maxlength="8" ng-model="mainCtrl.filtering[mainCtrl.activeTab].price.from" />
                 <div>To:</div>
@@ -30,13 +30,13 @@
                     Error processing your request. Please try again later.
                 </small>
             </div>
-            <div class="vendors-container" ng-repeat="vendor in mainCtrl.vendors">
+            <div class="vendors-container" ng-repeat="vendor in mainCtrl.vendors" legato-load-on-change>
                 <div><input type="checkbox" ng-model="vendor.isSelected"> {{vendor.name}}</div>
             </div>
             <p></p>
             <div>Sort – <input type="checkbox" ng-model="mainCtrl.filtering[mainCtrl.activeTab].sorting.required"/></div>
             <p></p>
-            <div ng-if="mainCtrl.filtering[mainCtrl.activeTab].sorting.required">
+            <div ng-if="mainCtrl.filtering[mainCtrl.activeTab].sorting.required" legato-load-on-change>
                 <div>By:</div>
                 <p></p>
                 <div>
@@ -44,7 +44,7 @@
                         <option title="Vendor">Vendor</option>
                         <option title="Price">Price</option>
                     </select>
-                    <div ng-if="mainCtrl.filtering[mainCtrl.activeTab].sorting.name === 'Price'">
+                    <div ng-show="mainCtrl.filtering[mainCtrl.activeTab].sorting.name === 'Price'">
                         <select ng-model="mainCtrl.filtering[mainCtrl.activeTab].sorting.direction">
                             <option title="Ascending">Ascending</option>
                             <option title="Descending">Descending</option>

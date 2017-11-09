@@ -9,6 +9,7 @@ import { LegatoValidatePriceDirective } from "./src/validatePrice/LegatoValidate
 import { LegatoLoadingDirective } from "./src/loading/LegatoLoadingDirective";
 import { LegatoSmoothScrollDirective } from "./src/smoothScroll/LegatoSmoothScrollDirective";
 import { LegatoRequestLoaderDirective } from "./src/loading/LegatoRequestLoaderDirective";
+import { LegatoLoadOnChangeDirective } from "./src/loadOnChange/LegatoLoadOnChangeDirective";
 
 import { MainController } from "./src/legato/MainController";
 import { ClassicalController } from "./src/classical/ClassicalController";
@@ -29,6 +30,7 @@ angular.module(directivesModuleName, [])
     .directive("legatoLoading", LegatoLoadingDirective.create())
     .directive("legatoSmoothScroll", LegatoSmoothScrollDirective.create())
     .directive("legatoRequestLoader", LegatoRequestLoaderDirective.create())
+    .directive("legatoLoadOnChange", LegatoLoadOnChangeDirective.create())
     // controller declarations
     .controller("MainController", MainController)
     .controller("ClassicalController", ClassicalController)
