@@ -25,10 +25,6 @@ ol, ul {
     float: left;
 }
 
-button {
-    width: 5em !important;
-}
-
 select {
     width: 179px;
 }
@@ -268,10 +264,6 @@ div.messaging {
     overflow-y: auto;
     max-height: 200px;
     text-align: start;
-}
-
-.button-container {
-    margin: 4em;
 }
 
 .guitar-list-container {
