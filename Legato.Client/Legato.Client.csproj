@@ -70,6 +70,7 @@
     <TypeScriptCompile Include="legato\Components\src\electric\ElectricController.ts" />
     <TypeScriptCompile Include="legato\Components\src\legato\MainController.ts" />
     <TypeScriptCompile Include="legato\Components\src\loading\LegatoRequestLoaderDirective.ts" />
+    <TypeScriptCompile Include="legato\Components\src\loadOnChange\LegatoLoadOnChangeDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\smoothScroll\LegatoSmoothScrollDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\western\WesternController.ts" />
     <TypeScriptCompile Include="legato\Components\components-module.ts" />
@@ -94,6 +95,7 @@
     <TypeScriptCompile Include="legato\Interfaces\src\ICacheService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IGuitarResource.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IGuitarService.ts" />
+    <TypeScriptCompile Include="legato\Interfaces\src\IPendingTaskService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IVendorService.ts" />
     <TypeScriptCompile Include="legato\legato-module.ts" />
@@ -111,12 +113,14 @@
     <TypeScriptCompile Include="legato\Models\src\Vendor.ts" />
     <TypeScriptCompile Include="legato\Models\src\VendorList.ts" />
     <TypeScriptCompile Include="legato\Models\src\WesternGuitar.ts" />
+    <TypeScriptCompile Include="legato\Routes\Router.ts" />
     <TypeScriptCompile Include="legato\Services\src\BassGuitarService.ts" />
     <TypeScriptCompile Include="legato\Services\src\CacheService.ts" />
     <TypeScriptCompile Include="legato\Services\src\ClassicalGuitarService.ts" />
     <TypeScriptCompile Include="legato\Services\src\ElectricGuitarService.ts" />
     <TypeScriptCompile Include="legato\Services\src\GuitarResource.ts" />
     <TypeScriptCompile Include="legato\Services\services-module.ts" />
+    <TypeScriptCompile Include="legato\Services\src\PendingTaskService.ts" />
     <TypeScriptCompile Include="legato\Services\src\ServiceBase.ts" />
     <TypeScriptCompile Include="legato\Services\src\VendorService.ts" />
     <TypeScriptCompile Include="legato\Services\src\WesternGuitarService.ts" />
