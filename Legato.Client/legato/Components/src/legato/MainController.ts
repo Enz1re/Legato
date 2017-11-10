@@ -15,31 +15,16 @@ export class MainController implements ng.IController {
     filtering: any = {};
     vendors: Vendor[] = [];
     error = false;
-    activeTab = Constants.CLASSICAL;
-    static $inject = ["$scope", "VendorService"];
+    activeTab: string;
+    price: Price = new Price();
+    sorting: Sorting = new Sorting();
+    static $inject = ["$scope", "$location", "$state", "VendorService"];
 
-    constructor(private $scope: ng.IScope, private service: IVendorService) {
-        this.filtering[Constants.CLASSICAL] = {
-            price: new Price(),
-            sorting: new Sorting()
-        };
-        this.filtering[Constants.WESTERN] = {
-            price: new Price(),
-            sorting: new Sorting()
-        };
-        this.filtering[Constants.ELECTRIC] = {
-            price: new Price(),
-            sorting: new Sorting()
-        };
-        this.filtering[Constants.BASS] = {
-            price: new Price(),
-            sorting: new Sorting()
-        };
-
-        this.refreshVendorListForClassicalGuitars();
+    constructor(private $scope: ng.IScope, private $location: ng.ILocationService, private $state: ng.ui.IStateService, private service: IVendorService) {
+        this.refreshVendorList($location.path().split('/')[1], false);
     }
 
-    refreshVendorList(guitarTypeName: string) {
+    refreshVendorList(guitarTypeName: string, needChangeState: boolean = true) {
         if (this.activeTab === guitarTypeName) {
             return;
         }
@@ -48,11 +33,11 @@ export class MainController implements ng.IController {
         this.activeTab = guitarTypeName;
 
         // set price values to null to clean up input fields
-        if (this.filtering[this.activeTab].price.from === undefined) {
-            this.filtering[this.activeTab].price.from = null;
+        if (this.price.from === undefined) {
+            this.price.from = null;
         }
-        if (this.filtering[this.activeTab].price.to === undefined) {
-            this.filtering[this.activeTab].price.to = null;
+        if (this.price.to === undefined) {
+            this.price.to = null;
         }
         
         switch (guitarTypeName) {
@@ -69,6 +54,10 @@ export class MainController implements ng.IController {
                 this.refreshVendorListForBassGuitars();
                 break;
         }
+
+        if (needChangeState) {
+            this.$state.go(guitarTypeName);
+        }
     }
 
     broadcastRequestEvent() {
@@ -76,15 +65,11 @@ export class MainController implements ng.IController {
 
         this.$scope.$broadcast(this.activeTab, {
             // Don't pass price filter if the filter object is not null, but From and To values are null
-            price: this.filtering[this.activeTab].price.from && this.filtering[this.activeTab].price.to ? this.filtering[this.activeTab].price : null,
+            price: this.price.from && this.price.to ? this.price : null,
             // Don't pass vendor filter if all vendors are checked
             vendors: checkedVendors.length !== this.vendors.length ? checkedVendors : null,
-            sorting: this.filtering[this.activeTab].sorting
+            sorting: this.sorting
         });
-    }
-
-    broadcastButtonClick() {
-        this.broadcastRequestEvent();
     }
 
     private getCheckedVendors() {

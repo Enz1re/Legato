@@ -13,11 +13,11 @@
     <div class="left-panel">
         <div>
             <div class="find-by-cost-title">Find by cost</div>
-            <form name="price" ng-model="mainCtrl.filtering[mainCtrl.activeTab].price" legato-validate-price legato-load-on-change>
+            <form name="price" ng-model="mainCtrl.price" legato-validate-price legato-load-on-change>
                 <div>From:</div>
-                <input type="number" ng-maxlength="8" ng-model="mainCtrl.filtering[mainCtrl.activeTab].price.from" />
+                <input type="number" ng-maxlength="8" ng-model="mainCtrl.price.from" />
                 <div>To:</div>
-                <input type="number" ng-maxlength="8" ng-model="mainCtrl.filtering[mainCtrl.activeTab].price.to" />
+                <input type="number" ng-maxlength="8" ng-model="mainCtrl.price.to" />
                 <div ng-if="price.$error.greater">
                     <small class="error">"To" value has to be greater than "from"</small>
                 </div>
@@ -34,43 +34,33 @@
                 <div><input type="checkbox" ng-model="vendor.isSelected"> {{vendor.name}}</div>
             </div>
             <p></p>
-            <div>Sort – <input type="checkbox" ng-model="mainCtrl.filtering[mainCtrl.activeTab].sorting.required"/></div>
+            <div>Sort – <input type="checkbox" ng-model="mainCtrl.sorting.required"/></div>
             <p></p>
-            <div ng-if="mainCtrl.filtering[mainCtrl.activeTab].sorting.required" legato-load-on-change>
+            <div ng-if="mainCtrl.sorting.required" legato-load-on-change>
                 <div>By:</div>
                 <p></p>
                 <div>
-                    <select ng-model="mainCtrl.filtering[mainCtrl.activeTab].sorting.name">
+                    <select ng-model="mainCtrl.sorting.name">
                         <option title="Vendor">Vendor</option>
                         <option title="Price">Price</option>
                     </select>
-                    <div ng-show="mainCtrl.filtering[mainCtrl.activeTab].sorting.name === 'Price'">
-                        <select ng-model="mainCtrl.filtering[mainCtrl.activeTab].sorting.direction">
+                    <div ng-show="mainCtrl.sorting.name === 'Price'">
+                        <select ng-model="mainCtrl.sorting.direction">
                             <option title="Ascending">Ascending</option>
                             <option title="Descending">Descending</option>
                         </select>
                     </div>
                 </div>
             </div>
-            <div class="button-container">
-                <button ng-disabled="price.$invalid" ng-click="mainCtrl.broadcastButtonClick()" class="btn btn-primary">Go!</button>
-            </div>
         </div>
     </div>
     <div id="main-panel" ng-animate-children>
-        <uib-tabset active="activeJustified" type="pills" justified="true">
-            <uib-tab select="mainCtrl.refreshVendorList('classical')" index="0" heading="Classical acoustic">
-                <classical></classical>
-            </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('western')" index="1" heading="Western acoustic">
-                <western></western>
-            </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('electric')" index="2" heading="Electric">
-                <electric></electric>
-            </uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList('bass')" index="3" heading="Bass">
-                <bass></bass>
-            </uib-tab>
+        <uib-tabset active="mainCtrl.activeTab" type="pills" justified="true">
+            <uib-tab select="mainCtrl.refreshVendorList('classical')" index="classical" heading="Classical acoustic"></uib-tab>
+            <uib-tab select="mainCtrl.refreshVendorList('western')" index="western" heading="Western acoustic"></uib-tab>
+            <uib-tab select="mainCtrl.refreshVendorList('electric')" index="electric" heading="Electric"></uib-tab>
+            <uib-tab select="mainCtrl.refreshVendorList('bass')" index="bass" heading="Bass"></uib-tab>
         </uib-tabset>
+        <div ui-view></div>
     </div>
 </div>
