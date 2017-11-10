@@ -1,4 +1,4 @@
-﻿export interface ILoadOnChangeService {
+﻿export interface IPendingTaskService {
     setPendingTask(task: any);
 
     cancelPendingTask();

@@ -7,7 +7,10 @@ import services from "./Services/services-module";
 import components from "./Components/components-module";
 import filters from "./Filters/filters-module";
 
-angular.module("legato", [uiRouter, ngAnimate, uiBootstrap, services, components, filters]);
+import Router from "./Routes/Router";
+
+angular.module("legato", [uiRouter, ngAnimate, uiBootstrap, services, components, filters])
+       .config(Router);
 
 angular.element(document).ready(() => {
     angular.bootstrap(document.documentElement, ["legato"]);

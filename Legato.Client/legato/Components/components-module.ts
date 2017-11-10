@@ -38,4 +38,12 @@ angular.module(directivesModuleName, [])
     .controller("ElectricController", ElectricController)
     .controller("BassController", BassController);
 
+export {
+    MainController,
+    ClassicalController,
+    WesternController,
+    ElectricController,
+    BassController
+};
+
 export default directivesModuleName;

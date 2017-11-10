@@ -1,4 +1,4 @@
-﻿import { ILoadOnChangeService } from "./src/ILoadOnChangeService";
+﻿import { IPendingTaskService } from "./src/IPendingTaskService";
 import { IGuitarResource } from "./src/IGuitarResource";
 import { IGuitarService } from "./src/IGuitarService";
 import { IVendorService } from "./src/IVendorService";
@@ -7,7 +7,7 @@ import { IService } from "./src/IService";
 
 
 export {
-    ILoadOnChangeService,
+    IPendingTaskService,
     IGuitarResource,
     IGuitarService,
     IVendorService,

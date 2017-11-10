@@ -3,7 +3,7 @@
 import ClassicalGuitarService from "./src/ClassicalGuitarService";
 import ElectricGuitarService from "./src/ElectricGuitarService";
 import WesternGuitarService from "./src/WesternGuitarService";
-import LoadOnChangeService from "./src/LoadOnChangeService";
+import PendingTaskService from "./src/PendingTaskService";
 import BassGuitarService from "./src/BassGuitarService";
 import GuitarResource from "./src/GuitarResource";
 import VendorService from "./src/VendorService";
@@ -15,7 +15,7 @@ angular.module(servicesModuleName, [])
     .service("ClassicalGuitarService", ClassicalGuitarService)
     .service("ElectricGuitarService", ElectricGuitarService)
     .service("WesternGuitarService", WesternGuitarService)
-    .service("LoadOnChangeService", LoadOnChangeService)
+    .service("PendingTaskService", PendingTaskService)
     .service("BassGuitarService", BassGuitarService)
     .service("GuitarResource", GuitarResource)
     .service("VendorService", VendorService)
@@ -25,6 +25,7 @@ export {
     ClassicalGuitarService,
     ElectricGuitarService,
     WesternGuitarService,
+    PendingTaskService,
     BassGuitarService,
     GuitarResource,
     VendorService,

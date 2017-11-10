@@ -1,7 +1,7 @@
-﻿import { ILoadOnChangeService } from "../../Interfaces/interfaces";
+﻿import { IPendingTaskService } from "../../Interfaces/interfaces";
 
 
-export default class LoadOnChangeService implements ILoadOnChangeService {
+export default class PendingTaskService implements IPendingTaskService {
     private taskHandle: ng.IPromise<{}>;
     private task: any;
     static $inject = ["$timeout"];
@@ -11,7 +11,6 @@ export default class LoadOnChangeService implements ILoadOnChangeService {
     }
 
     setPendingTask(task: any) {
-        console.log(task);
         this.task = task;
         this.taskHandle = this.$timeout(this.task, 750);
     }
