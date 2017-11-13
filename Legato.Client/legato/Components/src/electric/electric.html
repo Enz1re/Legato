@@ -4,7 +4,7 @@
             <ul uib-pagination
                 ng-if="!electricCtrl.error"
                 total-items="electricCtrl.paging.total"
-                ng-change="electricCtrl.onPageChanged()"
+                ng-change="electricCtrl.onPageChanged('electric')"
                 next-text=">>"
                 previous-text="<<"
                 items-per-page="electricCtrl.paging.itemsToShow"
@@ -39,7 +39,7 @@
                 ng-if="!electricCtrl.error"
                 legato-smooth-scroll
                 total-items="electricCtrl.paging.total"
-                ng-change="electricCtrl.onPageChanged()"
+                ng-change="electricCtrl.onPageChanged('electric')"
                 next-text=">>"
                 previous-text="<<"
                 items-per-page="electricCtrl.paging.itemsToShow"

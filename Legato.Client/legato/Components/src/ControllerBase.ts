@@ -6,24 +6,26 @@
     ClassicalGuitar
 } from "../../Models/models";
 
-import { IGuitarService } from "../../Interfaces/interfaces";
+import { IGuitarService, IUrlParamResolverFactoryService } from "../../Interfaces/interfaces";
 
 
 export abstract class ControllerBase<TGuitar extends Guitar> {
     noResults: boolean;
     guitars: TGuitar[];
-    price: Price;
+    price: Price = new Price;
     vendors: string[];
     sorting: Sorting = new Sorting();
     error = false;
     paging: Paging = new Paging();
 
-    constructor(protected service: IGuitarService<TGuitar>) {
+    constructor(protected $state: ng.ui.IStateService, protected service: IGuitarService<TGuitar>, protected resolverFactory: IUrlParamResolverFactoryService) {
+        this.paging.currentPage = resolverFactory.get().resolvePage();
         this.init();
     }
     
-    protected onPageChanged() {
-        this.paging.goNext();
+    protected onPageChanged(guitarName: string) {
+        this.paging.goToPage();
+        this.$state.go(guitarName, this.formGetParams());
         this.loadGuitarList();
     }
 
@@ -58,5 +60,23 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 this.error = true;
             });
         }
+    }
+
+    private formGetParams() {
+        let params: any = { page: this.paging.currentPage };
+
+        if (this.price && this.price.from && this.price.to) {
+            params.from = this.price.from;
+            params.to = this.price.to;
+        }
+        if (this.vendors) {
+            params.vendors = this.vendors.join();
+        }
+        if (this.sorting && this.sorting.required) {
+            params.name = this.sorting.name;
+            params.direction = this.sorting.direction;
+        }
+
+        return params;
     }
 }

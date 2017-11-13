@@ -97,6 +97,8 @@
     <TypeScriptCompile Include="legato\Interfaces\src\IGuitarService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IPendingTaskService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IService.ts" />
+    <TypeScriptCompile Include="legato\Interfaces\src\IUrlParamResolverFactoryService.ts" />
+    <TypeScriptCompile Include="legato\Interfaces\src\IUrlParamResolver.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IVendorService.ts" />
     <TypeScriptCompile Include="legato\legato-module.ts" />
     <TypeScriptCompile Include="legato\Models\models.ts" />
@@ -110,6 +112,7 @@
     <TypeScriptCompile Include="legato\Models\src\Paging.ts" />
     <TypeScriptCompile Include="legato\Models\src\Price.ts" />
     <TypeScriptCompile Include="legato\Models\src\Sorting.ts" />
+    <TypeScriptCompile Include="legato\Models\src\UrlParams.ts" />
     <TypeScriptCompile Include="legato\Models\src\Vendor.ts" />
     <TypeScriptCompile Include="legato\Models\src\VendorList.ts" />
     <TypeScriptCompile Include="legato\Models\src\WesternGuitar.ts" />
@@ -120,8 +123,10 @@
     <TypeScriptCompile Include="legato\Services\src\ElectricGuitarService.ts" />
     <TypeScriptCompile Include="legato\Services\src\GuitarResource.ts" />
     <TypeScriptCompile Include="legato\Services\services-module.ts" />
+    <TypeScriptCompile Include="legato\Services\src\UrlParamResolverFactoryService.ts" />
     <TypeScriptCompile Include="legato\Services\src\PendingTaskService.ts" />
     <TypeScriptCompile Include="legato\Services\src\ServiceBase.ts" />
+    <TypeScriptCompile Include="legato\Services\src\UrlParamResolver.ts" />
     <TypeScriptCompile Include="legato\Services\src\VendorService.ts" />
     <TypeScriptCompile Include="legato\Services\src\WesternGuitarService.ts" />
   </ItemGroup>

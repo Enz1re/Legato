@@ -2,20 +2,20 @@
 
 import { ControllerBase } from "../ControllerBase";
 
-import { IGuitarService } from "../../../Interfaces/interfaces";
+import { IGuitarService, IUrlParamResolverFactoryService } from "../../../Interfaces/interfaces";
 
 
 export class ClassicalController extends ControllerBase<ClassicalGuitar> implements ng.IController {
-    static $inject = ["$scope", "ClassicalGuitarService"];
+    static $inject = ["$scope", "$state", "ClassicalGuitarService", "UrlParamResolverFactoryService"];
 
-    constructor($scope: ng.IScope, service: IGuitarService<ClassicalGuitar>) {
-        super(service);
-        
+    constructor($scope: ng.IScope, $state: ng.ui.IStateService, service: IGuitarService<ClassicalGuitar>, urlResolverFactory: IUrlParamResolverFactoryService) {
+        super($state, service, urlResolverFactory);
+
         $scope.$on("classical", (e, params) => {
             this.price = params.price;
             this.vendors = params.vendors;
             this.sorting = params.sorting;
-            this.paging.goToFirstPage();
+            this.paging.goToPage();
             this.init();
         });
     }

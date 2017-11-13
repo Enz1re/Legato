@@ -6,7 +6,7 @@
 
 import { ClassicalController } from "../../../Components/src/classical/ClassicalController";
 
-import { IVendorService } from "../../../Interfaces/interfaces";
+import { IVendorService, IUrlParamResolverFactoryService } from "../../../Interfaces/interfaces";
 
 import { Constants } from "../../../Constants";
 
@@ -18,13 +18,22 @@ export class MainController implements ng.IController {
     activeTab: string;
     price: Price = new Price();
     sorting: Sorting = new Sorting();
-    static $inject = ["$scope", "$location", "$state", "VendorService"];
+    static $inject = ["$scope", "$state", "VendorService", "UrlParamResolverFactoryService"];
 
-    constructor(private $scope: ng.IScope, private $location: ng.ILocationService, private $state: ng.ui.IStateService, private service: IVendorService) {
-        this.refreshVendorList($location.path().split('/')[1], false);
+    constructor(private $scope: ng.IScope, private $state: ng.ui.IStateService, private service: IVendorService, private resolverFactory: IUrlParamResolverFactoryService) {
+        const gType = $state.current.name;
+        const urlParamResolver = resolverFactory.get();
+
+        this.price = urlParamResolver.resolvePrice();
+        this.sorting = urlParamResolver.resolveSorting();
+
+        this.activeTab = gType;
+        this.refreshVendorList(gType, false);
+
+        this.broadcastRequestEvent();
     }
 
-    refreshVendorList(guitarTypeName: string, needChangeState: boolean = true) {
+    refreshVendorList(guitarTypeName: string, needChangeState = true) {
         if (this.activeTab === guitarTypeName) {
             return;
         }
@@ -40,20 +49,25 @@ export class MainController implements ng.IController {
             this.price.to = null;
         }
         
+        let promise;
         switch (guitarTypeName) {
             case Constants.CLASSICAL:
-                this.refreshVendorListForClassicalGuitars();
+                promise = this.refreshVendorListForClassicalGuitars()
                 break;
             case Constants.WESTERN:
-                this.refreshVendorListForWesternGuitars();
+                promise = this.refreshVendorListForWesternGuitars();
                 break;
             case Constants.ELECTRIC:
-                this.refreshVendorListForElectricGuitars();
+                promise = this.refreshVendorListForElectricGuitars();
                 break;
             case Constants.BASS:
-                this.refreshVendorListForBassGuitars();
+                promise = this.refreshVendorListForBassGuitars();
                 break;
         }
+
+        promise.then(() => {
+            this.resolverFactory.get().resolveVendors(this.vendors);
+        });
 
         if (needChangeState) {
             this.$state.go(guitarTypeName);
@@ -64,9 +78,7 @@ export class MainController implements ng.IController {
         const checkedVendors = this.getCheckedVendors();
 
         this.$scope.$broadcast(this.activeTab, {
-            // Don't pass price filter if the filter object is not null, but From and To values are null
-            price: this.price.from && this.price.to ? this.price : null,
-            // Don't pass vendor filter if all vendors are checked
+            price: this.price,
             vendors: checkedVendors.length !== this.vendors.length ? checkedVendors : null,
             sorting: this.sorting
         });
@@ -85,34 +97,38 @@ export class MainController implements ng.IController {
     }
 
     private refreshVendorListForClassicalGuitars() {
-        this.service.getClassicalGuitarVendors().then(vendors => {
+        return this.service.getClassicalGuitarVendors().then(vendors => {
             this.vendors = vendors;
         }).catch(err => {
             this.error = true;
+            throw err;
         });
     }
 
     private refreshVendorListForWesternGuitars() {
-        this.service.getWesternGuitarVendors().then(vendors => {
+        return this.service.getWesternGuitarVendors().then(vendors => {
             this.vendors = vendors;
         }).catch(err => {
             this.error = true;
+            throw err;
         });
     }
 
     private refreshVendorListForElectricGuitars() {
-        this.service.getElectricGuitarVendors().then(vendors => {
+        return this.service.getElectricGuitarVendors().then(vendors => {
             this.vendors = vendors;
         }).catch(err => {
             this.error = true;
+            throw err;
         });
     }
 
     private refreshVendorListForBassGuitars() {
-        this.service.getBassGuitarVendors().then(vendors => {
+        return this.service.getBassGuitarVendors().then(vendors => {
             this.vendors = vendors;
         }).catch(err => {
             this.error = true;
+            throw err;
         });
     }
 }
