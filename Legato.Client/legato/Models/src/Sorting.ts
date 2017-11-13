@@ -3,8 +3,9 @@
     name: "Vendor" | "Price";
     direction: "Ascending" | "Descending";
 
-    constructor() {
-        this.name = "Vendor";
-        this.direction = "Ascending";
+    constructor(init?: Partial<Sorting>) {
+        Object.assign(this, init);
+        this.name = init ? init.name : "Vendor";
+        this.direction = init ? init.direction : "Ascending";
     }
 }

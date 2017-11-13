@@ -11,6 +11,7 @@ import GuitarList from "./src/GuitarList";
 import Amount from "./src/Amount";
 import Paging from "./src/Paging";
 import Filter from "./src/Filter";
+import UrlParams from "./src/UrlParams";
 
 
 export {
@@ -20,6 +21,7 @@ export {
     ElectricGuitar,
     WesternGuitar,
     Price,
+    UrlParams,
     Filter,
     Sorting,
     Vendor,
