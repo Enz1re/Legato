@@ -6,7 +6,7 @@
     ClassicalGuitar
 } from "../../Models/models";
 
-import { IGuitarService, IUrlParamResolverFactoryService } from "../../Interfaces/interfaces";
+import { IGuitarService, IRoutingService } from "../../Interfaces/interfaces";
 
 
 export abstract class ControllerBase<TGuitar extends Guitar> {
@@ -18,14 +18,14 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     error = false;
     paging: Paging = new Paging();
 
-    constructor(protected $state: ng.ui.IStateService, protected service: IGuitarService<TGuitar>, protected resolverFactory: IUrlParamResolverFactoryService) {
-        this.paging.currentPage = resolverFactory.get().resolvePage();
+    constructor(protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService) {
+        this.paging.currentPage = routingService.getParamResolver().resolvePage();
         this.init();
     }
     
     protected onPageChanged(guitarName: string) {
         this.paging.goToPage();
-        this.$state.go(guitarName, this.formGetParams());
+        this.routingService.go(guitarName, this.formGetParams());
         this.loadGuitarList();
     }
 
@@ -62,7 +62,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         }
     }
 
-    private formGetParams() {
+    private formGetParams(): any {
         let params: any = { page: this.paging.currentPage };
 
         if (this.price && this.price.from && this.price.to) {

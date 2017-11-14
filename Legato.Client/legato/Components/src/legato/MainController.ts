@@ -6,7 +6,7 @@
 
 import { ClassicalController } from "../../../Components/src/classical/ClassicalController";
 
-import { IVendorService, IUrlParamResolverFactoryService } from "../../../Interfaces/interfaces";
+import { IVendorService, IRoutingService } from "../../../Interfaces/interfaces";
 
 import { Constants } from "../../../Constants";
 
@@ -18,26 +18,29 @@ export class MainController implements ng.IController {
     activeTab: string;
     price: Price = new Price();
     sorting: Sorting = new Sorting();
-    static $inject = ["$scope", "$state", "VendorService", "UrlParamResolverFactoryService"];
+    static $inject = ["$scope", "RoutingService", "VendorService"];
 
-    constructor(private $scope: ng.IScope, private $state: ng.ui.IStateService, private service: IVendorService, private resolverFactory: IUrlParamResolverFactoryService) {
-        const gType = $state.current.name;
-        const urlParamResolver = resolverFactory.get();
+    constructor(private $scope: ng.IScope, private routingService: IRoutingService, private service: IVendorService) {
+        routingService.transition().then(name => {
+            const urlParamResolver = routingService.getParamResolver();
 
-        this.price = urlParamResolver.resolvePrice();
-        this.sorting = urlParamResolver.resolveSorting();
+            this.price = urlParamResolver.resolvePrice();
+            this.sorting = urlParamResolver.resolveSorting();
+            this.activeTab = name;
 
-        this.activeTab = gType;
-        this.refreshVendorList(gType, false);
+            this.initVendorList(name).then(() => {
+                this.vendors = urlParamResolver.resolveVendors(this.vendors);
+            });
 
-        this.broadcastRequestEvent();
+            this.broadcastRequestEvent();
+        }).catch(err => { });
     }
 
-    refreshVendorList(guitarTypeName: string, needChangeState = true) {
+    refreshVendorList(guitarTypeName: string) {
         if (this.activeTab === guitarTypeName) {
             return;
         }
-        
+
         this.vendors = [];
         this.activeTab = guitarTypeName;
 
@@ -48,30 +51,23 @@ export class MainController implements ng.IController {
         if (this.price.to === undefined) {
             this.price.to = null;
         }
-        
-        let promise;
+
         switch (guitarTypeName) {
             case Constants.CLASSICAL:
-                promise = this.refreshVendorListForClassicalGuitars()
+                this.refreshVendorListForClassicalGuitars()
                 break;
             case Constants.WESTERN:
-                promise = this.refreshVendorListForWesternGuitars();
+                this.refreshVendorListForWesternGuitars();
                 break;
             case Constants.ELECTRIC:
-                promise = this.refreshVendorListForElectricGuitars();
+                this.refreshVendorListForElectricGuitars();
                 break;
             case Constants.BASS:
-                promise = this.refreshVendorListForBassGuitars();
+                this.refreshVendorListForBassGuitars();
                 break;
         }
 
-        promise.then(() => {
-            this.resolverFactory.get().resolveVendors(this.vendors);
-        });
-
-        if (needChangeState) {
-            this.$state.go(guitarTypeName);
-        }
+        this.routingService.go(guitarTypeName, this.routingService.queryParams());
     }
 
     broadcastRequestEvent() {
@@ -84,9 +80,30 @@ export class MainController implements ng.IController {
         });
     }
 
+    // this method is called only in constructor because of state change that is invoked when the first tab on page load is seleted
+    private initVendorList(guitarTypeName: string) {
+        if (this.activeTab === guitarTypeName) {
+            return;
+        }
+
+        this.vendors = [];
+        this.activeTab = guitarTypeName;
+
+        switch (guitarTypeName) {
+            case Constants.CLASSICAL:
+                return this.refreshVendorListForClassicalGuitars()
+            case Constants.WESTERN:
+                return this.refreshVendorListForWesternGuitars();
+            case Constants.ELECTRIC:
+                return this.refreshVendorListForElectricGuitars();
+            case Constants.BASS:
+                return this.refreshVendorListForBassGuitars();
+        }
+    }
+
     private getCheckedVendors() {
         let vendors = [];
-
+        
         for (let v of this.vendors) {
             if (v.isSelected) {
                 vendors.push(v.name);

@@ -2,15 +2,15 @@
 
 import { ControllerBase } from "../ControllerBase";
 
-import { IGuitarService, IUrlParamResolverFactoryService } from "../../../Interfaces/interfaces";
+import { IGuitarService, IRoutingService } from "../../../Interfaces/interfaces";
 
 
 export class WesternController extends ControllerBase<WesternGuitar> implements ng.IController {
-    static $inject = ["$scope", "$state", "ClassicalGuitarService", "UrlParamResolverFactoryService"];
+    static $inject = ["$scope", "WesternGuitarService", "RoutingService"];
 
-    constructor($scope: ng.IScope, $state: ng.ui.IStateService, service: IGuitarService<WesternGuitar>, urlResolverFactory: IUrlParamResolverFactoryService) {
-        super($state, service, urlResolverFactory);
-
+    constructor($scope: ng.IScope, service: IGuitarService<WesternGuitar>, routingService: IRoutingService) {
+        super(service, routingService);
+        
         $scope.$on("western", (e, params) => {
             this.price = params.price;
             this.vendors = params.vendors;
