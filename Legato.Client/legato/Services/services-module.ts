@@ -1,6 +1,5 @@
 ﻿import angular from "angular";
 
-import UrlParamResolverFactoryService from "./src/UrlParamResolverFactoryService"
 import ClassicalGuitarService from "./src/ClassicalGuitarService";
 import ElectricGuitarService from "./src/ElectricGuitarService";
 import WesternGuitarService from "./src/WesternGuitarService";
@@ -8,6 +7,7 @@ import PendingTaskService from "./src/PendingTaskService";
 import BassGuitarService from "./src/BassGuitarService";
 import UrlParamResolver from "./src/UrlParamResolver";
 import GuitarResource from "./src/GuitarResource";
+import RoutingService from "./src/RoutingService";
 import VendorService from "./src/VendorService";
 import CacheService from "./src/CacheService";
 
@@ -22,10 +22,9 @@ angular.module(servicesModuleName, [])
     .service("GuitarResource", GuitarResource)
     .service("VendorService", VendorService)
     .service("CacheService", CacheService)
-    .service("UrlParamResolverFactoryService", UrlParamResolverFactoryService);
+    .service("RoutingService", RoutingService);
 
 export {
-    UrlParamResolverFactoryService,
     ClassicalGuitarService,
     ElectricGuitarService,
     WesternGuitarService,
@@ -33,6 +32,7 @@ export {
     BassGuitarService,
     UrlParamResolver,
     GuitarResource,
+    RoutingService,
     VendorService,
     CacheService,
 };
