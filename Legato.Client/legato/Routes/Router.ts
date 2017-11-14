@@ -14,32 +14,57 @@ export default class Router {
     constructor($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
         $stateProvider
             .state("classical", {
-                url: "/classical?page",
+                url: "/classical",
                 templateUrl: "legato/Components/src/classical/classical.html",
                 controller: ClassicalController,
                 controllerAs: "classicalCtrl",
-                params: UrlParams
+                params: UrlParams,
+                //params: {
+                //    from: null,
+                //    to: null,
+                //    vendors: null,
+                //    name: null,
+                //    direction: null
+                //}
             })
             .state("western", {
-                url: "/western?page",
+                url: "/western",
                 templateUrl: "legato/Components/src/western/western.html",
                 controller: WesternController,
                 controllerAs: "westernCtrl",
-                params: UrlParams
+                params: {
+                    from: null,
+                    to: null,
+                    vendors: null,
+                    name: null,
+                    direction: null
+                }
             })
             .state("electric", {
-                url: "/electric?page",
+                url: "/electric",
                 templateUrl: "legato/Components/src/electric/electric.html",
                 controller: ElectricController,
                 controllerAs: "electricCtrl",
-                params: UrlParams
+                params: {
+                    from: null,
+                    to: null,
+                    vendors: null,
+                    name: null,
+                    direction: null
+                }
             })
             .state("bass", {
-                url: "/bass?page",
+                url: "/bass",
                 templateUrl: "legato/Components/src/bass/bass.html",
                 controller: BassController,
                 controllerAs: "bassCtrl",
-                params: UrlParams
+                params: {
+                    from: null,
+                    to: null,
+                    vendors: null,
+                    name: null,
+                    direction: null
+                }
             });
 
         $urlRouterProvider.otherwise("/classical?page=1");
