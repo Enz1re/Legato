@@ -36,13 +36,10 @@ export class MainController implements ng.IController {
         }).catch(err => { });
     }
 
-    refreshVendorList(guitarTypeName: string) {
-        if (this.activeTab === guitarTypeName) {
+    refreshVendorList(click, guitarTypeName: string) {
+        if (this.activeTab === guitarTypeName || click === undefined) {
             return;
         }
-
-        this.vendors = [];
-        this.activeTab = guitarTypeName;
 
         // set price values to null to clean up input fields
         if (this.price.from === undefined) {
@@ -52,27 +49,14 @@ export class MainController implements ng.IController {
             this.price.to = null;
         }
 
-        switch (guitarTypeName) {
-            case Constants.CLASSICAL:
-                this.refreshVendorListForClassicalGuitars()
-                break;
-            case Constants.WESTERN:
-                this.refreshVendorListForWesternGuitars();
-                break;
-            case Constants.ELECTRIC:
-                this.refreshVendorListForElectricGuitars();
-                break;
-            case Constants.BASS:
-                this.refreshVendorListForBassGuitars();
-                break;
-        }
+        this.initVendorList(guitarTypeName);
 
-        this.routingService.go(guitarTypeName, this.routingService.queryParams());
+        this.routingService.redirect(this.activeTab, this.routingService.queryParams());
     }
 
     broadcastRequestEvent() {
         const checkedVendors = this.getCheckedVendors();
-
+        
         this.$scope.$broadcast(this.activeTab, {
             price: this.price,
             vendors: checkedVendors.length !== this.vendors.length ? checkedVendors : null,
@@ -82,10 +66,6 @@ export class MainController implements ng.IController {
 
     // this method is called only in constructor because of state change that is invoked when the first tab on page load is seleted
     private initVendorList(guitarTypeName: string) {
-        if (this.activeTab === guitarTypeName) {
-            return;
-        }
-
         this.vendors = [];
         this.activeTab = guitarTypeName;
 

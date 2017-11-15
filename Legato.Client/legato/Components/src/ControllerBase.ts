@@ -25,7 +25,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     
     protected onPageChanged(guitarName: string) {
         this.paging.goToPage();
-        this.routingService.go(guitarName, this.formGetParams());
+        this.routingService.replace(guitarName, this.formGetParams());
         this.loadGuitarList();
     }
 

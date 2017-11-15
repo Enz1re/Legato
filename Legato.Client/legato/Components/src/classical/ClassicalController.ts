@@ -12,7 +12,6 @@ export class ClassicalController extends ControllerBase<ClassicalGuitar> impleme
         super(service, routingService);
         
         $scope.$on("classical", (e, params) => {
-            console.log(params);
             this.price = params.price;
             this.vendors = params.vendors;
             this.sorting = params.sorting;
