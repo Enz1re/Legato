@@ -42,7 +42,14 @@ export default class RoutingService implements IRoutingService {
         return deferred.promise;
     }
 
-    go(stateName: string, params?: Partial<UrlParams>) {
+    redirect(stateName: string, params?: Partial<UrlParams>) {
         this.$state.go(stateName, params);
+    }
+
+    replace(stateName: string, params?: Partial<UrlParams>) {
+        this.$state.transitionTo(stateName, params, {
+            location: 'replace',
+            notify: false
+        });
     }
 }
