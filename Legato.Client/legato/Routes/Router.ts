@@ -14,56 +14,32 @@ export default class Router {
     constructor($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
         $stateProvider
             .state("classical", {
-                url: "/classical?page",
-                templateUrl: "legato/Components/src/classical/classical.html",
+                url: "/classical?page&from&to&vendors&name&direction",
+                template: "<classical price=\"mainCtrl.price\" vendors=\"mainCtrl.vendors\" sorting=\"mainCtrl.sorting\"></classical>",
                 controller: ClassicalController,
                 controllerAs: "classicalCtrl",
-                params: {
-                    from: null,
-                    to: null,
-                    vendors: null,
-                    name: null,
-                    direction: null
-                }
+                reloadOnSearch: false
             })
             .state("western", {
-                url: "/western?page",
-                templateUrl: "legato/Components/src/western/western.html",
+                url: "/western?page&from&to&vendors&name&direction",
+                template: "<western price=\"mainCtrl.price\" vendors=\"mainCtrl.vendors\" sorting=\"mainCtrl.sorting\"></western>",
                 controller: WesternController,
                 controllerAs: "westernCtrl",
-                params: {
-                    from: null,
-                    to: null,
-                    vendors: null,
-                    name: null,
-                    direction: null
-                }
+                reloadOnSearch: false
             })
             .state("electric", {
-                url: "/electric?page",
-                templateUrl: "legato/Components/src/electric/electric.html",
+                url: "/electric?page&from&to&vendors&name&direction",
+                template: "<electric price=\"mainCtrl.price\" vendors=\"mainCtrl.vendors\" sorting=\"mainCtrl.sorting\"></electric>",
                 controller: ElectricController,
                 controllerAs: "electricCtrl",
-                params: {
-                    from: null,
-                    to: null,
-                    vendors: null,
-                    name: null,
-                    direction: null
-                }
+                reloadOnSearch: false
             })
             .state("bass", {
-                url: "/bass?page",
-                templateUrl: "legato/Components/src/bass/bass.html",
+                url: "/bass?page&from&to&vendors&name&direction",
+                template: "<bass price=\"mainCtrl.price\" vendors=\"mainCtrl.vendors\" sorting=\"mainCtrl.sorting\"></bass>",
                 controller: BassController,
                 controllerAs: "bassCtrl",
-                params: {
-                    from: null,
-                    to: null,
-                    vendors: null,
-                    name: null,
-                    direction: null
-                }
+                reloadOnSearch: false
             });
 
         $urlRouterProvider.otherwise("/classical?page=1");
