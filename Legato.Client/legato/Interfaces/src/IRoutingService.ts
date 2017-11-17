@@ -8,7 +8,7 @@ export interface IRoutingService {
 
     url(): string;
 
-    transition(): ng.IPromise<any>;
+    urlSegments(): string[];
 
     queryParams(): any;
 

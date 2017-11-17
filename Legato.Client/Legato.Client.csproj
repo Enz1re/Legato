@@ -93,6 +93,7 @@
     <TypeScriptCompile Include="legato\Filters\src\VendorFilter.ts" />
     <TypeScriptCompile Include="legato\Interfaces\interfaces.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\ICacheService.ts" />
+    <TypeScriptCompile Include="legato\Interfaces\src\IFilterUpdateService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IGuitarResource.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IGuitarService.ts" />
     <TypeScriptCompile Include="legato\Interfaces\src\IPendingTaskService.ts" />
@@ -121,6 +122,7 @@
     <TypeScriptCompile Include="legato\Services\src\CacheService.ts" />
     <TypeScriptCompile Include="legato\Services\src\ClassicalGuitarService.ts" />
     <TypeScriptCompile Include="legato\Services\src\ElectricGuitarService.ts" />
+    <TypeScriptCompile Include="legato\Services\src\FilterUpdateService.ts" />
     <TypeScriptCompile Include="legato\Services\src\GuitarResource.ts" />
     <TypeScriptCompile Include="legato\Services\services-module.ts" />
     <TypeScriptCompile Include="legato\Services\src\RoutingService.ts" />
