@@ -11,13 +11,13 @@
 </div>
 <div class="main-container">
     <div class="left-panel">
-        <div>
+        <div legato-load-on-change>
             <div class="find-by-cost-title">Find by cost</div>
-            <form name="price" ng-model="mainCtrl.price" legato-validate-price legato-load-on-change>
+            <form name="price" ng-model="mainCtrl.price" legato-validate-price>
                 <div>From:</div>
-                <input type="number" ng-maxlength="8" ng-model="mainCtrl.price.from" />
+                <input type="number" ng-change="mainCtrl.onPriceChanged()" ng-maxlength="8" ng-model="mainCtrl.price.from" />
                 <div>To:</div>
-                <input type="number" ng-maxlength="8" ng-model="mainCtrl.price.to" />
+                <input type="number" ng-change="mainCtrl.onPriceChanged()" ng-maxlength="8" ng-model="mainCtrl.price.to" />
                 <div ng-if="price.$error.greater">
                     <small class="error">"To" value has to be greater than "from"</small>
                 </div>
@@ -30,22 +30,22 @@
                     Error processing your request. Please try again later.
                 </small>
             </div>
-            <div class="vendors-container" ng-repeat="vendor in mainCtrl.vendors" legato-load-on-change>
-                <div><input type="checkbox" ng-model="vendor.isSelected"> {{vendor.name}}</div>
+            <div class="vendors-container" ng-repeat="vendor in mainCtrl.vendors">
+                <div><input type="checkbox" ng-change="mainCtrl.onVendorsChanged()" ng-model="vendor.isSelected"> {{vendor.name}}</div>
             </div>
             <p></p>
-            <div>Sort – <input type="checkbox" ng-model="mainCtrl.sorting.required"/></div>
+            <div>Sort – <input type="checkbox" ng-model="mainCtrl.sorting.required" ng-change="mainCtrl.onSortingChanged()"/></div>
             <p></p>
-            <div ng-if="mainCtrl.sorting.required" legato-load-on-change>
+            <div ng-show="mainCtrl.sorting.required">
                 <div>By:</div>
                 <p></p>
                 <div>
-                    <select ng-model="mainCtrl.sorting.name">
+                    <select ng-model="mainCtrl.sorting.name" ng-change="mainCtrl.onSortingChanged()">
                         <option title="Vendor">Vendor</option>
                         <option title="Price">Price</option>
                     </select>
                     <div ng-show="mainCtrl.sorting.name === 'Price'">
-                        <select ng-model="mainCtrl.sorting.direction">
+                        <select ng-model="mainCtrl.sorting.direction" ng-change="mainCtrl.onSortingChanged()">
                             <option title="Ascending">Ascending</option>
                             <option title="Descending">Descending</option>
                         </select>

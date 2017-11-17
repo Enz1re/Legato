@@ -4,9 +4,11 @@
     Sorting
 } from "../../../Models/models";
 
-import { ClassicalController } from "../../../Components/src/classical/ClassicalController";
-
-import { IVendorService, IRoutingService } from "../../../Interfaces/interfaces";
+import {
+    IVendorService,
+    IRoutingService,
+    IFilterUpdateService
+} from "../../../Interfaces/interfaces";
 
 import { Constants } from "../../../Constants";
 
@@ -18,22 +20,20 @@ export class MainController implements ng.IController {
     activeTab: string;
     price: Price = new Price();
     sorting: Sorting = new Sorting();
-    static $inject = ["$scope", "RoutingService", "VendorService"];
+    static $inject = ["RoutingService", "FilterUpdateService", "VendorService"];
 
-    constructor(private $scope: ng.IScope, private routingService: IRoutingService, private service: IVendorService) {
-        routingService.transition().then(name => {
-            const urlParamResolver = routingService.getParamResolver();
+    constructor(private routingService: IRoutingService, private filterUpdateService: IFilterUpdateService, private service: IVendorService) {
+        const name = routingService.urlSegments()[1];
+        const urlParamResolver = routingService.getParamResolver();
 
-            this.price = urlParamResolver.resolvePrice();
-            this.sorting = urlParamResolver.resolveSorting();
-            this.activeTab = name;
+        this.price = this.filterUpdateService.filter.price = urlParamResolver.resolvePrice();
+        this.sorting = this.filterUpdateService.filter.sorting = urlParamResolver.resolveSorting();
 
-            this.initVendorList(name).then(() => {
-                this.vendors = urlParamResolver.resolveVendors(this.vendors);
-            });
+        this.activeTab = name;
 
-            this.broadcastRequestEvent();
-        }).catch(err => { });
+        this.initVendorList(name).then(() => {
+            this.vendors = this.filterUpdateService.filter.vendors = urlParamResolver.resolveVendors(this.vendors);
+        });
     }
 
     refreshVendorList(click, guitarTypeName: string) {
@@ -53,19 +53,20 @@ export class MainController implements ng.IController {
 
         this.routingService.redirect(this.activeTab, this.routingService.queryParams());
     }
-
-    broadcastRequestEvent() {
-        const checkedVendors = this.getCheckedVendors();
-        
-        this.$scope.$broadcast(this.activeTab, {
-            price: this.price,
-            vendors: checkedVendors.length !== this.vendors.length ? checkedVendors : null,
-            sorting: this.sorting
-        });
+    
+    onPriceChanged() {
+        this.filterUpdateService.filter.price = this.price;
     }
 
-    // this method is called only in constructor because of state change that is invoked when the first tab on page load is seleted
-    private initVendorList(guitarTypeName: string) {
+    onVendorsChanged() {
+        this.filterUpdateService.filter.vendors = this.vendors;
+    }
+
+    onSortingChanged() {
+        this.filterUpdateService.filter.sorting = this.sorting;
+    }
+
+    private initVendorList(guitarTypeName: string): ng.IPromise<void> {
         this.vendors = [];
         this.activeTab = guitarTypeName;
 
@@ -79,18 +80,6 @@ export class MainController implements ng.IController {
             case Constants.BASS:
                 return this.refreshVendorListForBassGuitars();
         }
-    }
-
-    private getCheckedVendors() {
-        let vendors = [];
-        
-        for (let v of this.vendors) {
-            if (v.isSelected) {
-                vendors.push(v.name);
-            }
-        }
-        
-        return vendors;
     }
 
     private refreshVendorListForClassicalGuitars() {

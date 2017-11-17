@@ -1,8 +1,18 @@
-﻿import { IPendingTaskService } from "../../../Interfaces/interfaces";
+﻿import angular from 'angular';
+
+import {
+    Price,
+    Vendor,
+    Sorting
+} from "../../../Models/models";
+
+import {
+    IRoutingService,
+    IPendingTaskService,
+    IFilterUpdateService
+} from "../../../Interfaces/interfaces";
 
 import { MainController } from "../../../Components/src/legato/MainController";
-
-import angular from 'angular';
 
 
 export class LegatoLoadOnChangeDirective implements ng.IDirective {
@@ -16,80 +26,42 @@ export class LegatoLoadOnChangeDirective implements ng.IDirective {
         "checkbox", "radio"
     ];
 
-    constructor(private onChangeService: IPendingTaskService) {
+    constructor(private onChangeService: IPendingTaskService, private routingService: IRoutingService, private filterUpdateService: IFilterUpdateService) {
 
     }
 
     link(scope: ng.IScope, element: JQLite, attrs: ng.IAttributes, mainCtrl: MainController) {
-        // check if the element is a form to invoke validity check in future
-        const isForm = element.prop("tagName") === "FORM";
-        const formName = isForm ? element.prop("name") : null;
-
-        this.getInputTextFields(element).forEach(obj => {
-            obj.on("input", e => {
-                this.onChangeService.cancelPendingTask();
-                
-                if (!isForm || (isForm && scope[formName].$valid)) {
-                    this.onChangeService.setPendingTask(mainCtrl.broadcastRequestEvent.bind(mainCtrl));
-                }
-            });
-        });
-
-        this.getInputBoxFields(element).forEach(obj => {
-            obj.on("change", e => {
-                this.onChangeService.cancelPendingTask();
-                
-                if (!isForm || (isForm && scope[formName].$valid)) {
-                    this.onChangeService.setPendingTask(mainCtrl.broadcastRequestEvent.bind(mainCtrl));
-                }
-            });
-        });
-
-        element.find("select").on("change", e => {
+        scope.$watch(() => this.filterUpdateService.filter, (newValue, oldValue) => {
+            const stateName = this.routingService.urlSegments()[1];
             this.onChangeService.cancelPendingTask();
-            this.onChangeService.setPendingTask(mainCtrl.broadcastRequestEvent.bind(mainCtrl));
-        });
-    }
 
+
+            if (newValue.price.from !== oldValue.price.from || newValue.price.to !== oldValue.price.to) {
+                this.onChangeService.setPendingTask(() => {
+                    this.filterUpdateService.replacePriceQueryParams(stateName);
+                });
+            }
+            else if (angular.toJson(newValue.vendors.filter(v => v.isSelected)) ===
+                     angular.toJson(oldValue.vendors.filter(v => v.isSelected))) {
+                this.onChangeService.setPendingTask(() => {
+                    this.filterUpdateService.replaceVendorQueryParams(stateName);
+                });
+            }
+            else if (newValue.sorting.required !== oldValue.sorting.required ||
+                     newValue.sorting.name !== oldValue.sorting.name ||
+                     newValue.sorting.direction !== oldValue.sorting.direction) {
+                this.onChangeService.setPendingTask(() => {
+                    this.filterUpdateService.replaceSortingQueryParams(stateName);
+                })
+            }
+        }, true);
+    }
+    
     static create() {
-        const directive: ng.IDirectiveFactory = (onChangeService: IPendingTaskService) => new LegatoLoadOnChangeDirective(onChangeService);
-        directive.$inject = ["PendingTaskService"];
+        const directive: ng.IDirectiveFactory = (onChangeService: IPendingTaskService, routingService: IRoutingService, filterUpdateService: IFilterUpdateService) => {
+            return new LegatoLoadOnChangeDirective(onChangeService, routingService, filterUpdateService);
+        }
+        directive.$inject = ["PendingTaskService", "RoutingService", "FilterUpdateService"];
         return directive;
-    }
-
-    private getInputTextFields(container: JQLite) {
-        const allInputs = container.find("input");
-        let filtered = [];
-        
-        angular.forEach(allInputs, (value, key) => {
-            const jqueryObj = angular.element(value);
-            if (this.isTextField(jqueryObj)) {
-                filtered.push(jqueryObj);
-            }
-        });
-        
-        return filtered;
-    }
-
-    private getInputBoxFields(container: JQLite) {
-        const allInputs = container.find("input");
-        let filtered = [];
-        
-        angular.forEach(allInputs, (value, key) => {
-            const jqueryObj = angular.element(value);
-            if (this.isBoxField(jqueryObj)) {
-                filtered.push(jqueryObj);
-            }
-        });
-        
-        return filtered;
-    }
-
-    private isTextField(input: JQLite) {
-        return this.inputTextFieldTypes.indexOf(input.attr("type")) !== -1;
-    }
-
-    private isBoxField(input: JQLite) {
-        return this.inputBoxTypes.indexOf(input.attr("type")) !== -1;
     }
 }

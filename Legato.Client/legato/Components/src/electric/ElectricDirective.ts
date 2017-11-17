@@ -2,6 +2,11 @@
     restrict = "E";
     controller = "ElectricController";
     controllerAs = "electricCtrl";
+    bindToController = {
+        price: "=",
+        vendors: "=",
+        sorting: "="
+    };
     templateUrl = "legato/Components/src/electric/electric.html";
     scope = {};
 

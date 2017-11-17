@@ -1,22 +1,18 @@
-﻿import { ClassicalGuitar } from "../../../Models/models"
+﻿import { ClassicalGuitar } from "../../../Models/models";
 
 import { ControllerBase } from "../ControllerBase";
 
-import { IGuitarService, IRoutingService } from "../../../Interfaces/interfaces";
+import {
+    IGuitarService,
+    IRoutingService,
+    IFilterUpdateService
+} from "../../../Interfaces/interfaces";
 
 
 export class ClassicalController extends ControllerBase<ClassicalGuitar> implements ng.IController {
-    static $inject = ["$scope", "ClassicalGuitarService", "RoutingService"];
+    static $inject = ["ClassicalGuitarService", "RoutingService", "FilterUpdateService"];
 
-    constructor($scope: ng.IScope, service: IGuitarService<ClassicalGuitar>, routingService: IRoutingService) {
+    constructor(service: IGuitarService<ClassicalGuitar>, routingService: IRoutingService, private filterUpdateService: IFilterUpdateService) {
         super(service, routingService);
-        
-        $scope.$on("classical", (e, params) => {
-            this.price = params.price;
-            this.vendors = params.vendors;
-            this.sorting = params.sorting;
-            this.paging.goToPage();
-            this.init();
-        });
     }
 }

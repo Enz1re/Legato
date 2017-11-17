@@ -2,6 +2,11 @@
     restrict = "E";
     controller = "ClassicalController";
     controllerAs = "classicalCtrl";
+    bindToController = {
+        price: "=",
+        vendors: "=",
+        sorting: "="
+    };
     templateUrl = "legato/Components/src/classical/classical.html";
     scope = {};
 

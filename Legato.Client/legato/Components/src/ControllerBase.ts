@@ -2,8 +2,8 @@
     Price,
     Guitar,
     Paging,
+    Vendor,
     Sorting,
-    ClassicalGuitar
 } from "../../Models/models";
 
 import { IGuitarService, IRoutingService } from "../../Interfaces/interfaces";
@@ -13,7 +13,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     noResults: boolean;
     guitars: TGuitar[];
     price: Price = new Price;
-    vendors: string[];
+    vendors: Vendor[] = [];
     sorting: Sorting = new Sorting();
     error = false;
     paging: Paging = new Paging();
@@ -31,7 +31,6 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
 
     protected init() {
         this.error = false;
-
         this.service.getAmount(this.price, this.vendors).then(amount => {
             this.paging.total = amount;
         }).then(() => {
