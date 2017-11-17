@@ -7,6 +7,7 @@
 import {
     Price,
     Paging,
+    Vendor,
     BassGuitar
 } from "../../Models/models";
 
@@ -21,7 +22,7 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
         this.$$cache = cache.create("bassGuitarCache", 16);
     }
 
-    getGuitars(price: Price, vendors: string[], paging: Paging): ng.IPromise<BassGuitar[]> {
+    getGuitars(price: Price, vendors: Vendor[], paging: Paging): ng.IPromise<BassGuitar[]> {
         const key = this.createCacheKey(price, vendors, paging);
         const cachedData = this.$$cache.get<BassGuitar[]>(key);
 
@@ -29,7 +30,10 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
-            return this.resource.getBassGuitars({ priceFilter: price, vendorFilter: { vendors: vendors } }, paging).then(guitars => {
+            return this.resource.getBassGuitars({
+                priceFilter: price,
+                vendorFilter: { vendors: vendors.map(v => v.name) }
+            }, paging).then(guitars => {
                 this.pendingRequests--;
                 this.$$cache.put(key, guitars);
                 return guitars;
@@ -40,7 +44,7 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
         }
     }
 
-    getSortedGuitars(price: Price, vendors: string[], paging: Paging, sortHeader: string, sortDirection: string) {
+    getSortedGuitars(price: Price, vendors: Vendor[], paging: Paging, sortHeader: string, sortDirection: string) {
         const key = this.createCacheKey(price, paging, { sortHeader: sortHeader, sortDirection: sortDirection });
         const cachedData = this.$$cache.get<BassGuitar[]>(key);
 
@@ -48,12 +52,10 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
-            return this.resource.getSortedBassGuitars(
-                { priceFilter: price, vendorFilter: { vendors: vendors } },
-                paging,
-                sortHeader,
-                sortDirection
-            ).then(guitars => {
+            return this.resource.getSortedBassGuitars({
+                priceFilter: price,
+                vendorFilter: { vendors: vendors.map(v => v.name) }
+            }, paging, sortHeader, sortDirection).then(guitars => {
                 this.pendingRequests--;
                 this.$$cache.put(key, guitars);
                 return guitars;
@@ -64,7 +66,7 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
         }
     }
 
-    getAmount(price: Price, vendors: string[]): ng.IPromise<number> {
+    getAmount(price: Price, vendors: Vendor[]): ng.IPromise<number> {
         const key = this.createCacheKey(price, vendors);
         const cachedData = this.$$cache.get<number>(key);
 
@@ -72,7 +74,7 @@ export default class BassGuitarService extends ServiceBase implements IGuitarSer
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
-            return this.resource.getBassGuitarQuantity({ priceFilter: price, vendorFilter: { vendors: vendors } }).then(q => {
+            return this.resource.getBassGuitarQuantity({ priceFilter: price, vendorFilter: { vendors: vendors.map(v => v.name) } }).then(q => {
                 this.pendingRequests--;
                 this.$$cache.put(key, q);
                 return q;

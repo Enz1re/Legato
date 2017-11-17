@@ -3,6 +3,7 @@
 import ClassicalGuitarService from "./src/ClassicalGuitarService";
 import ElectricGuitarService from "./src/ElectricGuitarService";
 import WesternGuitarService from "./src/WesternGuitarService";
+import FilterUpdateService from "./src/FilterUpdateService";
 import PendingTaskService from "./src/PendingTaskService";
 import BassGuitarService from "./src/BassGuitarService";
 import UrlParamResolver from "./src/UrlParamResolver";
@@ -22,12 +23,14 @@ angular.module(servicesModuleName, [])
     .service("GuitarResource", GuitarResource)
     .service("VendorService", VendorService)
     .service("CacheService", CacheService)
-    .service("RoutingService", RoutingService);
+    .service("RoutingService", RoutingService)
+    .service("FilterUpdateService", FilterUpdateService);
 
 export {
     ClassicalGuitarService,
     ElectricGuitarService,
     WesternGuitarService,
+    FilterUpdateService,
     PendingTaskService,
     BassGuitarService,
     UrlParamResolver,

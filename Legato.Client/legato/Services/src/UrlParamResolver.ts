@@ -37,9 +37,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
         }
 
         const checkedVendors = this.stateParamsObject.vendors.split(',');
-        vendorList.forEach(v => {
-            v.isSelected = checkedVendors.indexOf(v.name) !== -1;
-        });
+        this.uncheckVendors(vendorList, checkedVendors);
 
         return vendorList;
     }
@@ -53,6 +51,12 @@ export default class UrlParamResolver implements IUrlParamResolver {
             required: true,
             name: this.stateParamsObject.name,
             direction: this.stateParamsObject.direction
+        });
+    }
+
+    private uncheckVendors(allVendors: Vendor[], queriedVendors: string[]) {
+        allVendors.forEach(v => {
+            v.isSelected = queriedVendors.indexOf(v.name) !== -1;
         });
     }
 }

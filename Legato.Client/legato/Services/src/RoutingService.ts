@@ -6,10 +6,9 @@ import { IRoutingService, IUrlParamResolver } from "../../Interfaces/interfaces"
 
 
 export default class RoutingService implements IRoutingService {
-    static $inject = ["$q", "$state", "$stateParams", "$location"];
+    static $inject = ["$state", "$stateParams", "$location"];
 
-    constructor(private $q: ng.IQService, private $state: ng.ui.IStateService,
-                private $stateParams: ng.ui.IStateParamsService, private $location: ng.ILocationService) {
+    constructor(private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService, private $location: ng.ILocationService) {
 
     }
 
@@ -21,25 +20,12 @@ export default class RoutingService implements IRoutingService {
         return this.$location.url();
     }
 
-    queryParams() {
-        return this.$stateParams;
+    urlSegments() {
+        return this.$location.path().split('/');
     }
 
-    transition() {
-        const deferred = this.$q.defer();
-        
-        if (!this.$state.transition) {
-            deferred.resolve(this.$state.current.name);
-            return deferred.promise;
-        }
-
-        this.$state.transition.then(() => {
-            deferred.resolve(this.$state.current.name);
-        }).catch(err => {
-            deferred.reject(err);
-        });
-
-        return deferred.promise;
+    queryParams() {
+        return this.$stateParams;
     }
 
     redirect(stateName: string, params?: Partial<UrlParams>) {
