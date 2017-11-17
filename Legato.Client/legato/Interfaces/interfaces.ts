@@ -1,4 +1,5 @@
-﻿import { IPendingTaskService } from "./src/IPendingTaskService";
+﻿import { IFilterUpdateService } from "./src/IFilterUpdateService";
+import { IPendingTaskService } from "./src/IPendingTaskService";
 import { IUrlParamResolver } from "./src/IUrlParamResolver";
 import { IGuitarResource } from "./src/IGuitarResource";
 import { IRoutingService } from "./src/IRoutingService";
@@ -9,6 +10,7 @@ import { IService } from "./src/IService";
 
 
 export {
+    IFilterUpdateService,
     IPendingTaskService,
     IUrlParamResolver,
     IGuitarResource,
