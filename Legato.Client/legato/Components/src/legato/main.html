@@ -31,7 +31,10 @@
                 </small>
             </div>
             <div class="vendors-container" ng-repeat="vendor in mainCtrl.vendors">
-                <div><input type="checkbox" ng-change="mainCtrl.onVendorsChanged()" ng-model="vendor.isSelected"> {{vendor.name}}</div>
+                <div>
+                    <input id="{{vendor.name}}" type="checkbox" ng-change="mainCtrl.onVendorsChanged()" ng-model="vendor.isSelected">
+                     <label for="{{vendor.name}}">{{vendor.name}}</label>
+                </div>
             </div>
             <p></p>
             <div>Sort – <input type="checkbox" ng-model="mainCtrl.sorting.required" ng-change="mainCtrl.onSortingChanged()"/></div>
@@ -56,10 +59,10 @@
     </div>
     <div id="main-panel" ng-animate-children>
         <uib-tabset active="mainCtrl.activeTab" type="pills" justified="true">
-            <uib-tab select="mainCtrl.refreshVendorList($event, 'classical')" index="'classical'" heading="Classical acoustic"></uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList($event, 'western')" index="'western'" heading="Western acoustic"></uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList($event, 'electric')" index="'electric'" heading="Electric"></uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList($event, 'bass')" index="'bass'" heading="Bass"></uib-tab>
+            <uib-tab select="mainCtrl.refreshVendorList($event, 'classical')" deselect="mainCtrl.onTabDeselected('classical')" index="'classical'" heading="Classical acoustic"></uib-tab>
+            <uib-tab select="mainCtrl.refreshVendorList($event, 'western')" deselect="mainCtrl.onTabDeselected('western')" index="'western'" heading="Western acoustic"></uib-tab>
+            <uib-tab select="mainCtrl.refreshVendorList($event, 'electric')" deselect="mainCtrl.onTabDeselected('electric')" index="'electric'" heading="Electric"></uib-tab>
+            <uib-tab select="mainCtrl.refreshVendorList($event, 'bass')" deselect="mainCtrl.onTabDeselected('bass')" index="'bass'" heading="Bass"></uib-tab>
         </uib-tabset>
         <ui-view></ui-view>
     </div>

@@ -16,6 +16,11 @@ body {
     font-size: 20px !important;
 }
 
+label {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+}
+
 ol, ul {
     list-style: none;
     overflow: hidden;
