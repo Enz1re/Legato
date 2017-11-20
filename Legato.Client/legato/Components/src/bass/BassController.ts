@@ -5,14 +5,16 @@ import { ControllerBase } from "../ControllerBase";
 import {
     IGuitarService,
     IRoutingService,
+    IPendingTaskService,
     IFilterUpdateService
 } from "../../../Interfaces/interfaces";
 
 
 export class BassController extends ControllerBase<BassGuitar> implements ng.IController {
-    static $inject = ["BassGuitarService", "RoutingService", "FilterUpdateService"];
+    static $inject = ["$scope", "BassGuitarService", "RoutingService", "PendingTaskService", "FilterUpdateService"];
 
-    constructor(service: IGuitarService<BassGuitar>, routingService: IRoutingService) {
-        super(service, routingService);
+    constructor($scope: ng.IScope, service: IGuitarService<BassGuitar>, routingService: IRoutingService,
+        pendingTaskService: IPendingTaskService, filterUpdateService: IFilterUpdateService) {
+        super($scope, service, routingService, pendingTaskService, filterUpdateService);
     }
 }

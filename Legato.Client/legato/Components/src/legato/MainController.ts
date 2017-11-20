@@ -5,6 +5,7 @@
 } from "../../../Models/models";
 
 import {
+    IFilterService,
     IVendorService,
     IRoutingService,
     IFilterUpdateService
@@ -14,23 +15,23 @@ import { Constants } from "../../../Constants";
 
 
 export class MainController implements ng.IController {
-    filtering: any = {};
     vendors: Vendor[] = [];
     error = false;
     activeTab: string;
     price: Price = new Price();
     sorting: Sorting = new Sorting();
-    static $inject = ["RoutingService", "FilterUpdateService", "VendorService"];
+    static $inject = ["RoutingService", "FilterUpdateService", "FilterService", "VendorService"];
 
-    constructor(private routingService: IRoutingService, private filterUpdateService: IFilterUpdateService, private service: IVendorService) {
-        const name = routingService.urlSegments()[1];
+    constructor(private routingService: IRoutingService, private filterUpdateService: IFilterUpdateService,
+                private filterService: IFilterService, private service: IVendorService) {
+        const name = routingService.urlSegments[1];
         const urlParamResolver = routingService.getParamResolver();
-
+        
         this.price = this.filterUpdateService.filter.price = urlParamResolver.resolvePrice();
         this.sorting = this.filterUpdateService.filter.sorting = urlParamResolver.resolveSorting();
 
         this.activeTab = name;
-
+        
         this.initVendorList(name).then(() => {
             this.vendors = this.filterUpdateService.filter.vendors = urlParamResolver.resolveVendors(this.vendors);
         });
@@ -40,20 +41,21 @@ export class MainController implements ng.IController {
         if (this.activeTab === guitarTypeName || click === undefined) {
             return;
         }
-
-        // set price values to null to clean up input fields
-        if (this.price.from === undefined) {
-            this.price.from = null;
-        }
-        if (this.price.to === undefined) {
-            this.price.to = null;
-        }
+        
+        this.price = this.filterService.guitarFilter[guitarTypeName].price || new Price();
+        this.vendors = this.filterService.guitarFilter[guitarTypeName].vendors || this.vendors;
+        this.sorting = this.filterService.guitarFilter[guitarTypeName].sorting || new Sorting();
 
         this.initVendorList(guitarTypeName);
 
-        this.routingService.redirect(this.activeTab, this.routingService.queryParams());
+        this.routingService.redirect(this.activeTab, this.filterService.guitarFilter[guitarTypeName]);
     }
-    
+
+    onTabDeselected(guitarTypeName: string) {
+        this.filterService.guitarFilter[guitarTypeName] = this.routingService.queryParams;
+        console.log(this.filterService.guitarFilter[guitarTypeName]);
+    }
+
     onPriceChanged() {
         this.filterUpdateService.filter.price = this.price;
     }
