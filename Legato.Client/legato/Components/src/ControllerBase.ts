@@ -1,4 +1,6 @@
-﻿import {
+﻿import angular from "angular";
+
+import {
     Price,
     Guitar,
     Paging,
@@ -6,26 +8,59 @@
     Sorting,
 } from "../../Models/models";
 
-import { IGuitarService, IRoutingService } from "../../Interfaces/interfaces";
+import {
+    IGuitarService,
+    IRoutingService,
+    IPendingTaskService,
+    IFilterUpdateService
+} from "../../Interfaces/interfaces";
 
 
 export abstract class ControllerBase<TGuitar extends Guitar> {
     noResults: boolean;
     guitars: TGuitar[];
-    price: Price = new Price;
-    vendors: Vendor[] = [];
+    price: Price;
+    vendors: Vendor[];
     sorting: Sorting = new Sorting();
     error = false;
     paging: Paging = new Paging();
 
-    constructor(protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService) {
+    constructor(protected $scope: ng.IScope, protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService,
+                protected pendingTaskService: IPendingTaskService, protected filterUpdateService: IFilterUpdateService) {
+        $scope.$watch(() => this.filterUpdateService.filter, (newValue, oldValue) => {
+            const stateName = this.routingService.urlSegments[1];
+            this.pendingTaskService.cancelPendingTask();
+
+            if (this.needUsePriceFilter(newValue, oldValue)) {
+                this.pendingTaskService.setPendingTask(() => {
+                    this.filterUpdateService.replacePriceQueryParams(stateName);
+                    this.price = newValue.price;
+                    this.init();
+                });
+            }
+            else if (this.needUseVendorFilter(newValue, oldValue)) {
+                this.pendingTaskService.setPendingTask(() => {
+                    this.filterUpdateService.replaceVendorQueryParams(stateName);
+                    this.vendors = newValue.vendors;
+                    this.init();
+                });
+            }
+            else if (this.needUseSorting(newValue, oldValue)) {
+                this.pendingTaskService.setPendingTask(() => {
+                    this.filterUpdateService.replaceSortingQueryParams(stateName);
+                    this.sorting = newValue.sorting;
+                    this.init();
+                });
+            }
+        }, true);
+
         this.paging.currentPage = routingService.getParamResolver().resolvePage();
         this.init();
     }
     
     protected onPageChanged(guitarName: string) {
         this.paging.goToPage();
-        this.routingService.replace(guitarName, this.formGetParams());
+        this.routingService.replace(guitarName, this.routingService.queryParams);
         this.loadGuitarList();
     }
 
@@ -61,21 +96,17 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         }
     }
 
-    private formGetParams(): any {
-        let params: any = { page: this.paging.currentPage };
+    private needUsePriceFilter(newValue, oldValue) {
+        return newValue.price.from !== oldValue.price.from || newValue.price.to !== oldValue.price.to;
+    }
 
-        if (this.price && this.price.from && this.price.to) {
-            params.from = this.price.from;
-            params.to = this.price.to;
-        }
-        if (this.vendors) {
-            params.vendors = this.vendors.join();
-        }
-        if (this.sorting && this.sorting.required) {
-            params.name = this.sorting.name;
-            params.direction = this.sorting.direction;
-        }
+    private needUseVendorFilter(newValue, oldValue) {
+        return angular.toJson(newValue.vendors.filter(v => v.isSelected)) !== angular.toJson(oldValue.vendors.filter(v => v.isSelected))
+    }
 
-        return params;
+    private needUseSorting(newValue, oldValue) {
+        return newValue.sorting.required !== oldValue.sorting.required ||
+               newValue.sorting.name !== oldValue.sorting.name ||
+               newValue.sorting.direction !== oldValue.sorting.direction;
     }
 }
