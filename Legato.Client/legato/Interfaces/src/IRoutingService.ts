@@ -4,13 +4,11 @@ import { IUrlParamResolver } from "../src/IUrlParamResolver";
 
 
 export interface IRoutingService {
+    url: string;
+    urlSegments: string[];
+    queryParams: ng.ui.IStateParamsService;
+
     getParamResolver(): IUrlParamResolver;
-
-    url(): string;
-
-    urlSegments(): string[];
-
-    queryParams(): any;
 
     redirect(stateName: string, params?: Partial<UrlParams>);
 

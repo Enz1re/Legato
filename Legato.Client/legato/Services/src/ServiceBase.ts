@@ -1,4 +1,10 @@
-﻿import { Price, Paging } from "../../Models/models";
+﻿import {
+    Price,
+    Paging,
+    Vendor,
+    Filter,
+    VendorList
+} from "../../Models/models";
 
 
 export class ServiceBase {
@@ -29,5 +35,18 @@ export class ServiceBase {
         const deferred = this.qServ.defer<T>();
         deferred.resolve(cachedData);
         return deferred.promise;
+    }
+
+    getFilter(price: Price, vendors: Vendor[]): Filter {
+        let filter = new Filter();
+
+        if (price) {
+            filter.priceFilter = price;
+        }
+        if (vendors) {
+            filter.vendorFilter = new VendorList(vendors.filter(v => v.isSelected));
+        }
+
+        return filter;
     }
 }

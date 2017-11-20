@@ -20,7 +20,7 @@ export default class FilterUpdateService implements IFilterUpdateService {
     }
 
     replacePriceQueryParams(stateName: string) {
-        let queryParams = this.routingService.queryParams();
+        let queryParams = this.routingService.queryParams;
 
         queryParams.from = this.filter.price.from;
         queryParams.to = this.filter.price.to;
@@ -30,7 +30,7 @@ export default class FilterUpdateService implements IFilterUpdateService {
 
     replaceVendorQueryParams(stateName: string) {
         const checkedVendors = this.getCheckedVendors();
-        let queryParams = this.routingService.queryParams();
+        let queryParams = this.routingService.queryParams;
 
         if (checkedVendors.length === this.filter.vendors.length) {
             queryParams.vendors = null;
@@ -39,12 +39,12 @@ export default class FilterUpdateService implements IFilterUpdateService {
         } else {
             queryParams.vendors = checkedVendors.join();
         }
-
+        
         this.routingService.replace(stateName, queryParams);
     }
 
     replaceSortingQueryParams(stateName: string) {
-        let queryParams = this.routingService.queryParams();
+        let queryParams = this.routingService.queryParams;
 
         if (this.filter.sorting.required) {
             queryParams.name = this.filter.sorting.name;

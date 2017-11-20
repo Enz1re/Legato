@@ -30,10 +30,7 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
-            return this.resource.getWesternGuitars({
-                priceFilter: price,
-                vendorFilter: { vendors: vendors.map(v => v.name) }
-            }, paging).then(guitars => {
+            return this.resource.getWesternGuitars(this.getFilter(price, vendors), paging).then(guitars => {
                 this.pendingRequests--;
                 this.$$cache.put(key, guitars);
                 return guitars;
@@ -52,10 +49,7 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
-            return this.resource.getSortedWesternGuitars({
-                priceFilter: price,
-                vendorFilter: { vendors: vendors.map(v => v.name) }
-            }, paging, sortHeader, sortDirection).then(guitars => {
+            return this.resource.getSortedWesternGuitars(this.getFilter(price, vendors), paging, sortHeader, sortDirection).then(guitars => {
                 this.pendingRequests--;
                 this.$$cache.put(key, guitars);
                 return guitars;
@@ -74,13 +68,10 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
-            return this.resource.getWesternGuitarQuantity({
-                priceFilter: price,
-                vendorFilter: { vendors: vendors.map(v => v.name) }
-            }).then(q => {
+            return this.resource.getWesternGuitarQuantity(this.getFilter(price, vendors)).then(amount => {
                 this.pendingRequests--;
-                this.$$cache.put(key, q);
-                return q;
+                this.$$cache.put(key, amount);
+                return amount;
             }).catch(err => {
                 this.pendingRequests = 0;
                 throw err;

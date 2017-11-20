@@ -12,20 +12,20 @@ export default class RoutingService implements IRoutingService {
 
     }
 
-    getParamResolver(): IUrlParamResolver {
-        return new UrlParamResolver(this.$stateParams);
-    }
-
-    url() {
+    get url() {
         return this.$location.url();
     }
 
-    urlSegments() {
+    get urlSegments() {
         return this.$location.path().split('/');
     }
 
-    queryParams() {
+    get queryParams() {
         return this.$stateParams;
+    }
+
+    getParamResolver(): IUrlParamResolver {
+        return new UrlParamResolver(this.$stateParams);
     }
 
     redirect(stateName: string, params?: Partial<UrlParams>) {
