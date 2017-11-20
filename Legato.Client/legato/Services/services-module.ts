@@ -9,6 +9,7 @@ import BassGuitarService from "./src/BassGuitarService";
 import UrlParamResolver from "./src/UrlParamResolver";
 import GuitarResource from "./src/GuitarResource";
 import RoutingService from "./src/RoutingService";
+import FilterService from "./src/FilterService";
 import VendorService from "./src/VendorService";
 import CacheService from "./src/CacheService";
 
@@ -24,7 +25,8 @@ angular.module(servicesModuleName, [])
     .service("VendorService", VendorService)
     .service("CacheService", CacheService)
     .service("RoutingService", RoutingService)
-    .service("FilterUpdateService", FilterUpdateService);
+    .service("FilterUpdateService", FilterUpdateService)
+    .service("FilterService", FilterService);
 
 export {
     ClassicalGuitarService,
@@ -36,6 +38,7 @@ export {
     UrlParamResolver,
     GuitarResource,
     RoutingService,
+    FilterSerivce,
     VendorService,
     CacheService,
 };

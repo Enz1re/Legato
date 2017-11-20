@@ -3,6 +3,7 @@ import { IPendingTaskService } from "./src/IPendingTaskService";
 import { IUrlParamResolver } from "./src/IUrlParamResolver";
 import { IGuitarResource } from "./src/IGuitarResource";
 import { IRoutingService } from "./src/IRoutingService";
+import { IFilterService } from "./src/IFilterService";
 import { IGuitarService } from "./src/IGuitarService";
 import { IVendorService } from "./src/IVendorService";
 import { ICacheService } from "./src/ICacheService";
@@ -15,6 +16,7 @@ export {
     IUrlParamResolver,
     IGuitarResource,
     IRoutingService,
+    IFilterService,
     IGuitarService,
     IVendorService,
     ICacheService,
