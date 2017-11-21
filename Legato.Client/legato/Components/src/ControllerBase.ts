@@ -19,7 +19,7 @@ import {
 export abstract class ControllerBase<TGuitar extends Guitar> {
     noResults: boolean;
     guitars: TGuitar[];
-    price: Price;
+    price: Price = new Price();
     vendors: Vendor[];
     sorting: Sorting = new Sorting();
     error = false;
@@ -49,7 +49,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 this.pendingTaskService.setPendingTask(() => {
                     this.filterUpdateService.replaceSortingQueryParams(stateName);
                     this.sorting = newValue.sorting;
-                    this.init();
+                    this.loadGuitarList();
                 });
             }
         }, true);
@@ -79,7 +79,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.guitars = [];
         this.error = false;
 
-        if (this.sorting.required) {
+        if (this.sorting && this.sorting.required) {
             this.service.getSortedGuitars(this.price, this.vendors, this.paging, this.sorting.name, this.sorting.direction).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
@@ -101,12 +101,12 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     }
 
     private needUseVendorFilter(newValue, oldValue) {
-        return angular.toJson(newValue.vendors.filter(v => v.isSelected)) !== angular.toJson(oldValue.vendors.filter(v => v.isSelected))
+        return newValue.vendors.length > 0 && oldValue.vendors.length > 0 &&
+               angular.toJson(newValue.vendors.filter(v => v.isSelected)) !== angular.toJson(oldValue.vendors.filter(v => v.isSelected))
     }
 
     private needUseSorting(newValue, oldValue) {
-        return newValue.sorting.required !== oldValue.sorting.required ||
-               newValue.sorting.name !== oldValue.sorting.name ||
+        return newValue.sorting.name !== oldValue.sorting.name ||
                newValue.sorting.direction !== oldValue.sorting.direction;
     }
 }
