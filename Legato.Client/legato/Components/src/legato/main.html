@@ -13,11 +13,11 @@
     <div class="left-panel">
         <div legato-load-on-change>
             <div class="find-by-cost-title">Find by cost</div>
-            <form name="price" ng-model="mainCtrl.price" legato-validate-price>
+            <form name="price" ng-model="mainCtrl.filterUpdateService.filter.price" legato-validate-price>
                 <div>From:</div>
-                <input type="number" ng-change="mainCtrl.onPriceChanged()" ng-maxlength="8" ng-model="mainCtrl.price.from" />
+                <input type="number" ng-maxlength="8" ng-model="mainCtrl.filterUpdateService.filter.price.from" />
                 <div>To:</div>
-                <input type="number" ng-change="mainCtrl.onPriceChanged()" ng-maxlength="8" ng-model="mainCtrl.price.to" />
+                <input type="number" ng-maxlength="8" ng-model="mainCtrl.filterUpdateService.filter.price.to" />
                 <div ng-if="price.$error.greater">
                     <small class="error">"To" value has to be greater than "from"</small>
                 </div>
@@ -30,25 +30,25 @@
                     Error processing your request. Please try again later.
                 </small>
             </div>
-            <div class="vendors-container" ng-repeat="vendor in mainCtrl.vendors">
+            <div class="vendors-container" ng-repeat="vendor in mainCtrl.filterUpdateService.filter.vendors">
                 <div>
-                    <input id="{{vendor.name}}" type="checkbox" ng-change="mainCtrl.onVendorsChanged()" ng-model="vendor.isSelected">
+                    <input id="{{vendor.name}}" type="checkbox" ng-model="vendor.isSelected">
                      <label for="{{vendor.name}}">{{vendor.name}}</label>
                 </div>
             </div>
             <p></p>
-            <div>Sort – <input type="checkbox" ng-model="mainCtrl.sorting.required" ng-change="mainCtrl.onSortingChanged()"/></div>
+            <div><label for="sort">Sort</label> – <input id="sort" type="checkbox" ng-model="mainCtrl.filterUpdateService.filter.sorting.required"/></div>
             <p></p>
-            <div ng-show="mainCtrl.sorting.required">
+            <div ng-show="mainCtrl.filterUpdateService.filter.sorting.required">
                 <div>By:</div>
                 <p></p>
                 <div>
-                    <select ng-model="mainCtrl.sorting.name" ng-change="mainCtrl.onSortingChanged()">
+                    <select ng-model="mainCtrl.filterUpdateService.filter.sorting.name">
                         <option title="Vendor">Vendor</option>
                         <option title="Price">Price</option>
                     </select>
-                    <div ng-show="mainCtrl.sorting.name === 'Price'">
-                        <select ng-model="mainCtrl.sorting.direction" ng-change="mainCtrl.onSortingChanged()">
+                    <div ng-show="mainCtrl.filterUpdateService.filter.sorting.name === 'Price'">
+                        <select ng-model="mainCtrl.filterUpdateService.filter.sorting.direction">
                             <option title="Ascending">Ascending</option>
                             <option title="Descending">Descending</option>
                         </select>
