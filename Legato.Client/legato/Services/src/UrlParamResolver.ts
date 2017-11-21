@@ -36,10 +36,9 @@ export default class UrlParamResolver implements IUrlParamResolver {
             return vendorList;
         }
 
-        const checkedVendors = this.stateParamsObject.vendors.split(',');
-        this.uncheckVendors(vendorList, checkedVendors);
+        const checkedVendors = this.stateParamsObject.vendors !== "" ? this.stateParamsObject.vendors.split(',') : [];
 
-        return vendorList;
+        return this.uncheckVendors(vendorList, checkedVendors);
     }
 
     resolveSorting() {
@@ -58,5 +57,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
         allVendors.forEach(v => {
             v.isSelected = queriedVendors.indexOf(v.name) !== -1;
         });
+
+        return allVendors;
     }
 }
