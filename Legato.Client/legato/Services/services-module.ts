@@ -38,7 +38,7 @@ export {
     UrlParamResolver,
     GuitarResource,
     RoutingService,
-    FilterSerivce,
+    FilterService,
     VendorService,
     CacheService,
 };
