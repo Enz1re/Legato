@@ -15,28 +15,28 @@ export default class Router {
         $stateProvider
             .state("classical", {
                 url: "/classical?page&from&to&vendors&name&direction",
-                template: "<classical price=\"mainCtrl.price\" vendors=\"mainCtrl.vendors\" sorting=\"mainCtrl.sorting\"></classical>",
+                templateUrl: "legato/Components/src/classical/classical.html",
                 controller: ClassicalController,
                 controllerAs: "classicalCtrl",
                 reloadOnSearch: false
             })
             .state("western", {
                 url: "/western?page&from&to&vendors&name&direction",
-                template: "<western price=\"mainCtrl.price\" vendors=\"mainCtrl.vendors\" sorting=\"mainCtrl.sorting\"></western>",
+                templateUrl: "legato/Components/src/western/western.html",
                 controller: WesternController,
                 controllerAs: "westernCtrl",
                 reloadOnSearch: false
             })
             .state("electric", {
                 url: "/electric?page&from&to&vendors&name&direction",
-                template: "<electric price=\"mainCtrl.price\" vendors=\"mainCtrl.vendors\" sorting=\"mainCtrl.sorting\"></electric>",
+                templateUrl: "legato/Components/src/electric/electric.html",
                 controller: ElectricController,
                 controllerAs: "electricCtrl",
                 reloadOnSearch: false
             })
             .state("bass", {
                 url: "/bass?page&from&to&vendors&name&direction",
-                template: "<bass price=\"mainCtrl.price\" vendors=\"mainCtrl.vendors\" sorting=\"mainCtrl.sorting\"></bass>",
+                templateUrl: "legato/Components/src/bass/bass.html",
                 controller: BassController,
                 controllerAs: "bassCtrl",
                 reloadOnSearch: false
