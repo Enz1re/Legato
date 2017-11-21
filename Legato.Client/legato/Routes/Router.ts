@@ -2,7 +2,8 @@
     ClassicalController,
     WesternController,
     ElectricController,
-    BassController
+    BassController,
+    MainController
 } from "../Components/components-module";
 
 import { UrlParams } from "../Models/models";
