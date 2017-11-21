@@ -9,7 +9,9 @@ import { IFilterService } from "../../Interfaces/interfaces";
 
 export default class FilterService implements IFilterService {
     guitarFilter: {
-        [key: string]: any
+        [key: string]: {
+            [key: string]: any
+        }
     }
 
     constructor() {
