@@ -31,14 +31,14 @@ export default class UrlParamResolver implements IUrlParamResolver {
         return parsedFrom && parsedTo ? new Price({ from: parsedFrom, to: parsedTo }) : new Price();
     }
 
-    resolveVendors(vendorList: Vendor[]) {
+    resolveVendors(vendorList: Vendor[] = null) {
         if (!this.stateParamsObject.vendors) {
             return vendorList;
         }
 
-        const checkedVendors = this.stateParamsObject.vendors !== "" ? this.stateParamsObject.vendors.split(',') : [];
+        const checkedVendors = this.stateParamsObject.vendors !== "" ? this.stringToVendorArray(this.stateParamsObject.vendors) : [];
 
-        return this.uncheckVendors(vendorList, checkedVendors);
+        return vendorList ? this.uncheckVendors(vendorList, checkedVendors) : checkedVendors;
     }
 
     resolveSorting() {
@@ -53,11 +53,19 @@ export default class UrlParamResolver implements IUrlParamResolver {
         });
     }
 
-    private uncheckVendors(allVendors: Vendor[], queriedVendors: string[]) {
+    private uncheckVendors(allVendors: Vendor[], queriedVendors: Vendor[]) {
         allVendors.forEach(v => {
-            v.isSelected = queriedVendors.indexOf(v.name) !== -1;
+            v.isSelected = queriedVendors.map(qv => qv.name).indexOf(v.name) !== -1
         });
 
         return allVendors;
+    }
+
+    private stringToVendorArray(vendors: string | string[]) {
+        if (typeof vendors === "string") {
+            vendors = vendors.split(",");
+        }
+
+        return vendors.map(v => new Vendor({ name: v, isSelected: true }));
     }
 }
