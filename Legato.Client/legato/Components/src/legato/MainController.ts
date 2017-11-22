@@ -32,7 +32,7 @@ export class MainController implements ng.IController {
         });
     }
 
-    refreshVendorList(click, guitarTypeName: string) {
+    checkTab(click, guitarTypeName: string) {
         if (this.activeTab === guitarTypeName || click === undefined) {
             return;
         }
@@ -50,7 +50,11 @@ export class MainController implements ng.IController {
         this.routingService.redirect(this.activeTab, this.filterService.guitarFilter[guitarTypeName].params || { page: "1" });
     }
 
-    onTabDeselected(guitarTypeName: string) {
+    onTabDeselected(event, guitarTypeName: string) {
+        if (event === undefined) {
+            return;
+        }
+
         this.filterService.guitarFilter[guitarTypeName].params = { ...this.routingService.queryParams };
         this.filterService.guitarFilter[guitarTypeName].price = { ...this.filterUpdateService.filter.price };
         this.filterService.guitarFilter[guitarTypeName].vendors = [ ...this.filterUpdateService.filter.vendors ];
