@@ -15,8 +15,9 @@ import { ClassicalController } from "./src/classical/ClassicalController";
 import { WesternController } from "./src/western/WesternController";
 import { ElectricController } from "./src/electric/ElectricController";
 import { BassController } from "./src/bass/BassController";
+import { ControllerBase } from "./src/ControllerBase";
 
-const directivesModuleName = "legato.directives";
+const directivesModuleName = "legato.components";
 
 angular.module(directivesModuleName, [])
     // directive declarations
@@ -38,6 +39,7 @@ angular.module(directivesModuleName, [])
 
 export {
     MainController,
+    ControllerBase,
     ClassicalController,
     WesternController,
     ElectricController,
