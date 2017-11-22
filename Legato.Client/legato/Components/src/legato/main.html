@@ -14,10 +14,10 @@
         <div legato-load-on-change>
             <div class="find-by-cost-title">Find by cost</div>
             <form name="price" ng-model="mainCtrl.filterUpdateService.filter.price" legato-validate-price>
-                <div>From:</div>
-                <input type="number" ng-maxlength="8" ng-model="mainCtrl.filterUpdateService.filter.price.from" />
-                <div>To:</div>
-                <input type="number" ng-maxlength="8" ng-model="mainCtrl.filterUpdateService.filter.price.to" />
+                <div><label for="from">From:</label></div>
+                <input id="from" type="number" ng-maxlength="8" ng-model="mainCtrl.filterUpdateService.filter.price.from" />
+                <div><label for="to">To:</label></div>
+                <input id="to" type="number" ng-maxlength="8" ng-model="mainCtrl.filterUpdateService.filter.price.to" />
                 <div ng-if="price.$error.greater">
                     <small class="error">"To" value has to be greater than "from"</small>
                 </div>
@@ -59,10 +59,10 @@
     </div>
     <div id="main-panel" ng-animate-children>
         <uib-tabset active="mainCtrl.activeTab" type="pills" justified="true">
-            <uib-tab select="mainCtrl.refreshVendorList($event, 'classical')" deselect="mainCtrl.onTabDeselected('classical')" index="'classical'" heading="Classical acoustic"></uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList($event, 'western')" deselect="mainCtrl.onTabDeselected('western')" index="'western'" heading="Western acoustic"></uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList($event, 'electric')" deselect="mainCtrl.onTabDeselected('electric')" index="'electric'" heading="Electric"></uib-tab>
-            <uib-tab select="mainCtrl.refreshVendorList($event, 'bass')" deselect="mainCtrl.onTabDeselected('bass')" index="'bass'" heading="Bass"></uib-tab>
+            <uib-tab select="mainCtrl.checkTab($event, 'classical')" deselect="mainCtrl.onTabDeselected($event, 'classical')" index="'classical'" heading="Classical acoustic"></uib-tab>
+            <uib-tab select="mainCtrl.checkTab($event, 'western')" deselect="mainCtrl.onTabDeselected($event, 'western')" index="'western'" heading="Western acoustic"></uib-tab>
+            <uib-tab select="mainCtrl.checkTab($event, 'electric')" deselect="mainCtrl.onTabDeselected($event, 'electric')" index="'electric'" heading="Electric"></uib-tab>
+            <uib-tab select="mainCtrl.checkTab($event, 'bass')" deselect="mainCtrl.onTabDeselected($event, 'bass')" index="'bass'" heading="Bass"></uib-tab>
         </uib-tabset>
         <ui-view></ui-view>
     </div>
