@@ -42,7 +42,7 @@ export default class ClassicalGuitarService extends ServiceBase implements IGuit
     }
 
     getSortedGuitars(price: Price, vendors: Vendor[], paging: Paging, sortHeader: string, sortDirection: string) {
-        const key = this.createCacheKey(price, paging, { sortHeader: sortHeader, sortDirection: sortDirection });
+        const key = this.createCacheKey(price, paging, vendors, { sortHeader: sortHeader, sortDirection: sortDirection });
         const cachedData = this.$$cache.get<ClassicalGuitar[]>(key);
 
         if (cachedData) {

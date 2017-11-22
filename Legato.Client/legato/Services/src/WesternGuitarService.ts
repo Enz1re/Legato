@@ -42,7 +42,7 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
     }
 
     getSortedGuitars(price: Price, vendors: Vendor[], paging: Paging, sortHeader: string, sortDirection: string) {
-        const key = this.createCacheKey(price, paging, { sortHeader: sortHeader, sortDirection: sortDirection });
+        const key = this.createCacheKey(price, paging, vendors, { sortHeader: sortHeader, sortDirection: sortDirection });
         const cachedData = this.$$cache.get<WesternGuitar[]>(key);
 
         if (cachedData) {
