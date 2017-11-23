@@ -7,6 +7,7 @@ import { IFilterService } from "./src/IFilterService";
 import { IGuitarService } from "./src/IGuitarService";
 import { IVendorService } from "./src/IVendorService";
 import { ICacheService } from "./src/ICacheService";
+import { IModalService } from "./src/IModalService";
 import { IService } from "./src/IService";
 
 
@@ -20,5 +21,6 @@ export {
     IGuitarService,
     IVendorService,
     ICacheService,
+    IModalService,
     IService
 };
