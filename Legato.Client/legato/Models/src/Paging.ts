@@ -12,8 +12,13 @@
     }
 
     goToPage() {
-        this.lowerBound = (this.currentPage - 1) * this.itemsToShow;
-        this.upperBound = (this.currentPage - 1) * this.itemsToShow + this.itemsToShow;
+        if (this.currentPage !== 0) {
+            this.lowerBound = (this.currentPage - 1) * this.itemsToShow;
+            this.upperBound = (this.currentPage - 1) * this.itemsToShow + this.itemsToShow;
+        } else {
+            this.lowerBound = 0;
+            this.upperBound = this.itemsToShow;
+        }
     }
 
     toJSON() {
