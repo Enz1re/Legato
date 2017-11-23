@@ -9,6 +9,7 @@ import {
 } from "../../Models/models";
 
 import {
+    IModalService,
     IGuitarService,
     IRoutingService,
     IPendingTaskService,
@@ -26,27 +27,47 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     paging: Paging = new Paging();
 
     constructor(protected $scope: ng.IScope, protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService,
-                protected pendingTaskService: IPendingTaskService, protected filterUpdateService: IFilterUpdateService) {
+                protected pendingTaskService: IPendingTaskService, protected filterUpdateService: IFilterUpdateService,
+                protected modalService: IModalService) {
         this.setWatcher($scope);
 
         const urlParamResolver = routingService.getParamResolver();
-
+        
         this.price = urlParamResolver.resolvePrice();
         this.vendors = urlParamResolver.resolveVendors(null);
         this.sorting = urlParamResolver.resolveSorting();
-        this.paging.currentPage = urlParamResolver.resolvePage();
+        this.getAmount().then(() => {
+            const maxPage = Math.floor(this.paging.total / this.paging.itemsToShow);
+            let urlPage = this.routingService.getParamResolver().resolvePage();
 
-        this.init();
-    }
+            if (urlPage > maxPage) {
+                urlPage = maxPage;
+                let params = this.routingService.queryParams;
+                params.page = urlPage;
+                this.routingService.replace(this.routingService.urlSegments[1], params);
+            }
 
-    protected init() {
-        this.error = false;
-        this.service.getAmount(this.price, this.vendors).then(amount => {
-            this.paging.total = amount;
+            this.paging.currentPage = urlPage;
+            this.paging.goToPage();
         }).then(() => {
             this.loadGuitarList();
         }).catch(err => {
             this.error = true;
+        })
+    }
+
+    protected init() {
+        this.error = false;
+        this.getAmount().then(() => {
+            this.loadGuitarList();
+        }).catch(err => {
+            this.error = true;
+        });
+    }
+
+    protected getAmount() {
+        return this.service.getAmount(this.price, this.vendors).then(amount => {
+            this.paging.total = amount;
         });
     }
 
@@ -73,8 +94,16 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
 
     protected onPageChanged(guitarName: string) {
         this.paging.goToPage();
-        this.routingService.replace(guitarName, this.routingService.queryParams);
+        let params = this.routingService.queryParams;
+        params.page = this.paging.currentPage;
+        this.routingService.replace(guitarName, params);
         this.loadGuitarList();
+    }
+
+    protected onGuitarClick(guitar: Guitar) {
+        this.modalService.open({
+            guitar: () => guitar
+        }).result.catch(() => { });
     }
 
     private setWatcher(scope: ng.IScope) {
