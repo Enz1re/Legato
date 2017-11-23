@@ -4,7 +4,7 @@
             <ul uib-pagination
                 ng-if="!westernCtrl.error"
                 total-items="westernCtrl.paging.total"
-                ng-change="westernCtrl.onPageChanged('western')"
+                ng-click="westernCtrl.onPageChanged('western')"
                 next-text=">>"
                 previous-text="<<"
                 items-per-page="westernCtrl.paging.itemsToShow"
@@ -37,7 +37,7 @@
                 ng-if="!westernCtrl.error"
                 legato-smooth-scroll
                 total-items="westernCtrl.paging.total"
-                ng-change="westernCtrl.onPageChanged('western')"
+                ng-click="westernCtrl.onPageChanged('western')"
                 next-text=">>"
                 previous-text="<<"
                 items-per-page="westernCtrl.paging.itemsToShow"

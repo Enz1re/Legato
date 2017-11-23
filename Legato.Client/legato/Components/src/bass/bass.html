@@ -4,7 +4,7 @@
             <ul uib-pagination
                 ng-if="!bassCtrl.error"
                 total-items="bassCtrl.paging.total"
-                ng-change="bassCtrl.onPageChanged('bass')"
+                ng-click="bassCtrl.onPageChanged('bass')"
                 next-text=">>"
                 previous-text="<<"
                 items-per-page="bassCtrl.paging.itemsToShow"
@@ -37,7 +37,7 @@
                 ng-if="!bassCtrl.error"
                 legato-smooth-scroll
                 total-items="bassCtrl.paging.total"
-                ng-change="bassCtrl.onPageChanged('bass')"
+                ng-click="bassCtrl.onPageChanged('bass')"
                 next-text=">>"
                 previous-text="<<"
                 items-per-page="bassCtrl.paging.itemsToShow"
