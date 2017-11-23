@@ -283,6 +283,11 @@ div.messaging {
     margin: 1.44em;
 }
 
+.guitar-container:hover,
+.guitarimg-container:hover {
+    cursor: pointer;
+}
+
 .guitar-container {
     margin: 2em;
     width: 300px;
