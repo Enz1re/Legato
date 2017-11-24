@@ -23,7 +23,7 @@
     "@types/angular-ui-router": "^1.1.36",
     "@types/jasmine": "^2.5.47",
     "@types/systemjs": "^0.20.2",
-    "angular-ui-bootstrap": "~2.5.0",
+    "@types/angular-ui-bootstrap": "^0.13.46",
     "codelyzer": "^3.0.0",
     "concurrently": "^3.4.0",
     "jasmine-core": "^2.8.0",
@@ -42,8 +42,8 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
-    "angular-ui-router": "^0.3.2",
     "angular-ui-bootstrap": "~2.5.0",
+    "angular-ui-router": "^0.3.2",
     "bootstrap": "^3.3.7",
     "systemjs": "^0.19.9"
   }
