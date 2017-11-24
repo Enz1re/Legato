@@ -321,3 +321,34 @@ div.messaging {
     width: 100%;
     text-align: center;
 }
+
+/* Workaround for ui bootstrap modals */
+
+.modal {
+  display: block;
+}
+
+.modal-body:before,
+.modal-body:after {
+    display: table;
+    content: " ";
+}
+
+.modal-header:before,
+.modal-header:after {
+  display: table;
+  content: " ";
+}
+
+.modal-main-info {
+    text-align: center;
+}
+
+.modal-main-info,
+.modal-main-info img {
+    padding-bottom: 10px;
+}
+
+.legato-modal-body {
+    background-color: aliceblue;
+}
