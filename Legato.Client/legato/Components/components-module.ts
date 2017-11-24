@@ -5,7 +5,6 @@ import { ClassicalDirective } from "./src/classical/ClassicalDirective";
 import { WesternDirective } from "./src/western/WesternDirective";
 import { ElectricDirective } from "./src/electric/ElectricDirective";
 import { BassDirective } from "./src/bass/BassDirective";
-import { GuitarModalDirective } from "./src/guitarModal/GuitarModalDirective";
 import { LegatoValidatePriceDirective } from "./src/validatePrice/LegatoValidatePriceDirective";
 import { LegatoLoadingDirective } from "./src/loading/LegatoLoadingDirective";
 import { LegatoSmoothScrollDirective } from "./src/smoothScroll/LegatoSmoothScrollDirective";
@@ -32,7 +31,6 @@ angular.module(directivesModuleName, [])
     .directive("legatoLoading", LegatoLoadingDirective.create())
     .directive("legatoSmoothScroll", LegatoSmoothScrollDirective.create())
     .directive("legatoRequestLoader", LegatoRequestLoaderDirective.create())
-    .directive("legatoModal", GuitarModalDirective.create())
     // controller declarations
     .controller("MainController", MainController)
     .controller("ClassicalController", ClassicalController)
