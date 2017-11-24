@@ -1,4 +1,15 @@
 ﻿<div>
-    <img ng-src="modalCtrl.guitar.imgPath" />
-    <div>{{modalCtrl.guitar.vendor.name}} {{modalCtrl.guitar.model}}</div>
+    <div class="modal-header">Guitar</div>
+    <div class="modal-body legato-modal-body">
+        <div class="modal-main-info">
+            <img ng-src="{{modalCtrl.guitars[modalCtrl.currentIndex].imgPath}}" />
+            <div>{{modalCtrl.guitars[modalCtrl.currentIndex].vendor}} {{modalCtrl.guitars[modalCtrl.currentIndex].model}}</div>
+        </div>
+        <a role="button" href="" class="left carousel-control" ng-class="{ disabled: modalCtrl.isPrevDisabled() }" ng-click="modalCtrl.prev()">
+            <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a role="button" href="" class="right carousel-control" ng-class="{ disabled: modalCtrl.isNextDisabled() }" ng-click="modalCtrl.next()">
+            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
 </div>
