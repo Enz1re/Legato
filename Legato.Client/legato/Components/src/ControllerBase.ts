@@ -31,6 +31,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 protected modalService: IModalService) {
         this.setWatcher($scope);
 
+        const stateName = this.routingService.urlSegments[1];
         const urlParamResolver = routingService.getParamResolver();
         
         this.price = urlParamResolver.resolvePrice();
@@ -44,13 +45,26 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 urlPage = maxPage;
                 let params = this.routingService.queryParams;
                 params.page = urlPage;
-                this.routingService.replace(this.routingService.urlSegments[1], params);
+                this.routingService.replace(stateName, params);
             }
 
             this.paging.currentPage = urlPage;
             this.paging.goToPage();
         }).then(() => {
-            this.loadGuitarList();
+            this.loadGuitarList().then(() => {
+                let gIndex = urlParamResolver.resolveIndex();
+                if (!gIndex) {
+                    return;
+                }
+                if (gIndex >= this.guitars.length) {
+                    gIndex = this.guitars.length - 1;
+                    let params = this.routingService.queryParams;
+                    params.g = gIndex;
+                    this.routingService.replace(stateName, params);
+                }
+
+                this.onGuitarClick(stateName, gIndex);
+            })
         }).catch(err => {
             this.error = true;
         })
@@ -76,14 +90,14 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.error = false;
 
         if (this.sorting && this.sorting.required) {
-            this.service.getSortedGuitars(this.price, this.vendors, this.paging, this.sorting.name, this.sorting.direction).then(guitars => {
+            return this.service.getSortedGuitars(this.price, this.vendors, this.paging, this.sorting.name, this.sorting.direction).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
             }).catch(err => {
                 this.error = true;
             });
         } else {
-            this.service.getGuitars(this.price, this.vendors, this.paging).then(guitars => {
+            return this.service.getGuitars(this.price, this.vendors, this.paging).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
             }).catch(err => {
@@ -100,10 +114,21 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.loadGuitarList();
     }
 
-    protected onGuitarClick(guitar: Guitar) {
+    protected onGuitarClick(guitarName: string, index: number) {
+        let params = this.routingService.queryParams;
+        if (!params.g) {
+            params.g = index;
+            this.routingService.replace(guitarName, params);
+        }
+
         this.modalService.open({
-            guitar: () => guitar
-        }).result.catch(() => { });
+            gName: () => guitarName,
+            guitars: () => this.guitars,
+            currentIndex: () => index
+        }).result.catch(() => {
+            params.g = null;
+            this.routingService.replace(guitarName, params);
+        });
     }
 
     private setWatcher(scope: ng.IScope) {
