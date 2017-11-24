@@ -13,4 +13,6 @@ export interface IUrlParamResolver {
     resolveVendors(vendorList: Vendor[]): Vendor[];
 
     resolveSorting(): Sorting;
+
+    resolveIndex(): number;
 }

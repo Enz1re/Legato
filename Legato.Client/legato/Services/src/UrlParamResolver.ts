@@ -53,6 +53,16 @@ export default class UrlParamResolver implements IUrlParamResolver {
         });
     }
 
+    resolveIndex() {
+        if (!this.stateParamsObject.g) {
+            return null;
+        }
+
+        const index = parseInt(this.stateParamsObject.g);
+
+        return index ? index : null;
+    }
+
     private uncheckVendors(allVendors: Vendor[], queriedVendors: Vendor[]) {
         allVendors.forEach(v => {
             v.isSelected = queriedVendors.map(qv => qv.name).indexOf(v.name) !== -1
