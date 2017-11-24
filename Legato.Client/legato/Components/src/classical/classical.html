@@ -16,7 +16,7 @@
         <legato-request-loader ng-if="classicalCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
         <ul ng-if="!classicalCtrl.error">
             <li class="guitar-li" ng-repeat="guitar in classicalCtrl.guitars">
-                <div class="guitar-container" ng-click="classicalCtrl.onGuitarClick(guitar)">
+                <div class="guitar-container" ng-click="classicalCtrl.onGuitarClick('classical', $index)">
                     <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
                     <div>{{guitar.vendor}} {{guitar.model}}</div>
                     <div>Mensura: {{guitar.mensura}} mm</div>
