@@ -4,4 +4,5 @@
     vendors: string;
     name: string;
     direction: string;
+    g: number;
 }
