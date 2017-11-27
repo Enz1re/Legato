@@ -260,7 +260,8 @@ div.messaging {
 }
 
 .vendors-title {
-    padding-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .vendors-container {
@@ -269,6 +270,15 @@ div.messaging {
     overflow-y: auto;
     max-height: 200px;
     text-align: start;
+}
+
+.sort-container {
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+}
+
+.button-container {
+    margin-top: 2em;
 }
 
 .guitar-list-container {
