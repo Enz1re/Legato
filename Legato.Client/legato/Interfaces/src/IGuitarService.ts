@@ -9,9 +9,9 @@ import { IService } from "../../Interfaces/interfaces";
 
 
 export interface IGuitarService<TGuitar extends Guitar> extends IService {
-    getGuitars(price: Price, vendors: Vendor[], paging: Paging): ng.IPromise<TGuitar[]>;
+    getGuitars(searchQuery: string, price: Price, vendors: Vendor[], paging: Paging): ng.IPromise<TGuitar[]>;
 
-    getSortedGuitars(price: Price, vendors: Vendor[], paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<TGuitar[]>;
+    getSortedGuitars(searchQuery: string, price: Price, vendors: Vendor[], paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<TGuitar[]>;
 
-    getAmount(price: Price, vendors: Vendor[]): ng.IPromise<number>;
+    getAmount(searchQuery: string, price: Price, vendors: Vendor[]): ng.IPromise<number>;
 }
