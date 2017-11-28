@@ -1,4 +1,6 @@
-﻿import {
+﻿import angular from "angular";
+
+import {
     Price,
     Vendor,
     Sorting
@@ -8,14 +10,15 @@ import { IFilterUpdateService, IRoutingService } from "../../Interfaces/interfac
 
 
 export default class FilterUpdateService implements IFilterUpdateService {
-    filter: { price: Price, vendors: Vendor[], sorting: Sorting };
+    filter: { price: Price, vendors: Vendor[], sorting: Sorting, search: string };
     static $inject = ["RoutingService"];
 
     constructor(private routingService: IRoutingService) {
         this.filter = {
             price: new Price(),
             vendors: [],
-            sorting: new Sorting()
+            sorting: new Sorting(),
+            search: ""
         };
     }
 
@@ -41,6 +44,12 @@ export default class FilterUpdateService implements IFilterUpdateService {
         }
         
         this.routingService.replace(stateName, queryParams);
+    }    
+
+    replaceSearchQueryParams(stateName: string) {
+        let queryParams = this.routingService.queryParams;
+        queryParams.search = this.filter.search;
+        this.routingService.replace(stateName, queryParams);
     }
 
     replaceSortingQueryParams(stateName: string) {
@@ -49,16 +58,36 @@ export default class FilterUpdateService implements IFilterUpdateService {
         if (this.filter.sorting.required) {
             queryParams.name = this.filter.sorting.name;
             // if sorting header is not Price, we don't need sort direction
-            if (this.filter.sorting.name.toLowerCase() === 'price') {
+            if (queryParams.name.toLowerCase() === 'price') {
                 queryParams.direction = this.filter.sorting.direction;
             } else {
                 queryParams.direction = null;
             }
         } else {
-            queryParams.name = queryParams.direction = null;
+            queryParams.name = null;
+            queryParams.direction = null;
         }
 
         this.routingService.replace(stateName, queryParams);
+    }
+
+    needUsePriceFilter(newValue, oldValue) {
+        return (newValue.price.from !== oldValue.price.from || newValue.price.to !== oldValue.price.to) && newValue.price.from <= newValue.price.to;
+    }
+
+    needUseVendorFilter(newValue, oldValue) {
+        return newValue.vendors.length > 0 && oldValue.vendors.length > 0 &&
+            angular.toJson(newValue.vendors.filter(v => v.isSelected)) !== angular.toJson(oldValue.vendors.filter(v => v.isSelected))
+    }
+
+    needSearch(newValue, oldValue) {
+        return newValue.search !== oldValue.search;
+    }
+
+    needUseSorting(newValue, oldValue) {
+        return newValue.sorting.name !== oldValue.sorting.name ||
+            newValue.sorting.direction !== oldValue.sorting.direction ||
+            newValue.sorting.required !== oldValue.sorting.required;
     }
 
     private getCheckedVendors() {

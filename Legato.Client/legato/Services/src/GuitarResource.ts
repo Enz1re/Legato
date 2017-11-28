@@ -52,7 +52,7 @@ export default class GuitarResource implements IGuitarResource {
     }
 
     // Classical guitars
-    getClassicalGuitars(filter: Filter, paging: Paging): ng.IPromise<ClassicalGuitar[]> {
+    getClassicalGuitars(filter: Filter, paging: Paging) {
         return this.$http.get(`http://localhost/api/Classical/${paging.lowerBound}/${paging.upperBound}`, { params: { filterJson: angular.toJson(filter) } })
             .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as ClassicalGuitar[]);
     }
@@ -60,6 +60,11 @@ export default class GuitarResource implements IGuitarResource {
     getSortedClassicalGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string) {
         return this.$http.get(`http://localhost/api/Classical/${paging.lowerBound}/${paging.upperBound}/${sortHeader}/${sortDirection}`,
             { params: { filterJson: angular.toJson(filter) } })
+            .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as ClassicalGuitar[]);
+    }
+
+    searchClassicalGuitars(query: string, paging: Paging) {
+        return this.$http.get(`http://localhost/api/Classical/${query}/${paging.lowerBound}/${paging.upperBound}`)
             .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as ClassicalGuitar[]);
     }
 
@@ -80,6 +85,11 @@ export default class GuitarResource implements IGuitarResource {
             .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as WesternGuitar[]);
     }
 
+    searchWesternGuitars(query: string, paging: Paging) {
+        return this.$http.get(`http://localhost/api/Western/${query}/${paging.lowerBound}/${paging.upperBound}`)
+            .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as WesternGuitar[]);
+    }
+
     getWesternGuitarQuantity(filter: Filter): ng.IPromise<number> {
         return this.$http.get("http://localhost/api/Western/Quantity", { params: { filterJson: angular.toJson(filter) } })
             .then((result: ng.IHttpResponse<Amount>) => result.data.quantity);
@@ -97,6 +107,11 @@ export default class GuitarResource implements IGuitarResource {
             .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as ElectricGuitar[]);
     }
 
+    searchElectricGuitars(query: string, paging: Paging) {
+        return this.$http.get(`http://localhost/api/Electric/${query}/${paging.lowerBound}/${paging.upperBound}`)
+            .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as ElectricGuitar[]);
+    }
+
     getElectricGuitarQuantity(filter: Filter): ng.IPromise<number> {
         return this.$http.get("http://localhost/api/Electric/Quantity", { params: { filterJson: angular.toJson(filter) } })
             .then((result: ng.IHttpResponse<Amount>) => result.data.quantity);
@@ -111,6 +126,11 @@ export default class GuitarResource implements IGuitarResource {
     getSortedBassGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string) {
         return this.$http.get(`http://localhost/api/Bass/${paging.lowerBound}/${paging.upperBound}/${sortHeader}/${sortDirection}`,
             { params: { filterJson: angular.toJson(filter) } })
+            .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as BassGuitar[]);
+    }
+
+    searchBassGuitars(query: string, paging: Paging) {
+        return this.$http.get(`http://localhost/api/Bass/${query}/${paging.lowerBound}/${paging.upperBound}`)
             .then((result: ng.IHttpResponse<GuitarList>) => result.data.guitars as BassGuitar[]);
     }
 

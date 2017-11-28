@@ -53,6 +53,14 @@ export default class UrlParamResolver implements IUrlParamResolver {
         });
     }
 
+    resolveSearchString() {
+        if (!this.stateParamsObject.search) {
+            return "";
+        }
+
+        return this.stateParamsObject.search;
+    }
+
     resolveIndex() {
         if (!this.stateParamsObject.g) {
             return null;

@@ -11,7 +11,7 @@ export class ServiceBase {
     protected pendingRequests: number;
     protected $$cache: ng.ICacheObject;
 
-    constructor(private qServ: ng.IQService, ) {
+    constructor(private qServ: ng.IQService) {
         this.pendingRequests = 0;
     }
 
@@ -37,7 +37,7 @@ export class ServiceBase {
         return deferred.promise;
     }
 
-    getFilter(price: Price, vendors: Vendor[]): Filter {
+    getFilter(price?: Price, vendors?: Vendor[], searchQuery?: string): Filter {
         let filter = new Filter();
 
         if (price) {
@@ -45,6 +45,9 @@ export class ServiceBase {
         }
         if (vendors) {
             filter.vendorFilter = new VendorList(vendors.filter(v => v.isSelected));
+        }
+        if (searchQuery) {
+            filter.searchItems = searchQuery.toLowerCase().split(" ");
         }
 
         return filter;
