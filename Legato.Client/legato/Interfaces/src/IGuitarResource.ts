@@ -20,7 +20,7 @@ export interface IGuitarResource {
     getBassGuitarVendors(): ng.IPromise<string[]>;
     // classical guitars
     getClassicalGuitars(filter: Filter, paging: Paging): ng.IPromise<ClassicalGuitar[]>;
-    getSortedClassicalGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string);
+    getSortedClassicalGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<ClassicalGuitar[]>;
     getClassicalGuitarQuantity(filter: Filter): ng.IPromise<number>;
     // western guitars
     getWesternGuitars(filter: Filter, paging: Paging): ng.IPromise<WesternGuitar[]>;
