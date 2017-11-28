@@ -5,13 +5,18 @@
             <div class="site-name-signature">Easy-going guitar catalog</div>
         </div>
         <div class="site-icon-container">
-            <img class="site-icon" src="Content/icons/guitar-ico.png" />
+            <a ui-sref="/login">
+                <img class="site-icon" src="Content/icons/guitar-ico.png" />
+            </a>
         </div>
     </div>
 </div>
 <div class="main-container">
     <div class="left-panel">
-        <div legato-load-on-change>
+        <div>
+            <div class="search-field">
+                <input type="text" ng-model="mainCtrl.search" ng-keypress="mainCtrl.doSearch($event)" placeholder="Search" />
+            </div>
             <div class="find-by-cost-title">Find by cost</div>
             <form name="price" ng-model="mainCtrl.filterUpdateService.filter.price" legato-validate-price>
                 <div><label for="from">From:</label></div>
@@ -22,7 +27,6 @@
                     <small class="error">"To" value has to be greater than "from"</small>
                 </div>
             </form>
-            <p></p>
             <div class="vendors-title">Vendors:</div>
             <legato-request-loader ng-if="mainCtrl.service.hasPendingRequests()" size="small"></legato-request-loader>
             <div ng-if="mainCtrl.error" class="error">
@@ -36,12 +40,9 @@
                      <label for="{{vendor.name}}">{{vendor.name}}</label>
                 </div>
             </div>
-            <p></p>
-            <div><label for="sort">Sort</label> – <input id="sort" type="checkbox" ng-model="mainCtrl.filterUpdateService.filter.sorting.required"/></div>
-            <p></p>
+            <div class="sort-container"><label for="sort">Sort</label> – <input id="sort" type="checkbox" ng-model="mainCtrl.filterUpdateService.filter.sorting.required"/></div>
             <div ng-show="mainCtrl.filterUpdateService.filter.sorting.required">
                 <div>By:</div>
-                <p></p>
                 <div>
                     <select ng-model="mainCtrl.filterUpdateService.filter.sorting.name">
                         <option title="Vendor">Vendor</option>
@@ -54,6 +55,9 @@
                         </select>
                     </div>
                 </div>
+            </div>
+            <div class="button-container">
+                <button class="btn btn-primary" ng-click="mainCtrl.unfilter()">Unfilter</button>
             </div>
         </div>
     </div>
