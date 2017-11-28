@@ -12,6 +12,7 @@ import Amount from "./src/Amount";
 import Paging from "./src/Paging";
 import Filter from "./src/Filter";
 import Price from "./src/Price";
+import User from "./src/User";
 
 
 export {
@@ -28,5 +29,6 @@ export {
     Filter,
     Vendor,
     Paging,
-    Price
+    Price,
+    User
 };
