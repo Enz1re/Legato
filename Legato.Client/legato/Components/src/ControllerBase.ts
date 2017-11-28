@@ -1,6 +1,4 @@
-﻿import angular from "angular";
-
-import {
+﻿import {
     Price,
     Guitar,
     Paging,
@@ -19,10 +17,18 @@ import {
 
 export abstract class ControllerBase<TGuitar extends Guitar> {
     noResults: boolean;
+    filter: {
+        price: Price,
+        vendors: Vendor[],
+        sorting: Sorting,
+        search: string
+    } = {
+        price: new Price(),
+        vendors: [],
+        sorting: new Sorting(),
+        search: ""
+    };
     guitars: TGuitar[];
-    price: Price = new Price();
-    vendors: Vendor[];
-    sorting: Sorting = new Sorting();
     error = false;
     paging: Paging = new Paging();
 
@@ -34,9 +40,9 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         const stateName = this.routingService.urlSegments[1];
         const urlParamResolver = routingService.getParamResolver();
         
-        this.price = urlParamResolver.resolvePrice();
-        this.vendors = urlParamResolver.resolveVendors(null);
-        this.sorting = urlParamResolver.resolveSorting();
+        this.filter.price = urlParamResolver.resolvePrice();
+        this.filter.vendors = urlParamResolver.resolveVendors(null);
+        this.filter.sorting = urlParamResolver.resolveSorting();
         this.getAmount().then(() => {
             const maxPage = Math.floor(this.paging.total / this.paging.itemsToShow);
             let urlPage = this.routingService.getParamResolver().resolvePage();
@@ -64,7 +70,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 }
 
                 this.onGuitarClick(stateName, gIndex);
-            })
+            });
         }).catch(err => {
             this.error = true;
         })
@@ -80,7 +86,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     }
 
     protected getAmount() {
-        return this.service.getAmount(this.price, this.vendors).then(amount => {
+        return this.service.getAmount(this.filter.search, this.filter.price, this.filter.vendors).then(amount => {
             this.paging.total = amount;
         });
     }
@@ -89,15 +95,15 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.guitars = [];
         this.error = false;
 
-        if (this.sorting && this.sorting.required) {
-            return this.service.getSortedGuitars(this.price, this.vendors, this.paging, this.sorting.name, this.sorting.direction).then(guitars => {
+        if (this.filter.sorting && this.filter.sorting.required) {
+            return this.service.getSortedGuitars(this.filter.search, this.filter.price, this.filter.vendors, this.paging, this.filter.sorting.name, this.filter.sorting.direction).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
             }).catch(err => {
                 this.error = true;
             });
         } else {
-            return this.service.getGuitars(this.price, this.vendors, this.paging).then(guitars => {
+            return this.service.getGuitars(this.filter.search, this.filter.price, this.filter.vendors, this.paging).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
             }).catch(err => {
@@ -136,41 +142,60 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
             const stateName = this.routingService.urlSegments[1];
             this.pendingTaskService.cancelPendingTask();
 
-            if (this.needUsePriceFilter(newValue, oldValue)) {
+            if (this.filterUpdateService.needSearch(newValue, oldValue)) {
+                this.pendingTaskService.setPendingTask(() => {
+                    this.filterUpdateService.replaceSearchQueryParams(stateName);
+                    this.filter.search = newValue.search;
+                    this.goToFirstPage();
+                });
+            }
+            if (this.filterUpdateService.needUsePriceFilter(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.filterUpdateService.replacePriceQueryParams(stateName);
-                    this.price = newValue.price;
-                    this.init();
+                    let from = newValue.price.from
+                    let to = newValue.price.to;
+                    if (from || to) {
+                        if (!newValue.price.from)
+                            from = 0
+                        if (!newValue.price.to)
+                            to = this.getMaxGuitarPrice();
+                    }
+                    this.filter.price = { from: from, to: to };
+                    this.goToFirstPage();
                 });
             }
-            if (this.needUseVendorFilter(newValue, oldValue)) {
+            if (this.filterUpdateService.needUseVendorFilter(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.filterUpdateService.replaceVendorQueryParams(stateName);
-                    this.vendors = newValue.vendors;
-                    this.init();
+                    this.filter.vendors = newValue.vendors;
+                    this.goToFirstPage();
                 });
             }
-            if (this.needUseSorting(newValue, oldValue)) {
+            if (this.filterUpdateService.needUseSorting(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.filterUpdateService.replaceSortingQueryParams(stateName);
-                    this.sorting = newValue.sorting;
-                    this.loadGuitarList();
+                    this.filter.sorting = newValue.sorting;
+                    this.goToFirstPage();
                 });
             }
         }, true);
     }
 
-    private needUsePriceFilter(newValue, oldValue) {
-        return newValue.price.from !== oldValue.price.from || newValue.price.to !== oldValue.price.to;
+    private getMaxGuitarPrice() {
+        let maxPrice = this.guitars[0].price;
+
+        for (let g of this.guitars) {
+            if (g.price > maxPrice) {
+                maxPrice = g.price;
+            }
+        }
+
+        return maxPrice;
     }
 
-    private needUseVendorFilter(newValue, oldValue) {
-        return newValue.vendors.length > 0 && oldValue.vendors.length > 0 &&
-            angular.toJson(newValue.vendors.filter(v => v.isSelected)) !== angular.toJson(oldValue.vendors.filter(v => v.isSelected))
-    }
-
-    private needUseSorting(newValue, oldValue) {
-        return newValue.sorting.name !== oldValue.sorting.name ||
-            newValue.sorting.direction !== oldValue.sorting.direction;
+    private goToFirstPage() {
+        this.paging.currentPage = 1;
+        this.paging.goToPage();
+        this.init();
     }
 }
