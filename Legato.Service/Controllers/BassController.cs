@@ -46,7 +46,7 @@ namespace Legato.Service.Controllers
 
             return Ok(_serviceWorker.GetSortedBassGuitars(filter, lowerBound, upperBound, sorting));
         }
-
+        
         [Route("api/Bass/Vendors")]
         public IHttpActionResult GetVendors()
         {

@@ -25,6 +25,17 @@ namespace Legato.Middleware
             }
         }
 
+        public IEnumerable<AcousticClassicalGuitarDataModel> GetSortedAcousticClassicalGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            using (var worker = _blWorker.Get())
+            {
+                if (sorting.SortHeader == SortHeader.Price)
+                    return worker.GetSortedAcousticClassicalGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
+                else
+                    return worker.GetSortedAcousticClassicalGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
+            }
+        }
+        
         public IEnumerable<string> GetAcousticClassicalGuitarVendors()
         {
             using (var worker = _blWorker.Get())
@@ -41,17 +52,6 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<AcousticClassicalGuitarDataModel> GetSortedAcousticClassicalGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                if (sorting.SortHeader == SortHeader.Price)
-                    return worker.GetSortedAcousticClassicalGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
-                else
-                    return worker.GetSortedAcousticClassicalGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
-            }
-        }
-
         public IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitars(FilterDataModel filter, int lowerBound, int upperBound)
         {
             using (var worker = _blWorker.Get())
@@ -60,6 +60,17 @@ namespace Legato.Middleware
             }
         }
 
+        public IEnumerable<AcousticWesternGuitarDataModel> GetSortedAcousticWesternGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            using (var worker = _blWorker.Get())
+            {
+                if (sorting.SortHeader == SortHeader.Price)
+                    return worker.GetSortedAcousticWesternGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
+                else
+                    return worker.GetSortedAcousticWesternGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
+            }
+        }
+        
         public IEnumerable<string> GetAcousticWesternGuitarVendors()
         {
             using (var worker = _blWorker.Get())
@@ -76,17 +87,6 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<AcousticWesternGuitarDataModel> GetSortedAcousticWesternGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                if (sorting.SortHeader == SortHeader.Price)
-                    return worker.GetSortedAcousticWesternGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
-                else
-                    return worker.GetSortedAcousticWesternGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
-            }
-        }
-
         public IEnumerable<ElectricGuitarDataModel> GetElectricGuitars(FilterDataModel filter, int lowerBound, int upperBound)
         {
             using (var worker = _blWorker.Get())
@@ -95,6 +95,17 @@ namespace Legato.Middleware
             }
         }
 
+        public IEnumerable<ElectricGuitarDataModel> GetSortedElectricGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            using (var worker = _blWorker.Get())
+            {
+                if (sorting.SortHeader == SortHeader.Price)
+                    return worker.GetSortedElectricGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
+                else
+                    return worker.GetSortedElectricGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
+            }
+        }
+        
         public IEnumerable<string> GetElectricGuitarVendors()
         {
             using (var worker = _blWorker.Get())
@@ -111,17 +122,6 @@ namespace Legato.Middleware
             }
         }
 
-        public IEnumerable<ElectricGuitarDataModel> GetSortedElectricGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                if (sorting.SortHeader == SortHeader.Price)
-                    return worker.GetSortedElectricGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
-                else
-                    return worker.GetSortedElectricGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
-            }
-        }
-
         public IEnumerable<BassGuitarDataModel> GetBassGuitars(FilterDataModel filter, int lowerBound, int upperBound)
         {
             using (var worker = _blWorker.Get())
@@ -130,6 +130,17 @@ namespace Legato.Middleware
             }
         }
 
+        public IEnumerable<BassGuitarDataModel> GetSortedBassGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
+        {
+            using (var worker = _blWorker.Get())
+            {
+                if (sorting.SortHeader == SortHeader.Price)
+                    return worker.GetSortedBassGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
+                else
+                    return worker.GetSortedBassGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
+            }
+        }
+        
         public IEnumerable<string> GetBassGuitarVendors()
         {
             using (var worker = _blWorker.Get())
@@ -143,17 +154,6 @@ namespace Legato.Middleware
             using (var worker = _blWorker.Get())
             {
                 return worker.GetBassGuitarAmount(filter);
-            }
-        }
-
-        public IEnumerable<BassGuitarDataModel> GetSortedBassGuitars(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting)
-        {
-            using (var worker = _blWorker.Get())
-            {
-                if (sorting.SortHeader == SortHeader.Price)
-                    return worker.GetSortedBassGuitarsByPrice(filter, lowerBound, upperBound, sorting.SortDirection);
-                else
-                    return worker.GetSortedBassGuitarsByVendor(filter, lowerBound, upperBound, sorting.SortDirection);
             }
         }
     }

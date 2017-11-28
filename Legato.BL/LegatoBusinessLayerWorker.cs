@@ -22,7 +22,7 @@ namespace Legato.BL
         public IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitars(FilterDataModel filter, int lowerBound, int upperBound)
         {
             var guitars = ApplyFilteringFor(_repoProvider.AcousticClassicalGuitarRepository, filter);
-
+            
             return MiddlewareMappings.Map<List<AcousticClassicalGuitarDataModel>>(guitars.Skip(lowerBound)
                                                                                          .Take(upperBound - lowerBound)
                                                                                          .ToList());
@@ -63,10 +63,10 @@ namespace Legato.BL
         public IEnumerable<string> GetAcousticClassicalGuitarVendors()
         {
             return _repoProvider.AcousticClassicalGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
+                                .GetAll()
+                                .Select(guitar => guitar.Vendor.Name)
+                                .Distinct()
+                                .ToList();
         }
 
         public int GetAcousticClassicalGuitarAmount(FilterDataModel filter)
@@ -120,10 +120,10 @@ namespace Legato.BL
         public IEnumerable<string> GetAcousticWesternGuitarVendors()
         {
             return _repoProvider.AcousticWesternGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
+                                .GetAll()
+                                .Select(guitar => guitar.Vendor.Name)
+                                .Distinct()
+                                .ToList();
         }
 
         public int GetAcousticWesternGuitarAmount(FilterDataModel filter)
@@ -177,10 +177,10 @@ namespace Legato.BL
         public IEnumerable<string> GetElectricGuitarVendors()
         {
             return _repoProvider.ElectricGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
+                                .GetAll()
+                                .Select(guitar => guitar.Vendor.Name)
+                                .Distinct()
+                                .ToList();
         }
 
         public int GetElectriGuitarAmount(FilterDataModel filter)
@@ -234,10 +234,10 @@ namespace Legato.BL
         public IEnumerable<string> GetBassGuitarVendors()
         {
             return _repoProvider.BassGuitarRepository
-                .GetAll()
-                .Select(guitar => guitar.Vendor.Name)
-                .Distinct()
-                .ToList();
+                                .GetAll()
+                                .Select(guitar => guitar.Vendor.Name)
+                                .Distinct()
+                                .ToList();
         }
 
         public int GetBassGuitarAmount(FilterDataModel filter)
@@ -262,19 +262,29 @@ namespace Legato.BL
             return filter != null && filter.Vendors != null;
         }
 
+        private bool SearchItemsExist(string[] searchItems)
+        {
+            return searchItems != null && searchItems.Length > 0;
+        }
+
         private IQueryable<TGuitar> ApplyFilteringFor<TGuitar>(IGuitarRepository<TGuitar> repo, FilterDataModel filter) where TGuitar : GuitarModel
         {
-            var from = filter.PriceFilter?.From;
-            var to = filter.PriceFilter?.To;
-            var vendors = filter.VendorFilter?.Vendors;
-
             var all = repo.GetAll();
+
+            if (SearchItemsExist(filter.SearchItems))
+            {
+                var searchItems = filter.SearchItems;
+                all = all.Where(guitar => searchItems.All(item => guitar.Vendor.Name.ToLower().Contains(item) || guitar.Model.ToLower().Contains(item)));
+            }
             if (PriceFilterExists(filter.PriceFilter))
             {
+                var from = filter.PriceFilter.From;
+                var to = filter.PriceFilter.To;
                 all = all.Where(g => from <= g.Price && g.Price <= to);
             }
             if (VendorFilterExists(filter.VendorFilter))
             {
+                var vendors = filter.VendorFilter.Vendors;
                 all = all.Where(g => vendors.Contains(g.Vendor.Name));
             }
 

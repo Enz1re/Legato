@@ -26,7 +26,7 @@ namespace Legato.ServiceDAL.Repositories
         {
             return _client.GetSortedAcousticClassicalGuitars(filter, lowerBound, upperBound, sorting);
         }
-
+        
         public IEnumerable<string> GetVendors()
         {
             return _client.GetAcousticClassicalGuitarVendors();

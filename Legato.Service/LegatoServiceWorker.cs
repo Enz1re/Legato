@@ -41,7 +41,7 @@ namespace Legato.Service
                 )
             };
         }
-
+        
         public VendorList GetAcousticClassicalGuitarVendors()
         {
             return new VendorList
@@ -85,7 +85,7 @@ namespace Legato.Service
                 )
             };
         }
-
+        
         public VendorList GetAcousticWesternGuitarVendors()
         {
             return new VendorList
@@ -129,7 +129,7 @@ namespace Legato.Service
                 )
             };
         }
-
+        
         public VendorList GetElectricGuitarVendors()
         {
             return new VendorList
@@ -173,7 +173,7 @@ namespace Legato.Service
                 )
             };
         }
-
+        
         public VendorList GetBassGuitarVendors()
         {
             return new VendorList

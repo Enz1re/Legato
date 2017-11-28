@@ -11,5 +11,8 @@ namespace Legato.MiddlewareContracts.DataContracts
 
         [DataMember]
         public VendorFilterDataModel VendorFilter { get; set; }
+
+        [DataMember]
+        public string[] SearchItems { get; set; }
     }
 }
