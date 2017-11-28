@@ -14,5 +14,7 @@ export interface IUrlParamResolver {
 
     resolveSorting(): Sorting;
 
+    resolveSearchString(): string;
+
     resolveIndex(): number;
 }
