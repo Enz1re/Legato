@@ -18,6 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/angular": "^1.6.9",
+    "@types/angular-cookies": "^1.4.5",
     "@types/angular-animate": "^1.5.8",
     "@types/angular-mocks": "^1.5.9",
     "@types/angular-ui-router": "^1.1.36",
@@ -41,6 +42,7 @@
   },
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-cookies": "^1.6.7",
     "angular-animate": "^1.5.8",
     "angular-ui-bootstrap": "~2.5.0",
     "angular-ui-router": "^0.3.2",

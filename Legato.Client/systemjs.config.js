@@ -10,6 +10,7 @@
         app: "legato",
         "angular": "npm:angular/angular.min.js",
         "angular-animate": "npm:angular-animate/index.js",
+        "angular-cookies": "npm:angular-cookies/index.js",
         "angular-ui-router": "npm:angular-ui-router/release/angular-ui-router.min.js",
         "angular-ui-bootstrap": "npm:angular-ui-bootstrap/index.js"
     },
@@ -26,6 +27,10 @@
         },
         "angular-animate": {
             main: "npm:angular-animate/index.js",
+            defaultExtension: "js"
+        },
+        "angular-cookies": {
+            main: "npm:angular-cookies/index.js",
             defaultExtension: "js"
         },
         "angular-ui-bootstrap": {
