@@ -1,6 +1,7 @@
 ﻿import angular from "angular";
 
 import ClassicalGuitarService from "./src/ClassicalGuitarService";
+import AuthenticationService from "./src/AuthenticationService";
 import ElectricGuitarService from "./src/ElectricGuitarService";
 import WesternGuitarService from "./src/WesternGuitarService";
 import FilterUpdateService from "./src/FilterUpdateService";
@@ -13,6 +14,7 @@ import FilterService from "./src/FilterService";
 import VendorService from "./src/VendorService";
 import CacheService from "./src/CacheService";
 import ModalService from "./src/ModalService";
+import Base64 from "./src/Base64";
 
 const servicesModuleName = "legato.services";
 
@@ -28,10 +30,13 @@ angular.module(servicesModuleName, [])
     .service("RoutingService", RoutingService)
     .service("FilterUpdateService", FilterUpdateService)
     .service("FilterService", FilterService)
-    .service("ModalService", ModalService);
+    .service("ModalService", ModalService)
+    .service("AuthenticationService", AuthenticationService)
+    .service("Base64", Base64);
 
 export {
     ClassicalGuitarService,
+    AuthenticationService,
     ElectricGuitarService,
     WesternGuitarService,
     FilterUpdateService,
@@ -44,6 +49,7 @@ export {
     VendorService,
     CacheService,
     ModalService,
+    Base64
 };
 
 export default servicesModuleName;
