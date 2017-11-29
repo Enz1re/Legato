@@ -7,9 +7,9 @@
 } from "../../Models/models";
 
 import {
-    IModalService,
     IGuitarService,
     IRoutingService,
+    IModalService,
     IPendingTaskService,
     IFilterUpdateService
 } from "../../Interfaces/interfaces";
@@ -127,7 +127,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
             this.routingService.replace(guitarName, params);
         }
 
-        this.modalService.open({
+        this.modalService.openGuitarModal({
             gName: () => guitarName,
             guitars: () => this.guitars,
             currentIndex: () => index
