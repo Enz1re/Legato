@@ -9,6 +9,8 @@ import { LegatoValidatePriceDirective } from "./src/validatePrice/LegatoValidate
 import { LegatoLoadingDirective } from "./src/loading/LegatoLoadingDirective";
 import { LegatoSmoothScrollDirective } from "./src/smoothScroll/LegatoSmoothScrollDirective";
 import { LegatoRequestLoaderDirective } from "./src/loading/LegatoRequestLoaderDirective";
+import { LoginDirective } from "./src/login/LoginDirective";
+import { LoginModalComponent } from "./src/login/LoginModalComponent";
 
 import { MainController } from "./src/legato/MainController";
 import { ClassicalController } from "./src/classical/ClassicalController";
@@ -17,11 +19,13 @@ import { ElectricController } from "./src/electric/ElectricController";
 import { BassController } from "./src/bass/BassController";
 import { ControllerBase } from "./src/ControllerBase";
 import { GuitarModalController } from "./src/guitarModal/GuitarModalController";
+import { LoginController } from "./src/login/LoginController";
+import { LoginModalController } from "./src/login/LoginModalController";
 
 const directivesModuleName = "legato.components";
 
 angular.module(directivesModuleName, [])
-    // directive declarations
+    // directive/component declarations
     .directive("legato", MainDirective.create())
     .directive("classical", ClassicalDirective.create())
     .directive("western", WesternDirective.create())
@@ -31,13 +35,17 @@ angular.module(directivesModuleName, [])
     .directive("legatoLoading", LegatoLoadingDirective.create())
     .directive("legatoSmoothScroll", LegatoSmoothScrollDirective.create())
     .directive("legatoRequestLoader", LegatoRequestLoaderDirective.create())
+    .directive("login", LoginDirective.create())
+    .component("loginModal", LoginModalComponent.create())
     // controller declarations
     .controller("MainController", MainController)
     .controller("ClassicalController", ClassicalController)
     .controller("WesternController", WesternController)
     .controller("ElectricController", ElectricController)
     .controller("BassController", BassController)
-    .controller("GuitarModalController", GuitarModalController);
+    .controller("GuitarModalController", GuitarModalController)
+    .controller("LoginController", LoginController)
+    .controller("LoginModalController", LoginModalController);
 
 export {
     MainController,
@@ -45,7 +53,8 @@ export {
     ClassicalController,
     WesternController,
     ElectricController,
-    BassController
+    BassController,
+    LoginController
 };
 
 export default directivesModuleName;
