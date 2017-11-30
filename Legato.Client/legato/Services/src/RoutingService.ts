@@ -25,7 +25,7 @@ export default class RoutingService implements IRoutingService {
     }
 
     getParamResolver(): IUrlParamResolver {
-        return new UrlParamResolver(this.$stateParams);
+        return new UrlParamResolver(this.$stateParams, this);
     }
 
     redirect(stateName: string, params?: Partial<UrlParams>) {

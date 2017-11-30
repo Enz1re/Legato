@@ -43,37 +43,22 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.filter.price = urlParamResolver.resolvePrice();
         this.filter.vendors = urlParamResolver.resolveVendors(null);
         this.filter.sorting = urlParamResolver.resolveSorting();
+
         this.getAmount().then(() => {
             const maxPage = Math.floor(this.paging.total / this.paging.itemsToShow);
-            let urlPage = this.routingService.getParamResolver().resolvePage();
-
-            if (urlPage > maxPage) {
-                urlPage = maxPage;
-                let params = this.routingService.queryParams;
-                params.page = urlPage;
-                this.routingService.replace(stateName, params);
-            }
-
-            this.paging.currentPage = urlPage;
+            this.paging.currentPage = urlParamResolver.resolvePage(maxPage);
             this.paging.goToPage();
         }).then(() => {
             this.loadGuitarList().then(() => {
-                let gIndex = urlParamResolver.resolveIndex();
+                const gIndex = urlParamResolver.resolveIndex(this.guitars.length - 1);
                 if (!gIndex) {
                     return;
                 }
-                if (gIndex >= this.guitars.length) {
-                    gIndex = this.guitars.length - 1;
-                    let params = this.routingService.queryParams;
-                    params.g = gIndex;
-                    this.routingService.replace(stateName, params);
-                }
-
                 this.onGuitarClick(stateName, gIndex);
             });
         }).catch(err => {
             this.error = true;
-        })
+        });
     }
 
     protected init() {

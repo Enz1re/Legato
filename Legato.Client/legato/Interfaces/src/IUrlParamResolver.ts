@@ -6,7 +6,7 @@
 
 
 export interface IUrlParamResolver {
-    resolvePage(): number;
+    resolvePage(maxPage?: number): number;
 
     resolvePrice(): Price;
 
@@ -16,5 +16,5 @@ export interface IUrlParamResolver {
 
     resolveSearchString(): string;
 
-    resolveIndex(): number;
+    resolveIndex(maxIndex?: number): number;
 }

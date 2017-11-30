@@ -1,21 +1,28 @@
 ﻿import { Price, Sorting, Vendor } from "../../Models/models";
 
-import { IUrlParamResolver } from "../../Interfaces/interfaces";
+import {
+    IRoutingService,
+    IUrlParamResolver
+} from "../../Interfaces/interfaces";
 
 
 export default class UrlParamResolver implements IUrlParamResolver {
-    private stateParamsObject: ng.ui.IStateParamsService;
-
-    constructor(stateParamsObject: ng.ui.IStateParamsService) {
-        this.stateParamsObject = stateParamsObject;
+    constructor(private stateParamsObject: ng.ui.IStateParamsService, private routingService: IRoutingService) {
+        
     }
 
-    resolvePage() {
+    resolvePage(maxPage?: number) {
         if (!this.stateParamsObject.page) {
             return 1;
         }
 
-        const parsedPage = parseInt(this.stateParamsObject.page);
+        let parsedPage = parseInt(this.stateParamsObject.page);
+        if (parsedPage > maxPage) {
+            parsedPage = maxPage;
+            let params = this.routingService.queryParams;
+            params.page = parsedPage;
+            this.routingService.replace(this.routingService.urlSegments[1], params);
+        }
 
         return parsedPage ? parsedPage : 1;
     }
@@ -61,12 +68,18 @@ export default class UrlParamResolver implements IUrlParamResolver {
         return this.stateParamsObject.search;
     }
 
-    resolveIndex() {
+    resolveIndex(maxIndex?: number) {
         if (!this.stateParamsObject.g) {
             return null;
         }
 
-        const index = parseInt(this.stateParamsObject.g);
+        let index = parseInt(this.stateParamsObject.g);
+        if (index > maxIndex) {
+            index = maxIndex;
+            let params = this.routingService.queryParams;
+            params.g = index;
+            this.routingService.replace(this.routingService.urlSegments[1], params);
+        }
 
         return index ? index : null;
     }
