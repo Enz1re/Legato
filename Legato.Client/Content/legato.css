@@ -225,7 +225,7 @@ div.messaging {
 }
 
 .site-icon:hover {
-    transform: scale(1.06);
+    transform: scale(1.1);
     cursor: pointer;
 }
 
