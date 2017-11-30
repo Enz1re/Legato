@@ -36,7 +36,6 @@ angular.module(directivesModuleName, [])
     .directive("legatoSmoothScroll", LegatoSmoothScrollDirective.create())
     .directive("legatoRequestLoader", LegatoRequestLoaderDirective.create())
     .directive("login", LoginDirective.create())
-    .component("loginModal", LoginModalComponent.create())
     // controller declarations
     .controller("MainController", MainController)
     .controller("ClassicalController", ClassicalController)

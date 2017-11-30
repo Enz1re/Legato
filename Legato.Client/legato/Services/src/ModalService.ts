@@ -17,7 +17,6 @@ export default class ModalService implements IModalService {
             controllerAs: "modalCtrl",
             templateUrl: "legato/Components/src/guitarModal/guitarModal.html",
             bindToController: true,
-            appendTo: angular.element(document.body),
             resolve: resolve
         });
     }
@@ -25,8 +24,9 @@ export default class ModalService implements IModalService {
     openLoginModal(resolve: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
         return this.$uibModal.open({
             animation: true,
-            component: "loginModal",
-            appendTo: angular.element(document.body),
+            controller: "LoginModalController",
+            controllerAs: "loginModalCtrl",
+            templateUrl: "legato/Components/src/login/loginModal.html",
             resolve: resolve
         });
     }
