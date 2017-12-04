@@ -1,6 +1,7 @@
 ﻿using Ninject;
 using Newtonsoft.Json;
 using System.Web.Http;
+using Legato.Service.Filters;
 using Legato.ServiceDAL.ViewModels;
 using Legato.MiddlewareContracts.DataContracts;
 
@@ -18,6 +19,7 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
+        [JwtAuth]
         [GuitarFilter]
         [Route("{lowerBound}/{upperBound}")]
         public IHttpActionResult Get([FromUri]string filterJson, int lowerBound, int upperBound)
@@ -30,6 +32,7 @@ namespace Legato.Service.Controllers
             return Ok(_serviceWorker.GetAcousticWesternGuitars(filter, lowerBound, upperBound));
         }
 
+        [JwtAuth]
         [GuitarFilter]
         [Route("{lowerBound}/{upperBound}/{sortHeader}/{sortDirection}")]
         public IHttpActionResult GetSorted([FromUri]string filterJson, int lowerBound, int upperBound, string sortHeader, string sortDirection)
@@ -47,13 +50,15 @@ namespace Legato.Service.Controllers
 
             return Ok(_serviceWorker.GetSortedAcousticWesternGuitars(filter, lowerBound, upperBound, sorting));
         }
-        
+
+        [JwtAuth]
         [Route("Vendors")]
         public IHttpActionResult GetVendors()
         {
             return Ok(_serviceWorker.GetAcousticWesternGuitarVendors());
         }
 
+        [JwtAuth]
         [GuitarFilter]
         [Route("Quantity")]
         public IHttpActionResult GetQuantity([FromUri]string filterJson)

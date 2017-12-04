@@ -3,7 +3,6 @@
 
 namespace Legato.Service.Controllers
 {
-    [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -15,7 +14,6 @@ namespace Legato.Service.Controllers
 
         [HttpPost]
         [Route("Login")]
-        [AllowAnonymous]
         public IHttpActionResult Login(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
