@@ -15,5 +15,9 @@
         public static string SortHeaderIsInvalid => "Sort header value is invalid.";
 
         public static string SortDirectionIsInvalid => "Sort direction value is invalid.";
+
+        public static string UsernameAndPasswordAreRequired => "Username and password are required";
+
+        public static string UsernameIsIncorrect(string username) => $@"Username '{username}' is incorrect";
     }
 }
