@@ -7,6 +7,7 @@ using Legato.MiddlewareContracts.DataContracts;
 
 namespace Legato.Service.Controllers
 {
+    [RoutePrefix("api/Electric")]
     public class ElectricController : ApiController
     {
         private ILegatoServiceWorker _serviceWorker;
@@ -18,7 +19,7 @@ namespace Legato.Service.Controllers
         }
 
         [GuitarFilter]
-        [Route("api/Electric/{lowerBound}/{upperBound}")]
+        [Route("{lowerBound}/{upperBound}")]
         public IHttpActionResult Get([FromUri]string filterJson, int lowerBound, int upperBound)
         {
             var filter = JsonConvert.DeserializeObject<FilterViewModel>(filterJson, new JsonSerializerSettings
@@ -30,7 +31,7 @@ namespace Legato.Service.Controllers
         }
 
         [GuitarFilter]
-        [Route("api/Electric/{lowerBound}/{upperBound}/{sortHeader}/{sortDirection}")]
+        [Route("{lowerBound}/{upperBound}/{sortHeader}/{sortDirection}")]
         public IHttpActionResult GetSorted([FromUri]string filterJson, int lowerBound, int upperBound, string sortHeader, string sortDirection)
         {
             var filter = JsonConvert.DeserializeObject<FilterViewModel>(filterJson, new JsonSerializerSettings
@@ -47,14 +48,14 @@ namespace Legato.Service.Controllers
             return Ok(_serviceWorker.GetSortedElectricGuitars(filter, lowerBound, upperBound, sorting));
         }
 
-        [Route("api/Electric/Vendors")]
+        [Route("Vendors")]
         public IHttpActionResult GetVendors()
         {
             return Ok(_serviceWorker.GetElectricGuitarVendors());
         }
 
         [GuitarFilter]
-        [Route("api/Electric/Quantity")]
+        [Route("Quantity")]
         public IHttpActionResult GetQuantity([FromUri]string filterJson)
         {
             var filter = JsonConvert.DeserializeObject<FilterViewModel>(filterJson, new JsonSerializerSettings
