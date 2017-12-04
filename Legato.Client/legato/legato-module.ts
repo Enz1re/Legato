@@ -15,7 +15,7 @@ angular.module("legato", [ngCookies, uiRouter, ngAnimate, uiBootstrap, services,
     .run(["$rootScope", "$state", "$cookies", "$http", ($rootScope, $state: ng.ui.IStateService, $cookies: ng.cookies.ICookiesService, $http: ng.IHttpService) => {
         $rootScope.globals = $cookies.getObject("globals") || {};
         if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common["Authorization"] = `Basic ${$rootScope.globals.currentUser.authData}`;
+            $http.defaults.headers.common["Authorization"] = `Bearer ${$rootScope.globals.currentUser.authData}`;
         }
 
         $rootScope.$on("$stateChangeStart", (event: ng.IAngularEvent, toState: ng.ui.IState, toParams, fromState: ng.ui.IState, fromParams) => {
