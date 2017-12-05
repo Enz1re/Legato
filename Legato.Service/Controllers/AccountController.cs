@@ -8,14 +8,13 @@ namespace Legato.Service.Controllers
     {
         private const int TokenExpiryMinutes = 40;
 
-        public AccountController()
-        {
-        }
-
         [HttpPost]
         [Route("Login")]
-        public IHttpActionResult Login(string username, string password)
+        public IHttpActionResult Login([FromBody]dynamic creds)
         {
+            var username = creds.username.Value;
+            var password = creds.password.Value;
+
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 return BadRequest(Constants.Strings.UsernameAndPasswordAreRequired);
@@ -25,7 +24,10 @@ namespace Legato.Service.Controllers
                 return BadRequest(Constants.Strings.UsernameIsIncorrect(username));
             }
 
-            return Ok(JwtManager.GenerateToken(username, TokenExpiryMinutes));
+            return Ok(new
+            {
+                accessToken = JwtManager.GenerateToken(username, TokenExpiryMinutes)
+            });
         }
     }
 }
