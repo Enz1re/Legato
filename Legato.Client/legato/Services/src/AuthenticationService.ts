@@ -1,4 +1,6 @@
-﻿import {
+﻿import { User } from "../../Models/models";
+
+import {
     IBase64,
     IAuthenticationService
 } from "../../Interfaces/interfaces";
@@ -12,25 +14,28 @@ export default class AuthenticationService implements IAuthenticationService {
     }
 
     login(username: string, password: string): ng.IPromise<boolean> {
-        return this.$http.post("http://localhost/api/Auth/Login", { username: username, password: password })
-            .then((response: ng.IHttpResponse<any>) => {
-                return true;
-            }).catch(err => {
-                return false;
-            });
+        return this.$http({
+            method: "POST",
+            url: "http://localhost/api/Account/Login",
+            data: { username: username, password: password }
+        }).then((response: ng.IHttpResponse<any>) => {
+            return true;
+        }).catch(err => {
+            return false;
+        });
     }
 
     setCredentials(username: string, password: string) {
         const authData = this.base64.encode(`${username}:${password}`);
 
         this.$rootScope.globals = {
-            currentUse: {
+            currentUser: {
                 username: username,
                 authData: authData
             }
         };
 
-        this.$http.defaults.headers.common["Authorization"] = `Basic ${authData}`;
+        this.$http.defaults.headers.common.Authorization = `Bearer ${authData}`;
 
         const cookieExp = new Date();
         cookieExp.setDate(cookieExp.getDate() + 7);
@@ -38,8 +43,8 @@ export default class AuthenticationService implements IAuthenticationService {
     }
 
     clearCredentials() {
-        this.$rootScope.globals = {};
+        delete this.$rootScope.globals.currentUser;
         this.$cookies.remove("globals");
-        this.$http.defaults.headers.common.Authorization = "Basic";
+        this.$http.defaults.headers.common.Authorization = "Bearer";
     }
 }
