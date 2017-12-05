@@ -8,7 +8,8 @@ import {
     IFilterService,
     IVendorService,
     IRoutingService,
-    IFilterUpdateService
+    IFilterUpdateService,
+    IAuthenticationService
 } from "../../../Interfaces/interfaces";
 
 import { Constants } from "../../../Constants";
@@ -18,12 +19,14 @@ export class MainController implements ng.IController {
     error = false;
     activeTab: string;
     search: string;
-    static $inject = ["RoutingService", "FilterUpdateService", "FilterService", "VendorService"];
+    globals: any;
+    static $inject = ["$rootScope", "RoutingService", "FilterUpdateService", "FilterService", "VendorService", "AuthenticationService"];
 
-    constructor(private routingService: IRoutingService, private filterUpdateService: IFilterUpdateService,
-                private filterService: IFilterService, private service: IVendorService) {
+    constructor(private $rootScope, private routingService: IRoutingService, private filterUpdateService: IFilterUpdateService,
+                private filterService: IFilterService, private service: IVendorService, private authService: IAuthenticationService) {
         const name = routingService.urlSegments[1];
         this.initVendorList(name).then(() => {
+            this.globals = this.$rootScope.globals;
             this.activeTab = name;
             const urlParamResolver = routingService.getParamResolver();
             this.filterUpdateService.filter.price = urlParamResolver.resolvePrice();
@@ -31,6 +34,13 @@ export class MainController implements ng.IController {
             this.filterUpdateService.filter.vendors = urlParamResolver.resolveVendors(this.filterUpdateService.filter.vendors);
             this.filterUpdateService.filter.search = this.search = urlParamResolver.resolveSearchString();
         });
+        $rootScope.$watch(() => $rootScope.globals.currentUser, (newVal, oldVal) => {
+            if (newVal || oldVal) {
+                if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username || newVal.authData !== oldVal.authData)) {
+                    this.globals.currentUser = newVal;
+                }
+            }
+        }, true);
     }
 
     checkTab(click, guitarTypeName: string) {
@@ -75,6 +85,10 @@ export class MainController implements ng.IController {
         this.filterUpdateService.filter.vendors.forEach(v => {
             v.isSelected = true;
         });
+    }
+
+    logOut() {
+        this.authService.clearCredentials();
     }
 
     doSearch(event) {
