@@ -3,6 +3,7 @@ using System.Threading;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
+using System.Net.Http.Headers;
 using System.Security.Principal;
 using System.Collections.Generic;
 
@@ -21,8 +22,9 @@ namespace Legato.Service.Filters
             var authorization = request.Headers.Authorization;
 
             if (authorization == null || authorization.Scheme != "Bearer")
+            {
                 return;
-
+            }
             if (string.IsNullOrEmpty(authorization.Parameter))
             {
                 context.ErrorResult = new AuthenticationFailureResult("Missing Jwt Token", request);
@@ -78,6 +80,13 @@ namespace Legato.Service.Filters
             }
 
             return Task.FromResult<IPrincipal>(null);
+        }
+
+        public Task ChallengeAsync(HttpAuthenticationChallengeContext context, CancellationToken cancellationToken)
+        {
+            var challenge = new AuthenticationHeaderValue("Bearer");
+            context.Result = new AddChallengeOnUnauthorizedResult(challenge, context.Result);
+            return Task.FromResult(0);
         }
     }
 }

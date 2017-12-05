@@ -8,7 +8,7 @@ namespace Legato.Service
 {
     public class JwtManager
     {
-        private const string Secret = "db3OIsj+BaE9NZDy0t8W3TcNekrF/2d+1sFnWG5HnV8TZY30I1OdeVWJG8asbWvB1GlAgJuQZdcF2Luqm/hccMw=-";
+        private const string Secret = "db3OIsj+BaE9NZDy0t8W3TcNekrF/2d+1sFnWG5HnV8TZY30I1OdeVWJG8asbWvB1GlAgJuQZdcF2Luqm/hccMw+";
 
         public static string GenerateToken(string username, int expireMinutes)
         {
@@ -28,7 +28,7 @@ namespace Legato.Service
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor)); ;
+            return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
         }
 
         public static ClaimsPrincipal GetPrincipal(string token)
@@ -39,7 +39,9 @@ namespace Legato.Service
                 var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
 
                 if (jwtToken == null)
+                {
                     return null;
+                }
 
                 var symmetricKey = Convert.FromBase64String(Secret);
 
@@ -52,11 +54,9 @@ namespace Legato.Service
                 };
 
                 SecurityToken securityToken;
-                var principal = tokenHandler.ValidateToken(token, validationParameters, out securityToken);
 
-                return principal;
+                return tokenHandler.ValidateToken(token, validationParameters, out securityToken);
             }
-
             catch (Exception)
             {
                 return null;
