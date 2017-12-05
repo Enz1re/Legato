@@ -19,7 +19,6 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
-        [JwtAuth]
         [GuitarFilter]
         [Route("{lowerBound}/{upperBound}")]
         public IHttpActionResult Get([FromUri]string filterJson, int lowerBound, int upperBound)
@@ -32,7 +31,6 @@ namespace Legato.Service.Controllers
             return Ok(_serviceWorker.GetBassGuitars(filter, lowerBound, upperBound));
         }
 
-        [JwtAuth]
         [GuitarFilter]
         [Route("{lowerBound}/{upperBound}/{sortHeader}/{sortDirection}")]
         public IHttpActionResult GetSorted([FromUri]string filterJson, int lowerBound, int upperBound, string sortHeader, string sortDirection)
@@ -51,14 +49,12 @@ namespace Legato.Service.Controllers
             return Ok(_serviceWorker.GetSortedBassGuitars(filter, lowerBound, upperBound, sorting));
         }
 
-        [JwtAuth]
         [Route("Vendors")]
         public IHttpActionResult GetVendors()
         {
             return Ok(_serviceWorker.GetBassGuitarVendors());
         }
 
-        [JwtAuth]
         [GuitarFilter]
         [Route("Quantity")]
         public IHttpActionResult GetQuantity([FromUri]string filterJson)
