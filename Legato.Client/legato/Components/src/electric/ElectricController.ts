@@ -6,16 +6,17 @@ import {
     IModalService,
     IGuitarService,
     IRoutingService,
+    IContextMenuService,
     IPendingTaskService,
     IFilterUpdateService
 } from "../../../Interfaces/interfaces";
 
 
 export class ElectricController extends ControllerBase<ElectricGuitar> implements ng.IController {
-    static $inject = ["$scope", "ElectricGuitarService", "RoutingService", "PendingTaskService", "FilterUpdateService", "ModalService"];
+    static $inject = ["$rootScope", "ElectricGuitarService", "RoutingService", "PendingTaskService", "FilterUpdateService", "ModalService", "ContextMenuService"];
 
-    constructor($scope: ng.IScope, service: IGuitarService<ElectricGuitar>, routingService: IRoutingService,
-                pendingTaskService: IPendingTaskService, filterUpdateService: IFilterUpdateService, modalService: IModalService) {
-        super($scope, service, routingService, pendingTaskService, filterUpdateService, modalService);
+    constructor($rootScope: ng.IRootScopeService, service: IGuitarService<ElectricGuitar>, routingService: IRoutingService,
+                pendingTaskService: IPendingTaskService, filterUpdateService: IFilterUpdateService, modalService: IModalService, contextMenu: IContextMenuService) {
+        super($rootScope, service, routingService, pendingTaskService, filterUpdateService, modalService, contextMenu);
     }
 }

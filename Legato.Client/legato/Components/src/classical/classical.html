@@ -1,49 +1,50 @@
-﻿<div class="guitar-list-container">
-    <div class="guitar-grid">
-        <div class="pagination-container">
-            <ul uib-pagination
-                ng-if="!classicalCtrl.error"
-                total-items="classicalCtrl.paging.total" 
-                ng-click="classicalCtrl.onPageChanged('classical')"
-                next-text=">>"
-                previous-text="<<"
-                items-per-page="classicalCtrl.paging.itemsToShow" 
-                max-size="10"
-                ng-model="classicalCtrl.paging.currentPage" 
-                boundary-links="true"
-                rotate="true" />
-        </div>
-        <legato-request-loader ng-if="classicalCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
-        <ul ng-if="!classicalCtrl.error">
-            <li class="guitar-li" ng-repeat="guitar in classicalCtrl.guitars">
-                <div class="guitar-container" ng-click="classicalCtrl.onGuitarClick('classical', $index)">
-                    <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
-                    <div>{{guitar.vendor}} {{guitar.model}}</div>
-                    <div>Mensura: {{guitar.mensura}} mm</div>
-                    <div>Price: {{guitar.price}} UAH</div>
-                    <div>String type: {{guitar.stringType}}</div>
-                </div>
-            </li>
-        </ul>
-        <div ng-if="classicalCtrl.error" class="error">
-            Error processing your request. Please try again later.
-        </div>
-        <div ng-if="classicalCtrl.noResults">
-            No results found.
-        </div>
-        <div class="pagination-container">
-            <ul uib-pagination
-                ng-if="!classicalCtrl.error"
-                legato-smooth-scroll
-                total-items="classicalCtrl.paging.total"
-                ng-click="classicalCtrl.onPageChanged('classical')"
-                next-text=">>"
-                previous-text="<<"
-                items-per-page="classicalCtrl.paging.itemsToShow"
-                max-size="10"
-                ng-model="classicalCtrl.paging.currentPage" 
-                boundary-links="true"
-                rotate="true" />
-        </div>
+﻿<div class="guitar-grid">
+    <div class="pagination-container">
+        <ul uib-pagination
+            ng-if="!classicalCtrl.error"
+            total-items="classicalCtrl.paging.total" 
+            ng-click="classicalCtrl.onPageChanged('classical')"
+            next-text=">>"
+            previous-text="<<"
+            items-per-page="classicalCtrl.paging.itemsToShow" 
+            max-size="10"
+            ng-model="classicalCtrl.paging.currentPage" 
+            boundary-links="true"
+            rotate="true" />
+    </div>
+    <legato-request-loader ng-if="classicalCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
+    <ul ng-if="!classicalCtrl.error">
+        <li class="guitar-li" ng-repeat="guitar in classicalCtrl.guitars">
+            <div class="guitar-container" ng-click="classicalCtrl.onGuitarClick('classical', $index)" context-menu="classicalCtrl.contextMenu.menuOptions"
+                                                                                                      context-menu-if="classicalCtrl.globals.currentUser"
+                                                                                                      context-menu-data="{ type: 'classical' }"
+                                                                                                      model="guitar">
+                <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
+                <div>{{guitar.vendor}} {{guitar.model}}</div>
+                <div>Mensura: {{guitar.mensura}} mm</div>
+                <div>Price: {{guitar.price}} UAH</div>
+                <div>String type: {{guitar.stringType}}</div>
+            </div>
+        </li>
+    </ul>
+    <div ng-if="classicalCtrl.error" class="error">
+        Error processing your request. Please try again later.
+    </div>
+    <div ng-if="classicalCtrl.noResults">
+        No results found.
+    </div>
+    <div class="pagination-container">
+        <ul uib-pagination
+            ng-if="!classicalCtrl.error"
+            legato-smooth-scroll
+            total-items="classicalCtrl.paging.total"
+            ng-click="classicalCtrl.onPageChanged('classical')"
+            next-text=">>"
+            previous-text="<<"
+            items-per-page="classicalCtrl.paging.itemsToShow"
+            max-size="10"
+            ng-model="classicalCtrl.paging.currentPage" 
+            boundary-links="true"
+            rotate="true" />
     </div>
 </div>

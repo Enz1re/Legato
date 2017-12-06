@@ -6,16 +6,17 @@ import {
     IModalService,
     IGuitarService,
     IRoutingService,
+    IContextMenuService,
     IPendingTaskService,
     IFilterUpdateService
 } from "../../../Interfaces/interfaces";
 
 
 export class WesternController extends ControllerBase<WesternGuitar> implements ng.IController {
-    static $inject = ["$scope", "WesternGuitarService", "RoutingService", "PendingTaskService", "FilterUpdateService", "ModalService"];
+    static $inject = ["$rootScope", "WesternGuitarService", "RoutingService", "PendingTaskService", "FilterUpdateService", "ModalService", "ContextMenuService"];
 
-    constructor($scope: ng.IScope, service: IGuitarService<WesternGuitar>, routingService: IRoutingService,
-                pendingTaskService: IPendingTaskService, filterUpdateService: IFilterUpdateService, modalService: IModalService) {
-        super($scope, service, routingService, pendingTaskService, filterUpdateService, modalService);
+    constructor($rootScope: ng.IRootScopeService, service: IGuitarService<WesternGuitar>, routingService: IRoutingService,
+                pendingTaskService: IPendingTaskService, filterUpdateService: IFilterUpdateService, modalService: IModalService, contextMenu: IContextMenuService) {
+        super($rootScope, service, routingService, pendingTaskService, filterUpdateService, modalService, contextMenu);
     }
 }

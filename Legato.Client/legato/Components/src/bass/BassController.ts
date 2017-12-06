@@ -6,16 +6,17 @@ import {
     IModalService,
     IGuitarService,
     IRoutingService,
+    IContextMenuService,
     IPendingTaskService,
     IFilterUpdateService
 } from "../../../Interfaces/interfaces";
 
 
 export class BassController extends ControllerBase<BassGuitar> implements ng.IController {
-    static $inject = ["$scope", "BassGuitarService", "RoutingService", "PendingTaskService", "FilterUpdateService", "ModalService"];
+    static $inject = ["$rootScope", "BassGuitarService", "RoutingService", "PendingTaskService", "FilterUpdateService", "ModalService", "ContextMenuService"];
 
-    constructor($scope: ng.IScope, service: IGuitarService<BassGuitar>, routingService: IRoutingService,
-                pendingTaskService: IPendingTaskService, filterUpdateService: IFilterUpdateService, modalService: IModalService) {
-        super($scope, service, routingService, pendingTaskService, filterUpdateService, modalService);
+    constructor($rootScope: ng.IRootScopeService, service: IGuitarService<BassGuitar>, routingService: IRoutingService,
+                pendingTaskService: IPendingTaskService, filterUpdateService: IFilterUpdateService, modalService: IModalService, contextMenu: IContextMenuService) {
+        super($rootScope, service, routingService, pendingTaskService, filterUpdateService, modalService, contextMenu);
     }
 }

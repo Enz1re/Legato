@@ -7,9 +7,10 @@
 } from "../../Models/models";
 
 import {
+    IModalService,
     IGuitarService,
     IRoutingService,
-    IModalService,
+    IContextMenuService,
     IPendingTaskService,
     IFilterUpdateService
 } from "../../Interfaces/interfaces";
@@ -28,15 +29,17 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         sorting: new Sorting(),
         search: ""
     };
+    globals: any;
     guitars: TGuitar[];
     error = false;
     paging: Paging = new Paging();
 
-    constructor(protected $scope: ng.IScope, protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService,
+    constructor(protected $rootScope, protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService,
                 protected pendingTaskService: IPendingTaskService, protected filterUpdateService: IFilterUpdateService,
-                protected modalService: IModalService) {
-        this.setWatcher($scope);
+                protected modalService: IModalService, protected contextMenu: IContextMenuService) {
+        this.setWatchers($rootScope);
 
+        this.globals = this.$rootScope.globals;
         const stateName = this.routingService.urlSegments[1];
         const urlParamResolver = routingService.getParamResolver();
         
@@ -122,7 +125,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         });
     }
 
-    private setWatcher(scope: ng.IScope) {
+    private setWatchers(scope) {
         scope.$watch(() => this.filterUpdateService.filter, (newValue, oldValue) => {
             const stateName = this.routingService.urlSegments[1];
             this.pendingTaskService.cancelPendingTask();
@@ -162,6 +165,14 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                     this.filter.sorting = newValue.sorting;
                     this.goToFirstPage();
                 });
+            }
+        }, true);
+
+        scope.$watch(() => scope.globals.currentUser, (newVal, oldVal) => {
+            if (newVal || oldVal) {
+                if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username || newVal.authData !== oldVal.authData)) {
+                    this.globals.currentUser = newVal;
+                }
             }
         }, true);
     }
