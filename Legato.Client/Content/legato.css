@@ -465,3 +465,34 @@ div.messaging {
     opacity: 0.6;
     transition: opacity ease 0.5s;
 }
+
+.admin-panel {
+    height: 3em;
+    width: 6.5em;
+    display: flex;
+    margin-top: 1em;
+    margin-left: 4em;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.admin-panel-item {
+    width: 3em;
+    height: 3em;
+    display: flex;
+    border: 3px solid;
+    border-radius: 1em;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-panel-item:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.5) 8px 5px 10px;
+}
+
+img.admin-panel-item-img {
+    width: 90%;
+    height: 90%;
+}
