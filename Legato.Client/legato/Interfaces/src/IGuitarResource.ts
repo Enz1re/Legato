@@ -34,6 +34,10 @@ export interface IGuitarResource {
     getBassGuitars(filter: Filter, paging: Paging): ng.IPromise<BassGuitar[]>;
     getSortedBassGuitars(filter: Filter, paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<BassGuitar[]>;
     getBassGuitarQuantity(filter: Filter): ng.IPromise<number>;
+    // manage
+    add(guitar: Guitar): ng.IPromise<any>;
+    delete(guitar: Guitar): ng.IPromise<any>;
+    edit(guitar: Guitar): ng.IPromise<any>;
 }
 
 export default IGuitarResource;

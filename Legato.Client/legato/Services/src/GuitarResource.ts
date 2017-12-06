@@ -138,4 +138,20 @@ export default class GuitarResource implements IGuitarResource {
         return this.$http.get("http://localhost/api/Bass/Quantity", { params: { filterJson: angular.toJson(filter) } })
             .then((result: ng.IHttpResponse<Amount>) => result.data.quantity);
     }
+
+    // Manage
+    add(guitar: Guitar): ng.IPromise<any> {
+        return this.$http.post("http://localhost/api/Manage/Add", { params: { guitar: angular.toJson(guitar) } })
+            .then((result: ng.IHttpResponse<any>) => result.data);
+    }
+
+    delete(guitar: Guitar): ng.IPromise<any> {
+        return this.$http.delete(`http://localhost/api/Manage/${guitar.id}`)
+            .then((result: ng.IHttpResponse<any>) => result.data);
+    }
+
+    edit(guitar: Guitar): ng.IPromise<any> {
+        return this.$http.post("http://localhost/api/Manage/Edit", { params: { guitar: angular.toJson(guitar) } })
+            .then((result: ng.IHttpResponse<any>) => result.data);
+    }
 }
