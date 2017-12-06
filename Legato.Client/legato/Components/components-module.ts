@@ -10,7 +10,8 @@ import { LegatoLoadingDirective } from "./src/loading/LegatoLoadingDirective";
 import { LegatoSmoothScrollDirective } from "./src/smoothScroll/LegatoSmoothScrollDirective";
 import { LegatoRequestLoaderDirective } from "./src/loading/LegatoRequestLoaderDirective";
 import { LoginDirective } from "./src/login/LoginDirective";
-import { LoginModalComponent } from "./src/login/LoginModalComponent";
+import { LegatoContextMenuDirective } from "./src/contextMenu/LegatoContextMenuDirective";
+import { LegatoAdminPanelDirective } from "./src/admin/LegatoAdminPanelDirective";
 
 import { MainController } from "./src/legato/MainController";
 import { ClassicalController } from "./src/classical/ClassicalController";
@@ -21,6 +22,10 @@ import { ControllerBase } from "./src/ControllerBase";
 import { GuitarModalController } from "./src/guitarModal/GuitarModalController";
 import { LoginController } from "./src/login/LoginController";
 import { LoginModalController } from "./src/login/LoginModalController";
+import { AdminPanelController } from "./src/admin/AdminPanelController";
+import { AddEditModalController } from "./src/guitarModal/AddEditModalController";
+import { DisplayAmountModalController } from "./src/guitarModal/DisplayAmountModalController";
+import { GuitarDeleteModalController } from "./src/guitarModal/GuitarDeleteModalController";
 
 const directivesModuleName = "legato.components";
 
@@ -36,6 +41,8 @@ angular.module(directivesModuleName, [])
     .directive("legatoSmoothScroll", LegatoSmoothScrollDirective.create())
     .directive("legatoRequestLoader", LegatoRequestLoaderDirective.create())
     .directive("login", LoginDirective.create())
+    .directive("contextMenu", LegatoContextMenuDirective.create())
+    .directive("adminPanel", LegatoAdminPanelDirective.create())
     // controller declarations
     .controller("MainController", MainController)
     .controller("ClassicalController", ClassicalController)
@@ -44,7 +51,11 @@ angular.module(directivesModuleName, [])
     .controller("BassController", BassController)
     .controller("GuitarModalController", GuitarModalController)
     .controller("LoginController", LoginController)
-    .controller("LoginModalController", LoginModalController);
+    .controller("LoginModalController", LoginModalController)
+    .controller("AddEditModalController", AddEditModalController)
+    .controller("DisplayAmountModalController", DisplayAmountModalController)
+    .controller("GuitarDeleteModalController", GuitarDeleteModalController)
+    .controller("AdminPanelController", AdminPanelController);
 
 export {
     MainController,

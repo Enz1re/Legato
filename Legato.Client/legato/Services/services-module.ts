@@ -5,12 +5,14 @@ import AuthenticationService from "./src/AuthenticationService";
 import ElectricGuitarService from "./src/ElectricGuitarService";
 import WesternGuitarService from "./src/WesternGuitarService";
 import FilterUpdateService from "./src/FilterUpdateService";
+import ContextMenuService from "./src/ContextMenuService";
 import PendingTaskService from "./src/PendingTaskService";
 import BassGuitarService from "./src/BassGuitarService";
 import UrlParamResolver from "./src/UrlParamResolver";
 import GuitarResource from "./src/GuitarResource";
 import RoutingService from "./src/RoutingService";
 import FilterService from "./src/FilterService";
+import ManageService from "./src/ManageService";
 import VendorService from "./src/VendorService";
 import CacheService from "./src/CacheService";
 import ModalService from "./src/ModalService";
@@ -32,7 +34,9 @@ angular.module(servicesModuleName, [])
     .service("FilterService", FilterService)
     .service("ModalService", ModalService)
     .service("AuthenticationService", AuthenticationService)
-    .service("Base64", Base64);
+    .service("Base64", Base64)
+    .service("ManageService", ManageService)
+    .service("ContextMenuService", ContextMenuService);
 
 export {
     ClassicalGuitarService,

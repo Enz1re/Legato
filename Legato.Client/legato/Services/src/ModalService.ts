@@ -10,7 +10,7 @@ export default class ModalService implements IModalService {
 
     }
 
-    openGuitarModal(resolve: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
+    openGuitarModal(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
         return this.$uibModal.open({
             animation: true,
             controller: "GuitarModalController",
@@ -21,12 +21,46 @@ export default class ModalService implements IModalService {
         });
     }
 
-    openLoginModal(resolve: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
+    openLoginModal(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
         return this.$uibModal.open({
             animation: true,
             controller: "LoginModalController",
             controllerAs: "loginModalCtrl",
             templateUrl: "legato/Components/src/login/loginModal.html",
+            resolve: resolve
+        });
+    }
+
+    openGuitarAddOrEditModal(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
+        return this.$uibModal.open({
+            animation: true,
+            controller: "AddEditModalController",
+            controllerAs: "addeditModalCtrl",
+            templateUrl: "legato/Components/src/guitarModal/addeditModal.html",
+            bindToController: true,
+            resolve: resolve
+        });
+    }
+
+    openGuitarDeleteDialog(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
+        return this.$uibModal.open({
+            animation: true,
+            size: "sm",
+            controller: "GuitarDeleteModalController",
+            controllerAs: "guitarDeleteModalCtrl",
+            templateUrl: "legato/Components/src/guitarModal/guitarDeleteModal.html",
+            bindToController: true,
+            resolve: resolve
+        });
+    }
+
+    openDisplayAmountModal(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
+        return this.$uibModal.open({
+            animation: true,
+            controller: "DisplayAmountModalController",
+            controllerAs: "displayAmountModalCtrl",
+            templateUrl: "legato/Components/src/guitarModal/displayAmountModal.html",
+            bindToController: true,
             resolve: resolve
         });
     }
