@@ -8,9 +8,6 @@ import SortByFilter from "./src/SortByFilter";
 const filtersModuleName = "legato.filters";
 
 angular.module(filtersModuleName, [])
-    .filter("boolean", BooleanFilter)
-    .filter("byPrice", PriceFilter)
-    .filter("byVendors", VendorFilter)
-    .filter("sortBy", SortByFilter);
+    .filter("boolean", BooleanFilter);
 
 export default filtersModuleName;
