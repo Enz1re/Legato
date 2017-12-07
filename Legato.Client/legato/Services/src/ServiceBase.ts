@@ -36,20 +36,4 @@ export class ServiceBase {
         deferred.resolve(cachedData);
         return deferred.promise;
     }
-
-    getFilter(price?: Price, vendors?: Vendor[], searchQuery?: string): Filter {
-        let filter = new Filter();
-
-        if (price) {
-            filter.priceFilter = price;
-        }
-        if (vendors) {
-            filter.vendorFilter = new VendorList(vendors.filter(v => v.isSelected));
-        }
-        if (searchQuery) {
-            filter.searchItems = searchQuery.toLowerCase().split(" ");
-        }
-
-        return filter;
-    }
 }

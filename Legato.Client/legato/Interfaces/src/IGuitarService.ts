@@ -2,16 +2,18 @@
     Price,
     Guitar,
     Paging,
-    Vendor
+    Vendor,
+    Filter,
+    GuitarFilter
 } from "../../Models/models";
 
 import { IService } from "../../Interfaces/interfaces";
 
 
 export interface IGuitarService<TGuitar extends Guitar> extends IService {
-    getGuitars(searchQuery: string, price: Price, vendors: Vendor[], paging: Paging): ng.IPromise<TGuitar[]>;
+    getGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number): ng.IPromise<TGuitar[]>;
 
-    getSortedGuitars(searchQuery: string, price: Price, vendors: Vendor[], paging: Paging, sortHeader: string, sortDirection: string): ng.IPromise<TGuitar[]>;
+    getSortedGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number): ng.IPromise<TGuitar[]>;
 
-    getAmount(searchQuery: string, price: Price, vendors: Vendor[]): ng.IPromise<number>;
+    getAmount(guitarFilter: GuitarFilter): ng.IPromise<number>;
 }
