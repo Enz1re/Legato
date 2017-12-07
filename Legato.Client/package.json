@@ -25,6 +25,7 @@
     "@types/jasmine": "^2.5.47",
     "@types/systemjs": "^0.20.2",
     "@types/angular-ui-bootstrap": "^0.13.46",
+    "@types/ng-file-upload": "^12.2.1",
     "codelyzer": "^3.0.0",
     "concurrently": "^3.4.0",
     "jasmine-core": "^2.8.0",

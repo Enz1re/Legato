@@ -496,3 +496,11 @@ img.admin-panel-item-img {
     width: 90%;
     height: 90%;
 }
+
+.thumb {
+    width: 36px;
+    height: 36px;
+    float: none;
+    position: relative;
+    top: 4px;
+}

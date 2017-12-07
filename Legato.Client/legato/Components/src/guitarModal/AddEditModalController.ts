@@ -2,18 +2,21 @@
 
 import { Constants } from "../../../Constants";
 
+import { IFileUploadService } from "../../../Interfaces/interfaces";
+
 
 export class AddEditModalController {
     options: string[];
     type: string;
     mode: "Add" | "Edit";
     guitar: Guitar;
-    static $inject = ["$uibModalInstance", "guitar", "type"];
+    static $inject = ["$uibModalInstance", "FileUploadService", "guitar", "type"];
 
-    constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, guitar: Guitar, type: string) {
+    constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private fileUpload: IFileUploadService, guitar: Guitar, type: string) {
         if (guitar) {
-            this.guitar = guitar;
             this.mode = "Edit";
+            this.guitar = guitar;
+            this.fileUpload.file.url = guitar.imgPath;
         } else {
             this.guitar = new Guitar();
             this.mode = "Add";
@@ -22,7 +25,7 @@ export class AddEditModalController {
         if (type) {
             this.type = type;
         }
-        console.log()
+
         this.options = [
             Constants.CLASSICAL,
             Constants.WESTERN,

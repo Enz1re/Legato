@@ -12,7 +12,8 @@
         "angular-animate": "npm:angular-animate/index.js",
         "angular-cookies": "npm:angular-cookies/index.js",
         "angular-ui-router": "npm:angular-ui-router/release/angular-ui-router.min.js",
-        "angular-ui-bootstrap": "npm:angular-ui-bootstrap/index.js"
+        "angular-ui-bootstrap": "npm:angular-ui-bootstrap/index.js",
+        "ng-file-upload": "npm:ng-file-upload/index.js"
     },
     meta: {
         "angular": {
