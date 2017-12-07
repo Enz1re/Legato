@@ -1,4 +1,7 @@
-﻿export default class Paging {
+﻿import { IPagingService } from "../../Interfaces/interfaces";
+
+
+export default class PagingService implements IPagingService {
     total: number;
     lowerBound: number;
     upperBound: number;
@@ -21,7 +24,14 @@
         }
     }
 
-    toJSON() {
-        return JSON.stringify({ lowerBound: this.lowerBound, upperBound: this.upperBound });
+    goToFirstPage(callback: Function) {
+        callback = callback || (() => { });
+        this.currentPage = 1;
+        this.goToPage();
+        callback();
+    }
+
+    maxPage() {
+        return Math.floor(this.total / this.itemsToShow);
     }
 }

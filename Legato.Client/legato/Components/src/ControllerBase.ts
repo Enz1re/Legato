@@ -1,14 +1,15 @@
 ﻿import {
     Price,
     Guitar,
-    Paging,
     Vendor,
     Sorting,
+    GuitarFilter
 } from "../../Models/models";
 
 import {
     IModalService,
     IGuitarService,
+    IPagingService,
     IRoutingService,
     IContextMenuService,
     IPendingTaskService,
@@ -18,12 +19,7 @@ import {
 
 export abstract class ControllerBase<TGuitar extends Guitar> {
     noResults: boolean;
-    filter: {
-        price: Price,
-        vendors: Vendor[],
-        sorting: Sorting,
-        search: string
-    } = {
+    filter: GuitarFilter = {
         price: new Price(),
         vendors: [],
         sorting: new Sorting(),
@@ -32,11 +28,10 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     globals: any;
     guitars: TGuitar[];
     error = false;
-    paging: Paging = new Paging();
 
     constructor(protected $rootScope, protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService,
                 protected pendingTaskService: IPendingTaskService, protected filterUpdateService: IFilterUpdateService,
-                protected modalService: IModalService, protected contextMenu: IContextMenuService) {
+                protected modalService: IModalService, protected contextMenu: IContextMenuService, protected pagingService: IPagingService) {
         this.setWatchers($rootScope);
 
         this.globals = this.$rootScope.globals;
@@ -48,9 +43,9 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.filter.sorting = urlParamResolver.resolveSorting();
 
         this.getAmount().then(() => {
-            const maxPage = Math.floor(this.paging.total / this.paging.itemsToShow);
-            this.paging.currentPage = urlParamResolver.resolvePage(maxPage);
-            this.paging.goToPage();
+            const maxPage = this.pagingService.maxPage();
+            this.pagingService.currentPage = urlParamResolver.resolvePage(maxPage);
+            this.pagingService.goToPage();
         }).then(() => {
             this.loadGuitarList().then(() => {
                 const gIndex = urlParamResolver.resolveIndex(this.guitars.length - 1);
@@ -74,8 +69,8 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     }
 
     protected getAmount() {
-        return this.service.getAmount(this.filter.search, this.filter.price, this.filter.vendors).then(amount => {
-            this.paging.total = amount;
+        return this.service.getAmount(this.filter).then(amount => {
+            this.pagingService.total = amount;
         });
     }
 
@@ -84,14 +79,14 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.error = false;
 
         if (this.filter.sorting && this.filter.sorting.required) {
-            return this.service.getSortedGuitars(this.filter.search, this.filter.price, this.filter.vendors, this.paging, this.filter.sorting.name, this.filter.sorting.direction).then(guitars => {
+            return this.service.getSortedGuitars(this.filter, this.pagingService.lowerBound, this.pagingService.upperBound).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
             }).catch(err => {
                 this.error = true;
             });
         } else {
-            return this.service.getGuitars(this.filter.search, this.filter.price, this.filter.vendors, this.paging).then(guitars => {
+            return this.service.getGuitars(this.filter, this.pagingService.lowerBound, this.pagingService.upperBound).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
             }).catch(err => {
@@ -101,9 +96,9 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     }
 
     protected onPageChanged(guitarName: string) {
-        this.paging.goToPage();
+        this.pagingService.goToPage();
         let params = this.routingService.queryParams;
-        params.page = this.paging.currentPage;
+        params.page = this.pagingService.currentPage;
         this.routingService.replace(guitarName, params);
         this.loadGuitarList();
     }
@@ -134,7 +129,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 this.pendingTaskService.setPendingTask(() => {
                     this.filterUpdateService.replaceSearchQueryParams(stateName);
                     this.filter.search = newValue.search;
-                    this.goToFirstPage();
+                    this.pagingService.goToFirstPage(() => this.init());
                 });
             }
             if (this.filterUpdateService.needUsePriceFilter(newValue, oldValue)) {
@@ -149,21 +144,21 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                             to = this.getMaxGuitarPrice();
                     }
                     this.filter.price = { from: from, to: to };
-                    this.goToFirstPage();
+                    this.pagingService.goToFirstPage(() => this.init());
                 });
             }
             if (this.filterUpdateService.needUseVendorFilter(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.filterUpdateService.replaceVendorQueryParams(stateName);
                     this.filter.vendors = newValue.vendors;
-                    this.goToFirstPage();
+                    this.pagingService.goToFirstPage(() => this.init());
                 });
             }
             if (this.filterUpdateService.needUseSorting(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.filterUpdateService.replaceSortingQueryParams(stateName);
                     this.filter.sorting = newValue.sorting;
-                    this.goToFirstPage();
+                    this.pagingService.goToFirstPage(() => this.init());
                 });
             }
         }, true);
@@ -187,11 +182,5 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         }
 
         return maxPrice;
-    }
-
-    private goToFirstPage() {
-        this.paging.currentPage = 1;
-        this.paging.goToPage();
-        this.init();
     }
 }

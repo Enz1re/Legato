@@ -8,11 +8,13 @@ import FilterUpdateService from "./src/FilterUpdateService";
 import ContextMenuService from "./src/ContextMenuService";
 import PendingTaskService from "./src/PendingTaskService";
 import BassGuitarService from "./src/BassGuitarService";
+import FileUploadService from "./src/FileUploadService";
 import UrlParamResolver from "./src/UrlParamResolver";
 import GuitarResource from "./src/GuitarResource";
 import RoutingService from "./src/RoutingService";
 import FilterService from "./src/FilterService";
 import ManageService from "./src/ManageService";
+import PagingService from "./src/PagingService";
 import VendorService from "./src/VendorService";
 import CacheService from "./src/CacheService";
 import ModalService from "./src/ModalService";
@@ -32,11 +34,13 @@ angular.module(servicesModuleName, [])
     .service("RoutingService", RoutingService)
     .service("FilterUpdateService", FilterUpdateService)
     .service("FilterService", FilterService)
+    .service("PagingService", PagingService)
     .service("ModalService", ModalService)
     .service("AuthenticationService", AuthenticationService)
     .service("Base64", Base64)
     .service("ManageService", ManageService)
-    .service("ContextMenuService", ContextMenuService);
+    .service("ContextMenuService", ContextMenuService)
+    .service("FileUploadService", FileUploadService);
 
 export {
     ClassicalGuitarService,
@@ -45,10 +49,12 @@ export {
     WesternGuitarService,
     FilterUpdateService,
     PendingTaskService,
+    FileUploadService,
     BassGuitarService,
     UrlParamResolver,
     GuitarResource,
     RoutingService,
+    PagingService,
     FilterService,
     VendorService,
     CacheService,

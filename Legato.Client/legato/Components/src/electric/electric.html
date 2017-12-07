@@ -2,13 +2,13 @@
     <div class="pagination-container">
         <ul uib-pagination
             ng-if="!electricCtrl.error"
-            total-items="electricCtrl.paging.total"
+            total-items="electricCtrl.pagingService.total"
             ng-click="electricCtrl.onPageChanged('electric')"
             next-text=">>"
             previous-text="<<"
-            items-per-page="electricCtrl.paging.itemsToShow"
+            items-per-page="electricCtrl.pagingService.itemsToShow"
             max-size="10"
-            ng-model="electricCtrl.paging.currentPage"
+            ng-model="electricCtrl.pagingService.currentPage"
             boundary-links="true"
             rotate="true" />
     </div>
@@ -40,13 +40,13 @@
         <ul uib-pagination
             ng-if="!electricCtrl.error"
             legato-smooth-scroll
-            total-items="electricCtrl.paging.total"
+            total-items="electricCtrl.pagingService.total"
             ng-click="electricCtrl.onPageChanged('electric')"
             next-text=">>"
             previous-text="<<"
-            items-per-page="electricCtrl.paging.itemsToShow"
+            items-per-page="electricCtrl.pagingService.itemsToShow"
             max-size="10"
-            ng-model="electricCtrl.paging.currentPage"
+            ng-model="electricCtrl.pagingService.currentPage"
             boundary-links="true"
             rotate="true" />
     </div>

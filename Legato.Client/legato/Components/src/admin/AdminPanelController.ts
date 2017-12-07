@@ -1,24 +1,31 @@
 ﻿import { Guitar } from "../../../Models/models";
 
-import { IManageService, IModalService } from "../../../Interfaces/interfaces";
+import {
+    IModalService,
+    IManageService,
+    IPagingService,
+} from "../../../Interfaces/interfaces";
 
 
 export class AdminPanelController {
-    static $inject = ["ManageService", "ModalService"];
+    static $inject = ["ManageService", "ModalService", "PagingService"];
 
-    constructor(private manageService: IManageService, private modalService: IModalService) {
+    constructor(private manageService: IManageService, private modalService: IModalService, private pagingService: IPagingService) {
 
     }
 
     addGuitar() {
-        this.modalService.openGuitarAddOrEditModal().result.then((guitar: Guitar) => {
-            console.log(guitar);
-        });
+        this.modalService.openGuitarAddOrEditModal({
+            guitar: null,
+            type: null
+        }).result.then((guitar: Guitar) => {
+                console.log(guitar);
+        }).catch(() => { })
     }
 
     changeDisplayAmount() {
-        this.modalService.openDisplayAmountModal().result.then((amount: number) => {
-            console.log(amount);
-        })
+        this.modalService.openDisplayAmountModal({ amount: this.pagingService.itemsToShow }).result.then((amount: number) => {
+            this.pagingService.itemsToShow = amount;
+        }).catch(() => { })
     }
 }

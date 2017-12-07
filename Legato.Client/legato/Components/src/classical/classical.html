@@ -2,13 +2,13 @@
     <div class="pagination-container">
         <ul uib-pagination
             ng-if="!classicalCtrl.error"
-            total-items="classicalCtrl.paging.total" 
+            total-items="classicalCtrl.pagingService.total" 
             ng-click="classicalCtrl.onPageChanged('classical')"
             next-text=">>"
             previous-text="<<"
-            items-per-page="classicalCtrl.paging.itemsToShow" 
+            items-per-page="classicalCtrl.pagingService.itemsToShow" 
             max-size="10"
-            ng-model="classicalCtrl.paging.currentPage" 
+            ng-model="classicalCtrl.pagingService.currentPage" 
             boundary-links="true"
             rotate="true" />
     </div>
@@ -37,13 +37,13 @@
         <ul uib-pagination
             ng-if="!classicalCtrl.error"
             legato-smooth-scroll
-            total-items="classicalCtrl.paging.total"
+            total-items="classicalCtrl.pagingService.total"
             ng-click="classicalCtrl.onPageChanged('classical')"
             next-text=">>"
             previous-text="<<"
-            items-per-page="classicalCtrl.paging.itemsToShow"
+            items-per-page="classicalCtrl.pagingService.itemsToShow"
             max-size="10"
-            ng-model="classicalCtrl.paging.currentPage" 
+            ng-model="classicalCtrl.pagingService.currentPage" 
             boundary-links="true"
             rotate="true" />
     </div>
