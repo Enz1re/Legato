@@ -13,7 +13,6 @@ export default class ContextMenuService implements IContextMenuService {
         {
             text: "Remove",
             click: ($itemScope, $event, modelValue: Guitar, text, $li, data) => {
-                console.log(data);
                 this.modalService.openGuitarDeleteDialog({ guitar: modelValue }).result.then(() => {
                     this.manageService.removeGuitar(modelValue).then(val => console.log(val));
                 }).catch(() => { });
