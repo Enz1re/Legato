@@ -5,7 +5,7 @@ using Legato.MiddlewareContracts.DataContracts;
 
 namespace Legato.BL
 {
-    public interface ILegatoBusinessLayerWorker : IDisposable
+    public interface ILegatoGuitarBLWorker : IDisposable
     {
         IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitars(FilterDataModel filter, int lowerBound, int upperBound);
 
@@ -47,6 +47,6 @@ namespace Legato.BL
 
         int GetBassGuitarAmount(FilterDataModel filter);
 
-        ILegatoBusinessLayerWorker Get();
+        ILegatoGuitarBLWorker Get();
     }
 }

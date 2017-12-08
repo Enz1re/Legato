@@ -8,7 +8,7 @@ using Legato.MiddlewareContracts.DataContracts;
 
 namespace Legato.Service
 {
-    public class LegatoServiceWorker : ILegatoServiceWorker
+    public class LegatoServiceWorker : ILegatoGuitarServiceWorker
     {
         private IGuitarUnitOfWork _unitOfWork;
 

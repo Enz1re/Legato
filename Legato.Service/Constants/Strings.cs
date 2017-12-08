@@ -8,7 +8,7 @@
 
         public static string LowerBoundMustBeLessOrEqual => "Lower bound must be less or equal than upper bound.";
 
-        public static string FilterStringIsInvalid => "Filter string is invalid";
+        public static string FilterStringIsInvalid => "Filter string is invalid.";
 
         public static string SortingParamsInvalid => "Both sort header and direction must be present.";
 
@@ -16,8 +16,10 @@
 
         public static string SortDirectionIsInvalid => "Sort direction value is invalid.";
 
-        public static string UsernameAndPasswordAreRequired => "Username and password are required";
+        public static string UsernameAndPasswordAreRequired => "Username and password are required.";
 
-        public static string UsernameIsIncorrect(string username) => $@"Username '{username}' is incorrect";
+        public static string UsernameIsIncorrect(string username) => $@"Username '{username}' is incorrect.";
+
+        public static string GuitarIsInvalid => $@"Guitar data is invalid.";
     }
 }

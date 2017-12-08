@@ -11,7 +11,8 @@ namespace Legato.Service
         {
             LegatoServiceDALDI.Register(kernel);
             kernel.Bind<IGuitarUnitOfWork>().To<GuitarUnitOfWork>();
-            kernel.Bind<ILegatoServiceWorker>().To<LegatoServiceWorker>();
+            kernel.Bind<ILegatoGuitarServiceWorker>().To<LegatoServiceWorker>();
+            kernel.Bind<ILegatoManageServiceWorker>().To<LegatoManageServiceWorker>();
         }
     }
 }

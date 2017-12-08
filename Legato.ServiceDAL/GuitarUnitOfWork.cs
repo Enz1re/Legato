@@ -7,20 +7,28 @@ namespace Legato.ServiceDAL
 {
     public class GuitarUnitOfWork : IGuitarUnitOfWork
     {
-        private readonly IServiceRepositoryProvider _repositoryProvider;
+        private readonly IGuitarRepository<AcousticClassicalGuitarDataModel> _acousticClassicalGuitarRepo;
+        private readonly IGuitarRepository<AcousticWesternGuitarDataModel> _acousticWesternGuitarRepo;
+        private readonly IGuitarRepository<ElectricGuitarDataModel> _electricGuitarRepo;
+        private readonly IGuitarRepository<BassGuitarDataModel> _bassGuitarRepo;
 
         [Inject]
-        public GuitarUnitOfWork(IServiceRepositoryProvider repositoryProvider)
+        public GuitarUnitOfWork(IGuitarRepository<AcousticClassicalGuitarDataModel> acousticClassicalGuitarRepo,
+            IGuitarRepository<AcousticWesternGuitarDataModel> acousticWesternGuitarRepo, IGuitarRepository<ElectricGuitarDataModel> electricGuitarRepo,
+            IGuitarRepository<BassGuitarDataModel> bassGuitarRepo)
         {
-            _repositoryProvider = repositoryProvider;
+            _acousticClassicalGuitarRepo = acousticClassicalGuitarRepo;
+            _acousticWesternGuitarRepo = acousticWesternGuitarRepo;
+            _electricGuitarRepo = electricGuitarRepo;
+            _bassGuitarRepo = bassGuitarRepo;
         }
 
-        public IGuitarRepository<AcousticClassicalGuitarDataModel> ClassicAcousticGuitars => _repositoryProvider.AcousticClassicalGuitarRepository;
+        public IGuitarRepository<AcousticClassicalGuitarDataModel> ClassicAcousticGuitars => _acousticClassicalGuitarRepo;
 
-        public IGuitarRepository<AcousticWesternGuitarDataModel> WesternAcousticGuitars => _repositoryProvider.AcousticWesternGuitarRepository;
+        public IGuitarRepository<AcousticWesternGuitarDataModel> WesternAcousticGuitars => _acousticWesternGuitarRepo;
 
-        public IGuitarRepository<BassGuitarDataModel> BassGuitars => _repositoryProvider.BassGuitarRepository;
+        public IGuitarRepository<ElectricGuitarDataModel> ElectricGuitars => _electricGuitarRepo;
 
-        public IGuitarRepository<ElectricGuitarDataModel> ElectricGuitars => _repositoryProvider.ElectricGuitarRepository;
+        public IGuitarRepository<BassGuitarDataModel> BassGuitars => _bassGuitarRepo;
     }
 }

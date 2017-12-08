@@ -6,6 +6,12 @@ namespace Legato.ServiceDAL.Interfaces
 {
     public interface IGuitarRepository<TGuitar> where TGuitar: GuitarDataModel
     {
+        void Add(TGuitar guitar);
+
+        void Update(TGuitar guitar);
+
+        void Delete(TGuitar guitar);
+
         IEnumerable<TGuitar> Get(FilterDataModel filter, int lowerBound, int upperBound);
 
         IEnumerable<TGuitar> GetSorted(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting);

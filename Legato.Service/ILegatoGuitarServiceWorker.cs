@@ -4,7 +4,7 @@ using Legato.ServiceDAL.ViewModels;
 
 namespace Legato.Service
 {
-    public interface ILegatoServiceWorker
+    public interface ILegatoGuitarServiceWorker
     {
         GuitarList GetAcousticClassicalGuitars(FilterViewModel filter, int lowerBound, int upperBound);
 

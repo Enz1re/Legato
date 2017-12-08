@@ -96,6 +96,120 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddAcousticClassicalGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddAcousticClassicalGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_EditAcousticClassicalGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_EditAcousticClassicalGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveAcousticClassicalGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveAcousticClassicalGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_GetAcousticClassicalGuitars_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -230,6 +344,120 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_GetAcousticClassicalGuitarQuantity_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddAcousticWesternGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddAcousticWesternGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_EditAcousticWesternGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_EditAcousticWesternGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveAcousticWesternGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveAcousticWesternGuitar_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -400,6 +628,120 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddElectricGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddElectricGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_EditElectricGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_EditElectricGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveElectricGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveElectricGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_GetElectricGuitars_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -534,6 +876,120 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_GetElectricGuitarQuantity_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddBassGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddBassGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_EditBassGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_EditBassGuitar_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveBassGuitar_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveBassGuitar_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -712,6 +1168,24 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ILegatoMiddleware_AddAcousticClassicalGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAcousticClassicalGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddAcousticClassicalGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAcousticClassicalGuitarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_EditAcousticClassicalGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditAcousticClassicalGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_EditAcousticClassicalGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditAcousticClassicalGuitarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveAcousticClassicalGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAcousticClassicalGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveAcousticClassicalGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAcousticClassicalGuitarResponse" />
+  </wsdl:message>
   <wsdl:message name="ILegatoMiddleware_GetAcousticClassicalGuitars_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAcousticClassicalGuitars" />
   </wsdl:message>
@@ -735,6 +1209,24 @@
   </wsdl:message>
   <wsdl:message name="ILegatoMiddleware_GetAcousticClassicalGuitarQuantity_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAcousticClassicalGuitarQuantityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddAcousticWesternGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAcousticWesternGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddAcousticWesternGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAcousticWesternGuitarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_EditAcousticWesternGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditAcousticWesternGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_EditAcousticWesternGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditAcousticWesternGuitarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveAcousticWesternGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAcousticWesternGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveAcousticWesternGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAcousticWesternGuitarResponse" />
   </wsdl:message>
   <wsdl:message name="ILegatoMiddleware_GetAcousticWesternGuitars_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAcousticWesternGuitars" />
@@ -760,6 +1252,24 @@
   <wsdl:message name="ILegatoMiddleware_GetAcousticWesternGuitarQuantity_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAcousticWesternGuitarQuantityResponse" />
   </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddElectricGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddElectricGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddElectricGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddElectricGuitarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_EditElectricGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditElectricGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_EditElectricGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditElectricGuitarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveElectricGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveElectricGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveElectricGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveElectricGuitarResponse" />
+  </wsdl:message>
   <wsdl:message name="ILegatoMiddleware_GetElectricGuitars_InputMessage">
     <wsdl:part name="parameters" element="tns:GetElectricGuitars" />
   </wsdl:message>
@@ -783,6 +1293,24 @@
   </wsdl:message>
   <wsdl:message name="ILegatoMiddleware_GetElectricGuitarQuantity_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetElectricGuitarQuantityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddBassGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBassGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddBassGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBassGuitarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_EditBassGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditBassGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_EditBassGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditBassGuitarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveBassGuitar_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBassGuitar" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveBassGuitar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBassGuitarResponse" />
   </wsdl:message>
   <wsdl:message name="ILegatoMiddleware_GetBassGuitars_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBassGuitars" />
@@ -809,6 +1337,18 @@
     <wsdl:part name="parameters" element="tns:GetBassGuitarQuantityResponse" />
   </wsdl:message>
   <wsdl:portType name="ILegatoMiddleware">
+    <wsdl:operation name="AddAcousticClassicalGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddAcousticClassicalGuitar" message="tns:ILegatoMiddleware_AddAcousticClassicalGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddAcousticClassicalGuitarResponse" message="tns:ILegatoMiddleware_AddAcousticClassicalGuitar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditAcousticClassicalGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/EditAcousticClassicalGuitar" message="tns:ILegatoMiddleware_EditAcousticClassicalGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/EditAcousticClassicalGuitarResponse" message="tns:ILegatoMiddleware_EditAcousticClassicalGuitar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAcousticClassicalGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveAcousticClassicalGuitar" message="tns:ILegatoMiddleware_RemoveAcousticClassicalGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveAcousticClassicalGuitarResponse" message="tns:ILegatoMiddleware_RemoveAcousticClassicalGuitar_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAcousticClassicalGuitars">
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitars" message="tns:ILegatoMiddleware_GetAcousticClassicalGuitars_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarsResponse" message="tns:ILegatoMiddleware_GetAcousticClassicalGuitars_OutputMessage" />
@@ -824,6 +1364,18 @@
     <wsdl:operation name="GetAcousticClassicalGuitarQuantity">
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarQuantity" message="tns:ILegatoMiddleware_GetAcousticClassicalGuitarQuantity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitarQuantityResponse" message="tns:ILegatoMiddleware_GetAcousticClassicalGuitarQuantity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAcousticWesternGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddAcousticWesternGuitar" message="tns:ILegatoMiddleware_AddAcousticWesternGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddAcousticWesternGuitarResponse" message="tns:ILegatoMiddleware_AddAcousticWesternGuitar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditAcousticWesternGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/EditAcousticWesternGuitar" message="tns:ILegatoMiddleware_EditAcousticWesternGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/EditAcousticWesternGuitarResponse" message="tns:ILegatoMiddleware_EditAcousticWesternGuitar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAcousticWesternGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveAcousticWesternGuitar" message="tns:ILegatoMiddleware_RemoveAcousticWesternGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveAcousticWesternGuitarResponse" message="tns:ILegatoMiddleware_RemoveAcousticWesternGuitar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAcousticWesternGuitars">
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitars" message="tns:ILegatoMiddleware_GetAcousticWesternGuitars_InputMessage" />
@@ -841,6 +1393,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarQuantity" message="tns:ILegatoMiddleware_GetAcousticWesternGuitarQuantity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetAcousticWesternGuitarQuantityResponse" message="tns:ILegatoMiddleware_GetAcousticWesternGuitarQuantity_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddElectricGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddElectricGuitar" message="tns:ILegatoMiddleware_AddElectricGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddElectricGuitarResponse" message="tns:ILegatoMiddleware_AddElectricGuitar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditElectricGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/EditElectricGuitar" message="tns:ILegatoMiddleware_EditElectricGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/EditElectricGuitarResponse" message="tns:ILegatoMiddleware_EditElectricGuitar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveElectricGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveElectricGuitar" message="tns:ILegatoMiddleware_RemoveElectricGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveElectricGuitarResponse" message="tns:ILegatoMiddleware_RemoveElectricGuitar_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetElectricGuitars">
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitars" message="tns:ILegatoMiddleware_GetElectricGuitars_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarsResponse" message="tns:ILegatoMiddleware_GetElectricGuitars_OutputMessage" />
@@ -856,6 +1420,18 @@
     <wsdl:operation name="GetElectricGuitarQuantity">
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarQuantity" message="tns:ILegatoMiddleware_GetElectricGuitarQuantity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetElectricGuitarQuantityResponse" message="tns:ILegatoMiddleware_GetElectricGuitarQuantity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBassGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddBassGuitar" message="tns:ILegatoMiddleware_AddBassGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddBassGuitarResponse" message="tns:ILegatoMiddleware_AddBassGuitar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditBassGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/EditBassGuitar" message="tns:ILegatoMiddleware_EditBassGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/EditBassGuitarResponse" message="tns:ILegatoMiddleware_EditBassGuitar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBassGuitar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveBassGuitar" message="tns:ILegatoMiddleware_RemoveBassGuitar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveBassGuitarResponse" message="tns:ILegatoMiddleware_RemoveBassGuitar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBassGuitars">
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitars" message="tns:ILegatoMiddleware_GetBassGuitars_InputMessage" />
@@ -877,6 +1453,39 @@
   <wsdl:binding name="WSHttpBinding_ILegatoMiddleware" type="tns:ILegatoMiddleware">
     <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddAcousticClassicalGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/AddAcousticClassicalGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddAcousticClassicalGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddAcousticClassicalGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAcousticClassicalGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/EditAcousticClassicalGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_EditAcousticClassicalGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_EditAcousticClassicalGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAcousticClassicalGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/RemoveAcousticClassicalGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveAcousticClassicalGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveAcousticClassicalGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAcousticClassicalGuitars">
       <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/GetAcousticClassicalGuitars" style="document" />
       <wsdl:input>
@@ -918,6 +1527,39 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_GetAcousticClassicalGuitarQuantity_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcousticWesternGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/AddAcousticWesternGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddAcousticWesternGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddAcousticWesternGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAcousticWesternGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/EditAcousticWesternGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_EditAcousticWesternGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_EditAcousticWesternGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAcousticWesternGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/RemoveAcousticWesternGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveAcousticWesternGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveAcousticWesternGuitar_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -965,6 +1607,39 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddElectricGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/AddElectricGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddElectricGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddElectricGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditElectricGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/EditElectricGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_EditElectricGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_EditElectricGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveElectricGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/RemoveElectricGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveElectricGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveElectricGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetElectricGuitars">
       <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/GetElectricGuitars" style="document" />
       <wsdl:input>
@@ -1006,6 +1681,39 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_GetElectricGuitarQuantity_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBassGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/AddBassGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddBassGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddBassGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditBassGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/EditBassGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_EditBassGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_EditBassGuitar_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBassGuitar">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/RemoveBassGuitar" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveBassGuitar_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveBassGuitar_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

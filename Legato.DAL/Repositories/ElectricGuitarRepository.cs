@@ -19,23 +19,33 @@ namespace Legato.DAL.Repositories
             _context = context;
         }
 
+        public ElectricGuitarModel Get(int id)
+        {
+            return _context.ElectricGuitars.FirstOrDefault(g => g.Id == id);
+        }
+
         public void Create(ElectricGuitarModel item)
         {
             _context.ElectricGuitars.Add(item);
         }
 
-        public void Delete(string vendor, string model)
+        public void Update(ElectricGuitarModel item)
         {
-            var selectedGuitar = _context.ElectricGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
+            _context.ElectricGuitars.AddOrUpdate(item);
+        }
+
+        public void Delete(int id)
+        {
+            var selectedGuitar = Get(id);
             if (selectedGuitar != null)
             {
                 _context.ElectricGuitars.Remove(selectedGuitar);
             }
         }
 
-        public ElectricGuitarModel Get(string vendor, string model)
+        public IQueryable<ElectricGuitarModel> GetAll()
         {
-            return _context.ElectricGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
+            return _context.ElectricGuitars.OrderBy(g => g.Id);
         }
 
         public IQueryable<ElectricGuitarModel> FindByVendors(string[] vendors)
@@ -55,16 +65,6 @@ namespace Legato.DAL.Repositories
                 g => vendors.Contains(g.Vendor.Name) && (priceFrom <= g.Price && g.Price <= priceTo)
             )
             .OrderBy(g => g.Id);
-        }
-
-        public IQueryable<ElectricGuitarModel> GetAll()
-        {
-            return _context.ElectricGuitars.OrderBy(g => g.Id);
-        }
-
-        public void Update(ElectricGuitarModel item)
-        {
-            _context.ElectricGuitars.AddOrUpdate(item);
         }
 
         public void Dispose()

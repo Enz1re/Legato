@@ -11,7 +11,8 @@ namespace Legato.BL
         public static void Register(IKernel kernel)
         {
             LegatoDALDI.Register(kernel);
-            kernel.Bind<ILegatoBusinessLayerWorker>().To<LegatoBusinessLayerWorker>();
+            kernel.Bind<ILegatoGuitarBLWorker>().To<LegatoBusinessLayerWorker>();
+            kernel.Bind<ILegatoManageBLWorker>().To<LegatoManageBLWorker>();
             kernel.Bind<IGuitarUnitOfWork>().To<GuitarUnitOfWork>();
         }
     }

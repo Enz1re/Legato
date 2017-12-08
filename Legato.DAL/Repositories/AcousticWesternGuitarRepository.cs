@@ -19,23 +19,33 @@ namespace Legato.DAL.Repositories
             _context = context;
         }
 
+        public AcousticWesternGuitarModel Get(int id)
+        {
+            return _context.WesternAcousticGuitars.FirstOrDefault(g => g.Id == id);
+        }
+
         public void Create(AcousticWesternGuitarModel item)
         {
             _context.WesternAcousticGuitars.Add(item);
         }
 
-        public void Delete(string vendor, string model)
+        public void Update(AcousticWesternGuitarModel item)
         {
-            var selectedGuitar = _context.WesternAcousticGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
+            _context.WesternAcousticGuitars.AddOrUpdate(item);
+        }
+
+        public void Delete(int id)
+        {
+            var selectedGuitar = Get(id);
             if (selectedGuitar != null)
             {
                 _context.WesternAcousticGuitars.Remove(selectedGuitar);
             }
         }
 
-        public AcousticWesternGuitarModel Get(string vendor, string model)
+        public IQueryable<AcousticWesternGuitarModel> GetAll()
         {
-            return _context.WesternAcousticGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
+            return _context.WesternAcousticGuitars.OrderBy(g => g.Id);
         }
 
         public IQueryable<AcousticWesternGuitarModel> FindByVendors(string[] vendors)
@@ -55,16 +65,6 @@ namespace Legato.DAL.Repositories
                 g => vendors.Contains(g.Vendor.Name) && (priceFrom <= g.Price && g.Price <= priceTo)
             )
             .OrderBy(g => g.Id);
-        }
-
-        public IQueryable<AcousticWesternGuitarModel> GetAll()
-        {
-            return _context.WesternAcousticGuitars.OrderBy(g => g.Id);
-        }
-
-        public void Update(AcousticWesternGuitarModel item)
-        {
-            _context.WesternAcousticGuitars.AddOrUpdate(item);
         }
 
         public void Dispose()

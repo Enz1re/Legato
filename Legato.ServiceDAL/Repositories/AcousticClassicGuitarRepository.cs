@@ -17,6 +17,21 @@ namespace Legato.ServiceDAL.Repositories
             _client = client;
         }
 
+        public void Add(AcousticClassicalGuitarDataModel guitar)
+        {
+            _client.AddAcousticClassicalGuitar(guitar);
+        }
+
+        public void Update(AcousticClassicalGuitarDataModel guitar)
+        {
+            _client.EditAcousticClassicalGuitar(guitar);
+        }
+
+        public void Delete(AcousticClassicalGuitarDataModel guitar)
+        {
+            _client.RemoveAcousticClassicalGuitar(guitar);
+        }
+
         public IEnumerable<AcousticClassicalGuitarDataModel> Get(FilterDataModel filter, int lowerBound, int upperBound)
         {
             return _client.GetAcousticClassicalGuitars(filter, lowerBound, upperBound);

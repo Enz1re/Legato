@@ -9,7 +9,7 @@ using Legato.MiddlewareContracts.DataContracts;
 
 namespace Legato.BL
 {
-    public class LegatoBusinessLayerWorker : ILegatoBusinessLayerWorker
+    public class LegatoBusinessLayerWorker : ILegatoGuitarBLWorker
     {
         private IRepositoryProvider _repoProvider;
 
@@ -247,7 +247,7 @@ namespace Legato.BL
             return guitars.Count();
         }
 
-        public ILegatoBusinessLayerWorker Get()
+        public ILegatoGuitarBLWorker Get()
         {
             return new LegatoBusinessLayerWorker(_repoProvider);
         }

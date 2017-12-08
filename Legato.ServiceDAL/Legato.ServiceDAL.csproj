@@ -57,7 +57,6 @@
     <Compile Include="GuitarUnitOfWork.cs" />
     <Compile Include="Interfaces\IGuitarRepository.cs" />
     <Compile Include="Interfaces\IGuitarUnitOfWork.cs" />
-    <Compile Include="Interfaces\IServiceRepositoryProvider.cs" />
     <Compile Include="Service References\Middleware\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,7 +68,6 @@
     <Compile Include="Repositories\AcousticWesternGuitarRepository.cs" />
     <Compile Include="Repositories\BassGuitarRepository.cs" />
     <Compile Include="Repositories\ElectricGuitarRepository.cs" />
-    <Compile Include="Repositories\RepositoryProvider.cs" />
     <Compile Include="ViewModels\AcousticClassicalGuitarViewModel.cs" />
     <Compile Include="ViewModels\AcousticWesternGuitarViewModel.cs" />
     <Compile Include="ViewModels\BassGuitarViewModel.cs" />

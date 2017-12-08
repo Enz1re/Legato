@@ -11,10 +11,10 @@ namespace Legato.Service.Controllers
     [RoutePrefix("api/Electric")]
     public class ElectricController : ApiController
     {
-        private ILegatoServiceWorker _serviceWorker;
+        private ILegatoGuitarServiceWorker _serviceWorker;
 
         [Inject]
-        public ElectricController(ILegatoServiceWorker serviceWorker)
+        public ElectricController(ILegatoGuitarServiceWorker serviceWorker)
         {
             _serviceWorker = serviceWorker;
         }

@@ -11,10 +11,10 @@ namespace Legato.Service.Controllers
     [RoutePrefix("api/Western")]
     public class WesternController : ApiController
     {
-        private ILegatoServiceWorker _serviceWorker;
+        private ILegatoGuitarServiceWorker _serviceWorker;
 
         [Inject]
-        public WesternController(ILegatoServiceWorker serviceWorker)
+        public WesternController(ILegatoGuitarServiceWorker serviceWorker)
         {
             _serviceWorker = serviceWorker;
         }

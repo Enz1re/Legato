@@ -7,6 +7,14 @@ namespace Legato.DAL.Interfaces
 {
     public interface IGuitarRepository<TGuitar> : IDisposable where TGuitar: GuitarModel
     {
+        TGuitar Get(int Id);
+
+        void Create(TGuitar item);
+
+        void Update(TGuitar guitar);
+
+        void Delete(int id);
+
         IQueryable<TGuitar> GetAll();
 
         IQueryable<TGuitar> FindByVendors(string[] vendors);
@@ -14,13 +22,5 @@ namespace Legato.DAL.Interfaces
         IQueryable<TGuitar> FindByPrice(int from, int to);
 
         IQueryable<TGuitar> FindByVendorsAndPrice(string[] vendors, int priceFrom, int priceTo);
-
-        TGuitar Get(string vendor, string model);
-
-        void Create(TGuitar item);
-
-        void Update(TGuitar item);
-
-        void Delete(string vendor, string model);
     }
 }

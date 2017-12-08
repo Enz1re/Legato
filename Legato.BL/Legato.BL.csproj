@@ -44,9 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILegatoManageBLWorker.cs" />
     <Compile Include="LegatoBLDI.cs" />
-    <Compile Include="ILegatoBusinessLayerWorker.cs" />
+    <Compile Include="ILegatoGuitarBLWorker.cs" />
     <Compile Include="LegatoBusinessLayerWorker.cs" />
+    <Compile Include="LegatoManageBLWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

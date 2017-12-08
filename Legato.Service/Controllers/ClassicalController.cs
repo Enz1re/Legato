@@ -11,10 +11,10 @@ namespace Legato.Service.Controllers
     [RoutePrefix("api/Classical")]
     public class ClassicalController : ApiController
     {
-        private ILegatoServiceWorker _serviceWorker;
+        private ILegatoGuitarServiceWorker _serviceWorker;
 
         [Inject]
-        public ClassicalController(ILegatoServiceWorker serviceWorker)
+        public ClassicalController(ILegatoGuitarServiceWorker serviceWorker)
         {
             _serviceWorker = serviceWorker;
         }

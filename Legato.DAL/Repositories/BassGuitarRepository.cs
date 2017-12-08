@@ -19,23 +19,33 @@ namespace Legato.DAL.Repositories
             _context = context;
         }
 
+        public BassGuitarModel Get(int id)
+        {
+            return _context.BassGuitars.FirstOrDefault(g => g.Id == id);
+        }
+
         public void Create(BassGuitarModel item)
         {
             _context.BassGuitars.Add(item);
         }
 
-        public void Delete(string vendor, string model)
+        public void Update(BassGuitarModel item)
         {
-            var selectedGuitar = _context.BassGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
+            _context.BassGuitars.AddOrUpdate(item);
+        }
+
+        public void Delete(int id)
+        {
+            var selectedGuitar = Get(id);
             if (selectedGuitar != null)
             {
                 _context.BassGuitars.Remove(selectedGuitar);
             }
         }
 
-        public BassGuitarModel Get(string vendor, string model)
+        public IQueryable<BassGuitarModel> GetAll()
         {
-            return _context.BassGuitars.SingleOrDefault(g => g.Vendor.Name == vendor && g.Model == model);
+            return _context.BassGuitars.OrderBy(g => g.Id);
         }
 
         public IQueryable<BassGuitarModel> FindByVendors(string[] vendors)
@@ -48,11 +58,6 @@ namespace Legato.DAL.Repositories
             return _context.BassGuitars.Where(g => from <= g.Price && g.Price <= to).OrderBy(g => g.Id);
         }
 
-        public IQueryable<BassGuitarModel> GetAll()
-        {
-            return _context.BassGuitars.OrderBy(g => g.Id);
-        }
-
         public IQueryable<BassGuitarModel> FindByVendorsAndPrice(string[] vendors, int priceFrom, int priceTo)
         {
             return _context.BassGuitars.Where
@@ -60,11 +65,6 @@ namespace Legato.DAL.Repositories
                 g => vendors.Contains(g.Vendor.Name) && (priceFrom <= g.Price && g.Price <= priceTo)
             )
             .OrderBy(g => g.Id);
-        }
-
-        public void Update(BassGuitarModel item)
-        {
-            _context.BassGuitars.AddOrUpdate(item);
         }
 
         public void Dispose()

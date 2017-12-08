@@ -11,10 +11,10 @@ namespace Legato.Service.Controllers
     [RoutePrefix("api/Bass")]
     public class BassController : ApiController
     {
-        private ILegatoServiceWorker _serviceWorker;
+        private ILegatoGuitarServiceWorker _serviceWorker;
 
         [Inject]
-        public BassController(ILegatoServiceWorker serviceWorker)
+        public BassController(ILegatoGuitarServiceWorker serviceWorker)
         {
             _serviceWorker = serviceWorker;
         }
