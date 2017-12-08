@@ -2,7 +2,6 @@
     Price,
     Filter,
     Guitar, 
-    Paging,
     Vendor,
     BassGuitar,
     WesternGuitar,
@@ -35,9 +34,21 @@ export interface IGuitarResource {
     getSortedBassGuitars(filter: Filter, lowerBound: number, upperBound: number, sortHeader: string, sortDirection: string): ng.IPromise<BassGuitar[]>;
     getBassGuitarQuantity(filter: Filter): ng.IPromise<number>;
     // manage
-    add(guitar: Guitar): ng.IPromise<any>;
-    delete(guitar: Guitar): ng.IPromise<any>;
-    edit(guitar: Guitar): ng.IPromise<any>;
+    addAcousticGuitar(guitar: Guitar);
+    deleteAcousticGuitar(guitar: Guitar);
+    editAcousticGuitar(guitar: Guitar);
+
+    addWesternGuitar(guitar: Guitar);
+    deleteWesternGuitar(guitar: Guitar);
+    editWesternGuitar(guitar: Guitar);
+
+    addElectricGuitar(guitar: Guitar);
+    deleteElectricGuitar(guitar: Guitar);
+    editElectricGuitar(guitar: Guitar);
+
+    addBassGuitar(guitar: Guitar);
+    deleteBassGuitar(guitar: Guitar);
+    editBassGuitar(guitar: Guitar);
 }
 
 export default IGuitarResource;
