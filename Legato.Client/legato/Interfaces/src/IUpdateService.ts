@@ -5,7 +5,8 @@
 } from "../../Models/models";
 
 
-export interface IFilterUpdateService {
+export interface IUpdateService {
+    update: boolean;
     filter: { price: Price, vendors: Vendor[], sorting: Sorting, search: string };
 
     replacePriceQueryParams(stateName: string);
@@ -23,4 +24,6 @@ export interface IFilterUpdateService {
     needSearch(thisVal, prevVal);
 
     needUseSorting(thisVal, prevVal);
+
+    updateData();
 }

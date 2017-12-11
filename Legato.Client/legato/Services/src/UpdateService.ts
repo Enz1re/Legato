@@ -6,10 +6,11 @@ import {
     Sorting
 } from "../../Models/models";
 
-import { IFilterUpdateService, IRoutingService } from "../../Interfaces/interfaces";
+import { IUpdateService, IRoutingService } from "../../Interfaces/interfaces";
 
 
-export default class FilterUpdateService implements IFilterUpdateService {
+export default class UpdateService implements IUpdateService {
+    update: boolean = true;
     filter: { price: Price, vendors: Vendor[], sorting: Sorting, search: string };
     static $inject = ["RoutingService"];
 
@@ -88,6 +89,10 @@ export default class FilterUpdateService implements IFilterUpdateService {
         return newValue.sorting.name !== oldValue.sorting.name ||
             newValue.sorting.direction !== oldValue.sorting.direction ||
             newValue.sorting.required !== oldValue.sorting.required;
+    }
+
+    updateData() {
+        this.update = !this.update;
     }
 
     private getCheckedVendors() {
