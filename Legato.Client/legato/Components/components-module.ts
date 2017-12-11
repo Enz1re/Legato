@@ -26,6 +26,7 @@ import { AdminPanelController } from "./src/admin/AdminPanelController";
 import { AddEditModalController } from "./src/guitarModal/AddEditModalController";
 import { DisplayAmountModalController } from "./src/guitarModal/DisplayAmountModalController";
 import { GuitarDeleteModalController } from "./src/guitarModal/GuitarDeleteModalController";
+import { AlertModalController } from "./src/guitarModal/AlertModalController";
 
 const directivesModuleName = "legato.components";
 
@@ -55,7 +56,8 @@ angular.module(directivesModuleName, [])
     .controller("AddEditModalController", AddEditModalController)
     .controller("DisplayAmountModalController", DisplayAmountModalController)
     .controller("GuitarDeleteModalController", GuitarDeleteModalController)
-    .controller("AdminPanelController", AdminPanelController);
+    .controller("AdminPanelController", AdminPanelController)
+    .controller("AlertModalController", AlertModalController);
 
 export {
     MainController,
