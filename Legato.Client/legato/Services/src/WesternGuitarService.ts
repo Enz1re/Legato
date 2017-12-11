@@ -23,11 +23,11 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
         this.$$cache = cache.create("westernGuitarCache", 16);
     }
 
-    getGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number): ng.IPromise<WesternGuitar[]> {
+    getGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number, useCache = true): ng.IPromise<WesternGuitar[]> {
         const key = this.createCacheKey(guitarFilter.price, guitarFilter.vendors, { lowerBound: lowerBound, upperBound: upperBound }, guitarFilter.search);
         const cachedData = this.$$cache.get<WesternGuitar[]>(key);
 
-        if (cachedData) {
+        if (cachedData && useCache) {
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
@@ -42,14 +42,14 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
         }
     }
 
-    getSortedGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number) {
+    getSortedGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number, useCache = true) {
         const key = this.createCacheKey(guitarFilter.price,
                                         { lowerBound: lowerBound, upperBound: upperBound },
                                         guitarFilter.vendors, guitarFilter.search,
                                         { sortHeader: guitarFilter.sorting.name, sortDirection: guitarFilter.sorting.direction });
         const cachedData = this.$$cache.get<WesternGuitar[]>(key);
 
-        if (cachedData) {
+        if (cachedData && useCache) {
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
@@ -64,11 +64,11 @@ export default class WesternGuitarService extends ServiceBase implements IGuitar
         }
     }
     
-    getAmount(guitarFilter: GuitarFilter): ng.IPromise<number> {
+    getAmount(guitarFilter: GuitarFilter, useCache = true): ng.IPromise<number> {
         const key = this.createCacheKey(guitarFilter.price, guitarFilter.vendors, guitarFilter.search);
         const cachedData = this.$$cache.get<number>(key);
 
-        if (cachedData) {
+        if (cachedData && useCache) {
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
