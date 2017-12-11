@@ -27,7 +27,7 @@ namespace Legato.Service
             if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
             {
                 HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
                 HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Origin, Authorization");
                 HttpContext.Current.Response.End();
             }

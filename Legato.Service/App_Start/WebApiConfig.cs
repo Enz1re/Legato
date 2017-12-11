@@ -17,7 +17,7 @@ namespace Legato.Service
                 routeTemplate: "api/{controller}"
             );
 
-            config.EnableCors(new EnableCorsAttribute("*", "Accept, Content-Type, Origin, Authorization", "GET, POST, OPTIONS"));
+            config.EnableCors(new EnableCorsAttribute("*", "Accept, Content-Type, Origin, Authorization", "GET, POST, DELETE, OPTIONS"));
 
             config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
