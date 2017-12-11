@@ -10,25 +10,25 @@ namespace Legato.BL
 
         void EditAcousticClassicalGuitar(AcousticClassicalGuitarDataModel guitar);
 
-        void RemoveAcousticClassicalGuitar(AcousticClassicalGuitarDataModel guitar);
+        void RemoveAcousticClassicalGuitar(int id);
 
         void AddAcousticWesternGuitar(AcousticWesternGuitarDataModel guitar);
 
         void EditAcousticWesternGuitar(AcousticWesternGuitarDataModel guitar);
 
-        void RemoveAcousticWesternGuitar(AcousticWesternGuitarDataModel guitar);
+        void RemoveAcousticWesternGuitar(int id);
 
         void AddElectricGuitar(ElectricGuitarDataModel guitar);
 
         void EditElectricGuitar(ElectricGuitarDataModel guitar);
 
-        void RemoveElectricGuitar(ElectricGuitarDataModel guitar);
+        void RemoveElectricGuitar(int id);
 
         void AddBassGuitar(BassGuitarDataModel guitar);
 
         void EditBassGuitar(BassGuitarDataModel guitar);
 
-        void RemoveBassGuitar(BassGuitarDataModel guitar);
+        void RemoveBassGuitar(int id);
 
         ILegatoManageBLWorker Get();
     }

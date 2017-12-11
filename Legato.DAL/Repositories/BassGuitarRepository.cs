@@ -27,11 +27,13 @@ namespace Legato.DAL.Repositories
         public void Create(BassGuitarModel item)
         {
             _context.BassGuitars.Add(item);
+            _context.SaveChanges();
         }
 
         public void Update(BassGuitarModel item)
         {
             _context.BassGuitars.AddOrUpdate(item);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
@@ -40,6 +42,7 @@ namespace Legato.DAL.Repositories
             if (selectedGuitar != null)
             {
                 _context.BassGuitars.Remove(selectedGuitar);
+                _context.SaveChanges();
             }
         }
 

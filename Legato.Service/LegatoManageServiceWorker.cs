@@ -55,21 +55,21 @@ namespace Legato.Service
             }
         }
 
-        public void Remove(GuitarViewModel guitar, GuitarType type)
+        public void Remove(int id, GuitarType type)
         {
             switch (type)
             {
                 case GuitarType.Classical:
-                    _unitOfWork.ClassicAcousticGuitars.Delete(ServiceMappings.Map<AcousticClassicalGuitarDataModel>(guitar));
+                    _unitOfWork.ClassicAcousticGuitars.Delete(id);
                     break;
                 case GuitarType.Western:
-                    _unitOfWork.WesternAcousticGuitars.Delete(ServiceMappings.Map<AcousticWesternGuitarDataModel>(guitar));
+                    _unitOfWork.WesternAcousticGuitars.Delete(id);
                     break;
                 case GuitarType.Electric:
-                    _unitOfWork.ElectricGuitars.Delete(ServiceMappings.Map<ElectricGuitarDataModel>(guitar));
+                    _unitOfWork.ElectricGuitars.Delete(id);
                     break;
                 case GuitarType.Bass:
-                    _unitOfWork.BassGuitars.Delete(ServiceMappings.Map<BassGuitarDataModel>(guitar));
+                    _unitOfWork.BassGuitars.Delete(id);
                     break;
             }
         }

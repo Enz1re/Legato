@@ -27,11 +27,13 @@ namespace Legato.DAL.Repositories
         public void Create(AcousticWesternGuitarModel item)
         {
             _context.WesternAcousticGuitars.Add(item);
+            _context.SaveChanges();
         }
 
         public void Update(AcousticWesternGuitarModel item)
         {
             _context.WesternAcousticGuitars.AddOrUpdate(item);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
@@ -40,6 +42,7 @@ namespace Legato.DAL.Repositories
             if (selectedGuitar != null)
             {
                 _context.WesternAcousticGuitars.Remove(selectedGuitar);
+                _context.SaveChanges();
             }
         }
 

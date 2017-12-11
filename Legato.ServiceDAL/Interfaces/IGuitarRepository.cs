@@ -10,7 +10,7 @@ namespace Legato.ServiceDAL.Interfaces
 
         void Update(TGuitar guitar);
 
-        void Delete(TGuitar guitar);
+        void Delete(int id);
 
         IEnumerable<TGuitar> Get(FilterDataModel filter, int lowerBound, int upperBound);
 

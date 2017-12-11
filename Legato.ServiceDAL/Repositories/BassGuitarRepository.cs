@@ -27,9 +27,9 @@ namespace Legato.ServiceDAL.Repositories
             _client.EditBassGuitar(guitar);
         }
 
-        public void Delete(BassGuitarDataModel guitar)
+        public void Delete(int id)
         {
-            _client.RemoveBassGuitar(guitar);
+            _client.RemoveBassGuitar(id);
         }
 
         public IEnumerable<BassGuitarDataModel> Get(FilterDataModel filter, int lowerBound, int upperBound)

@@ -182,7 +182,7 @@
     <Compile Include="Controllers\ClassicalController.cs" />
     <Compile Include="Controllers\ElectricController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageClassicalController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WesternController.cs" />
     <Compile Include="Filters\AddChallengeOnUnauthorizedResult.cs" />
     <Compile Include="Filters\AuthenticationFailureResult.cs" />

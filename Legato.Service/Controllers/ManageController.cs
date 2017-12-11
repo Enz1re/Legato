@@ -18,7 +18,7 @@ namespace Legato.Service.Controllers
         }
 
         [HttpPost]
-        [Route("Add/{type}")]
+        [Route("{type}/Add")]
         public IHttpActionResult Add([FromBody] string guitarJson, string type)
         {
             var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarJson);
@@ -43,7 +43,7 @@ namespace Legato.Service.Controllers
         }
 
         [HttpPost]
-        [Route("Edit")]
+        [Route("{type}/Edit")]
         public IHttpActionResult Edit([FromBody] string guitarJson, string type)
         {
             var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarJson);
@@ -67,28 +67,19 @@ namespace Legato.Service.Controllers
             }
         }
 
-        [HttpDelete]
-        [Route("{guitarJson}")]
-        public IHttpActionResult Delete([FromBody] string guitarJson, string type)
+        [Route("{type}/{id}")]
+        public IHttpActionResult Delete(string type, int id)
         {
-            var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarJson);
             var parsedType = (GuitarType)Enum.Parse(typeof(GuitarType), type);
 
-            if (guitar != null)
+            try
             {
-                try
-                {
-                    _serviceWorker.Remove(guitar, parsedType);
-                    return Ok();
-                }
-                catch (Exception e)
-                {
-                    return InternalServerError(e);
-                }
+                _serviceWorker.Remove(id, parsedType);
+                return Ok();
             }
-            else
+            catch (Exception e)
             {
-                return BadRequest(Constants.Strings.GuitarIsInvalid);
+                return InternalServerError(e);
             }
         }
     }

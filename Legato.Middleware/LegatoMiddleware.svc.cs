@@ -37,11 +37,11 @@ namespace Legato.Middleware
             }
         }
 
-        public void RemoveAcousticClassicalGuitar(AcousticClassicalGuitarDataModel guitar)
+        public void RemoveAcousticClassicalGuitar(int id)
         {
             using (var worker = _blManageWorker.Get())
             {
-                worker.RemoveAcousticClassicalGuitar(guitar);
+                worker.RemoveAcousticClassicalGuitar(id);
             }
         }
 
@@ -100,11 +100,11 @@ namespace Legato.Middleware
             }
         }
 
-        public void RemoveAcousticWesternGuitar(AcousticWesternGuitarDataModel guitar)
+        public void RemoveAcousticWesternGuitar(int id)
         {
             using (var worker = _blManageWorker.Get())
             {
-                worker.RemoveAcousticWesternGuitar(guitar);
+                worker.RemoveAcousticWesternGuitar(id);
             }
         }
 
@@ -163,11 +163,11 @@ namespace Legato.Middleware
             }
         }
 
-        public void RemoveElectricGuitar(ElectricGuitarDataModel guitar)
+        public void RemoveElectricGuitar(int id)
         {
             using (var worker = _blManageWorker.Get())
             {
-                worker.RemoveElectricGuitar(guitar);
+                worker.RemoveElectricGuitar(id);
             }
         }
 
@@ -226,11 +226,11 @@ namespace Legato.Middleware
             }
         }
 
-        public void RemoveBassGuitar(BassGuitarDataModel guitar)
+        public void RemoveBassGuitar(int id)
         {
             using (var worker = _blManageWorker.Get())
             {
-                worker.RemoveBassGuitar(guitar);
+                worker.RemoveBassGuitar(id);
             }
         }
 

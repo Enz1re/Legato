@@ -27,9 +27,9 @@ namespace Legato.BL
             _repoProvider.AcousticClassicalGuitarRepository.Update(MiddlewareMappings.Map<AcousticClassicalGuitarModel>(guitar));
         }
 
-        public void RemoveAcousticClassicalGuitar(AcousticClassicalGuitarDataModel guitar)
+        public void RemoveAcousticClassicalGuitar(int id)
         {
-            _repoProvider.AcousticClassicalGuitarRepository.Delete(guitar.Id);
+            _repoProvider.AcousticClassicalGuitarRepository.Delete(id);
         }
 
         public void AddAcousticWesternGuitar(AcousticWesternGuitarDataModel guitar)
@@ -42,9 +42,9 @@ namespace Legato.BL
             _repoProvider.AcousticWesternGuitarRepository.Update(MiddlewareMappings.Map<AcousticWesternGuitarModel>(guitar));
         }
 
-        public void RemoveAcousticWesternGuitar(AcousticWesternGuitarDataModel guitar)
+        public void RemoveAcousticWesternGuitar(int id)
         {
-            _repoProvider.AcousticWesternGuitarRepository.Delete(guitar.Id);
+            _repoProvider.AcousticWesternGuitarRepository.Delete(id);
         }
 
         public void AddElectricGuitar(ElectricGuitarDataModel guitar)
@@ -57,9 +57,9 @@ namespace Legato.BL
             _repoProvider.ElectricGuitarRepository.Update(MiddlewareMappings.Map<ElectricGuitarModel>(guitar));
         }
 
-        public void RemoveElectricGuitar(ElectricGuitarDataModel guitar)
+        public void RemoveElectricGuitar(int id)
         {
-            _repoProvider.ElectricGuitarRepository.Delete(guitar.Id);
+            _repoProvider.ElectricGuitarRepository.Delete(id);
         }
 
         public void AddBassGuitar(BassGuitarDataModel guitar)
@@ -72,9 +72,9 @@ namespace Legato.BL
             _repoProvider.BassGuitarRepository.Update(MiddlewareMappings.Map<BassGuitarModel>(guitar));
         }
 
-        public void RemoveBassGuitar(BassGuitarDataModel guitar)
+        public void RemoveBassGuitar(int id)
         {
-            _repoProvider.BassGuitarRepository.Delete(guitar.Id);
+            _repoProvider.BassGuitarRepository.Delete(id);
         }
 
         public ILegatoManageBLWorker Get()

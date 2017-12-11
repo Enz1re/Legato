@@ -17,7 +17,7 @@ namespace Legato.MiddlewareContracts
         void EditAcousticClassicalGuitar(AcousticClassicalGuitarDataModel guitar);
 
         [OperationContract]
-        void RemoveAcousticClassicalGuitar(AcousticClassicalGuitarDataModel guitar);
+        void RemoveAcousticClassicalGuitar(int id);
 
         [OperationContract]
         IEnumerable<AcousticClassicalGuitarDataModel> GetAcousticClassicalGuitars(FilterDataModel filter, int lowerBound, int upperBound);
@@ -42,7 +42,7 @@ namespace Legato.MiddlewareContracts
         void EditAcousticWesternGuitar(AcousticWesternGuitarDataModel guitar);
 
         [OperationContract]
-        void RemoveAcousticWesternGuitar(AcousticWesternGuitarDataModel guitar);
+        void RemoveAcousticWesternGuitar(int id);
 
         [OperationContract]
         IEnumerable<AcousticWesternGuitarDataModel> GetAcousticWesternGuitars(FilterDataModel filter, int lowerBound, int upperBound);
@@ -67,7 +67,7 @@ namespace Legato.MiddlewareContracts
         void EditElectricGuitar(ElectricGuitarDataModel guitar);
 
         [OperationContract]
-        void RemoveElectricGuitar(ElectricGuitarDataModel guitar);
+        void RemoveElectricGuitar(int id);
 
         [OperationContract]
         IEnumerable<ElectricGuitarDataModel> GetElectricGuitars(FilterDataModel filter, int lowerBound, int upperBound);
@@ -92,7 +92,7 @@ namespace Legato.MiddlewareContracts
         void EditBassGuitar(BassGuitarDataModel guitar);
 
         [OperationContract]
-        void RemoveBassGuitar(BassGuitarDataModel guitar);
+        void RemoveBassGuitar(int id);
 
         [OperationContract]
         IEnumerable<BassGuitarDataModel> GetBassGuitars(FilterDataModel filter, int lowerBound, int upperBound);

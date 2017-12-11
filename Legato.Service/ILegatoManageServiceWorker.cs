@@ -17,6 +17,6 @@ namespace Legato.Service
 
         void Edit(GuitarViewModel guitar, GuitarType type);
 
-        void Remove(GuitarViewModel guitar, GuitarType type);
+        void Remove(int id, GuitarType type);
     }
 }
