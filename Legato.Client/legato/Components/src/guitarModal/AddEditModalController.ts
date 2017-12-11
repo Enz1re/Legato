@@ -24,18 +24,24 @@ export class AddEditModalController {
 
         if (type) {
             this.type = type;
+        } else {
+            this.type = "Classical";
         }
 
         this.options = [
-            Constants.CLASSICAL,
-            Constants.WESTERN,
-            Constants.ELECTRIC,
-            Constants.BASS
+            "Classical",
+            "Western",
+            "Electric",
+            "Bass"
         ];
     }
 
+    uploadFile(file) {
+        console.log(file);
+    }
+
     onOkButtonClicked() {
-        this.$uibModalInstance.close(this.guitar);
+        this.$uibModalInstance.close({ guitar: this.guitar, type: this.type });
     }
 
     onCancelButtonClicked() {
