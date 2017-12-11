@@ -64,4 +64,18 @@ export default class ModalService implements IModalService {
             resolve: resolve
         });
     }
+
+    openAlertModal(text: string, mode: "success" | "info" | "warning" | "danger") {
+        return this.$uibModal.open({
+            animation: true,
+            controller: "AlertModalController",
+            controllerAs: "alertModalCtrl",
+            templateUrl: "legato/Components/src/guitarModal/alertModal.html",
+            bindToController: true,
+            resolve: {
+                modalContent: () => text,
+                mode: () => mode
+            }
+        });
+    }
 }
