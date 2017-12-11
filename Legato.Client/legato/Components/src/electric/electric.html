@@ -17,7 +17,7 @@
         <li class="guitar-li" ng-repeat="guitar in electricCtrl.guitars">
             <div class="guitar-container" ng-click="electricCtrl.onGuitarClick('electric', $index)" context-menu="electricCtrl.contextMenu.menuOptions"
                                                                                                     context-menu-if="electricCtrl.globals.currentUser"
-                                                                                                    context-menu-data="{ type: 'electric' }" 
+                                                                                                    context-menu-data="{ type: 'Electric' }" 
                                                                                                     model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
                 <div>{{guitar.vendor}} {{guitar.model}}</div>
