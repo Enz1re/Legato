@@ -18,14 +18,6 @@ angular.module("legato", [ngCookies, uiRouter, ngAnimate, uiBootstrap, ngFileUpl
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common["Authorization"] = `Bearer ${$rootScope.globals.currentUser.authData}`;
         }
-
-        $rootScope.$on("$stateChangeStart", (event: ng.IAngularEvent, toState: ng.ui.IState, toParams, fromState: ng.ui.IState, fromParams) => {
-            const isRestrictedPage = toState.name.toLowerCase() === "admin";
-            const isLoggedIn = $rootScope.globals.currentUser;
-            if (isRestrictedPage && !isLoggedIn) {
-                $state.go("login");
-            }
-        });
     }]);
 
 angular.element(document).ready(() => {
