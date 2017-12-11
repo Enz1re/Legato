@@ -20,12 +20,12 @@ export class LegatoContextMenuDirective implements ng.IDirective {
             return;
         }
 
-        let openMenuEvents = ['contextmenu'];
-        this.emptyText = $scope.$eval(attrs.contextMenuEmptyText) || 'empty';
+        let openMenuEvents = ["contextmenu"];
+        this.emptyText = $scope.$eval(attrs.contextMenuEmptyText) || "empty";
         const data = $scope.$eval(attrs.contextMenuData);
         
-        if (attrs.contextMenuOn && typeof attrs.contextMenuOn === 'string') {
-            openMenuEvents = attrs.contextMenuOn.split(',');
+        if (attrs.contextMenuOn && typeof attrs.contextMenuOn === "string") {
+            openMenuEvents = attrs.contextMenuOn.split(",");
         }
 
         angular.forEach(openMenuEvents, (openMenuEvent) => {
@@ -35,17 +35,17 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                     event.preventDefault();
                 }
 
-                if (this.isTouchDevice() && element.attr('draggable') === 'true') {
+                if (this.isTouchDevice() && element.attr("draggable") === "true") {
                     return false;
                 }
 
                 // Remove if the user clicks outside
-                this.$document.find('body').on('mousedown', this.removeOnOutsideClickEvent.bind(this));
+                this.$document.find("body").on("mousedown", this.removeOnOutsideClickEvent.bind(this));
                 // Remove the menu when the scroll moves
-                this.$document.on('scroll', this.removeOnScrollEvent.bind(this));
+                this.$document.on("scroll", this.removeOnScrollEvent.bind(this));
 
                 this.clickedElement = event.currentTarget;
-                angular.element(this.clickedElement).addClass('context');
+                angular.element(this.clickedElement).addClass("context");
 
                 $scope.$apply(() => {
                     let options = $scope.$eval(attrs.contextMenu);
@@ -58,15 +58,16 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                             //  support for dynamic items
                             promisedMenu = promisedMenu.call($scope, $scope, event, modelValue);
                         }
+                        
                         let params = {
-                            '$scope': $scope,
-                            'event': event,
-                            'options': promisedMenu,
-                            'modelValue': modelValue,
-                            'data': data,
-                            'level': 0,
-                            'customClass': customClass,
-                            'orientation': orientation
+                            "$scope": $scope,
+                            "event": event,
+                            "options": promisedMenu,
+                            "modelValue": modelValue,
+                            "data": data,
+                            "level": 0,
+                            "customClass": customClass,
+                            "orientation": orientation
                         };
 
                         this.$rootScope.$broadcast(ContextMenuEvents.ContextMenuOpening, { context: this.clickedElement });
@@ -75,7 +76,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                 });
 
                 // Remove all context menus if the scope is destroyed
-                $scope.$on('$destroy', e => {
+                $scope.$on("$destroy", e => {
                     this.removeAllContextMenus(e);
                 });
             });
@@ -99,7 +100,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
         let $promises = params.$promises;
         let nestedMenu = params.nestedMenu;
         let $li = params.$li;
-        let leftOriented = String(params.orientation).toLowerCase() === 'left';
+        let leftOriented = String(params.orientation).toLowerCase() === "left";
         let optionText = null;
 
         if (item.html) {
@@ -111,23 +112,23 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                 optionText = item.html;
             }
         } else {
-            let $a = angular.element('<a>');
+            let $a = angular.element("<a>");
             let $anchorStyle = {
-                textAlign: leftOriented ? 'right' : 'left',
-                paddingRight:  '8px',
-                fontSize:  '18px'
+                textAlign: leftOriented ? "right" : "left",
+                paddingRight:  "8px",
+                fontSize:  "18px"
             };
 
             $a.css($anchorStyle);
-            $a.addClass('dropdown-item');
-            $a.attr({ tabindex: '-1', href: '#' });
+            $a.addClass("dropdown-item");
+            $a.attr({ tabindex: "-1", href: "#" });
 
             let textParam = item.text || item[0];
             let text = this.defaultItemText;
 
-            if (typeof textParam === 'string') {
+            if (typeof textParam === "string") {
                 text = textParam;
-            } else if (typeof textParam === 'function') {
+            } else if (typeof textParam === "function") {
                 text = textParam.call($scope, $scope, event, modelValue);
             }
 
@@ -138,21 +139,21 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                 if (nestedMenu) {
                     let $arrow;
                     let $boldStyle: any = {
-                        fontFamily: 'monospace',
-                        fontWeight: 'bold',
+                        fontFamily: "monospace",
+                        fontWeight: "bold",
                     };
 
                     if (leftOriented) {
-                        $arrow = '&lt;';
-                        $boldStyle.float = 'left';
+                        $arrow = "&lt;";
+                        $boldStyle.float = "left";
                     } else {
-                        $arrow = '&gt;';
-                        $boldStyle.float = 'right';
+                        $arrow = "&gt;";
+                        $boldStyle.float = "right";
                     }
 
-                    let $bold = angular.element('<strong style="font-family:monospace;font-weight:bold;float:right;">' + $arrow + '</strong>');
+                    let $bold = angular.element(`<strong style="font-family:monospace;font-weight:bold;float:right;">${$arrow}</strong>`);
                     $bold.css($boldStyle);
-                    $a.css('cursor', 'default');
+                    $a.css("cursor", "default");
                     $a.append($bold);
                 }
                 $a.append(pText);
@@ -226,7 +227,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                  */
                 /// adding the original event in the object to use the attributes of the mouse over event in the promises
                 let ev = {
-                    pageX: orientation === 'left' ? event.pageX - $ul[0].offsetWidth + 1 : event.pageX + $ul[0].offsetWidth - 1,
+                    pageX: orientation === "left" ? event.pageX - $ul[0].offsetWidth + 1 : event.pageX + $ul[0].offsetWidth - 1,
                     pageY: $ul[0].offsetTop + $li[0].offsetTop - 3,
                     // eslint-disable-next-line angular/window-service
                     view: event.view || window,
@@ -256,12 +257,12 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                 });
             };
 
-            $li.on('click', e => {
+            $li.on("click", e => {
                 if (e.which === 1) {
                     e.preventDefault();
                     $scope.$apply(() => {
                         let cleanupFunction = () => {
-                            angular.element(event.currentTarget).removeClass('context');
+                            angular.element(event.currentTarget).removeClass("context");
                             this.removeAllContextMenus(e);
                         };
                         let clickFunction = angular.isFunction(item.click)
@@ -282,7 +283,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                 }
             });
 
-            $li.on('mouseover', e => {
+            $li.on("mouseover", e => {
                 $scope.$apply(() => {
                     if (nestedMenu) {
                         openNestedMenu(e);
@@ -368,12 +369,12 @@ export class LegatoContextMenuDirective implements ng.IDirective {
 
                 // Only add the <li> if the item is displayed
                 if (displayed) {
-                    let $li = angular.element('<li>');
+                    let $li = angular.element("<li>");
                     let itemParams = angular.extend({}, params);
                     itemParams.item = item;
                     itemParams.$li = $li;
 
-                    if (typeof item[0] === 'object') {
+                    if (typeof item[0] === "object") {
                         // custom.initialize($li, item);
                     } else {
                         this.processItem(itemParams);
@@ -390,13 +391,13 @@ export class LegatoContextMenuDirective implements ng.IDirective {
         });
 
         if ($ul.children().length === 0) {
-            let $emptyLi = angular.element('<li>');
+            let $emptyLi = angular.element("<li>");
             this.setElementDisabled($emptyLi);
-            $emptyLi.html('<a>' + this.emptyText + '</a>');
+            $emptyLi.html("<a>" + this.emptyText + "</a>");
             $ul.append($emptyLi);
         }
 
-        this.$document.find('body').append($ul);
+        this.$document.find("body").append($ul);
 
         this.doAfterAllPromises(params);
 
@@ -418,11 +419,11 @@ export class LegatoContextMenuDirective implements ng.IDirective {
         let $promises = params.$promises;
         let level = params.level;
         let event = params.event;
-        let leftOriented = String(params.orientation).toLowerCase() === 'left';
+        let leftOriented = String(params.orientation).toLowerCase() === "left";
 
         this.$q.all($promises).then(() => {
             let topCoordinate = event.pageY;
-            let menuHeight = angular.element($ul[0]).prop('offsetHeight');
+            let menuHeight = angular.element($ul[0]).prop("offsetHeight");
             let winHeight = this.$window.scrollY + event.view.innerHeight;
             /// the 20 pixels in second condition are considering the browser status bar that sometimes overrides the element
             if (topCoordinate > menuHeight && winHeight - topCoordinate < menuHeight + 20) {
@@ -432,8 +433,8 @@ export class LegatoContextMenuDirective implements ng.IDirective {
                     topCoordinate += event.event.currentTarget.offsetHeight;
                 }
             } else if (winHeight <= menuHeight) {
-                // If it really can't fit, reset the height of the menu to one that will fit
-                angular.element($ul[0]).css({ 'height': winHeight - 5, 'overflow-y': 'scroll' });
+                // If it really can"t fit, reset the height of the menu to one that will fit
+                angular.element($ul[0]).css({ "height": winHeight - 5, "overflow-y": "scroll" });
                 // ...then set the topCoordinate height to 0 so the menu starts from the top
                 topCoordinate = 0;
             } else if (winHeight - topCoordinate < menuHeight) {
@@ -445,7 +446,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
             }
 
             let leftCoordinate = event.pageX;
-            let menuWidth = angular.element($ul[0]).prop('offsetWidth');
+            let menuWidth = angular.element($ul[0]).prop("offsetWidth");
             let winWidth = event.view.innerWidth + window.pageXOffset;
             let padding = 5;
 
@@ -474,10 +475,10 @@ export class LegatoContextMenuDirective implements ng.IDirective {
             }
 
             $ul.css({
-                display: 'block',
-                position: 'absolute',
-                left: leftCoordinate + 'px',
-                top: topCoordinate + 'px'
+                display: "block",
+                position: "absolute",
+                left: leftCoordinate + "px",
+                top: topCoordinate + "px"
             });
         });
     }
@@ -492,15 +493,15 @@ export class LegatoContextMenuDirective implements ng.IDirective {
         // Destructuring
         let customClass = params.customClass;
 
-        let $ul = angular.element('<ul>');
-        $ul.addClass('dropdown-menu');
-        $ul.attr({ 'role': 'menu' });
+        let $ul = angular.element("<ul>");
+        $ul.addClass("dropdown-menu");
+        $ul.attr({ "role": "menu" });
         $ul.css({
-            display: 'block',
-            position: 'absolute',
-            left: params.event.pageX + 'px',
-            top: params.event.pageY + 'px',
-            'z-index': 10000
+            display: "block",
+            position: "absolute",
+            left: params.event.pageX + "px",
+            top: params.event.pageY + "px",
+            "z-index": 10000
         });
 
         if (customClass) { $ul.addClass(customClass); }
@@ -509,7 +510,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
     }
 
     private isTouchDevice() {
-        return 'ontouchstart' in window || navigator.maxTouchPoints; // works on most browsers | works on IE10/11 and Surface
+        return "ontouchstart" in window || navigator.maxTouchPoints; // works on most browsers | works on IE10/11 and Surface
     }
 
     /**
@@ -537,7 +538,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
         let shouldRemove = true;
 
         while ($curr.length) {
-            if ($curr.hasClass('dropdown-menu')) {
+            if ($curr.hasClass("dropdown-menu")) {
                 shouldRemove = false;
                 break;
             } else {
@@ -550,11 +551,11 @@ export class LegatoContextMenuDirective implements ng.IDirective {
     }
 
     private removeAllContextMenus(e) {
-        this.$document.find('body').off('mousedown', this.removeOnOutsideClickEvent.bind(this));
-        this.$document.off('scroll', this.removeOnScrollEvent.bind(this));
-        angular.element(this.clickedElement).removeClass('context');
+        this.$document.find("body").off("mousedown", this.removeOnOutsideClickEvent.bind(this));
+        this.$document.off("scroll", this.removeOnScrollEvent.bind(this));
+        angular.element(this.clickedElement).removeClass("context");
         this.removeContextMenus();
-        this.$rootScope.$broadcast('');
+        this.$rootScope.$broadcast("");
     }
 
     private isBoolean(a) {
@@ -564,7 +565,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
     /** Resolves a boolean or a function that returns a boolean
      * Returns true by default if the param is null or undefined
      * @param a - the parameter to be checked
-     * @param params - the object for the item's parameters
+     * @param params - the object for the item"s parameters
      * @param defaultValue - the default boolean value to use if the parameter is
      *  neither a boolean nor function. True by default.
      */
@@ -586,16 +587,16 @@ export class LegatoContextMenuDirective implements ng.IDirective {
     }
 
     private appendDivider($ul) {
-        let $li = angular.element('<li>');
-        $li.addClass('divider');
+        let $li = angular.element("<li>");
+        $li.addClass("divider");
         $ul.append($li);
     }
 
     private setElementDisabled($li) {
-        $li.on('click', e => {
+        $li.on("click", e => {
             e.preventDefault();
         });
 
-        $li.addClass('disabled');
+        $li.addClass("disabled");
     }
 }
