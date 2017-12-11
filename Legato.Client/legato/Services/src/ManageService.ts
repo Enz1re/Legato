@@ -10,15 +10,15 @@ export default class ManageService implements IManageService {
 
     }
 
-    addGuitar(guitar: Guitar) {
-        return this.guitarResource.add(guitar);
+    addGuitar(guitar: Guitar, type: string) {
+        return this.guitarResource.add(guitar, type);
     }
 
-    removeGuitar(guitar: Guitar) {
-        return this.guitarResource.delete(guitar);
+    removeGuitar(guitar: Guitar, type: string) {
+        return this.guitarResource.delete(guitar, type);
     }
 
-    editGuitarCharacteristics(guitar: Guitar) {
-        return this.guitarResource.edit(guitar);
+    editGuitarCharacteristics(guitar: Guitar, type: string) {
+        return this.guitarResource.edit(guitar, type);
     }
 }

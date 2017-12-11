@@ -138,68 +138,19 @@ export default class GuitarResource implements IGuitarResource {
             .then((result: ng.IHttpResponse<Amount>) => result.data.quantity);
     }
 
-    /* Manage */
-    // Acoustic
-    addAcousticGuitar(guitar: ClassicalGuitar): ng.IPromise<any> {
-        return this.$http.post("http://localhost/api/Manage/Acoustic/Add", { params: { guitarJson: angular.toJson(guitar) } })
+    // Manage
+    add(guitar: Guitar, type: string): ng.IPromise<any> {
+        return this.$http.post(`http://localhost/api/Manage/${type}/Add`, { params: { guitarJson: angular.toJson(guitar) } })
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
 
-    deleteAcousticGuitar(guitar: ClassicalGuitar): ng.IPromise<any> {
-        return this.$http.delete(`http://localhost/api/Manage/Acoustic/${guitar.id}`)
+    delete(guitar: Guitar, type: string): ng.IPromise<any> {
+        return this.$http.delete(`http://localhost/api/Manage/${type}/${guitar.id}`)
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
 
-    editAcousticGuitar(guitar: ClassicalGuitar): ng.IPromise<any> {
-        return this.$http.post("http://localhost/api/Manage/Acoustic/Edit", { params: { guitarJson: angular.toJson(guitar) } })
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    // Western
-    addWesternGuitar(guitar: WesternGuitar): ng.IPromise<any> {
-        return this.$http.post("http://localhost/api/Manage/Western/Add", { params: { guitarJson: angular.toJson(guitar) } })
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    deleteWesternGuitar(guitar: WesternGuitar): ng.IPromise<any> {
-        return this.$http.delete(`http://localhost/api/Manage/Western/${guitar.id}`)
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    editWesternGuitar(guitar: WesternGuitar): ng.IPromise<any> {
-        return this.$http.post("http://localhost/api/Manage/Western/Edit", { params: { guitarJson: angular.toJson(guitar) } })
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    // Electric
-    addElectricGuitar(guitar: ElectricGuitar): ng.IPromise<any> {
-        return this.$http.post("http://localhost/api/Manage/Electric/Add", { params: { guitarJson: angular.toJson(guitar) } })
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    deleteElectricGuitar(guitar: ElectricGuitar): ng.IPromise<any> {
-        return this.$http.delete(`http://localhost/api/Manage/Electric/${guitar.id}`)
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    editElectricGuitar(guitar: ElectricGuitar): ng.IPromise<any> {
-        return this.$http.post("http://localhost/api/Manage/Electric/Edit", { params: { guitarJson: angular.toJson(guitar) } })
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    // Bass
-    addBassGuitar(guitar: BassGuitar): ng.IPromise<any> {
-        return this.$http.post("http://localhost/api/Manage/Bass/Add", { params: { guitarJson: angular.toJson(guitar) } })
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    deleteBassGuitar(guitar: BassGuitar): ng.IPromise<any> {
-        return this.$http.delete(`http://localhost/api/Manage/Bass/${guitar.id}`)
-            .then((result: ng.IHttpResponse<any>) => result.data);
-    }
-
-    editBassGuitar(guitar: BassGuitar): ng.IPromise<any> {
-        return this.$http.post("http://localhost/api/Manage/Bass/Edit", { params: { guitarJson: angular.toJson(guitar) } })
+    edit(guitar: Guitar, type: string): ng.IPromise<any> {
+        return this.$http.post(`http://localhost/api/Manage/${type}/Edit`, { params: { guitarJson: angular.toJson(guitar) } })
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
 }

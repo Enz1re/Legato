@@ -34,21 +34,9 @@ export interface IGuitarResource {
     getSortedBassGuitars(filter: Filter, lowerBound: number, upperBound: number, sortHeader: string, sortDirection: string): ng.IPromise<BassGuitar[]>;
     getBassGuitarQuantity(filter: Filter): ng.IPromise<number>;
     // manage
-    addAcousticGuitar(guitar: Guitar);
-    deleteAcousticGuitar(guitar: Guitar);
-    editAcousticGuitar(guitar: Guitar);
-
-    addWesternGuitar(guitar: Guitar);
-    deleteWesternGuitar(guitar: Guitar);
-    editWesternGuitar(guitar: Guitar);
-
-    addElectricGuitar(guitar: Guitar);
-    deleteElectricGuitar(guitar: Guitar);
-    editElectricGuitar(guitar: Guitar);
-
-    addBassGuitar(guitar: Guitar);
-    deleteBassGuitar(guitar: Guitar);
-    editBassGuitar(guitar: Guitar);
+    add(guitar: Guitar, type: string);
+    delete(guitar: Guitar, type: string);
+    edit(guitar: Guitar, type: string);
 }
 
 export default IGuitarResource;

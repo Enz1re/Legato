@@ -1,6 +1,5 @@
 ﻿import {
     Price,
-    Paging,
     Vendor,
     Filter,
     VendorList
