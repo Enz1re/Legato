@@ -32,10 +32,10 @@ export default class ContextMenuService implements IContextMenuService {
                 }).result.then(edited => {
                     this.manageService.editGuitarCharacteristics(edited, data.type).then(() => {
                         this.updateService.updateData();
-                    }).catch(() => { });
-                }).catch(err => {
-                    this.modalService.openAlertModal(`Failed to save changes: ${modelValue.vendor.name} ${modelValue.model}. ${err.message}`, "danger");
-                });
+                    }).catch(err => {
+                        this.modalService.openAlertModal(`Failed to save changes: ${modelValue.vendor.name} ${modelValue.model}. ${err.message}`, "danger");
+                    });
+                }).catch(() => {});
             }
         }
     ];
