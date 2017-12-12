@@ -7,8 +7,8 @@
 import {
     IFilterService,
     IVendorService,
+    IUpdateService,
     IRoutingService,
-    IFilterUpdateService,
     IAuthenticationService
 } from "../../../Interfaces/interfaces";
 
@@ -20,19 +20,19 @@ export class MainController implements ng.IController {
     activeTab: string;
     search: string;
     globals: any;
-    static $inject = ["$rootScope", "RoutingService", "FilterUpdateService", "FilterService", "VendorService", "AuthenticationService"];
+    static $inject = ["$rootScope", "RoutingService", "UpdateService", "FilterService", "VendorService", "AuthenticationService"];
 
-    constructor(private $rootScope, private routingService: IRoutingService, private filterUpdateService: IFilterUpdateService,
+    constructor(private $rootScope, private routingService: IRoutingService, private updateService: IUpdateService,
                 private filterService: IFilterService, private service: IVendorService, private authService: IAuthenticationService) {
         const name = routingService.urlSegments[1];
         this.initVendorList(name).then(() => {
             this.globals = this.$rootScope.globals;
             this.activeTab = name;
             const urlParamResolver = routingService.getParamResolver();
-            this.filterUpdateService.filter.price = urlParamResolver.resolvePrice();
-            this.filterUpdateService.filter.sorting = urlParamResolver.resolveSorting();
-            this.filterUpdateService.filter.vendors = urlParamResolver.resolveVendors(this.filterUpdateService.filter.vendors);
-            this.filterUpdateService.filter.search = this.search = urlParamResolver.resolveSearchString();
+            this.updateService.filter.price = urlParamResolver.resolvePrice();
+            this.updateService.filter.sorting = urlParamResolver.resolveSorting();
+            this.updateService.filter.vendors = urlParamResolver.resolveVendors(this.updateService.filter.vendors);
+            this.updateService.filter.search = this.search = urlParamResolver.resolveSearchString();
         });
         $rootScope.$watch(() => $rootScope.globals.currentUser, (newVal, oldVal) => {
             if (newVal || oldVal) {
@@ -49,14 +49,14 @@ export class MainController implements ng.IController {
         }
 
         this.activeTab = guitarTypeName;
-        this.filterUpdateService.filter.price = this.filterService.guitarFilter[guitarTypeName].price || new Price();
-        this.filterUpdateService.filter.sorting = this.filterService.guitarFilter[guitarTypeName].sorting || new Sorting();
-        this.filterUpdateService.filter.search = this.search = this.filterService.guitarFilter[guitarTypeName].search;
+        this.updateService.filter.price = this.filterService.guitarFilter[guitarTypeName].price || new Price();
+        this.updateService.filter.sorting = this.filterService.guitarFilter[guitarTypeName].sorting || new Sorting();
+        this.updateService.filter.search = this.search = this.filterService.guitarFilter[guitarTypeName].search;
 
         if (!this.filterService.guitarFilter[guitarTypeName].vendors) {
             this.initVendorList(guitarTypeName);
         } else {
-            this.filterUpdateService.filter.vendors = this.filterService.guitarFilter[guitarTypeName].vendors;
+            this.updateService.filter.vendors = this.filterService.guitarFilter[guitarTypeName].vendors;
         }
         
         this.routingService.redirect(this.activeTab, this.filterService.guitarFilter[guitarTypeName].params || { page: "1" });
@@ -68,21 +68,21 @@ export class MainController implements ng.IController {
         }
 
         this.filterService.guitarFilter[guitarTypeName].params = { ...this.routingService.queryParams };
-        this.filterService.guitarFilter[guitarTypeName].price = { ...this.filterUpdateService.filter.price };
-        this.filterService.guitarFilter[guitarTypeName].vendors = [ ...this.filterUpdateService.filter.vendors ];
-        this.filterService.guitarFilter[guitarTypeName].sorting = { ...this.filterUpdateService.filter.sorting };
-        this.filterService.guitarFilter[guitarTypeName].search = this.search = this.filterUpdateService.filter.search;
+        this.filterService.guitarFilter[guitarTypeName].price = { ...this.updateService.filter.price };
+        this.filterService.guitarFilter[guitarTypeName].vendors = [ ...this.updateService.filter.vendors ];
+        this.filterService.guitarFilter[guitarTypeName].sorting = { ...this.updateService.filter.sorting };
+        this.filterService.guitarFilter[guitarTypeName].search = this.search = this.updateService.filter.search;
     }
 
     unfilter() {
-        this.filterUpdateService.filter.search = this.search = "";
-        this.filterUpdateService.filter.price = { from: null, to: null };
-        this.filterUpdateService.filter.sorting = {
+        this.updateService.filter.search = this.search = "";
+        this.updateService.filter.price = { from: null, to: null };
+        this.updateService.filter.sorting = {
             required: false,
             name: null,
             direction: null
         };
-        this.filterUpdateService.filter.vendors.forEach(v => {
+        this.updateService.filter.vendors.forEach(v => {
             v.isSelected = true;
         });
     }
@@ -93,12 +93,12 @@ export class MainController implements ng.IController {
 
     doSearch(event) {
         if (event.key.toLowerCase() === "enter") {
-            this.filterUpdateService.filter.search = this.search;
+            this.updateService.filter.search = this.search;
         }
     }
 
     private initVendorList(guitarTypeName: string): ng.IPromise<void> {
-        this.filterUpdateService.filter.vendors = [];
+        this.updateService.filter.vendors = [];
 
         switch (guitarTypeName) {
             case Constants.CLASSICAL:
@@ -114,7 +114,7 @@ export class MainController implements ng.IController {
 
     private refreshVendorListForClassicalGuitars() {
         return this.service.getClassicalGuitarVendors().then(vendors => {
-            this.filterUpdateService.filter.vendors = vendors;
+            this.updateService.filter.vendors = vendors;
         }).catch(err => {
             this.error = true;
             throw err;
@@ -123,7 +123,7 @@ export class MainController implements ng.IController {
 
     private refreshVendorListForWesternGuitars() {
         return this.service.getWesternGuitarVendors().then(vendors => {
-            this.filterUpdateService.filter.vendors = vendors;
+            this.updateService.filter.vendors = vendors;
         }).catch(err => {
             this.error = true;
             throw err;
@@ -132,7 +132,7 @@ export class MainController implements ng.IController {
 
     private refreshVendorListForElectricGuitars() {
         return this.service.getElectricGuitarVendors().then(vendors => {
-            this.filterUpdateService.filter.vendors = vendors;
+            this.updateService.filter.vendors = vendors;
         }).catch(err => {
             this.error = true;
             throw err;
@@ -141,7 +141,7 @@ export class MainController implements ng.IController {
 
     private refreshVendorListForBassGuitars() {
         return this.service.getBassGuitarVendors().then(vendors => {
-            this.filterUpdateService.filter.vendors = vendors;
+            this.updateService.filter.vendors = vendors;
         }).catch(err => {
             this.error = true;
             throw err;
