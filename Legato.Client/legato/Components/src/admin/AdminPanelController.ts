@@ -4,21 +4,23 @@ import {
     IModalService,
     IManageService,
     IPagingService,
-    IUpdateService
+    IUpdateService,
+    IRoutingService
 } from "../../../Interfaces/interfaces";
 
 
 export class AdminPanelController {
-    static $inject = ["ManageService", "ModalService", "PagingService", "UpdateService"];
+    static $inject = ["ManageService", "ModalService", "PagingService", "UpdateService", "RoutingService"];
 
-    constructor(private manageService: IManageService, private modalService: IModalService, private pagingService: IPagingService, private updateService: IUpdateService) {
+    constructor(private manageService: IManageService, private modalService: IModalService, private pagingService: IPagingService,
+                private updateService: IUpdateService, private routingService: IRoutingService) {
 
     }
 
     addGuitar() {
         this.modalService.openGuitarAddOrEditModal({
             guitar: null,
-            type: null
+            type: () => this.routingService.urlSegments[1]
         }).result.then(resp => {
             this.manageService.editGuitarCharacteristics(resp.guitar, resp.type).then(() => {
                 this.updateService.updateData();
@@ -30,10 +32,12 @@ export class AdminPanelController {
 
     changeDisplayAmount() {
         this.modalService.openDisplayAmountModal({ amount: this.pagingService.itemsToShow }).result.then((amount: number) => {
-            this.pagingService.itemsToShow = amount;
-            this.updateService.updateData();
-        }).catch(() => {
-            this.modalService.openAlertModal("Failed to change display amount", "danger");
-        })
+            this.manageService.changeDisplayAmount(amount).then(() => {
+                this.pagingService.itemsToShow = amount;
+                this.updateService.updateData();
+            }).catch(() => {
+                this.modalService.openAlertModal("Failed to change display amount", "danger");
+            })
+        }).catch(() => { });
     }
 }
