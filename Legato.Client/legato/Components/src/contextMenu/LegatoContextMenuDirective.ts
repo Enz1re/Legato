@@ -10,16 +10,11 @@ export class LegatoContextMenuDirective implements ng.IDirective {
     private defaultItemText = "New Item";
 
     constructor(private $rootScope, private $parse: ng.IParseService, private $q: ng.IQService, private $sce: ng.ISCEService,
-        private $document: ng.IDocumentService, private $window: ng.IWindowService) {
+                private $document: ng.IDocumentService, private $window: ng.IWindowService) {
 
     }
 
     link($scope: ng.IScope, element: JQLite, attrs: ng.IAttributes) {
-        const shouldDisplay = $scope.$eval(attrs.contextMenuIf);
-        if (!shouldDisplay) {
-            return;
-        }
-
         let openMenuEvents = ["contextmenu"];
         this.emptyText = $scope.$eval(attrs.contextMenuEmptyText) || "empty";
         const data = $scope.$eval(attrs.contextMenuData);
@@ -30,14 +25,16 @@ export class LegatoContextMenuDirective implements ng.IDirective {
 
         angular.forEach(openMenuEvents, (openMenuEvent) => {
             element.on(openMenuEvent.trim(), e => {
-                if (!attrs.allowEventPropagation) {
-                    event.stopPropagation();
-                    event.preventDefault();
+                const shouldDisplay = $scope.$eval(attrs.contextMenuIf);
+                if (!shouldDisplay) {
+                    return false;
                 }
-
                 if (this.isTouchDevice() && element.attr("draggable") === "true") {
                     return false;
                 }
+
+                event.stopPropagation();
+                event.preventDefault();
 
                 // Remove if the user clicks outside
                 this.$document.find("body").on("mousedown", this.removeOnOutsideClickEvent.bind(this));
@@ -46,6 +43,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
 
                 this.clickedElement = event.currentTarget;
                 angular.element(this.clickedElement).addClass("context");
+
 
                 $scope.$apply(() => {
                     let options = $scope.$eval(attrs.contextMenu);
@@ -345,6 +343,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
         let modelValue = params.modelValue;
         let level = params.level;
         let customClass = params.customClass;
+        let shouldDisplay = params.shouldDisplay;
 
         // Initialize the container. This will be passed around
         let $ul = this.initContextMenuContainer(params);
@@ -400,7 +399,6 @@ export class LegatoContextMenuDirective implements ng.IDirective {
         this.$document.find("body").append($ul);
 
         this.doAfterAllPromises(params);
-
         this.$rootScope.$broadcast(ContextMenuEvents.ContextMenuOpened, {
             context: this.clickedElement,
             contextMenu: $ul,
