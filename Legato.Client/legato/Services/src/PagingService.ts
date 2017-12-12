@@ -1,17 +1,20 @@
-﻿import { IPagingService } from "../../Interfaces/interfaces";
+﻿import { IPagingService, IManageService } from "../../Interfaces/interfaces";
 
 
 export default class PagingService implements IPagingService {
+    static $inject = ["ManageService"];
     total: number;
     lowerBound: number;
     upperBound: number;
     currentPage: number;
     itemsToShow: number;
 
-    constructor() {
-        this.itemsToShow = 20;
-        this.lowerBound = 0;
-        this.upperBound = this.itemsToShow;
+    constructor(private manageService: IManageService) {
+        manageService.getDisplayAmount().then(amount => {
+            this.itemsToShow = amount;
+            this.lowerBound = 0;
+            this.upperBound = this.itemsToShow;
+        });
     }
 
     goToPage() {

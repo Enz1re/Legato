@@ -153,4 +153,16 @@ export default class GuitarResource implements IGuitarResource {
         return this.$http.post(`http://localhost/api/Manage/${type}/Edit`, { params: { guitarJson: angular.toJson(guitar) } })
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
+
+    getDisplayAmount() {
+        return this.$http.get("http://localhost/api/Manage/Display").then((result: ng.IHttpResponse<any>) => {
+            return result.data.displayAmount
+        });
+    }
+
+    changeDisplayAmount(amount: number) {
+        return this.$http.post(`http://localhost/api/Manage/Display/${amount}`, {}).then((result: ng.IHttpResponse<any>) => {
+            return result.data;
+        });
+    }
 }

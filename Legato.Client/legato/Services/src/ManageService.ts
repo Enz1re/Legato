@@ -21,4 +21,12 @@ export default class ManageService implements IManageService {
     editGuitarCharacteristics(guitar: Guitar, type: string) {
         return this.guitarResource.edit(guitar, type);
     }
+
+    getDisplayAmount() {
+        return this.guitarResource.getDisplayAmount();
+    }
+
+    changeDisplayAmount(amount: number) {
+        return this.guitarResource.changeDisplayAmount(amount);
+    }
 }
