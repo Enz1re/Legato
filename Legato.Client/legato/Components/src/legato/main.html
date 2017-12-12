@@ -72,7 +72,7 @@
             <uib-tab select="mainCtrl.checkTab($event, 'bass')" deselect="mainCtrl.onTabDeselected($event, 'bass')" index="'bass'" heading="Bass"></uib-tab>
         </uib-tabset>
         <div class="guitar-list-container">
-            <admin-panel ng-if="mainCtrl.globals.currentUser"></admin-panel>
+            <admin-panel ng-show="mainCtrl.$rootScope.globals.currentUser"></admin-panel>
             <ui-view></ui-view>
         </div>
     </div>
