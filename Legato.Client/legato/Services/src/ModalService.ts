@@ -1,6 +1,4 @@
-﻿import angular from "angular";
-
-import { IModalService } from "../../Interfaces/interfaces";
+﻿import { IModalService } from "../../Interfaces/interfaces";
 
 
 export default class ModalService implements IModalService {
