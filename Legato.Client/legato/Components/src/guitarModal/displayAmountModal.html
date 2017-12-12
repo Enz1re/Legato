@@ -5,10 +5,10 @@
             <div>Please enter display amount (min 10, max 1000)</div>
             <div><input ng-model="displayAmountModalCtrl.amount" type="number" placeholder="Display amount" /></div>
         </div>
-        <p>
+        <div class="button-container">
             <button ng-click="displayAmountModalCtrl.onOkButtonClicked()" class="btn btn-primary" 
                     ng-disabled="displayAmountModalCtrl.amount < 10 || displayAmountModalCtrl.amount > 1000">Ok</button>
             <button ng-click="displayAmountModalCtrl.onCancelButtonClicked()" class="btn btn-primary">Cancel</button>
-        </p>
+        </div>
     </div>
 </div>
