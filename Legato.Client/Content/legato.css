@@ -225,14 +225,14 @@ div.messaging {
     align-self: center;
 }
 
+.site-icon-container:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .site-icon {
     max-width: 100%;
     max-height: 100%;
-}
-
-.site-icon:hover {
-    transform: scale(1.1);
-    cursor: pointer;
 }
 
 .site-name {
@@ -403,7 +403,7 @@ div.messaging {
     font-family: roboto;
 }
 
-.loginmodal-container input[type=submit] {
+.loginmodal-container button {
     width: 100%;
     display: block;
     margin-bottom: 10px;
