@@ -1,6 +1,10 @@
 ﻿using System;
 using Ninject;
+using System.IO;
+using Newtonsoft.Json;
 using System.Web.Http;
+using System.Threading;
+using System.Collections.Generic;
 using Legato.ServiceDAL.ViewModels;
 
 
@@ -21,6 +25,8 @@ namespace Legato.Service.Controllers
         [Route("{type}/Add")]
         public IHttpActionResult Add([FromBody] string guitarJson, string type)
         {
+            // Capitalize type to be able to parse its enumeration value
+            type = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(type);
             var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarJson);
             var parsedType = (GuitarType)Enum.Parse(typeof(GuitarType), type);
 
@@ -46,6 +52,8 @@ namespace Legato.Service.Controllers
         [Route("{type}/Edit")]
         public IHttpActionResult Edit([FromBody] string guitarJson, string type)
         {
+            // Capitalize type to be able to parse its enumeration value
+            type = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(type);
             var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarJson);
             var parsedType = (GuitarType)Enum.Parse(typeof(GuitarType), type);
 
@@ -70,11 +78,45 @@ namespace Legato.Service.Controllers
         [Route("{type}/{id}")]
         public IHttpActionResult Delete(string type, int id)
         {
+            // Capitalize type to be able to parse its enumeration value
+            type = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(type);
             var parsedType = (GuitarType)Enum.Parse(typeof(GuitarType), type);
 
             try
             {
                 _serviceWorker.Remove(id, parsedType);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+        [HttpGet]
+        [Route("Display")]
+        public IHttpActionResult GetDisplayAmount()
+        {
+            try
+            {
+                var root = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText($@"{AppDomain.CurrentDomain.BaseDirectory}/settings.json"));
+                return Ok(new { displayAmount = Convert.ToInt32(root["displayAmount"]) });
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+        [HttpPost]
+        [Route("Display/{amount}")]
+        public IHttpActionResult PostDisplayAmount(int amount)
+        {
+            try
+            {
+                var root = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText($@"{AppDomain.CurrentDomain.BaseDirectory}/settings.json"));
+                root["displayAmount"] = amount.ToString();
+                File.WriteAllText($@"{AppDomain.CurrentDomain.BaseDirectory}/settings.json", JsonConvert.SerializeObject(root, Formatting.Indented));
                 return Ok();
             }
             catch (Exception e)
