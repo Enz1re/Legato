@@ -2,9 +2,9 @@
 
 
 export default class VendorList {
-    vendors: string[];
+    vendors: Vendor[];
 
     constructor(vendors: Vendor[]) {
-        this.vendors = vendors.map(v => v.name);
+        this.vendors = vendors;
     }
 }
