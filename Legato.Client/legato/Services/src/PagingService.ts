@@ -17,7 +17,7 @@ export default class PagingService implements IPagingService {
         });
     }
 
-    goToPage() {
+    goToSelectedPage() {
         if (this.currentPage !== 0) {
             this.lowerBound = (this.currentPage - 1) * this.itemsToShow;
             this.upperBound = (this.currentPage - 1) * this.itemsToShow + this.itemsToShow;
@@ -27,14 +27,21 @@ export default class PagingService implements IPagingService {
         }
     }
 
-    goToFirstPage(callback: Function) {
+    goToFirstPage(callback?: Function) {
         callback = callback || (() => { });
         this.currentPage = 1;
-        this.goToPage();
+        this.goToSelectedPage();
+        callback();
+    }
+
+    goToLastPage(callback?: Function) {
+        callback = callback || (() => { });
+        this.currentPage = this.maxPage();
+        this.goToSelectedPage();
         callback();
     }
 
     maxPage() {
-        return Math.floor(this.total / this.itemsToShow);
+        return Math.ceil(this.total / this.itemsToShow);
     }
 }

@@ -5,7 +5,8 @@
     currentPage: number;
     itemsToShow: number;
 
-    goToPage(): void;
+    goToSelectedPage(): void;
+    goToLastPage(callback: Function): void;
     goToFirstPage(callback: Function): void;
     maxPage(): number;
 }
