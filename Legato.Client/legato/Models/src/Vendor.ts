@@ -1,4 +1,5 @@
 ﻿export default class Vendor {
+    id: number;
     name: string;
     isSelected: boolean;
 
