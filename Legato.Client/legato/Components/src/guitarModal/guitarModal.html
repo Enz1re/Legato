@@ -3,7 +3,7 @@
     <div class="modal-body legato-modal-body">
         <div class="modal-main-info">
             <img ng-src="{{modalCtrl.guitars[modalCtrl.currentIndex].imgPath}}" />
-            <div>{{modalCtrl.guitars[modalCtrl.currentIndex].vendor}} {{modalCtrl.guitars[modalCtrl.currentIndex].model}}</div>
+            <div>{{modalCtrl.guitars[modalCtrl.currentIndex].vendor.name}} {{modalCtrl.guitars[modalCtrl.currentIndex].model}}</div>
         </div>
         <a role="button" href="" class="left carousel-control" ng-class="{ disabled: modalCtrl.isPrevDisabled() }" ng-click="modalCtrl.prev()">
             <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
