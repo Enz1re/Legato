@@ -1,4 +1,10 @@
-﻿import { Guitar } from "../../../Models/models";
+﻿import {
+    Guitar,
+    ClassicalGuitar,
+    WesternGuitar,
+    ElectricGuitar,
+    BassGuitar
+} from "../../../Models/models";
 
 import { Constants } from "../../../Constants";
 
@@ -13,26 +19,35 @@ export class AddEditModalController {
     static $inject = ["$uibModalInstance", "FileUploadService", "guitar", "type"];
 
     constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private fileUpload: IFileUploadService, guitar: Guitar, type: string) {
+        this.type = type;
+
         if (guitar) {
             this.mode = "Edit";
             this.guitar = guitar;
-            this.fileUpload.file.url = guitar.imgPath;
+            // this.fileUpload.file.url = guitar.imgPath;
         } else {
-            this.guitar = new Guitar();
             this.mode = "Add";
-        }
-
-        if (type) {
-            this.type = type;
-        } else {
-            this.type = "Classical";
+            switch (this.type) {
+                case Constants.CLASSICAL:
+                    this.guitar = new ClassicalGuitar();
+                    break;
+                case Constants.WESTERN:
+                    this.guitar = new WesternGuitar();
+                    break;
+                case Constants.ELECTRIC:
+                    this.guitar = new ElectricGuitar();
+                    break;
+                case Constants.BASS:
+                    this.guitar = new BassGuitar();
+                    break;
+            }
         }
 
         this.options = [
-            "Classical",
-            "Western",
-            "Electric",
-            "Bass"
+            Constants.CLASSICAL,
+            Constants.WESTERN,
+            Constants.ELECTRIC,
+            Constants.BASS
         ];
     }
 
@@ -41,6 +56,10 @@ export class AddEditModalController {
     }
 
     onOkButtonClicked() {
+        if (!this.guitar.imgPath) {
+            this.guitar.imgPath = "Content/img/guitar-placeholder.jpg";
+        }
+
         this.$uibModalInstance.close({ guitar: this.guitar, type: this.type });
     }
 
