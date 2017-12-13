@@ -22,10 +22,10 @@ export class AdminPanelController {
             guitar: null,
             type: () => this.routingService.urlSegments[1]
         }).result.then(resp => {
-            this.manageService.editGuitarCharacteristics(resp.guitar, resp.type).then(() => {
+            this.manageService.addGuitar(resp.guitar, resp.type).then(() => {
                 this.updateService.updateData();
             }).catch(() => {
-                this.modalService.openAlertModal("Failed to add new guitar", "danger");
+                this.modalService.openAlertModal("Failed to add new guitar", "danger").result.catch(() => { });
             });
         }).catch(() => { });
     }
