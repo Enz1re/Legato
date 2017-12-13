@@ -45,7 +45,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.getAmount().then(() => {
             const maxPage = this.pagingService.maxPage();
             this.pagingService.currentPage = urlParamResolver.resolvePage(maxPage);
-            this.pagingService.goToPage();
+            this.pagingService.goToSelectedPage();
         }).then(() => {
             this.loadGuitarList().then(() => {
                 const gIndex = urlParamResolver.resolveIndex(this.guitars.length - 1);
@@ -59,17 +59,17 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         });
     }
 
-    protected init(useCache = true) {
+    protected init() {
         this.error = false;
-        this.getAmount(useCache).then(() => {
-            this.loadGuitarList(useCache);
+        this.getAmount().then(() => {
+            this.loadGuitarList();
         }).catch(err => {
             this.error = true;
         });
     }
 
-    protected getAmount(useCache = true) {
-        return this.service.getAmount(this.filter, useCache).then(amount => {
+    protected getAmount() {
+        return this.service.getAmount(this.filter).then(amount => {
             this.pagingService.total = amount;
         });
     }
@@ -79,14 +79,14 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         this.error = false;
 
         if (this.filter.sorting && this.filter.sorting.required) {
-            return this.service.getSortedGuitars(this.filter, this.pagingService.lowerBound, this.pagingService.upperBound, useCache).then(guitars => {
+            return this.service.getSortedGuitars(this.filter, this.pagingService.lowerBound, this.pagingService.upperBound).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
             }).catch(err => {
                 this.error = true;
             });
         } else {
-            return this.service.getGuitars(this.filter, this.pagingService.lowerBound, this.pagingService.upperBound, useCache).then(guitars => {
+            return this.service.getGuitars(this.filter, this.pagingService.lowerBound, this.pagingService.upperBound).then(guitars => {
                 this.noResults = guitars.length === 0;
                 this.guitars = guitars;
             }).catch(err => {
@@ -96,7 +96,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     }
 
     protected onPageChanged(guitarName: string) {
-        this.pagingService.goToPage();
+        this.pagingService.goToSelectedPage();
         let params = this.routingService.queryParams;
         params.page = this.pagingService.currentPage;
         this.routingService.replace(guitarName, params);
@@ -164,7 +164,8 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         }, true);
         scope.$watch(() => this.updateService.update, (newValue, oldValue) => {
             if (newValue !== oldValue) {
-                this.pagingService.goToFirstPage(() => { this.init(false); });
+                this.service.clearCache();
+                this.pagingService.goToLastPage(() => { this.init(); });
             }
         });
         scope.$watch(() => scope.globals.currentUser, (newVal, oldVal) => {
