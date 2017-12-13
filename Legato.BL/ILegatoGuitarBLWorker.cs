@@ -1,4 +1,5 @@
 ﻿using System;
+using Legato.DAL.Models;
 using System.Collections.Generic;
 using Legato.MiddlewareContracts.DataContracts;
 
@@ -13,7 +14,7 @@ namespace Legato.BL
 
         IEnumerable<AcousticClassicalGuitarDataModel> GetSortedAcousticClassicalGuitarsByVendor(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection);
 
-        IEnumerable<string> GetAcousticClassicalGuitarVendors();
+        IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors();
 
         int GetAcousticClassicalGuitarAmount(FilterDataModel filter);
 
@@ -23,7 +24,7 @@ namespace Legato.BL
 
         IEnumerable<AcousticWesternGuitarDataModel> GetSortedAcousticWesternGuitarsByVendor(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection);
 
-        IEnumerable<string> GetAcousticWesternGuitarVendors();
+        IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors();
 
         int GetAcousticWesternGuitarAmount(FilterDataModel filter);
 
@@ -33,7 +34,7 @@ namespace Legato.BL
 
         IEnumerable<ElectricGuitarDataModel> GetSortedElectricGuitarsByVendor(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection);
 
-        IEnumerable<string> GetElectricGuitarVendors();
+        IEnumerable<VendorDataModel> GetElectricGuitarVendors();
 
         int GetElectriGuitarAmount(FilterDataModel filter);
 
@@ -43,7 +44,7 @@ namespace Legato.BL
 
         IEnumerable<BassGuitarDataModel> GetSortedBassGuitarsByVendor(FilterDataModel filter, int lowerBound, int upperBound, SortDirection sortDirection);
 
-        IEnumerable<string> GetBassGuitarVendors();
+        IEnumerable<VendorDataModel> GetBassGuitarVendors();
 
         int GetBassGuitarAmount(FilterDataModel filter);
 

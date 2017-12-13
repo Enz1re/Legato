@@ -60,13 +60,12 @@ namespace Legato.BL
                                                                                              .ToList());
         }
 
-        public IEnumerable<string> GetAcousticClassicalGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors()
         {
-            return _repoProvider.AcousticClassicalGuitarRepository
-                                .GetAll()
-                                .Select(guitar => guitar.Vendor.Name)
-                                .Distinct()
-                                .ToList();
+            return MiddlewareMappings.Map<List<VendorDataModel>>(_repoProvider.AcousticClassicalGuitarRepository
+                                                                              .GetAll()
+                                                                              .Select(guitar => guitar.Vendor)
+                                                                              .ToList());
         }
 
         public int GetAcousticClassicalGuitarAmount(FilterDataModel filter)
@@ -117,13 +116,12 @@ namespace Legato.BL
                                                                                            .ToList());
         }
 
-        public IEnumerable<string> GetAcousticWesternGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors()
         {
-            return _repoProvider.AcousticWesternGuitarRepository
-                                .GetAll()
-                                .Select(guitar => guitar.Vendor.Name)
-                                .Distinct()
-                                .ToList();
+            return MiddlewareMappings.Map<List<VendorDataModel>>(_repoProvider.AcousticWesternGuitarRepository
+                                                                              .GetAll()
+                                                                              .Select(guitar => guitar.Vendor)
+                                                                              .ToList());
         }
 
         public int GetAcousticWesternGuitarAmount(FilterDataModel filter)
@@ -174,13 +172,12 @@ namespace Legato.BL
                                                                                     .ToList());
         }
 
-        public IEnumerable<string> GetElectricGuitarVendors()
+        public IEnumerable<VendorDataModel> GetElectricGuitarVendors()
         {
-            return _repoProvider.ElectricGuitarRepository
-                                .GetAll()
-                                .Select(guitar => guitar.Vendor.Name)
-                                .Distinct()
-                                .ToList();
+            return MiddlewareMappings.Map<List<VendorDataModel>>(_repoProvider.ElectricGuitarRepository
+                                                                              .GetAll()
+                                                                              .Select(guitar => guitar.Vendor)
+                                                                              .ToList());
         }
 
         public int GetElectriGuitarAmount(FilterDataModel filter)
@@ -231,13 +228,12 @@ namespace Legato.BL
                                                                                 .ToList());
         }
 
-        public IEnumerable<string> GetBassGuitarVendors()
+        public IEnumerable<VendorDataModel> GetBassGuitarVendors()
         {
-            return _repoProvider.BassGuitarRepository
-                                .GetAll()
-                                .Select(guitar => guitar.Vendor.Name)
-                                .Distinct()
-                                .ToList();
+            return MiddlewareMappings.Map<List<VendorDataModel>>(_repoProvider.BassGuitarRepository
+                                                                              .GetAll()
+                                                                              .Select(guitar => guitar.Vendor)
+                                                                              .ToList());
         }
 
         public int GetBassGuitarAmount(FilterDataModel filter)

@@ -14,7 +14,7 @@ namespace Legato.MiddlewareContracts.DataContracts
         public int Id { get; set; }
 
         [DataMember]
-        public string Vendor { get; set; }
+        public VendorDataModel Vendor { get; set; }
 
         [DataMember]
         public string Model { get; set; }

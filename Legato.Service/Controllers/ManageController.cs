@@ -23,11 +23,11 @@ namespace Legato.Service.Controllers
 
         [HttpPost]
         [Route("{type}/Add")]
-        public IHttpActionResult Add([FromBody] string guitarJson, string type)
+        public IHttpActionResult Add([FromBody] dynamic guitarParam, string type)
         {
             // Capitalize type to be able to parse its enumeration value
             type = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(type);
-            var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarJson);
+            var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarParam.guitarJson.Value);
             var parsedType = (GuitarType)Enum.Parse(typeof(GuitarType), type);
 
             if (guitar != null)
@@ -50,11 +50,11 @@ namespace Legato.Service.Controllers
 
         [HttpPost]
         [Route("{type}/Edit")]
-        public IHttpActionResult Edit([FromBody] string guitarJson, string type)
+        public IHttpActionResult Edit([FromBody] dynamic guitarParam, string type)
         {
             // Capitalize type to be able to parse its enumeration value
             type = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(type);
-            var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarJson);
+            var guitar = Serialization.Deserialize<AcousticClassicalGuitarViewModel>(guitarParam.guitarJson.Value);
             var parsedType = (GuitarType)Enum.Parse(typeof(GuitarType), type);
 
             if (guitar != null)

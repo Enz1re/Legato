@@ -16,7 +16,7 @@ namespace Legato.ServiceDAL.Interfaces
 
         IEnumerable<TGuitar> GetSorted(FilterDataModel filter, int lowerBound, int upperBound, SortingDataModel sorting);
 
-        IEnumerable<string> GetVendors();
+        IEnumerable<VendorDataModel> GetVendors();
 
         int GetAmount(FilterDataModel filter);
     }

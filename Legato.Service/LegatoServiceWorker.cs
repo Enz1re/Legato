@@ -46,7 +46,7 @@ namespace Legato.Service
         {
             return new VendorList
             {
-                Vendors = ServiceMappings.Map<List<string>>
+                Vendors = ServiceMappings.Map<List<VendorViewModel>>
                 (
                     _unitOfWork.ClassicAcousticGuitars.GetVendors()
                 )
@@ -90,7 +90,7 @@ namespace Legato.Service
         {
             return new VendorList
             {
-                Vendors = ServiceMappings.Map<List<string>>
+                Vendors = ServiceMappings.Map<List<VendorViewModel>>
                 (
                     _unitOfWork.WesternAcousticGuitars.GetVendors()
                 )
@@ -134,7 +134,7 @@ namespace Legato.Service
         {
             return new VendorList
             {
-                Vendors = ServiceMappings.Map<List<string>>
+                Vendors = ServiceMappings.Map<List<VendorViewModel>>
                 (
                     _unitOfWork.ElectricGuitars.GetVendors()
                 )
@@ -178,7 +178,7 @@ namespace Legato.Service
         {
             return new VendorList
             {
-                Vendors = ServiceMappings.Map<List<string>>
+                Vendors = ServiceMappings.Map<List<VendorViewModel>>
                 (
                     _unitOfWork.BassGuitars.GetVendors()
                 )

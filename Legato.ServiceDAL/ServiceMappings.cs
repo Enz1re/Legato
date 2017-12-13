@@ -22,10 +22,19 @@ namespace Legato.ServiceDAL
                     .Include<ElectricGuitarDataModel, ElectricGuitarViewModel>()
                     .Include<BassGuitarDataModel, BassGuitarViewModel>();
 
+                cfg.CreateMap<VendorDataModel, VendorViewModel>()
+                    .ForMember(dest => dest.IsSelected, opt => opt.MapFrom(src => true));
+                cfg.CreateMap<VendorViewModel, VendorDataModel>();
+
                 cfg.CreateMap<AcousticClassicalGuitarDataModel, AcousticClassicalGuitarViewModel>();
                 cfg.CreateMap<AcousticWesternGuitarDataModel, AcousticWesternGuitarViewModel>();
                 cfg.CreateMap<ElectricGuitarDataModel, ElectricGuitarViewModel>();
                 cfg.CreateMap<BassGuitarDataModel, BassGuitarViewModel>();
+
+                cfg.CreateMap<AcousticClassicalGuitarViewModel, AcousticClassicalGuitarDataModel>();
+                cfg.CreateMap<AcousticWesternGuitarViewModel, AcousticWesternGuitarDataModel>();
+                cfg.CreateMap<ElectricGuitarViewModel, ElectricGuitarDataModel>();
+                cfg.CreateMap<BassGuitarViewModel, BassGuitarDataModel>();
 
                 cfg.CreateMap<PriceFilterViewModel, PriceFilterDataModel>();
                 cfg.CreateMap<VendorFilterViewModel, VendorFilterDataModel>();

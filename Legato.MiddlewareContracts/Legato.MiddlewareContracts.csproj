@@ -54,10 +54,12 @@
     <Compile Include="DataContracts\GuitarDataModel.cs" />
     <Compile Include="DataContracts\PriceFilterDataModel.cs" />
     <Compile Include="DataContracts\SortingDataModel.cs" />
+    <Compile Include="DataContracts\VendorDataModel.cs" />
     <Compile Include="DataContracts\VendorFilterDataModel.cs" />
     <Compile Include="ILegatoMiddleware.cs" />
     <Compile Include="MiddlewareMappings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VendorEqualityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Legato.DAL\Legato.DAL.csproj">

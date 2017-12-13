@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using Legato.BL;
+using System.Linq;
 using System.Collections.Generic;
 using Legato.MiddlewareContracts;
 using Legato.MiddlewareContracts.DataContracts;
@@ -64,11 +65,11 @@ namespace Legato.Middleware
             }
         }
         
-        public IEnumerable<string> GetAcousticClassicalGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticClassicalGuitarVendors()
         {
             using (var worker = _blGuitarWorker.Get())
             {
-                return worker.GetAcousticClassicalGuitarVendors();
+                return worker.GetAcousticClassicalGuitarVendors().Distinct(new VendorEqualityComparer());
             }
         }
 
@@ -127,11 +128,11 @@ namespace Legato.Middleware
             }
         }
         
-        public IEnumerable<string> GetAcousticWesternGuitarVendors()
+        public IEnumerable<VendorDataModel> GetAcousticWesternGuitarVendors()
         {
             using (var worker = _blGuitarWorker.Get())
             {
-                return worker.GetAcousticWesternGuitarVendors();
+                return worker.GetAcousticWesternGuitarVendors().Distinct(new VendorEqualityComparer());
             }
         }
 
@@ -190,11 +191,11 @@ namespace Legato.Middleware
             }
         }
         
-        public IEnumerable<string> GetElectricGuitarVendors()
+        public IEnumerable<VendorDataModel> GetElectricGuitarVendors()
         {
             using (var worker = _blGuitarWorker.Get())
             {
-                return worker.GetElectricGuitarVendors();
+                return worker.GetElectricGuitarVendors().Distinct(new VendorEqualityComparer());
             }
         }
 
@@ -253,11 +254,11 @@ namespace Legato.Middleware
             }
         }
         
-        public IEnumerable<string> GetBassGuitarVendors()
+        public IEnumerable<VendorDataModel> GetBassGuitarVendors()
         {
             using (var worker = _blGuitarWorker.Get())
             {
-                return worker.GetBassGuitarVendors();
+                return worker.GetBassGuitarVendors().Distinct(new VendorEqualityComparer());
             }
         }
 
