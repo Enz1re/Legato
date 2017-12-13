@@ -25,27 +25,22 @@ export default class GuitarResource implements IGuitarResource {
     }
 
     // Vendors
-    getAllVendors(): ng.IPromise<string[]> {
-        return this.$http.get("http://localhost/api/Guitars/Vendors")
-            .then((result: ng.IHttpResponse<VendorList>) => result.data.vendors);
-    }
-
-    getClassicalGuitarVendors(): ng.IPromise<string[]> {
+    getClassicalGuitarVendors(): ng.IPromise<Vendor[]> {
         return this.$http.get("http://localhost/api/Classical/Vendors")
             .then((result: ng.IHttpResponse<VendorList>) => result.data.vendors);
     }
 
-    getWesternGuitarVendors(): ng.IPromise<string[]> {
+    getWesternGuitarVendors(): ng.IPromise<Vendor[]> {
         return this.$http.get("http://localhost/api/Western/Vendors")
             .then((result: ng.IHttpResponse<VendorList>) => result.data.vendors);
     }
 
-    getElectricGuitarVendors(): ng.IPromise<string[]> {
+    getElectricGuitarVendors(): ng.IPromise<Vendor[]> {
         return this.$http.get("http://localhost/api/Electric/Vendors")
             .then((result: ng.IHttpResponse<VendorList>) => result.data.vendors);
     }
 
-    getBassGuitarVendors(): ng.IPromise<string[]> {
+    getBassGuitarVendors(): ng.IPromise<Vendor[]> {
         return this.$http.get("http://localhost/api/Bass/Vendors")
             .then((result: ng.IHttpResponse<VendorList>) => result.data.vendors);
     }
@@ -140,7 +135,7 @@ export default class GuitarResource implements IGuitarResource {
 
     // Manage
     add(guitar: Guitar, type: string): ng.IPromise<any> {
-        return this.$http.post(`http://localhost/api/Manage/${type}/Add`, { params: { guitarJson: angular.toJson(guitar) } })
+        return this.$http.post(`http://localhost/api/Manage/${type}/Add`, { guitarJson: angular.toJson(guitar) })
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
 
@@ -150,7 +145,7 @@ export default class GuitarResource implements IGuitarResource {
     }
 
     edit(guitar: Guitar, type: string): ng.IPromise<any> {
-        return this.$http.post(`http://localhost/api/Manage/${type}/Edit`, { params: { guitarJson: angular.toJson(guitar) } })
+        return this.$http.post(`http://localhost/api/Manage/${type}/Edit`, { guitarJson: angular.toJson(guitar) })
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
 

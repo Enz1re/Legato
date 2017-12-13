@@ -12,11 +12,10 @@
 
 export interface IGuitarResource {
     // vendors
-    getAllVendors(): ng.IPromise<string[]>;
-    getClassicalGuitarVendors(): ng.IPromise<string[]>;
-    getWesternGuitarVendors(): ng.IPromise<string[]>;
-    getElectricGuitarVendors(): ng.IPromise<string[]>;
-    getBassGuitarVendors(): ng.IPromise<string[]>;
+    getClassicalGuitarVendors(): ng.IPromise<Vendor[]>;
+    getWesternGuitarVendors(): ng.IPromise<Vendor[]>;
+    getElectricGuitarVendors(): ng.IPromise<Vendor[]>;
+    getBassGuitarVendors(): ng.IPromise<Vendor[]>;
     // classical guitars
     getClassicalGuitars(filter: Filter, lowerBound: number, upperBound: number): ng.IPromise<ClassicalGuitar[]>;
     getSortedClassicalGuitars(filter: Filter, lowerBound: number, upperBound: number, sortHeader: string, sortDirection: string): ng.IPromise<ClassicalGuitar[]>;
