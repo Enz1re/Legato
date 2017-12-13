@@ -4,5 +4,5 @@
     openGuitarAddOrEditModal(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance;
     openGuitarDeleteDialog(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance;
     openDisplayAmountModal(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance;
-    openAlertModal(text: string, mode: "success" | "info" | "warning" | "danger");
+    openAlertModal(text: string, mode: "success" | "info" | "warning" | "danger"): ng.ui.bootstrap.IModalServiceInstance;
 }
