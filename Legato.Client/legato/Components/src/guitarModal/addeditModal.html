@@ -3,30 +3,30 @@
     <div class="modal-body legato-modal-body">
         <div>
             <form name="guitarForm">
-                <p><input ng-model="addeditModalCtrl.guitar.vendor"      placeholder="Vendor" required /></p>
-                <p><input ng-model="addeditModalCtrl.guitar.model"       placeholder="Model" required /></p>
-                <p><input ng-model="addeditModalCtrl.guitar.mensura"     placeholder="mensura" type="number" /></p>
-                <p><input ng-model="addeditModalCtrl.guitar.price"       placeholder="Price" required type="number" /></p>
+                <p><input ng-model="addeditModalCtrl.guitar.vendor.name"      placeholder="Vendor" required /></p>
+                <p><input ng-model="addeditModalCtrl.guitar.model"            placeholder="Model" required /></p>
+                <p><input ng-model="addeditModalCtrl.guitar.mensura"          placeholder="mensura" type="number" /></p>
+                <p><input ng-model="addeditModalCtrl.guitar.price"            placeholder="Price" required type="number" /></p>
 
-                <p ng-show="addeditModalCtrl.type === 'classical'">
+                <p ng-if="addeditModalCtrl.type === 'classical'">
                     <select ng-model="addeditModalCtrl.guitar.stringType">
                         <option value="" disabled selected>String type</option>
-                        <option ng-repeat="stringType in addeditModalCtrl.guitar.stringTypes()" value="stringType" required>{{stringType}}</option>
+                        <option ng-repeat="stringType in addeditModalCtrl.guitar.stringTypes()" value="{{stringType}}" required>{{stringType}}</option>
                     </select>
                 </p>
-                <p ng-show="addeditModalCtrl.type !== 'classical'">
+                <p ng-if="addeditModalCtrl.type !== 'classical'">
                     <select ng-model="addeditModalCtrl.guitar.stringNumber">
                         <option value="" disabled selected>String number</option>
-                        <option ng-repeat="stringNumber in addeditModalCtrl.guitar.stringNumbers()" value="stringType" required>{{stringNumber}}</option>
+                        <option ng-repeat="stringNumber in addeditModalCtrl.guitar.stringNumbers()" value="{{stringType}}" required>{{stringNumber}}</option>
                     </select>
                 </p>
-                <p ng-show="addeditModalCtrl.type === 'electric' || addeditModalCtrl.type === 'bass'">
+                <p ng-if="addeditModalCtrl.type === 'electric' || addeditModalCtrl.type === 'bass'">
                     <select ng-model="addeditModalCtrl.guitar.soundBox">
                         <option value="" disabled selected>Soundbox</option>
-                        <option ng-repeat="soundBox in addeditModalCtrl.guitar.soundBoxes()" value="stringType" required>{{soundBox}}</option>
+                        <option ng-repeat="soundBox in addeditModalCtrl.guitar.soundBoxes()" value="{{stringType}}" required>{{soundBox}}</option>
                     </select>
                 </p>
-                <p ng-show="addeditModalCtrl.type === 'electric'">
+                <p ng-if="addeditModalCtrl.type === 'electric'">
                     <input id="tremolo" ng-model="addeditModalCtrl.guitar.hasTremoloBar" type="checkbox" required /><label for="tremolo">&nbsp;Tremolo bar</label>
                 </p>
                 <div>
