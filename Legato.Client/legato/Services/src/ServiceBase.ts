@@ -5,12 +5,14 @@
     VendorList
 } from "../../Models/models";
 
+import { ICacheService } from "../../Interfaces/interfaces";
+
 
 export class ServiceBase {
     protected pendingRequests: number;
     protected $$cache: ng.ICacheObject;
 
-    constructor(private qServ: ng.IQService) {
+    constructor(private qServ: ng.IQService, private cache: ICacheService) {
         this.pendingRequests = 0;
     }
 
@@ -34,5 +36,9 @@ export class ServiceBase {
         const deferred = this.qServ.defer<T>();
         deferred.resolve(cachedData);
         return deferred.promise;
+    }
+
+    clearCache() {
+        this.cache.clear();
     }
 }
