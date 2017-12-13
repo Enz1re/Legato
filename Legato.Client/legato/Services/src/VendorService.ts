@@ -10,8 +10,8 @@ import { Vendor } from "../../Models/models";
 export default class VendorService extends ServiceBase implements IVendorService {
     static $inject = ["$q", "CacheService", "GuitarResource"];
 
-    constructor(private $q: ng.IQService, private cache: ICacheService, private resource: IGuitarResource) {
-        super($q);
+    constructor(private $q: ng.IQService, cache: ICacheService, private resource: IGuitarResource) {
+        super($q, cache);
         this.$$cache = cache.create("vendorCache", 4);
     }
 
@@ -24,9 +24,8 @@ export default class VendorService extends ServiceBase implements IVendorService
             this.pendingRequests++;
             return this.resource.getClassicalGuitarVendors().then(vendors => {
                 this.pendingRequests--;
-                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
-                this.$$cache.put("classicalVendors", vendorArray);
-                return vendorArray;
+                this.$$cache.put("classicalVendors", vendors);
+                return vendors;
             }).catch(err => {
                 this.pendingRequests = 0;
                 throw err;
@@ -43,9 +42,8 @@ export default class VendorService extends ServiceBase implements IVendorService
             this.pendingRequests++;
             return this.resource.getWesternGuitarVendors().then(vendors => {
                 this.pendingRequests--;
-                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
-                this.$$cache.put("westernVendors", vendorArray);
-                return vendorArray;
+                this.$$cache.put("westernVendors", vendors);
+                return vendors;
             }).catch(err => {
                 this.pendingRequests = 0;
                 throw err;
@@ -62,9 +60,8 @@ export default class VendorService extends ServiceBase implements IVendorService
             this.pendingRequests++;
             return this.resource.getElectricGuitarVendors().then(vendors => {
                 this.pendingRequests--;
-                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
-                this.$$cache.put("electricVendors", vendorArray);
-                return vendorArray;
+                this.$$cache.put("electricVendors", vendors);
+                return vendors;
             }).catch(err => {
                 this.pendingRequests = 0;
                 throw err;
@@ -81,9 +78,8 @@ export default class VendorService extends ServiceBase implements IVendorService
             this.pendingRequests++;
             return this.resource.getBassGuitarVendors().then(vendors => {
                 this.pendingRequests--;
-                const vendorArray = vendors.map<Vendor>(vName => { return { name: vName, isSelected: true }; });
-                this.$$cache.put("bassVendors", vendorArray);
-                return vendorArray;
+                this.$$cache.put("bassVendors", vendors);
+                return vendors;
             }).catch(err => {
                 this.pendingRequests = 0;
                 throw err;

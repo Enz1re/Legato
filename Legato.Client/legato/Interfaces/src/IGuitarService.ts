@@ -10,9 +10,11 @@ import { IService } from "../../Interfaces/interfaces";
 
 
 export interface IGuitarService<TGuitar extends Guitar> extends IService {
-    getGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number, useCache: boolean): ng.IPromise<TGuitar[]>;
+    getGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number): ng.IPromise<TGuitar[]>;
 
-    getSortedGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number, useCache: boolean): ng.IPromise<TGuitar[]>;
+    getSortedGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number): ng.IPromise<TGuitar[]>;
 
-    getAmount(guitarFilter: GuitarFilter, useCache: boolean): ng.IPromise<number>;
+    getAmount(guitarFilter: GuitarFilter): ng.IPromise<number>;
+
+    clearCache();
 }

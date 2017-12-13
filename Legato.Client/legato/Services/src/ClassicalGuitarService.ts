@@ -18,8 +18,8 @@ import { ServiceBase } from "../src/ServiceBase";
 export default class ClassicalGuitarService extends ServiceBase implements IGuitarService<ClassicalGuitar> {
     static $inject = ["$q", "CacheService", "GuitarResource"];
 
-    constructor(protected $q: ng.IQService, private cache: ICacheService, private resource: IGuitarResource) {
-        super($q);
+    constructor(protected $q: ng.IQService, cache: ICacheService, private resource: IGuitarResource) {
+        super($q, cache);
         this.$$cache = cache.create("classicalGuitarCache", 16);
     }
 

@@ -21,4 +21,8 @@ export default class CacheService implements ICacheService {
     put<T>(key: string, data: T) {
         this.instance.put<T>(key, data);
     }
+
+    clear() {
+        this.instance.removeAll();
+    }
 }
