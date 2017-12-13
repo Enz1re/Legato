@@ -18,7 +18,7 @@ export default class ContextMenuService implements IContextMenuService {
                     this.manageService.removeGuitar(modelValue, data.type).then(val => {
                         this.updateService.updateData();
                     }).catch(err => {
-                        this.modalService.openAlertModal(`Failed to remove guitar ${modelValue.vendor.name} ${modelValue.model}. ${err.message}`, "danger");
+                        this.modalService.openAlertModal(`Failed to remove guitar ${modelValue.vendor.name} ${modelValue.model}. ${err.statusText}`, "danger");
                     });
                 }).catch(() => {});
             }
@@ -27,13 +27,13 @@ export default class ContextMenuService implements IContextMenuService {
             text: "Edit",
             click: ($itemScope, $event, modelValue: Guitar, text, $li, data) => {
                 this.modalService.openGuitarAddOrEditModal({
-                    guitar: modelValue,
+                    guitar: { ...modelValue },
                     type: () => data.type
                 }).result.then(edited => {
                     this.manageService.editGuitarCharacteristics(edited, data.type).then(() => {
                         this.updateService.updateData();
                     }).catch(err => {
-                        this.modalService.openAlertModal(`Failed to save changes: ${modelValue.vendor.name} ${modelValue.model}. ${err.message}`, "danger");
+                        this.modalService.openAlertModal(`Failed to save changes: ${modelValue.vendor.name} ${modelValue.model}. ${err.statusText}`, "danger");
                     });
                 }).catch(() => {});
             }
