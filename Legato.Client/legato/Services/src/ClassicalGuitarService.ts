@@ -19,15 +19,15 @@ export default class ClassicalGuitarService extends ServiceBase implements IGuit
     static $inject = ["$q", "CacheService", "GuitarResource"];
 
     constructor(protected $q: ng.IQService, cache: ICacheService, private resource: IGuitarResource) {
-        super($q, cache);
+        super($q);
         this.$$cache = cache.create("classicalGuitarCache", 16);
     }
 
-    getGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number, useCache = true): ng.IPromise<ClassicalGuitar[]> {
+    getGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number): ng.IPromise<ClassicalGuitar[]> {
         const key = this.createCacheKey(guitarFilter.price, guitarFilter.vendors, { lowerBound: lowerBound, upperBound: upperBound }, guitarFilter.search);
         const cachedData = this.$$cache.get<ClassicalGuitar[]>(key);
         
-        if (cachedData && useCache) {
+        if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
@@ -42,14 +42,14 @@ export default class ClassicalGuitarService extends ServiceBase implements IGuit
         }
     }
 
-    getSortedGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number, useCache = true) {
+    getSortedGuitars(guitarFilter: GuitarFilter, lowerBound: number, upperBound: number) {
         const key = this.createCacheKey(guitarFilter.price,
                                         { lowerBound: lowerBound, upperBound: upperBound },
                                         guitarFilter.vendors, guitarFilter.search,
                                         { sortHeader: guitarFilter.sorting.name, sortDirection: guitarFilter.sorting.direction });
         const cachedData = this.$$cache.get<ClassicalGuitar[]>(key);
 
-        if (cachedData && useCache) {
+        if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
@@ -64,11 +64,11 @@ export default class ClassicalGuitarService extends ServiceBase implements IGuit
         }
     }
     
-    getAmount(guitarFilter: GuitarFilter, useCache = true): ng.IPromise<number> {
+    getAmount(guitarFilter: GuitarFilter): ng.IPromise<number> {
         const key = this.createCacheKey(guitarFilter.price, guitarFilter.vendors, guitarFilter.search);
         const cachedData = this.$$cache.get<number>(key);
 
-        if (cachedData && useCache) {
+        if (cachedData) {
             return this.resolveCachedData(cachedData);
         } else {
             this.pendingRequests++;
