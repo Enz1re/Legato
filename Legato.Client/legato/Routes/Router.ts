@@ -3,7 +3,6 @@
     WesternController,
     ElectricController,
     BassController,
-    LoginController,
     MainController
 } from "../Components/components-module";
 
@@ -44,21 +43,6 @@ export default class Router {
                 controller: BassController,
                 controllerAs: "bassCtrl",
                 reloadOnSearch: false
-            })
-            .state("login", {
-                url: "/login",
-                templateUrl: "legato/Components/src/login/login.html",
-                controller: LoginController,
-                controllerAs: "loginCtrl",
-                reloadOnSearch: false,
-                resolve: {
-                    prevState: ["RoutingService", (routingService: IRoutingService) => {
-                        return {
-                            name: routingService.urlSegments[1],
-                            params: { ...routingService.queryParams }
-                        }
-                    }]
-                }
             });
 
         $urlRouterProvider.otherwise("/classical?page=1");

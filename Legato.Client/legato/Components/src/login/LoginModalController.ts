@@ -18,14 +18,14 @@ export class LoginModalController {
 
     onOkButtonPressed() {
         this.messaging.loading = true;
-        this.authService.login(this.user.username, this.user.password).then(result => {
-            this.authService.setCredentials(this.user.username, this.user.password);
+        this.authService.login(this.user.username, this.user.password).then((accessToken: string) => {
+            this.authService.setCredentials(this.user.username, accessToken);
             this.messaging.loading = false;
             this.$uibModalInstance.close(this.user);
         }).catch(err => {
             this.messaging.loading = false;
             this.messaging.error = true;
-            this.messaging.message = err.message;
+            this.messaging.message = err.data.message;
         });
     }
 

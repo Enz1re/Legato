@@ -5,6 +5,7 @@
 } from "../../../Models/models";
 
 import {
+    IModalService,
     IFilterService,
     IVendorService,
     IUpdateService,
@@ -20,10 +21,10 @@ export class MainController implements ng.IController {
     activeTab: string;
     search: string;
     globals: any;
-    static $inject = ["$rootScope", "RoutingService", "UpdateService", "FilterService", "VendorService", "AuthenticationService"];
+    static $inject = ["$rootScope", "RoutingService", "UpdateService", "FilterService", "VendorService", "AuthenticationService", "ModalService"];
 
-    constructor(private $rootScope, private routingService: IRoutingService, private updateService: IUpdateService,
-                private filterService: IFilterService, private service: IVendorService, private authService: IAuthenticationService) {
+    constructor(private $rootScope, private routingService: IRoutingService, private updateService: IUpdateService, private filterService: IFilterService,
+                private service: IVendorService, private authService: IAuthenticationService, private modalService: IModalService) {
         const name = routingService.urlSegments[1];
         this.initVendorList(name).then(() => {
             this.globals = this.$rootScope.globals;
@@ -95,6 +96,10 @@ export class MainController implements ng.IController {
         if (event.key.toLowerCase() === "enter") {
             this.updateService.filter.search = this.search;
         }
+    }
+
+    logIn() {
+        this.modalService.openLoginModal().result.then(() => { }).catch(() => { });
     }
 
     private initVendorList(guitarTypeName: string): ng.IPromise<void> {
