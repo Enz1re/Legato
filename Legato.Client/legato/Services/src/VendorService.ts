@@ -10,8 +10,8 @@ import { Vendor } from "../../Models/models";
 export default class VendorService extends ServiceBase implements IVendorService {
     static $inject = ["$q", "CacheService", "GuitarResource"];
 
-    constructor(private $q: ng.IQService, cache: ICacheService, private resource: IGuitarResource) {
-        super($q, cache);
+    constructor($q: ng.IQService, cache: ICacheService, private resource: IGuitarResource) {
+        super($q);
         this.$$cache = cache.create("vendorCache", 4);
     }
 
