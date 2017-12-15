@@ -280,7 +280,7 @@ namespace Legato.BL
             }
             if (VendorFilterExists(filter.VendorFilter))
             {
-                var vendors = filter.VendorFilter.Vendors;
+                var vendors = filter.VendorFilter.Vendors.Select(v => v.Name);
                 all = all.Where(g => vendors.Contains(g.Vendor.Name));
             }
 

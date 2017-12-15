@@ -2,6 +2,6 @@
 {
     public class VendorFilterViewModel
     {
-        public string[] Vendors { get; set; }
+        public VendorViewModel[] Vendors { get; set; }
     }
 }

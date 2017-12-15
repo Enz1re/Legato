@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using System;
+using Ninject;
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
@@ -26,12 +27,24 @@ namespace Legato.DAL.Repositories
 
         public void Create(ElectricGuitarModel item)
         {
+            var existingVendor = _context.Vendors.SingleOrDefault(v => v.Id == item.Vendor.Id);
+            if (existingVendor == null)
+            {
+                _context.Vendors.Add(item.Vendor);
+            }
+
             _context.ElectricGuitars.Add(item);
             _context.SaveChanges();
         }
 
         public void Update(ElectricGuitarModel item)
         {
+            var existingVendor = _context.Vendors.SingleOrDefault(v => v.Name == item.Vendor.Name);
+            if (existingVendor == null)
+            {
+                _context.Vendors.Add(item.Vendor);
+            }
+
             _context.ElectricGuitars.AddOrUpdate(item);
             _context.SaveChanges();
         }
@@ -41,8 +54,22 @@ namespace Legato.DAL.Repositories
             var selectedGuitar = Get(id);
             if (selectedGuitar != null)
             {
+                var vendor = selectedGuitar.Vendor;
+                var vendorName = vendor.Name;
+
+                if (_context.ClassicalAcousticGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0 &&
+                    _context.WesternAcousticGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0 &&
+                    _context.BassGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0)
+                {
+                    _context.Vendors.Remove(vendor);
+                }
+
                 _context.ElectricGuitars.Remove(selectedGuitar);
                 _context.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException($"No guitar with id '{id}' was found in the database");
             }
         }
 

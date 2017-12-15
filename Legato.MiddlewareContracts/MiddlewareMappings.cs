@@ -19,15 +19,6 @@ namespace Legato.MiddlewareContracts
                     .Include<ElectricGuitarModel, ElectricGuitarDataModel>()
                     .Include<BassGuitarModel, BassGuitarDataModel>();
 
-                //cfg.CreateMap<AcousticClassicalGuitarModel, AcousticClassicalGuitarDataModel>()
-                //    .ForMember(dest => dest.Vendor, opt => opt.MapFrom(src => src.Vendor.Name));
-                //cfg.CreateMap<AcousticWesternGuitarModel, AcousticWesternGuitarDataModel>()
-                //    .ForMember(dest => dest.Vendor, opt => opt.MapFrom(src => src.Vendor.Name));
-                //cfg.CreateMap<ElectricGuitarModel, ElectricGuitarDataModel>()
-                //    .ForMember(dest => dest.Vendor, opt => opt.MapFrom(src => src.Vendor.Name));
-                //cfg.CreateMap<BassGuitarModel, BassGuitarDataModel>()
-                //    .ForMember(dest => dest.Vendor, opt => opt.MapFrom(src => src.Vendor.Name));
-
                 cfg.CreateMap<VendorModel, VendorDataModel>();
                 cfg.CreateMap<VendorDataModel, VendorModel>();
 

@@ -28,10 +28,10 @@ namespace Legato.DAL
             context.Vendors.Add(hofner);
             context.Vendors.Add(mitchell);
             
-            context.ClassicAcousticGuitars.Add(new AcousticClassicalGuitarModel { Vendor = lucero, Model = "LC100", Mensura = 647, StringType = "Nylon", Price = 1275, ImgPath = "Content/img/Classical/lucero_lc100.png" });
-            context.ClassicAcousticGuitars.Add(new AcousticClassicalGuitarModel { Vendor = lucero, Model = "LFN200Sce", StringType = "Nylon", Mensura = 650, Price = 1366, ImgPath = "Content/img/Classical/lucero_lfn200sce.png" });
-            context.ClassicAcousticGuitars.Add(new AcousticClassicalGuitarModel { Vendor = lyons, Model = "Classroom", StringType = "Nylon", Mensura = 646, Price = 1420, ImgPath = "Content/img/Classical/lyons_classroom.png" });
-            context.ClassicAcousticGuitars.Add(new AcousticClassicalGuitarModel { Vendor = kremona, Model = "Verea Cutaway", StringType = "Fluorocarbon", Mensura = 640, Price = 1171, ImgPath = "Content/img/Classical/kremona_verea_cutaway.png" });
+            context.ClassicalAcousticGuitars.Add(new AcousticClassicalGuitarModel { Vendor = lucero, Model = "LC100", Mensura = 647, StringType = "Nylon", Price = 1275, ImgPath = "Content/img/Classical/lucero_lc100.png" });
+            context.ClassicalAcousticGuitars.Add(new AcousticClassicalGuitarModel { Vendor = lucero, Model = "LFN200Sce", StringType = "Nylon", Mensura = 650, Price = 1366, ImgPath = "Content/img/Classical/lucero_lfn200sce.png" });
+            context.ClassicalAcousticGuitars.Add(new AcousticClassicalGuitarModel { Vendor = lyons, Model = "Classroom", StringType = "Nylon", Mensura = 646, Price = 1420, ImgPath = "Content/img/Classical/lyons_classroom.png" });
+            context.ClassicalAcousticGuitars.Add(new AcousticClassicalGuitarModel { Vendor = kremona, Model = "Verea Cutaway", StringType = "Fluorocarbon", Mensura = 640, Price = 1171, ImgPath = "Content/img/Classical/kremona_verea_cutaway.png" });
 
             context.WesternAcousticGuitars.Add(new AcousticWesternGuitarModel { Vendor = rogue, Model = "RA-090 Dreadnought", Mensura = 648, StringCaliber = 9, StringNumber = 6, Price = 1217, ImgPath = "Content/img/Western/rogue_ra_090_dreadnought.png" });
             context.WesternAcousticGuitars.Add(new AcousticWesternGuitarModel { Vendor = rogue, Model = "RA-090 Concert Cutaway", Mensura = 648, StringCaliber = 9, StringNumber = 6, Price = 1333, ImgPath = "Content/img/Western/rogue_ra_090_concert_cutaway.png" });

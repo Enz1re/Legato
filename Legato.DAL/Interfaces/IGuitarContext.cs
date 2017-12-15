@@ -8,13 +8,15 @@ namespace Legato.DAL.Interfaces
 {
     public interface IGuitarContext : IDisposable
     {
-        DbSet<AcousticClassicalGuitarModel> ClassicAcousticGuitars { get; set; }
+        DbSet<AcousticClassicalGuitarModel> ClassicalAcousticGuitars { get; set; }
 
         DbSet<AcousticWesternGuitarModel> WesternAcousticGuitars { get; set; }
 
         DbSet<BassGuitarModel> BassGuitars { get; set; }
 
         DbSet<ElectricGuitarModel> ElectricGuitars { get; set; }
+
+        DbSet<VendorModel> Vendors { get; set; }
 
         int SaveChanges();
 

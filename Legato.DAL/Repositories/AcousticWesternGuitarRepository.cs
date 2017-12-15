@@ -26,12 +26,24 @@ namespace Legato.DAL.Repositories
 
         public void Create(AcousticWesternGuitarModel item)
         {
+            var existingVendor = _context.Vendors.SingleOrDefault(v => v.Id == item.Vendor.Id);
+            if (existingVendor == null)
+            {
+                _context.Vendors.Add(item.Vendor);
+            }
+
             _context.WesternAcousticGuitars.Add(item);
             _context.SaveChanges();
         }
 
         public void Update(AcousticWesternGuitarModel item)
         {
+            var existingVendor = _context.Vendors.SingleOrDefault(v => v.Name == item.Vendor.Name);
+            if (existingVendor == null)
+            {
+                _context.Vendors.Add(item.Vendor);
+            }
+
             _context.WesternAcousticGuitars.AddOrUpdate(item);
             _context.SaveChanges();
         }
@@ -41,6 +53,16 @@ namespace Legato.DAL.Repositories
             var selectedGuitar = Get(id);
             if (selectedGuitar != null)
             {
+                var vendor = selectedGuitar.Vendor;
+                var vendorName = vendor.Name;
+
+                if (_context.ClassicalAcousticGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0 &&
+                    _context.ElectricGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0 &&
+                    _context.BassGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0)
+                {
+                    _context.Vendors.Remove(vendor);
+                }
+
                 _context.WesternAcousticGuitars.Remove(selectedGuitar);
                 _context.SaveChanges();
             }

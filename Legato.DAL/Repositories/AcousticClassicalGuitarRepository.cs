@@ -1,9 +1,11 @@
-﻿using Ninject;
+﻿using System;
+using Ninject;
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
 using System.Data.Entity.Migrations;
 using System.Runtime.CompilerServices;
+using System.Data.Entity.Validation;
 
 
 [assembly: InternalsVisibleTo("Legato.DAL.Tests")]
@@ -21,18 +23,30 @@ namespace Legato.DAL.Repositories
 
         public AcousticClassicalGuitarModel Get(int id)
         {
-            return _context.ClassicAcousticGuitars.FirstOrDefault(g => g.Id == id);
+            return _context.ClassicalAcousticGuitars.FirstOrDefault(g => g.Id == id);
         }
 
         public void Create(AcousticClassicalGuitarModel item)
         {
-            _context.ClassicAcousticGuitars.Add(item);
+            var existingVendor = _context.Vendors.SingleOrDefault(v => v.Id == item.Vendor.Id);
+            if (existingVendor == null)
+            {
+                _context.Vendors.Add(item.Vendor);
+            }
+
+            _context.ClassicalAcousticGuitars.Add(item);
             _context.SaveChanges();
         }
 
         public void Update(AcousticClassicalGuitarModel item)
         {
-            _context.ClassicAcousticGuitars.AddOrUpdate(item);
+            var existingVendor = _context.Vendors.SingleOrDefault(v => v.Id == item.Vendor.Id);
+            if (existingVendor == null)
+            {
+                _context.Vendors.Add(item.Vendor);
+            }
+
+            _context.ClassicalAcousticGuitars.AddOrUpdate(item);
             _context.SaveChanges();
         }
 
@@ -41,29 +55,39 @@ namespace Legato.DAL.Repositories
             var selectedGuitar = Get(id);
             if (selectedGuitar != null)
             {
-                _context.ClassicAcousticGuitars.Remove(selectedGuitar);
+                var vendor = selectedGuitar.Vendor;
+                var vendorName = vendor.Name;
+
+                if (_context.WesternAcousticGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0 &&
+                    _context.ElectricGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0 &&
+                    _context.BassGuitars.Select(g => g.Vendor.Name == vendorName).Count() == 0)
+                {
+                    _context.Vendors.Remove(vendor);
+                }
+
+                _context.ClassicalAcousticGuitars.Remove(selectedGuitar);
                 _context.SaveChanges();
             }
         }
 
         public IQueryable<AcousticClassicalGuitarModel> GetAll()
         {
-            return _context.ClassicAcousticGuitars.OrderBy(g => g.Id);
+            return _context.ClassicalAcousticGuitars.OrderBy(g => g.Id);
         }
 
         public IQueryable<AcousticClassicalGuitarModel> FindByVendors(string[] vendors)
         {
-            return _context.ClassicAcousticGuitars.Where(g => vendors.Contains(g.Vendor.Name)).OrderBy(g => g.Id);
+            return _context.ClassicalAcousticGuitars.Where(g => vendors.Contains(g.Vendor.Name)).OrderBy(g => g.Id);
         }
 
         public IQueryable<AcousticClassicalGuitarModel> FindByPrice(int from, int to)
         {
-            return _context.ClassicAcousticGuitars.Where(g => from <= g.Price && g.Price <= to).OrderBy(g => g.Id);
+            return _context.ClassicalAcousticGuitars.Where(g => from <= g.Price && g.Price <= to).OrderBy(g => g.Id);
         }
 
         public IQueryable<AcousticClassicalGuitarModel> FindByVendorsAndPrice(string[] vendors, int priceFrom, int priceTo)
         {
-            return _context.ClassicAcousticGuitars.Where
+            return _context.ClassicalAcousticGuitars.Where
             (
                 g => vendors.Contains(g.Vendor.Name) && (priceFrom <= g.Price && g.Price <= priceTo)
             )

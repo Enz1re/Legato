@@ -10,7 +10,7 @@ namespace Legato.DAL.Models
         {
         }
 
-        public DbSet<AcousticClassicalGuitarModel> ClassicAcousticGuitars { get; set; }
+        public DbSet<AcousticClassicalGuitarModel> ClassicalAcousticGuitars { get; set; }
 
         public DbSet<AcousticWesternGuitarModel> WesternAcousticGuitars { get; set; }
         

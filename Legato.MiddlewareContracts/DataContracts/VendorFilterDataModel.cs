@@ -7,6 +7,6 @@ namespace Legato.MiddlewareContracts.DataContracts
     public class VendorFilterDataModel
     {
         [DataMember]
-        public string[] Vendors { get; set; }
+        public VendorDataModel[] Vendors { get; set; }
     }
 }
