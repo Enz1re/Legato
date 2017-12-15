@@ -12,7 +12,7 @@ export class ServiceBase {
     protected pendingRequests: number;
     protected $$cache: ng.ICacheObject;
 
-    constructor(private qServ: ng.IQService, private cache: ICacheService) {
+    constructor(private qServ: ng.IQService) {
         this.pendingRequests = 0;
     }
 
@@ -39,6 +39,6 @@ export class ServiceBase {
     }
 
     clearCache() {
-        this.cache.clear();
+        this.$$cache.removeAll();
     }
 }
