@@ -14,9 +14,9 @@ export default class ContextMenuService implements IContextMenuService {
         {
             text: "Remove",
             click: ($itemScope, $event, modelValue: Guitar, text, $li, data) => {
-                this.modalService.openGuitarDeleteDialog({ guitar: modelValue }).result.then(() => {
+                this.modalService.openGuitarDeleteDialog({ guitar: { ...modelValue } }).result.then(() => {
                     this.manageService.removeGuitar(modelValue, data.type).then(val => {
-                        this.updateService.updateData();
+                        this.updateService.updateCurrentPage();
                     }).catch(err => {
                         this.modalService.openAlertModal(`Failed to remove guitar ${modelValue.vendor.name} ${modelValue.model}. ${err.statusText}`, "danger");
                     });
@@ -27,13 +27,13 @@ export default class ContextMenuService implements IContextMenuService {
             text: "Edit",
             click: ($itemScope, $event, modelValue: Guitar, text, $li, data) => {
                 this.modalService.openGuitarAddOrEditModal({
-                    guitar: { ...modelValue },
+                    guitar: { ...modelValue, vendor: { ...modelValue.vendor } },
                     type: () => data.type
                 }).result.then(edited => {
-                    this.manageService.editGuitarCharacteristics(edited, data.type).then(() => {
-                        this.updateService.updateData();
+                    this.manageService.editGuitarCharacteristics(edited.guitar, data.type).then(() => {
+                        this.updateService.updateCurrentPage();
                     }).catch(err => {
-                        this.modalService.openAlertModal(`Failed to save changes: ${modelValue.vendor.name} ${modelValue.model}. ${err.statusText}`, "danger");
+                        this.modalService.openAlertModal(`Failed to save changes: ${modelValue.vendor.name} ${modelValue.model}. ${err.data.message}`, "danger");
                     });
                 }).catch(() => {});
             }
