@@ -13,29 +13,25 @@ export default class AuthenticationService implements IAuthenticationService {
 
     }
 
-    login(username: string, password: string): ng.IPromise<boolean> {
+    login(username: string, password: string): ng.IPromise<string> {
         return this.$http({
             method: "POST",
             url: "http://localhost/api/Account/Login",
             data: { username: username, password: password }
         }).then((response: ng.IHttpResponse<any>) => {
-            return true;
-        }).catch(err => {
-            return false;
+            return response.data.accessToken;
         });
     }
 
-    setCredentials(username: string, password: string) {
-        const authData = this.base64.encode(`${username}:${password}`);
-
+    setCredentials(username: string, accessToken: string) {
         this.$rootScope.globals = {
             currentUser: {
                 username: username,
-                authData: authData
+                accessToken: accessToken
             }
         };
-
-        this.$http.defaults.headers.common.Authorization = `Bearer ${authData}`;
+        
+        this.$http.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
         const cookieExp = new Date();
         cookieExp.setDate(cookieExp.getDate() + 7);
