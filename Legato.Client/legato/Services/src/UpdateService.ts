@@ -10,8 +10,8 @@ import { IUpdateService, IRoutingService } from "../../Interfaces/interfaces";
 
 
 export default class UpdateService implements IUpdateService {
-    update: boolean = true;
     filter: { price: Price, vendors: Vendor[], sorting: Sorting, search: string };
+    updatePage: { updateCurrentPage: boolean, updateLastPage: boolean };
     static $inject = ["RoutingService"];
 
     constructor(private routingService: IRoutingService) {
@@ -20,6 +20,11 @@ export default class UpdateService implements IUpdateService {
             vendors: [],
             sorting: new Sorting(),
             search: ""
+        };
+
+        this.updatePage = {
+            updateCurrentPage: true,
+            updateLastPage: true
         };
     }
 
@@ -91,8 +96,12 @@ export default class UpdateService implements IUpdateService {
             newValue.sorting.required !== oldValue.sorting.required;
     }
 
-    updateData() {
-        this.update = !this.update;
+    updateCurrentPage() {
+        this.updatePage.updateCurrentPage = !this.updatePage.updateCurrentPage;
+    }
+
+    updateLastPage() {
+        this.updatePage.updateLastPage = !this.updatePage.updateLastPage;
     }
 
     private getCheckedVendors() {

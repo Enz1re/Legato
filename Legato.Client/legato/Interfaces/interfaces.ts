@@ -2,6 +2,7 @@
 import { IContextMenuService } from "./src/IContextMenuService";
 import { IPendingTaskService } from "./src/IPendingTaskService";
 import { IFileUploadService } from "./src/IFileUploadService";
+import { IGuitarDataService } from "./src/IGuitarDataService";
 import { IUrlParamResolver } from "./src/IUrlParamResolver";
 import { IGuitarResource } from "./src/IGuitarResource";
 import { IRoutingService } from "./src/IRoutingService";
@@ -22,6 +23,7 @@ export {
     IContextMenuService,
     IPendingTaskService,
     IFileUploadService,
+    IGuitarDataService,
     IUrlParamResolver,
     IGuitarResource,
     IRoutingService,

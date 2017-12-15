@@ -8,7 +8,7 @@
 
 import { Constants } from "../../../Constants";
 
-import { IFileUploadService } from "../../../Interfaces/interfaces";
+import { IFileUploadService, IGuitarDataService } from "../../../Interfaces/interfaces";
 
 
 export class AddEditModalController {
@@ -16,9 +16,10 @@ export class AddEditModalController {
     type: string;
     mode: "Add" | "Edit";
     guitar: Guitar;
-    static $inject = ["$uibModalInstance", "FileUploadService", "guitar", "type"];
+    static $inject = ["$uibModalInstance", "FileUploadService", "GuitarDataService", "guitar", "type"];
 
-    constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private fileUpload: IFileUploadService, guitar: Guitar, type: string) {
+    constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private fileUpload: IFileUploadService, private guitarData: IGuitarDataService,
+                guitar: Guitar, type: string) {
         this.type = type;
 
         if (guitar) {
@@ -52,7 +53,7 @@ export class AddEditModalController {
     }
 
     uploadFile(file) {
-        console.log(file);
+        
     }
 
     onOkButtonClicked() {

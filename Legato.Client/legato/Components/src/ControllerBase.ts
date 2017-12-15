@@ -162,12 +162,20 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 });
             }
         }, true);
-        scope.$watch(() => this.updateService.update, (newValue, oldValue) => {
-            if (newValue !== oldValue) {
-                this.service.clearCache();
+        scope.$watch(() => this.updateService.updatePage, (newValue, oldValue) => {
+            if (!newValue || !oldValue) {
+                return;
+            }
+
+            this.service.clearCache();
+
+            if (newValue.updateCurrentPage !== oldValue.updateCurrentPage) {
+                this.init();
+            }
+            if (newValue.updateLastPage !== oldValue.updateLastPage) {
                 this.pagingService.goToLastPage(() => { this.init(); });
             }
-        });
+        }, true);
         scope.$watch(() => scope.globals.currentUser, (newVal, oldVal) => {
             if (newVal || oldVal) {
                 if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username || newVal.authData !== oldVal.authData)) {

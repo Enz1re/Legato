@@ -7,6 +7,7 @@ import WesternGuitarService from "./src/WesternGuitarService";
 import ContextMenuService from "./src/ContextMenuService";
 import PendingTaskService from "./src/PendingTaskService";
 import BassGuitarService from "./src/BassGuitarService";
+import GuitarDataService from "./src/GuitarDataService";
 import FileUploadService from "./src/FileUploadService";
 import UrlParamResolver from "./src/UrlParamResolver";
 import GuitarResource from "./src/GuitarResource";
@@ -40,7 +41,8 @@ angular.module(servicesModuleName, [])
     .service("Base64", Base64)
     .service("ManageService", ManageService)
     .service("ContextMenuService", ContextMenuService)
-    .service("FileUploadService", FileUploadService);
+    .service("FileUploadService", FileUploadService)
+    .service("GuitarDataService", GuitarDataService);
 
 export {
     ClassicalGuitarService,
@@ -48,8 +50,9 @@ export {
     ElectricGuitarService,
     WesternGuitarService,
     PendingTaskService,
-    FileUploadService,
     BassGuitarService,
+    FileUploadService,
+    GuitarDataService,
     UrlParamResolver,
     GuitarResource,
     RoutingService,

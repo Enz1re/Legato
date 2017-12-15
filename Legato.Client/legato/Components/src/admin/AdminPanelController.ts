@@ -23,7 +23,7 @@ export class AdminPanelController {
             type: () => this.routingService.urlSegments[1]
         }).result.then(resp => {
             this.manageService.addGuitar(resp.guitar, resp.type).then(() => {
-                this.updateService.updateData();
+                this.updateService.updateLastPage();
             }).catch(() => {
                 this.modalService.openAlertModal("Failed to add new guitar", "danger").result.catch(() => { });
             });
@@ -34,9 +34,9 @@ export class AdminPanelController {
         this.modalService.openDisplayAmountModal({ amount: this.pagingService.itemsToShow }).result.then((amount: number) => {
             this.manageService.changeDisplayAmount(amount).then(() => {
                 this.pagingService.itemsToShow = amount;
-                this.updateService.updateData();
+                this.updateService.updateCurrentPage();
             }).catch(() => {
-                this.modalService.openAlertModal("Failed to change display amount", "danger");
+                this.modalService.openAlertModal("Failed to change display amount", "danger").result.catch(() => { });
             })
         }).catch(() => { });
     }

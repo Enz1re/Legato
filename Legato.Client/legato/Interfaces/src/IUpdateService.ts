@@ -6,8 +6,8 @@
 
 
 export interface IUpdateService {
-    update: boolean;
     filter: { price: Price, vendors: Vendor[], sorting: Sorting, search: string };
+    updatePage: { updateCurrentPage: boolean, updateLastPage: boolean }
 
     replacePriceQueryParams(stateName: string);
 
@@ -25,5 +25,7 @@ export interface IUpdateService {
 
     needUseSorting(thisVal, prevVal);
 
-    updateData();
+    updateCurrentPage();
+
+    updateLastPage();
 }

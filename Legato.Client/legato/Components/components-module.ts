@@ -9,7 +9,6 @@ import { LegatoValidatePriceDirective } from "./src/validatePrice/LegatoValidate
 import { LegatoLoadingDirective } from "./src/loading/LegatoLoadingDirective";
 import { LegatoSmoothScrollDirective } from "./src/smoothScroll/LegatoSmoothScrollDirective";
 import { LegatoRequestLoaderDirective } from "./src/loading/LegatoRequestLoaderDirective";
-import { LoginDirective } from "./src/login/LoginDirective";
 import { LegatoContextMenuDirective } from "./src/contextMenu/LegatoContextMenuDirective";
 import { LegatoAdminPanelDirective } from "./src/admin/LegatoAdminPanelDirective";
 
@@ -20,7 +19,6 @@ import { ElectricController } from "./src/electric/ElectricController";
 import { BassController } from "./src/bass/BassController";
 import { ControllerBase } from "./src/ControllerBase";
 import { GuitarModalController } from "./src/guitarModal/GuitarModalController";
-import { LoginController } from "./src/login/LoginController";
 import { LoginModalController } from "./src/login/LoginModalController";
 import { AdminPanelController } from "./src/admin/AdminPanelController";
 import { AddEditModalController } from "./src/guitarModal/AddEditModalController";
@@ -41,7 +39,6 @@ angular.module(directivesModuleName, [])
     .directive("legatoLoading", LegatoLoadingDirective.create())
     .directive("legatoSmoothScroll", LegatoSmoothScrollDirective.create())
     .directive("legatoRequestLoader", LegatoRequestLoaderDirective.create())
-    .directive("login", LoginDirective.create())
     .directive("contextMenu", LegatoContextMenuDirective.create())
     .directive("adminPanel", LegatoAdminPanelDirective.create())
     // controller declarations
@@ -51,7 +48,6 @@ angular.module(directivesModuleName, [])
     .controller("ElectricController", ElectricController)
     .controller("BassController", BassController)
     .controller("GuitarModalController", GuitarModalController)
-    .controller("LoginController", LoginController)
     .controller("LoginModalController", LoginModalController)
     .controller("AddEditModalController", AddEditModalController)
     .controller("DisplayAmountModalController", DisplayAmountModalController)
@@ -66,7 +62,6 @@ export {
     WesternController,
     ElectricController,
     BassController,
-    LoginController
 };
 
 export default directivesModuleName;
