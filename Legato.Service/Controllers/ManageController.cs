@@ -4,6 +4,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Web.Http;
 using System.Threading;
+using Legato.Service.Filters;
 using System.Collections.Generic;
 using Legato.ServiceDAL.ViewModels;
 
@@ -21,6 +22,7 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
+        [JwtAuth]
         [HttpPost]
         [Route("{type}/Add")]
         public IHttpActionResult Add([FromBody] dynamic guitarParam, string type)
@@ -48,6 +50,7 @@ namespace Legato.Service.Controllers
             }
         }
 
+        [JwtAuth]
         [HttpPost]
         [Route("{type}/Edit")]
         public IHttpActionResult Edit([FromBody] dynamic guitarParam, string type)
@@ -75,6 +78,7 @@ namespace Legato.Service.Controllers
             }
         }
 
+        [JwtAuth]
         [Route("{type}/{id}")]
         public IHttpActionResult Delete(string type, int id)
         {
@@ -108,6 +112,7 @@ namespace Legato.Service.Controllers
             }
         }
 
+        [JwtAuth]
         [HttpPost]
         [Route("Display/{amount}")]
         public IHttpActionResult PostDisplayAmount(int amount)

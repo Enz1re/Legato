@@ -8,7 +8,7 @@ namespace Legato.Service
 {
     public class JwtManager
     {
-        private const string Secret = "db3OIsj+BaE9NZDy0t8W3TcNekrF/2d+1sFnWG5HnV8TZY30I1OdeVWJG8asbWvB1GlAgJuQZdcF2Luqm/hccMw+";
+        private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
 
         public static string GenerateToken(string username, int expireMinutes)
         {
@@ -20,15 +20,18 @@ namespace Legato.Service
             {
                 Subject = new ClaimsIdentity(new[]
                         {
-                            new Claim(ClaimTypes.Name, username)
-                        }),
+                        new Claim(ClaimTypes.Name, username)
+                    }),
 
                 Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
 
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
+            var stoken = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.WriteToken(stoken);
+
+            return token;
         }
 
         public static ClaimsPrincipal GetPrincipal(string token)
