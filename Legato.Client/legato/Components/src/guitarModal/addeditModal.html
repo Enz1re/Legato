@@ -11,19 +11,19 @@
                 <p ng-if="addeditModalCtrl.type === 'classical'">
                     <select ng-model="addeditModalCtrl.guitar.stringType">
                         <option value="" disabled selected>String type</option>
-                        <option ng-repeat="stringType in addeditModalCtrl.guitar.stringTypes()" value="{{stringType}}" required>{{stringType}}</option>
+                        <option ng-repeat="stringType in addeditModalCtrl.guitarData.data[addeditModalCtrl.type].stringTypes" value="{{stringType}}" required>{{stringType}}</option>
                     </select>
                 </p>
                 <p ng-if="addeditModalCtrl.type !== 'classical'">
                     <select ng-model="addeditModalCtrl.guitar.stringNumber">
                         <option value="" disabled selected>String number</option>
-                        <option ng-repeat="stringNumber in addeditModalCtrl.guitar.stringNumbers()" value="{{stringType}}" required>{{stringNumber}}</option>
+                        <option ng-repeat="stringNumber in addeditModalCtrl.guitarData.data[addeditModalCtrl.type].stringNumbers" value="{{stringType}}" required>{{stringNumber}}</option>
                     </select>
                 </p>
                 <p ng-if="addeditModalCtrl.type === 'electric' || addeditModalCtrl.type === 'bass'">
                     <select ng-model="addeditModalCtrl.guitar.soundBox">
                         <option value="" disabled selected>Soundbox</option>
-                        <option ng-repeat="soundBox in addeditModalCtrl.guitar.soundBoxes()" value="{{stringType}}" required>{{soundBox}}</option>
+                        <option ng-repeat="soundBox in addeditModalCtrl.guitarData.data[addeditModalCtrl.type].soundBoxes" value="{{stringType}}" required>{{soundBox}}</option>
                     </select>
                 </p>
                 <p ng-if="addeditModalCtrl.type === 'electric'">

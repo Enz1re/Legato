@@ -385,6 +385,11 @@ div.messaging {
 
 /* Login form styles */
 
+.error-message {
+    color: rgb(211, 33, 33);
+    text-align: center;
+}
+
 .loginmodal-container {
     padding: 30px;
     max-width: 350px;
@@ -394,7 +399,6 @@ div.messaging {
     border-radius: 2px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    font-family: roboto;
 }
 
 .loginmodal-container h1 {
