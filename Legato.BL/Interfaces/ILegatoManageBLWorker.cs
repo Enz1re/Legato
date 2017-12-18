@@ -2,7 +2,7 @@
 using Legato.MiddlewareContracts.DataContracts;
 
 
-namespace Legato.BL
+namespace Legato.BL.Interfaces
 {
     public interface ILegatoManageBLWorker : IDisposable
     {

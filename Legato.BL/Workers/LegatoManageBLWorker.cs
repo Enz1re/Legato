@@ -1,11 +1,12 @@
 ﻿using Ninject;
 using Legato.DAL.Models;
+using Legato.BL.Interfaces;
 using Legato.DAL.Interfaces;
 using Legato.MiddlewareContracts;
 using Legato.MiddlewareContracts.DataContracts;
 
 
-namespace Legato.BL
+namespace Legato.BL.Workers
 {
     public class LegatoManageBLWorker : ILegatoManageBLWorker
     {

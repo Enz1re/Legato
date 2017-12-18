@@ -1,10 +1,9 @@
 ﻿using System;
-using Legato.DAL.Models;
 using System.Collections.Generic;
 using Legato.MiddlewareContracts.DataContracts;
 
 
-namespace Legato.BL
+namespace Legato.BL.Interfaces
 {
     public interface ILegatoGuitarBLWorker : IDisposable
     {

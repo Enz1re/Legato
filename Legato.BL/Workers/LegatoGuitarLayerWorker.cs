@@ -1,20 +1,21 @@
 ﻿using Ninject;
 using System.Linq;
 using Legato.DAL.Models;
+using Legato.BL.Interfaces;
 using Legato.DAL.Interfaces;
 using System.Collections.Generic;
 using Legato.MiddlewareContracts;
 using Legato.MiddlewareContracts.DataContracts;
 
 
-namespace Legato.BL
+namespace Legato.BL.Workers
 {
-    public class LegatoBusinessLayerWorker : ILegatoGuitarBLWorker
+    public class LegatoGuitarBLWorker : ILegatoGuitarBLWorker
     {
         private IRepositoryProvider _repoProvider;
 
         [Inject]
-        public LegatoBusinessLayerWorker(IRepositoryProvider repoProvider)
+        public LegatoGuitarBLWorker(IRepositoryProvider repoProvider)
         {
             _repoProvider = repoProvider;
         }
@@ -245,7 +246,7 @@ namespace Legato.BL
 
         public ILegatoGuitarBLWorker Get()
         {
-            return new LegatoBusinessLayerWorker(_repoProvider);
+            return new LegatoGuitarBLWorker(_repoProvider);
         }
         
         private bool PriceFilterExists(PriceFilterDataModel filter)
