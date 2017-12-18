@@ -44,12 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILegatoManageBLWorker.cs" />
+    <Compile Include="Interfaces\ILegatoManageBLWorker.cs" />
+    <Compile Include="Interfaces\ILegatoUserBLWorker.cs" />
     <Compile Include="LegatoBLDI.cs" />
-    <Compile Include="ILegatoGuitarBLWorker.cs" />
-    <Compile Include="LegatoBusinessLayerWorker.cs" />
-    <Compile Include="LegatoManageBLWorker.cs" />
+    <Compile Include="Interfaces\ILegatoGuitarBLWorker.cs" />
+    <Compile Include="Workers\LegatoGuitarLayerWorker.cs" />
+    <Compile Include="Workers\LegatoManageBLWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workers\LegatoUserBLWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Legato.DAL\Legato.DAL.csproj">

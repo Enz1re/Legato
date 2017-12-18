@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using Legato.DAL;
-using Legato.DAL.Models;
-using Legato.DAL.Interfaces;
+using Legato.BL.Workers;
+using Legato.BL.Interfaces;
 
 
 namespace Legato.BL
@@ -11,9 +11,9 @@ namespace Legato.BL
         public static void Register(IKernel kernel)
         {
             LegatoDALDI.Register(kernel);
-            kernel.Bind<ILegatoGuitarBLWorker>().To<LegatoBusinessLayerWorker>();
+            kernel.Bind<ILegatoGuitarBLWorker>().To<LegatoGuitarBLWorker>();
             kernel.Bind<ILegatoManageBLWorker>().To<LegatoManageBLWorker>();
-            kernel.Bind<IGuitarUnitOfWork>().To<GuitarUnitOfWork>();
+            kernel.Bind<ILegatoUserBLWorker>().To<LegatoUserBLWorker>();
         }
     }
 }
