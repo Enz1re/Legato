@@ -81,10 +81,16 @@
   <xs:element name="PriceFilterDataModel" nillable="true" type="tns:PriceFilterDataModel" />
   <xs:complexType name="VendorFilterDataModel">
     <xs:sequence>
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Vendors" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Vendors" nillable="true" type="tns:ArrayOfVendorDataModel" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VendorFilterDataModel" nillable="true" type="tns:VendorFilterDataModel" />
+  <xs:complexType name="ArrayOfVendorDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VendorDataModel" nillable="true" type="tns:VendorDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVendorDataModel" nillable="true" type="tns:ArrayOfVendorDataModel" />
   <xs:complexType name="ArrayOfAcousticClassicalGuitarDataModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticClassicalGuitarDataModel" nillable="true" type="tns:AcousticClassicalGuitarDataModel" />
@@ -112,12 +118,6 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="SortHeader" nillable="true" type="tns:SortHeader" />
-  <xs:complexType name="ArrayOfVendorDataModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VendorDataModel" nillable="true" type="tns:VendorDataModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVendorDataModel" nillable="true" type="tns:ArrayOfVendorDataModel" />
   <xs:complexType name="ArrayOfAcousticWesternGuitarDataModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AcousticWesternGuitarDataModel" nillable="true" type="tns:AcousticWesternGuitarDataModel" />
