@@ -1,19 +1,26 @@
 ﻿using System;
+using System.Linq;
 using Legato.DAL.Models;
 
 
 namespace Legato.DAL.Interfaces
 {
-    public interface IGuitarUnitOfWork : IDisposable
+    public interface IGuitarRepository<TGuitar> : IDisposable where TGuitar: GuitarModel
     {
-        IGuitarRepository<AcousticClassicalGuitarModel> ClassicAcousticGuitars { get; }
+        TGuitar Get(int Id);
 
-        IGuitarRepository<AcousticWesternGuitarModel> WesternAcousticGuitars { get; }
+        void Create(TGuitar item);
 
-        IGuitarRepository<BassGuitarModel> BassGuitars { get; }
+        void Update(TGuitar guitar);
 
-        IGuitarRepository<ElectricGuitarModel> ElectricGuitars { get; }
+        void Delete(int id);
 
-        void Commit();
+        IQueryable<TGuitar> GetAll();
+
+        IQueryable<TGuitar> FindByVendors(string[] vendors);
+
+        IQueryable<TGuitar> FindByPrice(int from, int to);
+
+        IQueryable<TGuitar> FindByVendorsAndPrice(string[] vendors, int priceFrom, int priceTo);
     }
 }

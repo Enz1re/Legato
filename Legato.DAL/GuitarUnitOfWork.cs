@@ -3,18 +3,18 @@ using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
 
 
-namespace Legato.DAL.Repositories
+namespace Legato.DAL
 {
     public class RepositoryProvider : IRepositoryProvider
     {
-        private IGuitarRepository<AcousticClassicalGuitarModel> _acousticClassicalGuitarRepo;
-        private IGuitarRepository<AcousticWesternGuitarModel> _acousticWesternGuitarRepo;
-        private IGuitarRepository<ElectricGuitarModel> _electricGuitarRepo;
-        private IGuitarRepository<BassGuitarModel> _bassGuitarRepo;
+        private readonly IGuitarRepository<AcousticClassicalGuitarModel> _acousticClassicalGuitarRepo;
+        private readonly IGuitarRepository<AcousticWesternGuitarModel> _acousticWesternGuitarRepo;
+        private readonly IGuitarRepository<ElectricGuitarModel> _electricGuitarRepo;
+        private readonly IGuitarRepository<BassGuitarModel> _bassGuitarRepo;
 
         [Inject]
         public RepositoryProvider(IGuitarRepository<AcousticClassicalGuitarModel> acousticClassicalGuitarRepo, IGuitarRepository<AcousticWesternGuitarModel> acousticWesternGuitarRepo,
-            IGuitarRepository<ElectricGuitarModel> electricGuitarRepo, IGuitarRepository<BassGuitarModel> bassGuitarRepo)
+            IGuitarRepository<ElectricGuitarModel> electricGuitarRepo, IGuitarRepository<BassGuitarModel> bassGuitarRepo, IUserRepository userRepo)
         {
             _acousticClassicalGuitarRepo = acousticClassicalGuitarRepo;
             _acousticWesternGuitarRepo = acousticWesternGuitarRepo;
