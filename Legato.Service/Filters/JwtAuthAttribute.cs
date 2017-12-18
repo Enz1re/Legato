@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
 using System.Net.Http.Headers;
+using Legato.Service.Constants;
 
 
 namespace Legato.Service.Filters
@@ -14,17 +15,17 @@ namespace Legato.Service.Filters
 
         public Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
         {
-            var token = context.ActionContext.Request.Headers.Authorization.Parameter;
+            var token = context.ActionContext.Request.Headers.Authorization?.Parameter;
             if (string.IsNullOrEmpty(token))
             {
-                context.ErrorResult = new AuthenticationFailureResult(Constants.Strings.AccessTokenIsInvalid, context.ActionContext.Request);
+                context.ErrorResult = new AuthenticationFailureResult(Strings.AccessTokenIsMissing, context.ActionContext.Request);
                 return Task.FromResult(0);
             }
 
             var claim = JwtManager.GetPrincipal(token);
             if (claim == null || claim.Identity.Name.ToLower() != "admin")
             {
-                context.ErrorResult = new AuthenticationFailureResult(Constants.Strings.AccessTokenIsInvalid, context.ActionContext.Request);
+                context.ErrorResult = new AuthenticationFailureResult(Strings.AccessTokenIsInvalid, context.ActionContext.Request);
                 return Task.FromResult(0);
             }
 

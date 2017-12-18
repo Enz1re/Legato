@@ -3,19 +3,20 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net.Http.Formatting;
 
 
 namespace Legato.Service.Filters
 {
     public class AuthenticationFailureResult : IHttpActionResult
     {
-        public string ReasonPhrase { get; }
+        public object JsonContent { get; }
 
         public HttpRequestMessage Request { get; }
 
-        public AuthenticationFailureResult(string reasonPhrase, HttpRequestMessage request)
+        public AuthenticationFailureResult(string message, HttpRequestMessage request)
         {
-            ReasonPhrase = reasonPhrase;
+            JsonContent = new { Error = true, Message = message };
             Request = request;
         }
 
@@ -29,7 +30,7 @@ namespace Legato.Service.Filters
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Unauthorized)
             {
                 RequestMessage = Request,
-                ReasonPhrase = ReasonPhrase
+                Content = new ObjectContent(JsonContent.GetType(), JsonContent, new JsonMediaTypeFormatter())
             };
 
             return response;

@@ -20,7 +20,9 @@
 
         public static string UsernameIsIncorrect(string username) => $@"Username '{username}' is incorrect.";
 
-        public static string GuitarIsInvalid => $@"Guitar data is invalid.";
+        public static string GuitarIsInvalid => "Guitar data is invalid.";
+
+        public static string AccessTokenIsMissing => "Access token is missing";
 
         public static string AccessTokenIsInvalid => "Access token is invalid";
     }
