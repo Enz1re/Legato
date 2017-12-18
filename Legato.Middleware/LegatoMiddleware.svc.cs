@@ -1,6 +1,6 @@
 ﻿using Ninject;
-using Legato.BL;
 using System.Linq;
+using Legato.BL.Interfaces;
 using System.Collections.Generic;
 using Legato.MiddlewareContracts;
 using Legato.MiddlewareContracts.DataContracts;
@@ -12,12 +12,14 @@ namespace Legato.Middleware
     {
         private ILegatoGuitarBLWorker _blGuitarWorker;
         private ILegatoManageBLWorker _blManageWorker;
-
+        private ILegatoUserBLWorker _blUserWorker;
+        
         [Inject]
-        public LegatoMiddleware(ILegatoGuitarBLWorker guitarWorker, ILegatoManageBLWorker manageWorker)
+        public LegatoMiddleware(ILegatoGuitarBLWorker guitarWorker, ILegatoManageBLWorker manageWorker, ILegatoUserBLWorker userWorker)
         {
             _blGuitarWorker = guitarWorker;
             _blManageWorker = manageWorker;
+            _blUserWorker = userWorker;
         }
 
         #region Classical
@@ -267,6 +269,58 @@ namespace Legato.Middleware
             using (var worker = _blGuitarWorker.Get())
             {
                 return worker.GetBassGuitarAmount(filter);
+            }
+        }
+
+        #endregion
+
+        #region User
+
+        public bool FindUser(string username, string password)
+        {
+            using (var worker = _blUserWorker.Get())
+            {
+                return worker.FindUser(username, password);
+            }
+        }
+
+        public void AddTokenToStorage(string accessToken, int expireMinutes)
+        {
+            using (var worker = _blUserWorker.Get())
+            {
+                worker.AddToken(accessToken, expireMinutes);
+            }
+        }
+
+        public void RemoveTokenFromStorage(string token)
+        {
+            using (var worker = _blUserWorker.Get())
+            {
+                worker.RemoveToken(token);
+            }
+        }
+
+        public void BanToken(string token)
+        {
+            using (var worker = _blUserWorker.Get())
+            {
+                worker.BanToken(token);
+            }
+        }
+
+        public IEnumerable<string> GetUserClaims(string username)
+        {
+            using (var worker = _blUserWorker.Get())
+            {
+                return worker.GetUserClaims(username);
+            }
+        }
+
+        public void AddClaim(string username, string userClaim)
+        {
+            using (var worker = _blUserWorker.Get())
+            {
+                worker.AddClaim(username, userClaim);
             }
         }
 

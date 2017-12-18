@@ -107,5 +107,27 @@ namespace Legato.MiddlewareContracts
         int GetBassGuitarQuantity(FilterDataModel filter);
 
         #endregion
+
+        #region User
+
+        [OperationContract]
+        bool FindUser(string username, string password);
+
+        [OperationContract]
+        void AddTokenToStorage(string accessToken, int expireMinutes);
+
+        [OperationContract]
+        void RemoveTokenFromStorage(string token);
+
+        [OperationContract]
+        void BanToken(string token);
+
+        [OperationContract]
+        IEnumerable<string> GetUserClaims(string username);
+
+        [OperationContract]
+        void AddClaim(string username, string userClaim);
+
+        #endregion
     }
 }
