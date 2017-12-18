@@ -60,11 +60,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Constants\Messages.cs" />
     <Compile Include="DatabaseInitializer.cs" />
-    <Compile Include="Interfaces\IGuitarRepository.cs" />
+    <Compile Include="Interfaces\IGuitarUnitOfWork.cs" />
+    <Compile Include="Interfaces\IUserContext.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="LegatoDALDI.cs" />
     <Compile Include="Interfaces\IGuitarContext.cs" />
-    <Compile Include="Interfaces\IGuitarUnitOfWork.cs" />
     <Compile Include="Interfaces\IRepositoryProvider.cs" />
     <Compile Include="Migrations\201711010846006_Initial.cs" />
     <Compile Include="Migrations\201711010846006_Initial.Designer.cs">
@@ -74,6 +76,10 @@
     <Compile Include="Migrations\201712150853092_New.Designer.cs">
       <DependentUpon>201712150853092_New.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712181728259_AddedUsers.cs" />
+    <Compile Include="Migrations\201712181728259_AddedUsers.Designer.cs">
+      <DependentUpon>201712181728259_AddedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AcousticClassicalGuitarModel.cs" />
     <Compile Include="Models\AcousticWesternGuitarModel.cs" />
@@ -82,15 +88,23 @@
     <Compile Include="Models\GuitarContextFactory.cs" />
     <Compile Include="Models\GuitarModel.cs" />
     <Compile Include="Models\GuitarContext.cs" />
-    <Compile Include="Models\GuitarUnitOfWork.cs" />
+    <Compile Include="Models\TokenModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserClaim.cs" />
+    <Compile Include="Models\UserContext.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\VendorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcousticClassicalGuitarRepository.cs" />
     <Compile Include="Repositories\AcousticWesternGuitarRepository.cs" />
     <Compile Include="Repositories\BassGuitarRepository.cs" />
     <Compile Include="Repositories\ElectricGuitarRepository.cs" />
-    <Compile Include="Repositories\RepositoryProvider.cs" />
+    <Compile Include="GuitarUnitOfWork.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="UserDbInitializer.cs" />
     <Compile Include="Util\CaseInsensitiveStringEqualityComparer.cs" />
+    <Compile Include="Util\Hashing.cs" />
+    <Compile Include="Util\UserClaimEqualityComparer.cs" />
     <Compile Include="Validation\ValidateBassStringNumberAttribute.cs" />
     <Compile Include="Validation\ValidateClassicalGuitarStringTypeAttribute.cs" />
     <Compile Include="Validation\ValidateSoundboxAttribute.cs" />
@@ -106,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712150853092_New.resx">
       <DependentUpon>201712150853092_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181728259_AddedUsers.resx">
+      <DependentUpon>201712181728259_AddedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
