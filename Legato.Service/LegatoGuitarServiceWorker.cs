@@ -1,4 +1,5 @@
 ﻿using Legato.ServiceDAL;
+using Legato.Service.Interfaces;
 using Legato.Service.ReturnTypes;
 using System.Collections.Generic;
 using Legato.ServiceDAL.Interfaces;
@@ -8,11 +9,11 @@ using Legato.MiddlewareContracts.DataContracts;
 
 namespace Legato.Service
 {
-    public class LegatoServiceWorker : ILegatoGuitarServiceWorker
+    public class LegatoGuitarServiceWorker : ILegatoGuitarServiceWorker
     {
         private IGuitarUnitOfWork _unitOfWork;
 
-        public LegatoServiceWorker(IGuitarUnitOfWork unitOfWork)
+        public LegatoGuitarServiceWorker(IGuitarUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
