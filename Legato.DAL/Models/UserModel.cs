@@ -18,6 +18,10 @@ namespace Legato.DAL.Models
         public string EncryptedPassword { get; set; }
 
         [Required]
-        public UserRole UserRole { get; set; }
+        public virtual UserRole UserRole { get; set; }
+
+        [Required]
+        [ForeignKey("UserRole")]
+        public int UserRoleId { get; set; }
     }
 }
