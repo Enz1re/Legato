@@ -25,5 +25,13 @@
         public static string AccessTokenIsMissing => "Access token is missing";
 
         public static string AccessTokenIsInvalid => "Access token is invalid";
+
+        public static string FailedToIssueToken => "Failed to issue access token. Please try again later";
+
+        public static string FailedToLogOff => "Failed to log off the user. Please try again later";
+
+        public static string AccessTokenIsAlreadyBanned => "Access token is already banned.";
+
+        public static string FailedToBlockUser(string username) => $@"Failed to ban access token for user '{username}'. Please try again later";
     }
 }
