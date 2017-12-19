@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Newtonsoft.Json;
 using Legato.Service.Filters;
+using Legato.Service.Interfaces;
 using Legato.ServiceDAL.ViewModels;
 using Legato.MiddlewareContracts.DataContracts;
 

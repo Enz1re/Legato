@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Web.Http;
 using System.Threading;
 using Legato.Service.Filters;
+using Legato.Service.Interfaces;
 using System.Collections.Generic;
 using Legato.ServiceDAL.ViewModels;
 
