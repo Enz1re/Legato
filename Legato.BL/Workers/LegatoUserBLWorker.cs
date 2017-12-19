@@ -38,6 +38,16 @@ namespace Legato.BL.Workers
             _userRepository.BanToken(token);
         }
 
+        public bool IsTokenValid(string token)
+        {
+            return _userRepository.IsTokenPresentInStorage(token);
+        }
+
+        public bool IsTokenBanned(string token)
+        {
+            return _userRepository.IsTokenBanned(token);
+        }
+
         public IEnumerable<string> GetUserClaims(string username)
         {
             return _userRepository.GetUserClaims(username).Select(c => c.ClaimName);
@@ -53,9 +63,17 @@ namespace Legato.BL.Workers
             return new LegatoUserBLWorker(_userRepository);
         }
 
+        public virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _userRepository.Dispose();
+            }
+        }
+
         public void Dispose()
         {
-            _userRepository.Dispose();
+            Dispose(true);
         }
     }
 }

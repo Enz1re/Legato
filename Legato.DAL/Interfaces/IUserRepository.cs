@@ -15,6 +15,10 @@ namespace Legato.DAL.Interfaces
 
         void BanToken(string token);
 
+        bool IsTokenPresentInStorage(string token);
+
+        bool IsTokenBanned(string token);
+
         IEnumerable<UserClaim> GetUserClaims(string username);
 
         void AddClaim(string username, UserClaim userClaim);

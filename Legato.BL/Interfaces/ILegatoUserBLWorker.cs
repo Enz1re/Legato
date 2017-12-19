@@ -14,6 +14,10 @@ namespace Legato.BL.Interfaces
 
         void BanToken(string token);
 
+        bool IsTokenValid(string token);
+
+        bool IsTokenBanned(string token);
+
         IEnumerable<string> GetUserClaims(string username);
 
         void AddClaim(string username, string userClaim);

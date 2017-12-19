@@ -123,6 +123,12 @@ namespace Legato.MiddlewareContracts
         void BanToken(string token);
 
         [OperationContract]
+        bool IsTokenValid(string token);
+
+        [OperationContract]
+        bool IsTokenBanned(string token);
+
+        [OperationContract]
         IEnumerable<string> GetUserClaims(string username);
 
         [OperationContract]

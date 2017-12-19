@@ -22,7 +22,15 @@ namespace Legato.DAL.Repositories
 
         public UserModel GetUser(string username, string password)
         {
-            return _context.Users.FirstOrDefault(u => u.Username == username && u.EncryptedPassword == Hashing.HashData(password));
+            try
+            {
+                var passwordHash = Hashing.HashData(password);
+                return _context.Users.FirstOrDefault(u => u.Username == username && u.EncryptedPassword == passwordHash);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         public void AddToken(string token, int expireMinutes)
@@ -51,13 +59,23 @@ namespace Legato.DAL.Repositories
             if (selectedToken != null)
             {
                 _context.TokenStorage.Remove(selectedToken);
-                _context.BannedTokens.Add(selectedToken);
+                _context.BannedTokens.Add(new BannedTokenModel { Token = selectedToken.Token });
                 _context.SaveChanges();
             }
             else
             {
                 throw new ArgumentException(Messages.NotFound($@"Token '{token}'"), nameof(token));
             }
+        }
+
+        public bool IsTokenPresentInStorage(string token)
+        {
+            return _context.TokenStorage.FirstOrDefault(t => t.Token == token) != null;
+        }
+
+        public bool IsTokenBanned(string token)
+        {
+            return _context.BannedTokens.FirstOrDefault(t => t.Token == token) != null;
         }
 
         public IEnumerable<UserClaim> GetUserClaims(string username)

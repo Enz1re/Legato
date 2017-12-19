@@ -278,50 +278,42 @@ namespace Legato.Middleware
 
         public bool FindUser(string username, string password)
         {
-            using (var worker = _blUserWorker.Get())
-            {
-                return worker.FindUser(username, password);
-            }
+            return _blUserWorker.FindUser(username, password);
         }
 
         public void AddTokenToStorage(string accessToken, int expireMinutes)
         {
-            using (var worker = _blUserWorker.Get())
-            {
-                worker.AddToken(accessToken, expireMinutes);
-            }
+            _blUserWorker.AddToken(accessToken, expireMinutes);
         }
 
         public void RemoveTokenFromStorage(string token)
         {
-            using (var worker = _blUserWorker.Get())
-            {
-                worker.RemoveToken(token);
-            }
+            _blUserWorker.RemoveToken(token);
         }
 
         public void BanToken(string token)
         {
-            using (var worker = _blUserWorker.Get())
-            {
-                worker.BanToken(token);
-            }
+            _blUserWorker.BanToken(token);
+        }
+
+        public bool IsTokenValid(string token)
+        {
+            return _blUserWorker.IsTokenValid(token);
+        }
+
+        public bool IsTokenBanned(string token)
+        {
+            return _blUserWorker.IsTokenBanned(token);
         }
 
         public IEnumerable<string> GetUserClaims(string username)
         {
-            using (var worker = _blUserWorker.Get())
-            {
-                return worker.GetUserClaims(username);
-            }
+            return _blUserWorker.GetUserClaims(username);
         }
 
         public void AddClaim(string username, string userClaim)
         {
-            using (var worker = _blUserWorker.Get())
-            {
-                worker.AddClaim(username, userClaim);
-            }
+            _blUserWorker.AddClaim(username, userClaim);
         }
 
         #endregion
