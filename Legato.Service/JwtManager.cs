@@ -19,12 +19,11 @@ namespace Legato.Service
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
-                        {
-                        new Claim(ClaimTypes.Name, username)
-                    }),
-
+                {
+                    new Claim(ClaimTypes.Name, username)
+                }),
+                IssuedAt = DateTime.Now,
                 Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
-
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256Signature)
             };
 
