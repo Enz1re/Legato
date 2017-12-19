@@ -207,6 +207,18 @@ namespace Legato.ServiceDAL.Middleware {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/BanToken", ReplyAction="http://tempuri.org/ILegatoMiddleware/BanTokenResponse")]
         System.Threading.Tasks.Task BanTokenAsync(string token);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/IsTokenValid", ReplyAction="http://tempuri.org/ILegatoMiddleware/IsTokenValidResponse")]
+        bool IsTokenValid(string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/IsTokenValid", ReplyAction="http://tempuri.org/ILegatoMiddleware/IsTokenValidResponse")]
+        System.Threading.Tasks.Task<bool> IsTokenValidAsync(string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/IsTokenBanned", ReplyAction="http://tempuri.org/ILegatoMiddleware/IsTokenBannedResponse")]
+        bool IsTokenBanned(string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/IsTokenBanned", ReplyAction="http://tempuri.org/ILegatoMiddleware/IsTokenBannedResponse")]
+        System.Threading.Tasks.Task<bool> IsTokenBannedAsync(string token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUserClaims", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUserClaimsResponse")]
         string[] GetUserClaims(string username);
         
@@ -501,6 +513,22 @@ namespace Legato.ServiceDAL.Middleware {
         
         public System.Threading.Tasks.Task BanTokenAsync(string token) {
             return base.Channel.BanTokenAsync(token);
+        }
+        
+        public bool IsTokenValid(string token) {
+            return base.Channel.IsTokenValid(token);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsTokenValidAsync(string token) {
+            return base.Channel.IsTokenValidAsync(token);
+        }
+        
+        public bool IsTokenBanned(string token) {
+            return base.Channel.IsTokenBanned(token);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsTokenBannedAsync(string token) {
+            return base.Channel.IsTokenBannedAsync(token);
         }
         
         public string[] GetUserClaims(string username) {
