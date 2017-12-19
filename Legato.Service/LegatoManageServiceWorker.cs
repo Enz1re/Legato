@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using Legato.ServiceDAL;
+using Legato.Service.Interfaces;
 using Legato.ServiceDAL.Interfaces;
 using Legato.ServiceDAL.ViewModels;
 using Legato.MiddlewareContracts.DataContracts;
