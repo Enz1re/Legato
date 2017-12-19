@@ -1,4 +1,8 @@
-﻿using System.Web.Http;
+﻿using System;
+using Ninject;
+using System.Web.Http;
+using Legato.Service.Constants;
+using Legato.Service.Interfaces;
 
 
 namespace Legato.Service.Controllers
@@ -6,7 +10,15 @@ namespace Legato.Service.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-        private const int TokenExpiryMinutes = 40;
+        // set default token expiry to one day
+        private const int TokenExpiryMinutes = 60 * 24;
+        private ILegatoUserServiceWorker _serviceWorker;
+
+        [Inject]
+        public AccountController(ILegatoUserServiceWorker serviceWorker)
+        {
+            _serviceWorker = serviceWorker;
+        }
 
         [HttpPost]
         [Route("Login")]
@@ -17,17 +29,62 @@ namespace Legato.Service.Controllers
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                return BadRequest(Constants.Strings.UsernameAndPasswordAreRequired);
+                return BadRequest(Strings.UsernameAndPasswordAreRequired);
             }
-            if (username.ToLower() != "admin" && password.ToLower() != "admin")
+            if (!_serviceWorker.FindUser(username, password))
             {
-                return BadRequest(Constants.Strings.UsernameIsIncorrect(username));
+                return BadRequest(Strings.UsernameIsIncorrect(username));
             }
 
-            return Ok(new
+            var accessToken = JwtManager.GenerateToken(username, TokenExpiryMinutes);
+
+            if (!_serviceWorker.AddToken(accessToken, TokenExpiryMinutes))
             {
-                accessToken = JwtManager.GenerateToken(username, TokenExpiryMinutes)
-            });
+                return InternalServerError(new Exception(Strings.FailedToIssueToken));
+            }
+
+            return Ok(new { accessToken = accessToken });
+        }
+
+        [HttpPost]
+        [Route("Logout")]
+        public IHttpActionResult LogOut([FromBody]dynamic requestBody)
+        {
+            var accessToken = requestBody.accessToken.Value;
+
+            if (string.IsNullOrEmpty(accessToken))
+            {
+                return BadRequest(Strings.AccessTokenIsMissing);
+            }
+            if (!_serviceWorker.IsTokenActive(accessToken) || !_serviceWorker.RemoveToken(accessToken))
+            {
+                return InternalServerError(new Exception(Strings.FailedToLogOff));
+            }
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("Block")]
+        public IHttpActionResult BlockUser([FromBody]dynamic requestBody)
+        {
+            var username = requestBody.username.Value;
+            var accessToken = requestBody.accessToken.Value;
+
+            if (string.IsNullOrEmpty(accessToken))
+            {
+                return BadRequest(Strings.AccessTokenIsMissing);
+            }
+            if (_serviceWorker.IsTokenBanned(accessToken))
+            {
+                return BadRequest(Strings.AccessTokenIsAlreadyBanned);
+            }
+            if (!_serviceWorker.BanToken(accessToken))
+            {
+                return InternalServerError(new Exception(Strings.FailedToBlockUser(username)));
+            }
+
+            return Ok();
         }
     }
 }
