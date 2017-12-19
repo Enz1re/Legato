@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using Legato.ServiceDAL;
+using Legato.Service.Interfaces;
 using Legato.ServiceDAL.Interfaces;
 
 
@@ -11,8 +12,9 @@ namespace Legato.Service
         {
             LegatoServiceDALDI.Register(kernel);
             kernel.Bind<IGuitarUnitOfWork>().To<GuitarUnitOfWork>();
-            kernel.Bind<ILegatoGuitarServiceWorker>().To<LegatoServiceWorker>();
+            kernel.Bind<ILegatoGuitarServiceWorker>().To<LegatoGuitarServiceWorker>();
             kernel.Bind<ILegatoManageServiceWorker>().To<LegatoManageServiceWorker>();
+            kernel.Bind<ILegatoUserServiceWorker>().To<LegatoUserServiceWorker>();
         }
     }
 }
