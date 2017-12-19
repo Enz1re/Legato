@@ -17,9 +17,9 @@
             <p>
                 <button ng-click="loginModalCtrl.onOkButtonPressed()" ng-disabled="!loginModalCtrl.user.username || !loginModalCtrl.user.password" class="btn btn-primary">Sign in</button>
             </p>
-            <span ng-if="loginModalCtrl.messaging.loading">
-                <img style="width:32px;height:32px;" src="../../../../Content/icons/loading.gif">
-            </span>
+            <p class="login-loading">
+                <img ng-if="loginModalCtrl.messaging.loading" src="../../../../Content/icons/loading.gif">
+            </p>
         </form>
     </div>
 </div>
