@@ -8,6 +8,15 @@ namespace Legato.DAL.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Vendors",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+
+            CreateTable(
                 "dbo.Bass",
                 c => new
                     {
@@ -23,15 +32,6 @@ namespace Legato.DAL.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Vendors", t => t.Vendor_Id, cascadeDelete: true)
                 .Index(t => t.Vendor_Id);
-            
-            CreateTable(
-                "dbo.Vendors",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AcousticClassic",
@@ -84,7 +84,6 @@ namespace Legato.DAL.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Vendors", t => t.Vendor_Id, cascadeDelete: true)
                 .Index(t => t.Vendor_Id);
-            
         }
         
         public override void Down()
