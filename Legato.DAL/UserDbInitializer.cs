@@ -28,8 +28,10 @@ namespace Legato.DAL
             context.UserRoles.Add(admin);
             context.UserRoles.Add(superuser);
 
-            context.Users.Add(new UserModel { Username = "admin", EncryptedPassword = Hashing.HashData("admin"), UserRole = admin });
-            context.Users.Add(new UserModel { Username = "superuser", EncryptedPassword = Hashing.HashData("superuser"), UserRole = superuser });
+            var adminPassword = Hashing.HashData("admin");
+            var superuserPassword = Hashing.HashData("superuser");
+            context.Users.Add(new UserModel { Username = "admin", EncryptedPassword = adminPassword, UserRole = admin });
+            context.Users.Add(new UserModel { Username = "superuser", EncryptedPassword = superuserPassword, UserRole = superuser });
         }
     }
 }
