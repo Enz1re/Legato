@@ -16,7 +16,7 @@ namespace Legato.DAL.Interfaces
 
         DbSet<TokenModel> TokenStorage { get; set; }
 
-        DbSet<TokenModel> BannedTokens { get; set; }
+        DbSet<BannedTokenModel> BannedTokens { get; set; }
 
         int SaveChanges();
 

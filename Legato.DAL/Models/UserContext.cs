@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using Legato.DAL.Interfaces;
 
 
@@ -18,16 +19,21 @@ namespace Legato.DAL.Models
 
         public DbSet<TokenModel> TokenStorage { get; set; }
 
-        public DbSet<TokenModel> BannedTokens { get; set; }
+        public DbSet<BannedTokenModel> BannedTokens { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TokenModel>()
-                .Map(m => m.ToTable("TokenStorage"))
-                .Map(m => m.ToTable("BannedTokens"));
+            modelBuilder.Entity<UserRole>()
+                .HasMany(role => role.UserClaims)
+                .WithMany(claim => claim.UserRoles)
+                .Map(u =>
+                    {
+                        u.MapLeftKey("UserRoleRefId");
+                        u.MapRightKey("UserClaimsRefId");
+                        u.ToTable("UserRoles");
+                    });
 
             Database.SetInitializer(new UserDbInitializer());
-
             base.OnModelCreating(modelBuilder);
         }
     }
