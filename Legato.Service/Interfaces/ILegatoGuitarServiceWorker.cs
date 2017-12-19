@@ -2,7 +2,7 @@
 using Legato.ServiceDAL.ViewModels;
 
 
-namespace Legato.Service
+namespace Legato.Service.Interfaces
 {
     public interface ILegatoGuitarServiceWorker
     {
