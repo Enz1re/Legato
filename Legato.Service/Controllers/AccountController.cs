@@ -50,6 +50,7 @@ namespace Legato.Service.Controllers
         [Route("Logout")]
         public IHttpActionResult LogOut([FromBody]dynamic requestBody)
         {
+            var username = requestBody.username.Value;
             var accessToken = requestBody.accessToken.Value;
 
             if (string.IsNullOrEmpty(accessToken))
@@ -71,9 +72,17 @@ namespace Legato.Service.Controllers
             var username = requestBody.username.Value;
             var accessToken = requestBody.accessToken.Value;
 
-            if (string.IsNullOrEmpty(accessToken))
+            if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(username))
             {
                 return BadRequest(Strings.AccessTokenIsMissing);
+            }
+            if (!_serviceWorker.FindUser(username))
+            {
+                return BadRequest(Strings.UsernameIsIncorrect(username));
+            }
+            if (_serviceWorker.IsTokenActive(accessToken))
+            {
+                return BadRequest(Strings.AccessTokenIsInvalid);
             }
             if (_serviceWorker.IsTokenBanned(accessToken))
             {
