@@ -78,11 +78,6 @@ namespace Legato.BL.Workers
             _repoProvider.BassGuitarRepository.Delete(id);
         }
 
-        public ILegatoManageBLWorker Get()
-        {
-            return new LegatoManageBLWorker(_repoProvider);
-        }
-
         public virtual void Dispose(bool disposing)
         {
             if (disposing)

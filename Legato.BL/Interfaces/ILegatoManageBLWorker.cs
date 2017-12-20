@@ -29,7 +29,5 @@ namespace Legato.BL.Interfaces
         void EditBassGuitar(BassGuitarDataModel guitar);
 
         void RemoveBassGuitar(int id);
-
-        ILegatoManageBLWorker Get();
     }
 }

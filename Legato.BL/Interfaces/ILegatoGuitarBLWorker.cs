@@ -46,7 +46,5 @@ namespace Legato.BL.Interfaces
         IEnumerable<VendorDataModel> GetBassGuitarVendors();
 
         int GetBassGuitarAmount(FilterDataModel filter);
-
-        ILegatoGuitarBLWorker Get();
     }
 }

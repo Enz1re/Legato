@@ -243,11 +243,6 @@ namespace Legato.BL.Workers
 
             return guitars.Count();
         }
-
-        public ILegatoGuitarBLWorker Get()
-        {
-            return new LegatoGuitarBLWorker(_repoProvider);
-        }
         
         private bool PriceFilterExists(PriceFilterDataModel filter)
         {
