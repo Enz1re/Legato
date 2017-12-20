@@ -112,6 +112,7 @@
       <DependentUpon>LegatoMiddleware.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TokerMonitorWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Legato.BL\Legato.BL.csproj">
