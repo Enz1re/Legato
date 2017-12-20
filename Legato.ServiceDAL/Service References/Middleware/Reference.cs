@@ -183,6 +183,12 @@ namespace Legato.ServiceDAL.Middleware {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarQuantityResponse")]
         System.Threading.Tasks.Task<int> GetBassGuitarQuantityAsync(Legato.MiddlewareContracts.DataContracts.FilterDataModel filter);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/FindUserByUsername", ReplyAction="http://tempuri.org/ILegatoMiddleware/FindUserByUsernameResponse")]
+        bool FindUserByUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/FindUserByUsername", ReplyAction="http://tempuri.org/ILegatoMiddleware/FindUserByUsernameResponse")]
+        System.Threading.Tasks.Task<bool> FindUserByUsernameAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/FindUser", ReplyAction="http://tempuri.org/ILegatoMiddleware/FindUserResponse")]
         bool FindUser(string username, string password);
         
@@ -218,6 +224,12 @@ namespace Legato.ServiceDAL.Middleware {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/IsTokenBanned", ReplyAction="http://tempuri.org/ILegatoMiddleware/IsTokenBannedResponse")]
         System.Threading.Tasks.Task<bool> IsTokenBannedAsync(string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/RemoveExpiredTokens", ReplyAction="http://tempuri.org/ILegatoMiddleware/RemoveExpiredTokensResponse")]
+        void RemoveExpiredTokens();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/RemoveExpiredTokens", ReplyAction="http://tempuri.org/ILegatoMiddleware/RemoveExpiredTokensResponse")]
+        System.Threading.Tasks.Task RemoveExpiredTokensAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUserClaims", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUserClaimsResponse")]
         string[] GetUserClaims(string username);
@@ -483,6 +495,14 @@ namespace Legato.ServiceDAL.Middleware {
             return base.Channel.GetBassGuitarQuantityAsync(filter);
         }
         
+        public bool FindUserByUsername(string username) {
+            return base.Channel.FindUserByUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> FindUserByUsernameAsync(string username) {
+            return base.Channel.FindUserByUsernameAsync(username);
+        }
+        
         public bool FindUser(string username, string password) {
             return base.Channel.FindUser(username, password);
         }
@@ -529,6 +549,14 @@ namespace Legato.ServiceDAL.Middleware {
         
         public System.Threading.Tasks.Task<bool> IsTokenBannedAsync(string token) {
             return base.Channel.IsTokenBannedAsync(token);
+        }
+        
+        public void RemoveExpiredTokens() {
+            base.Channel.RemoveExpiredTokens();
+        }
+        
+        public System.Threading.Tasks.Task RemoveExpiredTokensAsync() {
+            return base.Channel.RemoveExpiredTokensAsync();
         }
         
         public string[] GetUserClaims(string username) {

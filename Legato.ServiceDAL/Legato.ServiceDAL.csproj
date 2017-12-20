@@ -53,10 +53,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="LegatoServiceDALDI.cs" />
     <Compile Include="GuitarUnitOfWork.cs" />
     <Compile Include="Interfaces\IGuitarRepository.cs" />
     <Compile Include="Interfaces\IGuitarUnitOfWork.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Service References\Middleware\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
