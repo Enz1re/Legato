@@ -6,6 +6,10 @@ namespace Legato.DAL.Models
 {
     public class GuitarContext : DbContext, IGuitarContext
     {
+        public GuitarContext() : base(Constants.Constants.DefaultConnectionStringName)
+        {
+        }
+
         public GuitarContext(string connectionString) : base(connectionString)
         {
         }
