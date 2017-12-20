@@ -18,6 +18,11 @@ namespace Legato.BL.Workers
             _userRepository = userRepo;
         }
 
+        public bool FindUser(string username)
+        {
+            return _userRepository.GetUser(username) != null;
+        }
+
         public bool FindUser(string username, string password)
         {
             return _userRepository.GetUser(username, password) != null;
@@ -40,12 +45,17 @@ namespace Legato.BL.Workers
 
         public bool IsTokenValid(string token)
         {
-            return _userRepository.IsTokenPresentInStorage(token);
+            return _userRepository.IsTokenValid(token);
         }
 
         public bool IsTokenBanned(string token)
         {
             return _userRepository.IsTokenBanned(token);
+        }
+
+        public void RemoveExpiredTokens()
+        {
+            _userRepository.RemoveExpiredTokens();
         }
 
         public IEnumerable<string> GetUserClaims(string username)
@@ -56,11 +66,6 @@ namespace Legato.BL.Workers
         public void AddClaim(string username, string userClaim)
         {
             _userRepository.AddClaim(username, new UserClaim { ClaimName = userClaim });
-        }
-
-        public ILegatoUserBLWorker Get()
-        {
-            return new LegatoUserBLWorker(_userRepository);
         }
 
         public virtual void Dispose(bool disposing)

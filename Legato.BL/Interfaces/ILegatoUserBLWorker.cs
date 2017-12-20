@@ -6,6 +6,8 @@ namespace Legato.BL.Interfaces
 {
     public interface ILegatoUserBLWorker : IDisposable
     {
+        bool FindUser(string username);
+
         bool FindUser(string username, string password);
 
         void AddToken(string token, int expireMinutes);
@@ -18,10 +20,10 @@ namespace Legato.BL.Interfaces
 
         bool IsTokenBanned(string token);
 
+        void RemoveExpiredTokens();
+
         IEnumerable<string> GetUserClaims(string username);
 
         void AddClaim(string username, string userClaim);
-
-        ILegatoUserBLWorker Get();
     }
 }
