@@ -3,11 +3,11 @@ namespace Legato.DAL.Migrations
     using Models;
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<GuitarContext>
+    internal sealed class GuitarConfiguration : DbMigrationsConfiguration<GuitarContext>
     {
-        public Configuration()
+        public GuitarConfiguration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(GuitarContext context)
