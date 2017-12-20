@@ -1,7 +1,15 @@
-﻿namespace Legato.DAL.Constants
+﻿using System;
+
+
+namespace Legato.DAL.Constants
 {
     static class Constants
     {
+        internal const string AddGuitarClaim = "AddGuitar";
+        internal const string RemoveGuitarClaim = "RemoveGuitar";
+        internal const string EditGuitarClaim = "EditGuitar";
+        internal const string ChangeDisplayAmounClaim = "ChangeDisplayAmount";
+
         internal static string[] SoundboxNames => new[] { "Single", "Humbucker" };
 
         internal static byte[] StringNumbers => new byte[] { 6, 7, 8, 10, 12 };
@@ -11,5 +19,7 @@
         internal static string[] ClassicalGuitarStringTypes => new[] { "Nylon", "Fluorocarbon" };
 
         internal static string DefaultConnectionStringName => "DumbshitConnection";
+
+        internal static DateTime Now() => DateTime.UtcNow;
     }
 }

@@ -2,6 +2,11 @@
 {
     public static class Strings
     {
+        internal const string AddGuitarClaim = "AddGuitar";
+        internal const string RemoveGuitarClaim = "RemoveGuitar";
+        internal const string EditGuitarClaim = "EditGuitar";
+        internal const string ChangeDisplayAmounClaim = "ChangeDisplayAmount";
+
         public static string LowerBoundMustBePresent => "Lower bound must be present.";
 
         public static string UpperBoundMustBePresent => "Upper bound must be present.";
@@ -31,6 +36,8 @@
         public static string FailedToLogOff => "Failed to log off the user. Please try again later";
 
         public static string AccessTokenIsAlreadyBanned => "Access token is already banned.";
+
+        public static string Unauthorized => "You have not enought rights to perform this action";
 
         public static string FailedToBlockUser(string username) => $@"Failed to ban access token for user '{username}'. Please try again later";
     }
