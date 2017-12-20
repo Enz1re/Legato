@@ -16,6 +16,11 @@ namespace Legato.ServiceDAL.Repositories
             _client = client;
         }
 
+        public bool FindUser(string username)
+        {
+            return _client.FindUserByUsername(username);
+        }
+
         public bool FindUser(string username, string password)
         {
             return _client.FindUser(username, password);

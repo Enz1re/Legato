@@ -5,6 +5,8 @@ namespace Legato.ServiceDAL.Interfaces
 {
     public interface IUserRepository
     {
+        bool FindUser(string username);
+
         bool FindUser(string username, string password);
 
         void AddTokenToStorage(string token, int expireMinutes);

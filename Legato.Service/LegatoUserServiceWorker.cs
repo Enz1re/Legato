@@ -17,6 +17,11 @@ namespace Legato.Service
             _userRepository = userRepo;
         }
 
+        public bool FindUser(string username)
+        {
+            return _userRepository.FindUser(username);
+        }
+
         public bool FindUser(string username, string password)
         {
             return _userRepository.FindUser(username, password);
