@@ -5,6 +5,8 @@ namespace Legato.Service.Interfaces
 {
     public interface ILegatoUserServiceWorker
     {
+        bool FindUser(string username);
+
         bool FindUser(string username, string password);
 
         bool AddToken(string token, int expireMinutes);
