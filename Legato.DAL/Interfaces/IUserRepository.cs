@@ -7,6 +7,8 @@ namespace Legato.DAL.Interfaces
 {
     public interface IUserRepository : IDisposable
     {
+        UserModel GetUser(string username);
+
         UserModel GetUser(string username, string password);
 
         void AddToken(string token, int expireMinutes);
@@ -15,9 +17,11 @@ namespace Legato.DAL.Interfaces
 
         void BanToken(string token);
 
-        bool IsTokenPresentInStorage(string token);
+        bool IsTokenValid(string token);
 
         bool IsTokenBanned(string token);
+
+        void RemoveExpiredTokens();
 
         IEnumerable<UserClaim> GetUserClaims(string username);
 
