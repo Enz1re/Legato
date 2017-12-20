@@ -111,6 +111,9 @@ namespace Legato.MiddlewareContracts
         #region User
 
         [OperationContract]
+        bool FindUserByUsername(string username);
+
+        [OperationContract]
         bool FindUser(string username, string password);
 
         [OperationContract]
@@ -127,6 +130,9 @@ namespace Legato.MiddlewareContracts
 
         [OperationContract]
         bool IsTokenBanned(string token);
+
+        [OperationContract]
+        void RemoveExpiredTokens();
 
         [OperationContract]
         IEnumerable<string> GetUserClaims(string username);
