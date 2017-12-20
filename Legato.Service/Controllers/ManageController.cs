@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Web.Http;
 using System.Threading;
 using Legato.Service.Filters;
+using Legato.Service.Constants;
 using Legato.Service.Interfaces;
 using System.Collections.Generic;
 using Legato.ServiceDAL.ViewModels;
@@ -23,7 +24,8 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
-        [JwtAuth]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.AddGuitarClaim)]
         [HttpPost]
         [Route("{type}/Add")]
         public IHttpActionResult Add([FromBody] dynamic guitarParam, string type)
@@ -47,11 +49,12 @@ namespace Legato.Service.Controllers
             }
             else
             {
-                return BadRequest(Constants.Strings.GuitarIsInvalid);
+                return BadRequest(Strings.GuitarIsInvalid);
             }
         }
 
-        [JwtAuth]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.EditGuitarClaim)]
         [HttpPost]
         [Route("{type}/Edit")]
         public IHttpActionResult Edit([FromBody] dynamic guitarParam, string type)
@@ -75,11 +78,12 @@ namespace Legato.Service.Controllers
             }
             else
             {
-                return BadRequest(Constants.Strings.GuitarIsInvalid);
+                return BadRequest(Strings.GuitarIsInvalid);
             }
         }
 
-        [JwtAuth]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.RemoveGuitarClaim)]
         [Route("{type}/{id}")]
         public IHttpActionResult Delete(string type, int id)
         {
@@ -113,7 +117,8 @@ namespace Legato.Service.Controllers
             }
         }
 
-        [JwtAuth]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.ChangeDisplayAmounClaim)]
         [HttpPost]
         [Route("Display/{amount}")]
         public IHttpActionResult PostDisplayAmount(int amount)
