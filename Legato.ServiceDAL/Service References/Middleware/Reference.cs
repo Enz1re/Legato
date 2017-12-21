@@ -231,6 +231,12 @@ namespace Legato.ServiceDAL.Middleware {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/RemoveExpiredTokens", ReplyAction="http://tempuri.org/ILegatoMiddleware/RemoveExpiredTokensResponse")]
         System.Threading.Tasks.Task RemoveExpiredTokensAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUserRole", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUserRoleResponse")]
+        string GetUserRole(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUserRole", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUserRoleResponse")]
+        System.Threading.Tasks.Task<string> GetUserRoleAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUserClaims", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUserClaimsResponse")]
         string[] GetUserClaims(string username);
         
@@ -557,6 +563,14 @@ namespace Legato.ServiceDAL.Middleware {
         
         public System.Threading.Tasks.Task RemoveExpiredTokensAsync() {
             return base.Channel.RemoveExpiredTokensAsync();
+        }
+        
+        public string GetUserRole(string username) {
+            return base.Channel.GetUserRole(username);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetUserRoleAsync(string username) {
+            return base.Channel.GetUserRoleAsync(username);
         }
         
         public string[] GetUserClaims(string username) {
