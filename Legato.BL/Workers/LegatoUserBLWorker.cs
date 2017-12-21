@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using System;
+using Ninject;
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.BL.Interfaces;
@@ -45,7 +46,7 @@ namespace Legato.BL.Workers
 
         public bool IsTokenValid(string token)
         {
-            return _userRepository.IsTokenValid(token);
+            return !IsTokenBanned(token);
         }
 
         public bool IsTokenBanned(string token)
@@ -58,9 +59,30 @@ namespace Legato.BL.Workers
             _userRepository.RemoveExpiredTokens();
         }
 
+        public string GetUserRole(string username)
+        {
+            var user = _userRepository.GetUser(username);
+            if (user != null)
+            {
+                return user.UserRole.RoleName;
+            }
+            else
+            {
+                throw new ArgumentException(DAL.Constants.Messages.NotFound($@"User '{username}'"), nameof(username));
+            }
+        }
+
         public IEnumerable<string> GetUserClaims(string username)
         {
-            return _userRepository.GetUserClaims(username).Select(c => c.ClaimName);
+            var user = _userRepository.GetUser(username);
+            if (user != null)
+            {
+                return user.UserRole.UserClaims.Select(claim => claim.ClaimName);
+            }
+            else
+            {
+                throw new ArgumentException(DAL.Constants.Messages.NotFound($@"User '{username}'"), nameof(username));
+            }
         }
 
         public void AddClaim(string username, string userClaim)

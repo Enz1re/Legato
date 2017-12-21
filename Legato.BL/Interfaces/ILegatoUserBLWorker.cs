@@ -22,6 +22,8 @@ namespace Legato.BL.Interfaces
 
         void RemoveExpiredTokens();
 
+        string GetUserRole(string username);
+
         IEnumerable<string> GetUserClaims(string username);
 
         void AddClaim(string username, string userClaim);
