@@ -51,6 +51,11 @@ namespace Legato.ServiceDAL.Repositories
             return _client.IsTokenBanned(token);
         }
 
+        public string GetUserRole(string username)
+        {
+            return _client.GetUserRole(username);
+        }
+
         public IEnumerable<string> GetUserClaims(string username)
         {
             return _client.GetUserClaims(username);

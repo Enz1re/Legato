@@ -236,6 +236,11 @@ namespace Legato.Middleware
             }
         }
 
+        public string GetUserRole(string username)
+        {
+            return _blUserWorker.GetUserRole(username);
+        }
+
         public IEnumerable<string> GetUserClaims(string username)
         {
             return _blUserWorker.GetUserClaims(username);

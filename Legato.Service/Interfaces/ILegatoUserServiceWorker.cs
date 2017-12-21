@@ -19,6 +19,8 @@ namespace Legato.Service.Interfaces
 
         bool IsTokenBanned(string token);
 
+        string GetUserRole(string username);
+
         ClaimList GetClaims(string username);
 
         bool AddClaim(string username, string claimName);

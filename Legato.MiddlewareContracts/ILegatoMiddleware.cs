@@ -135,6 +135,9 @@ namespace Legato.MiddlewareContracts
         void RemoveExpiredTokens();
 
         [OperationContract]
+        string GetUserRole(string username);
+
+        [OperationContract]
         IEnumerable<string> GetUserClaims(string username);
 
         [OperationContract]
