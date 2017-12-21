@@ -1,6 +1,7 @@
 ﻿using System;
 using Ninject;
 using System.Web.Http;
+using Legato.Service.Filters;
 using Legato.Service.Constants;
 using Legato.Service.Interfaces;
 
@@ -36,7 +37,9 @@ namespace Legato.Service.Controllers
                 return BadRequest(Strings.UsernameIsIncorrect(username));
             }
 
-            var accessToken = JwtManager.GenerateToken(username, TokenExpiryMinutes);
+            var userClaims = _serviceWorker.GetClaims(username);
+            var userRole = _serviceWorker.GetUserRole(username);
+            var accessToken = JwtManager.GenerateToken(username, userRole, userClaims.UserClaims, TokenExpiryMinutes);
 
             if (!_serviceWorker.AddToken(accessToken, TokenExpiryMinutes))
             {
@@ -51,7 +54,7 @@ namespace Legato.Service.Controllers
         public IHttpActionResult LogOut([FromBody]dynamic requestBody)
         {
             var username = requestBody.username.Value;
-            var accessToken = requestBody.accessToken.Value;
+            var accessToken = Request.Headers.Authorization?.Parameter;
 
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -67,20 +70,18 @@ namespace Legato.Service.Controllers
 
         [HttpPost]
         [Route("Block")]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.BlockUserClaim)]
         public IHttpActionResult BlockUser([FromBody]dynamic requestBody)
         {
             var username = requestBody.username.Value;
-            var accessToken = requestBody.accessToken.Value;
+            var accessToken = Request.Headers.Authorization?.Parameter;
 
             if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(username))
             {
                 return BadRequest(Strings.AccessTokenIsMissing);
             }
-            if (!_serviceWorker.FindUser(username))
-            {
-                return BadRequest(Strings.UsernameIsIncorrect(username));
-            }
-            if (_serviceWorker.IsTokenActive(accessToken))
+            if (!_serviceWorker.IsTokenActive(accessToken))
             {
                 return BadRequest(Strings.AccessTokenIsInvalid);
             }
@@ -94,6 +95,15 @@ namespace Legato.Service.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("Users")]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.GetListOfUsers)]
+        public IHttpActionResult GetUsers()
+        {
+
         }
     }
 }
