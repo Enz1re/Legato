@@ -5,7 +5,6 @@ using Legato.DAL.Util;
 using Legato.DAL.Models;
 using Legato.DAL.Constants;
 using Legato.DAL.Interfaces;
-using System.Collections.Generic;
 
 
 namespace Legato.DAL.Repositories
@@ -33,6 +32,7 @@ namespace Legato.DAL.Repositories
 
         public void AddToken(string token, int expireMinutes)
         {
+            var s = token.Length;
             _context.TokenStorage.Add(new TokenModel { Token = token, Expiry = Constants.Constants.Now().AddMinutes(expireMinutes) });
             _context.SaveChanges();
         }
@@ -65,13 +65,7 @@ namespace Legato.DAL.Repositories
                 throw new ArgumentException(Messages.NotFound($@"Token '{token}'"), nameof(token));
             }
         }
-
-        public bool IsTokenValid(string token)
-        {
-            var selectedToken = _context.TokenStorage.FirstOrDefault(t => t.Token == token);
-            return selectedToken != null && IsExpired(selectedToken);
-        }
-
+        
         public bool IsTokenBanned(string token)
         {
             return _context.BannedTokens.FirstOrDefault(t => t.Token == token) != null;
@@ -81,24 +75,13 @@ namespace Legato.DAL.Repositories
         {
             foreach (var token in _context.TokenStorage)
             {
-                if (IsExpired(token))
+                if (token.Expiry > Constants.Constants.Now())
                 {
                     RemoveToken(token.Token);
                 }
             }
-        }
 
-        public IEnumerable<UserClaim> GetUserClaims(string username)
-        {
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
-            if (user != null)
-            {
-                return user.UserRole.UserClaims;
-            }
-            else
-            {
-                throw new ArgumentException(Messages.NotFound($@"User '{username}'"), nameof(username));
-            }
+            _context.SaveChanges();
         }
         
         public void AddClaim(string username, UserClaim userClaim)
@@ -116,11 +99,6 @@ namespace Legato.DAL.Repositories
             {
                 throw new ArgumentException(Messages.NotFound($@"User '{username}'"), nameof(username));
             }
-        }
-
-        private bool IsExpired(TokenModel token)
-        {
-            return token.Expiry < Constants.Constants.Now();
         }
 
         public void Dispose()

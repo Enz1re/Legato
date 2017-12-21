@@ -16,14 +16,10 @@ namespace Legato.DAL.Interfaces
         void RemoveToken(string token);
 
         void BanToken(string token);
-
-        bool IsTokenValid(string token);
-
+        
         bool IsTokenBanned(string token);
 
         void RemoveExpiredTokens();
-
-        IEnumerable<UserClaim> GetUserClaims(string username);
 
         void AddClaim(string username, UserClaim userClaim);
     }
