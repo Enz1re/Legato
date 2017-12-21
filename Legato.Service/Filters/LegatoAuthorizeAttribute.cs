@@ -1,7 +1,6 @@
 ﻿using System;
 using Ninject;
 using System.Net;
-using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,24 +35,18 @@ namespace Legato.Service.Filters
             {
                 return Task.FromResult(actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, Strings.AccessTokenIsMissing));
             }
-            if (!ServiceWorker.IsTokenActive(accessToken))
+
+            var principal = JwtManager.GetPrincipal(accessToken);
+            if (principal == null || !ServiceWorker.IsTokenActive(accessToken))
             {
                 return Task.FromResult(actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, Strings.AccessTokenIsInvalid));
             }
-
-            var principal = JwtManager.GetPrincipal(accessToken);
-
-            if (!UserHasClaim(principal.Identity.Name))
+            if (!principal.HasClaim(Strings.ClaimType, _currentClaim))
             {
                 return Task.FromResult(actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, Strings.Unauthorized));
             }
-
+            
             return continuation();
-        }
-
-        private bool UserHasClaim(string username)
-        {
-            return ServiceWorker.GetClaims(username).UserClaims.Contains(_currentClaim);
         }
     }
 }
