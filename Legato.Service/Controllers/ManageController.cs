@@ -24,10 +24,10 @@ namespace Legato.Service.Controllers
             _serviceWorker = serviceWorker;
         }
 
-        [LegatoAuthentication]
-        [LegatoAuthorize(Strings.AddGuitarClaim)]
         [HttpPost]
         [Route("{type}/Add")]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.AddGuitarClaim)]
         public IHttpActionResult Add([FromBody] dynamic guitarParam, string type)
         {
             // Capitalize type to be able to parse its enumeration value
@@ -53,10 +53,10 @@ namespace Legato.Service.Controllers
             }
         }
 
-        [LegatoAuthentication]
-        [LegatoAuthorize(Strings.EditGuitarClaim)]
         [HttpPost]
         [Route("{type}/Edit")]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.EditGuitarClaim)]
         public IHttpActionResult Edit([FromBody] dynamic guitarParam, string type)
         {
             // Capitalize type to be able to parse its enumeration value
@@ -82,9 +82,9 @@ namespace Legato.Service.Controllers
             }
         }
 
+        [Route("{type}/{id}")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.RemoveGuitarClaim)]
-        [Route("{type}/{id}")]
         public IHttpActionResult Delete(string type, int id)
         {
             // Capitalize type to be able to parse its enumeration value
@@ -117,11 +117,11 @@ namespace Legato.Service.Controllers
             }
         }
 
-        [LegatoAuthentication]
-        [LegatoAuthorize(Strings.ChangeDisplayAmounClaim)]
         [HttpPost]
         [Route("Display/{amount}")]
-        public IHttpActionResult PostDisplayAmount(int amount)
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.ChangeDisplayAmounClaim)]
+        public IHttpActionResult ChangeDisplayAmount(int amount)
         {
             try
             {
