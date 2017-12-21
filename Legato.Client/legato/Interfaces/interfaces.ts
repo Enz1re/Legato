@@ -14,6 +14,8 @@ import { IPagingService } from "./src/IPagingService";
 import { IUpdateService } from "./src/IUpdateService";
 import { IModalService } from "./src/IModalService";
 import { ICacheService } from "./src/ICacheService";
+import { IUserResource } from "./src/IUserResource";
+import { IUserService } from "./src/IUserService";
 import { IService } from "./src/IService";
 import { IBase64 } from "./src/IBase64";
 
@@ -35,6 +37,8 @@ export {
     IPagingService,
     ICacheService,
     IModalService,
+    IUserResource,
+    IUserService,
     IService,
     IBase64
 };
