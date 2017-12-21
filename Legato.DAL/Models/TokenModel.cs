@@ -9,7 +9,7 @@ namespace Legato.DAL.Models
     public class TokenModel
     {
         [Key]
-        [StringLength(180)]
+        [StringLength(400)]
         public string Token { get; set; }
 
         [Required]
