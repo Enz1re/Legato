@@ -20,10 +20,27 @@ namespace Legato.Service.Filters
 
         public Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
         {
+            if (context.ActionContext.Request.Headers.Authorization?.Scheme != "Bearer")
+            {
+                context.ErrorResult = new AuthenticationFailureResult(Strings.AuthSchemeIsInvalid, context.ActionContext.Request);
+                return Task.FromResult(0);
+            }
+
             var token = context.ActionContext.Request.Headers.Authorization?.Parameter;
             if (string.IsNullOrEmpty(token))
             {
                 context.ErrorResult = new AuthenticationFailureResult(Strings.AccessTokenIsMissing, context.ActionContext.Request);
+                return Task.FromResult(0);
+            }
+            if (!ServiceWorker.IsTokenBanned(token))
+            {
+                // TODO: Add compromised token to the CompromizedAttempts table
+                context.ErrorResult = new AuthenticationFailureResult(Strings.AccessTokenIsBanned, context.ActionContext.Request);
+                return Task.FromResult(0);
+            }
+            if (!ServiceWorker.IsTokenActive(token))
+            {
+                context.ErrorResult = new AuthenticationFailureResult(Strings.AccessTokenIsInvalid, context.ActionContext.Request);
                 return Task.FromResult(0);
             }
 
