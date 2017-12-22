@@ -25,7 +25,7 @@ export class LegatoContextMenuDirective implements ng.IDirective {
 
         angular.forEach(openMenuEvents, (openMenuEvent) => {
             element.on(openMenuEvent.trim(), e => {
-                const shouldDisplay = $scope.$eval(attrs.contextMenuIf);
+                const shouldDisplay = $scope.$eval(attrs.contextMenuIf || "true");
                 if (!shouldDisplay) {
                     return false;
                 }
