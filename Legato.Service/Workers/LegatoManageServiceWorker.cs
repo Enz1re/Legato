@@ -6,7 +6,7 @@ using Legato.ServiceDAL.ViewModels;
 using Legato.MiddlewareContracts.DataContracts;
 
 
-namespace Legato.Service
+namespace Legato.Service.Workers
 {
     public class LegatoManageServiceWorker : ILegatoManageServiceWorker
     {

@@ -1,11 +1,14 @@
 ﻿using System;
 using Ninject;
+using Legato.ServiceDAL;
 using Legato.Service.Interfaces;
+using System.Collections.Generic;
 using Legato.Service.ReturnTypes;
 using Legato.ServiceDAL.Interfaces;
+using Legato.ServiceDAL.ViewModels;
 
 
-namespace Legato.Service
+namespace Legato.Service.Workers
 {
     public class LegatoUserServiceWorker : ILegatoUserServiceWorker
     {
@@ -15,6 +18,14 @@ namespace Legato.Service
         public LegatoUserServiceWorker(IUserRepository userRepo)
         {
             _userRepository = userRepo;
+        }
+
+        public UserList GetUsers()
+        {
+            return new UserList
+            {
+                Users = ServiceMappings.Map<List<UserViewModel>>(_userRepository.GetUsers())
+            };
         }
 
         public bool FindUser(string username)
@@ -27,11 +38,11 @@ namespace Legato.Service
             return _userRepository.FindUser(username, password);
         }
 
-        public bool AddToken(string token, int expireMinutes)
+        public bool AddToken(string token, string username, int expireMinutes)
         {
             try
             {
-                _userRepository.AddTokenToStorage(token, expireMinutes);
+                _userRepository.AddTokenToStorage(token, username, expireMinutes);
                 return true;
             }
             catch (Exception e)
@@ -53,11 +64,11 @@ namespace Legato.Service
             }
         }
 
-        public bool BanToken(string token)
+        public bool BanUser(string username)
         {
             try
             {
-                _userRepository.BanUsedToken(token);
+                _userRepository.BanUserSession(username);
                 return true;
             }
             catch (Exception e)
@@ -74,6 +85,11 @@ namespace Legato.Service
         public bool IsTokenBanned(string token)
         {
             return _userRepository.IsTokenBanned(token);
+        }
+
+        public string GetUserRole(string username)
+        {
+            return _userRepository.GetUserRole(username);
         }
 
         public ClaimList GetClaims(string username)
