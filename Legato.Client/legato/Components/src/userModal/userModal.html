@@ -1,0 +1,32 @@
+﻿<div>
+    <div class="modal-header">Users</div>
+    <div class="modal-body legato-modal-body-user-table">
+        <div>
+            <table class="user-table">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th></th>
+                        <th ng-if="user.isAuthenticated"></th>
+                    </tr>
+                    <tr ng-repeat="user in userModalCtrl.users" context-menu="userModalCtrl.contextMenu.userOptions" model="user">
+                        <td>{{user.name}}</td>
+                        <td>{{user.role}}</td>
+                        <td>
+                            <div>
+                                <img ng-if="user.isAuthenticated" class="user-table-icon-sm" title="Authenticated" src="../../../../Content/icons/greenlight.png" />
+                                <img ng-if="!user.isAuthenticated" class="user-table-icon-sm" title="Not authenticated" src="../../../../Content/icons/redlight.png" />
+                            </div>
+                        </td>
+                        <td ng-if="user.isAuthenticated">
+                            <a href="" ng-click="userModalCtrl.blockUserSession()">
+                                <img class="user-table-icon" title="Block user session" src="../../../../Content/icons/block.png" />
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
