@@ -19,7 +19,9 @@ import VendorService from "./src/VendorService";
 import UpdateService from "./src/UpdateService";
 import CacheService from "./src/CacheService";
 import ModalService from "./src/ModalService";
-import Base64 from "./src/Base64";
+import UserResource from "./src/UserResource";
+import UserService from "./src/UserService";
+import SHA1 from "./src/SHA1";
 
 const servicesModuleName = "legato.services";
 
@@ -38,11 +40,13 @@ angular.module(servicesModuleName, [])
     .service("PagingService", PagingService)
     .service("ModalService", ModalService)
     .service("AuthenticationService", AuthenticationService)
-    .service("Base64", Base64)
     .service("ManageService", ManageService)
     .service("ContextMenuService", ContextMenuService)
     .service("FileUploadService", FileUploadService)
-    .service("GuitarDataService", GuitarDataService);
+    .service("GuitarDataService", GuitarDataService)
+    .service("UserResource", UserResource)
+    .service("UserService", UserService)
+    .service("SHA1", SHA1);
 
 export {
     ClassicalGuitarService,
@@ -62,7 +66,7 @@ export {
     VendorService,
     CacheService,
     ModalService,
-    Base64
+    SHA1
 };
 
 export default servicesModuleName;

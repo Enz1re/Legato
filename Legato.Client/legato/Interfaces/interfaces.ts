@@ -17,7 +17,7 @@ import { ICacheService } from "./src/ICacheService";
 import { IUserResource } from "./src/IUserResource";
 import { IUserService } from "./src/IUserService";
 import { IService } from "./src/IService";
-import { IBase64 } from "./src/IBase64";
+import { ISHA1 } from "./src/ISHA1";
 
 
 export {
@@ -40,5 +40,5 @@ export {
     IUserResource,
     IUserService,
     IService,
-    IBase64
+    ISHA1
 };
