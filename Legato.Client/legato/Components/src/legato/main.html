@@ -5,7 +5,7 @@
             <div class="site-name-signature">Easy-going guitar catalog</div>
         </div>
         <div class="logging-info" ng-if="mainCtrl.globals.currentUser">
-            You logged in as admin. <a href="" ng-click="mainCtrl.logOut()">Log off</a>
+            You logged in as {{mainCtrl.globals.currentUser.username}}. <a href="" ng-click="mainCtrl.logOut()">Log off</a>
         </div>
         <div class="site-icon-container">
             <a href="" ng-click="mainCtrl.logIn()">
