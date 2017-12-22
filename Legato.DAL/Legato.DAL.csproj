@@ -76,16 +76,17 @@
     <Compile Include="Migrations\201712150853092_New.Designer.cs">
       <DependentUpon>201712150853092_New.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712181728259_AddedUsers.cs" />
-    <Compile Include="Migrations\201712181728259_AddedUsers.Designer.cs">
-      <DependentUpon>201712181728259_AddedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\201712201216231_AddedUsers.cs" />
+    <Compile Include="Migrations\201712201216231_AddedUsers.Designer.cs">
+      <DependentUpon>201712201216231_AddedUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\GuitarConfiguration.cs" />
+    <Compile Include="Migrations\UserConfiguration.cs" />
     <Compile Include="Models\AcousticClassicalGuitarModel.cs" />
     <Compile Include="Models\AcousticWesternGuitarModel.cs" />
+    <Compile Include="Models\BannedTokenModel.cs" />
     <Compile Include="Models\BassGuitarModel.cs" />
     <Compile Include="Models\ElectricGuitarModel.cs" />
-    <Compile Include="Models\GuitarContextFactory.cs" />
     <Compile Include="Models\GuitarModel.cs" />
     <Compile Include="Models\GuitarContext.cs" />
     <Compile Include="Models\TokenModel.cs" />
@@ -121,8 +122,8 @@
     <EmbeddedResource Include="Migrations\201712150853092_New.resx">
       <DependentUpon>201712150853092_New.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181728259_AddedUsers.resx">
-      <DependentUpon>201712181728259_AddedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712201216231_AddedUsers.resx">
+      <DependentUpon>201712201216231_AddedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

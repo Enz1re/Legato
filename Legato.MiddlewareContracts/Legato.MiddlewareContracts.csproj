@@ -54,6 +54,7 @@
     <Compile Include="DataContracts\GuitarDataModel.cs" />
     <Compile Include="DataContracts\PriceFilterDataModel.cs" />
     <Compile Include="DataContracts\SortingDataModel.cs" />
+    <Compile Include="DataContracts\UserDataModel.cs" />
     <Compile Include="DataContracts\VendorDataModel.cs" />
     <Compile Include="DataContracts\VendorFilterDataModel.cs" />
     <Compile Include="ILegatoMiddleware.cs" />

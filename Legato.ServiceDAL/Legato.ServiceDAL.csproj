@@ -90,6 +90,7 @@
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.ElectroGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.GuitarDataModel.datasource" />
+    <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.UserDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.VendorDataModel.datasource" />
     <None Include="Service References\Middleware\Arrays.xsd">
       <SubType>Designer</SubType>
