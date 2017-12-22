@@ -18,6 +18,9 @@ namespace Legato.DAL.Models
         public string EncryptedPassword { get; set; }
 
         [Required]
+        public bool IsAuthenticated { get; set; }
+
+        [Required]
         public virtual UserRole UserRole { get; set; }
 
         [Required]

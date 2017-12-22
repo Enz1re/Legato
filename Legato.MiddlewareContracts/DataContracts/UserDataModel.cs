@@ -4,7 +4,7 @@
 namespace Legato.MiddlewareContracts.DataContracts
 {
     [DataContract]
-    class UserDataModel
+    public class UserDataModel
     {
         [DataMember]
         public int Id { get; set; }
@@ -14,6 +14,9 @@ namespace Legato.MiddlewareContracts.DataContracts
 
         [DataMember]
         public string EncryptedPassword { get; set; }
+
+        [DataMember]
+        public bool IsAuthenticated { get; set; }
 
         [DataMember]
         public string UserRole { get; set; }

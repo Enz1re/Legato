@@ -1,13 +1,13 @@
 ﻿namespace Legato.ServiceDAL.ViewModels
 {
-    class UserViewModel
+    public class UserViewModel
     {
         public int Id { get; set; }
 
-        public string Username { get; set; }
+        public string Name { get; set; }
 
-        public string EncryptedPassword { get; set; }
+        public bool IsAuthenticated { get; set; }
 
-        public string UserRole { get; set; }
+        public string Role { get; set; }
     }
 }
