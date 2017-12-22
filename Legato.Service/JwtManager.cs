@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Claims;
 using Legato.Service.Constants;
+using System.Collections.Generic;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -12,7 +13,7 @@ namespace Legato.Service
     {
         private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
 
-        public static string GenerateToken(string username, string userRole, string[] userClaims, int expireMinutes)
+        public static string GenerateToken(string username, string userRole, IEnumerable<string> userClaims, int expireMinutes)
         {
             var symmetricKey = Convert.FromBase64String(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
