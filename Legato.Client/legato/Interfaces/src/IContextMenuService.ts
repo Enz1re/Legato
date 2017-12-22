@@ -4,5 +4,6 @@
 }
 
 export interface IContextMenuService {
-    menuOptions: ContextMenuItem[];
+    guitarOptions: ContextMenuItem[];
+    userOptions: ContextMenuItem[];
 }
