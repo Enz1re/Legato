@@ -193,6 +193,11 @@ namespace Legato.Middleware
 
         #region User
 
+        public IEnumerable<UserDataModel> GetUsers()
+        {
+            return _blUserWorker.GetUsers();
+        }
+
         public bool FindUserByUsername(string username)
         {
             return _blUserWorker.FindUser(username);
@@ -203,9 +208,9 @@ namespace Legato.Middleware
             return _blUserWorker.FindUser(username, password);
         }
 
-        public void AddTokenToStorage(string accessToken, int expireMinutes)
+        public void AddTokenToStorage(string accessToken, string username, int expireMinutes)
         {
-            _blUserWorker.AddToken(accessToken, expireMinutes);
+            _blUserWorker.AddToken(accessToken, username, expireMinutes);
         }
 
         public void RemoveTokenFromStorage(string token)
@@ -213,9 +218,9 @@ namespace Legato.Middleware
             _blUserWorker.RemoveToken(token);
         }
 
-        public void BanToken(string token)
+        public void BanUser(string username)
         {
-            _blUserWorker.BanToken(token);
+            _blUserWorker.BanUser(username);
         }
 
         public bool IsTokenValid(string token)

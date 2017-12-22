@@ -111,19 +111,22 @@ namespace Legato.MiddlewareContracts
         #region User
 
         [OperationContract]
+        IEnumerable<UserDataModel> GetUsers();
+
+        [OperationContract]
         bool FindUserByUsername(string username);
 
         [OperationContract]
         bool FindUser(string username, string password);
 
         [OperationContract]
-        void AddTokenToStorage(string accessToken, int expireMinutes);
+        void AddTokenToStorage(string accessToken, string username, int expireMinutes);
 
         [OperationContract]
         void RemoveTokenFromStorage(string token);
 
         [OperationContract]
-        void BanToken(string token);
+        void BanUser(string username);
 
         [OperationContract]
         bool IsTokenValid(string token);

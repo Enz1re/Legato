@@ -1,19 +1,22 @@
 ﻿using System.Collections.Generic;
+using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.ServiceDAL.Interfaces
 {
     public interface IUserRepository
     {
+        IEnumerable<UserDataModel> GetUsers();
+
         bool FindUser(string username);
 
         bool FindUser(string username, string password);
 
-        void AddTokenToStorage(string token, int expireMinutes);
+        void AddTokenToStorage(string token, string username, int expireMinutes);
 
         void RemoveTokenFromStorage(string token);
 
-        void BanUsedToken(string token);
+        void BanUserSession(string token);
 
         bool IsTokenAvailable(string token);
 

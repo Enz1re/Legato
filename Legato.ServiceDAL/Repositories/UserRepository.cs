@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Legato.ServiceDAL.Interfaces;
 using Legato.ServiceDAL.Middleware;
+using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.ServiceDAL.Repositories
@@ -16,6 +17,11 @@ namespace Legato.ServiceDAL.Repositories
             _client = client;
         }
 
+        public IEnumerable<UserDataModel> GetUsers()
+        {
+            return _client.GetUsers();
+        }
+
         public bool FindUser(string username)
         {
             return _client.FindUserByUsername(username);
@@ -26,9 +32,9 @@ namespace Legato.ServiceDAL.Repositories
             return _client.FindUser(username, password);
         }
 
-        public void AddTokenToStorage(string token, int expireMinutes)
+        public void AddTokenToStorage(string token, string username, int expireMinutes)
         {
-            _client.AddTokenToStorage(token, expireMinutes);
+            _client.AddTokenToStorage(token, username, expireMinutes);
         }
 
         public void RemoveTokenFromStorage(string token)
@@ -36,9 +42,9 @@ namespace Legato.ServiceDAL.Repositories
             _client.RemoveTokenFromStorage(token);
         }
 
-        public void BanUsedToken(string token)
+        public void BanUserSession(string token)
         {
-            _client.BanToken(token);
+            _client.BanUser(token);
         }
 
         public bool IsTokenAvailable(string token)

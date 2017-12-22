@@ -5,6 +5,8 @@ using Legato.DAL.Models;
 using Legato.BL.Interfaces;
 using Legato.DAL.Interfaces;
 using System.Collections.Generic;
+using Legato.MiddlewareContracts;
+using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.BL.Workers
@@ -18,6 +20,11 @@ namespace Legato.BL.Workers
         {
             _userRepository = userRepo;
         }
+        
+        public IEnumerable<UserDataModel> GetUsers()
+        {
+            return MiddlewareMappings.Map<List<UserDataModel>>(_userRepository.GetUsers().Where(u => u.UserRole.RoleName.ToLower() != "superuser"));
+        }
 
         public bool FindUser(string username)
         {
@@ -29,9 +36,9 @@ namespace Legato.BL.Workers
             return _userRepository.GetUser(username, password) != null;
         }
 
-        public void AddToken(string token, int expireMinutes)
+        public void AddToken(string token, string issuedTo, int expireMinutes)
         {
-            _userRepository.AddToken(token, expireMinutes);
+            _userRepository.AddToken(token, issuedTo, expireMinutes);
         }
 
         public void RemoveToken(string token)
@@ -39,14 +46,14 @@ namespace Legato.BL.Workers
             _userRepository.RemoveToken(token);
         }
 
-        public void BanToken(string token)
+        public void BanUser(string token)
         {
-            _userRepository.BanToken(token);
+            _userRepository.BanUser(token);
         }
 
         public bool IsTokenValid(string token)
         {
-            return !IsTokenBanned(token);
+            return _userRepository.IsTokenValid(token);
         }
 
         public bool IsTokenBanned(string token)
