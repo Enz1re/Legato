@@ -183,6 +183,12 @@ namespace Legato.ServiceDAL.Middleware {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetBassGuitarQuantity", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetBassGuitarQuantityResponse")]
         System.Threading.Tasks.Task<int> GetBassGuitarQuantityAsync(Legato.MiddlewareContracts.DataContracts.FilterDataModel filter);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUsers", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUsersResponse")]
+        Legato.MiddlewareContracts.DataContracts.UserDataModel[] GetUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUsers", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUsersResponse")]
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.UserDataModel[]> GetUsersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/FindUserByUsername", ReplyAction="http://tempuri.org/ILegatoMiddleware/FindUserByUsernameResponse")]
         bool FindUserByUsername(string username);
         
@@ -196,10 +202,10 @@ namespace Legato.ServiceDAL.Middleware {
         System.Threading.Tasks.Task<bool> FindUserAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/AddTokenToStorage", ReplyAction="http://tempuri.org/ILegatoMiddleware/AddTokenToStorageResponse")]
-        void AddTokenToStorage(string accessToken, int expireMinutes);
+        void AddTokenToStorage(string accessToken, string username, int expireMinutes);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/AddTokenToStorage", ReplyAction="http://tempuri.org/ILegatoMiddleware/AddTokenToStorageResponse")]
-        System.Threading.Tasks.Task AddTokenToStorageAsync(string accessToken, int expireMinutes);
+        System.Threading.Tasks.Task AddTokenToStorageAsync(string accessToken, string username, int expireMinutes);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/RemoveTokenFromStorage", ReplyAction="http://tempuri.org/ILegatoMiddleware/RemoveTokenFromStorageResponse")]
         void RemoveTokenFromStorage(string token);
@@ -207,11 +213,11 @@ namespace Legato.ServiceDAL.Middleware {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/RemoveTokenFromStorage", ReplyAction="http://tempuri.org/ILegatoMiddleware/RemoveTokenFromStorageResponse")]
         System.Threading.Tasks.Task RemoveTokenFromStorageAsync(string token);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/BanToken", ReplyAction="http://tempuri.org/ILegatoMiddleware/BanTokenResponse")]
-        void BanToken(string token);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/BanUser", ReplyAction="http://tempuri.org/ILegatoMiddleware/BanUserResponse")]
+        void BanUser(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/BanToken", ReplyAction="http://tempuri.org/ILegatoMiddleware/BanTokenResponse")]
-        System.Threading.Tasks.Task BanTokenAsync(string token);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/BanUser", ReplyAction="http://tempuri.org/ILegatoMiddleware/BanUserResponse")]
+        System.Threading.Tasks.Task BanUserAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/IsTokenValid", ReplyAction="http://tempuri.org/ILegatoMiddleware/IsTokenValidResponse")]
         bool IsTokenValid(string token);
@@ -501,6 +507,14 @@ namespace Legato.ServiceDAL.Middleware {
             return base.Channel.GetBassGuitarQuantityAsync(filter);
         }
         
+        public Legato.MiddlewareContracts.DataContracts.UserDataModel[] GetUsers() {
+            return base.Channel.GetUsers();
+        }
+        
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.UserDataModel[]> GetUsersAsync() {
+            return base.Channel.GetUsersAsync();
+        }
+        
         public bool FindUserByUsername(string username) {
             return base.Channel.FindUserByUsername(username);
         }
@@ -517,12 +531,12 @@ namespace Legato.ServiceDAL.Middleware {
             return base.Channel.FindUserAsync(username, password);
         }
         
-        public void AddTokenToStorage(string accessToken, int expireMinutes) {
-            base.Channel.AddTokenToStorage(accessToken, expireMinutes);
+        public void AddTokenToStorage(string accessToken, string username, int expireMinutes) {
+            base.Channel.AddTokenToStorage(accessToken, username, expireMinutes);
         }
         
-        public System.Threading.Tasks.Task AddTokenToStorageAsync(string accessToken, int expireMinutes) {
-            return base.Channel.AddTokenToStorageAsync(accessToken, expireMinutes);
+        public System.Threading.Tasks.Task AddTokenToStorageAsync(string accessToken, string username, int expireMinutes) {
+            return base.Channel.AddTokenToStorageAsync(accessToken, username, expireMinutes);
         }
         
         public void RemoveTokenFromStorage(string token) {
@@ -533,12 +547,12 @@ namespace Legato.ServiceDAL.Middleware {
             return base.Channel.RemoveTokenFromStorageAsync(token);
         }
         
-        public void BanToken(string token) {
-            base.Channel.BanToken(token);
+        public void BanUser(string username) {
+            base.Channel.BanUser(username);
         }
         
-        public System.Threading.Tasks.Task BanTokenAsync(string token) {
-            return base.Channel.BanTokenAsync(token);
+        public System.Threading.Tasks.Task BanUserAsync(string username) {
+            return base.Channel.BanUserAsync(username);
         }
         
         public bool IsTokenValid(string token) {

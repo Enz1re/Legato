@@ -136,4 +136,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfBassGuitarDataModel" nillable="true" type="tns:ArrayOfBassGuitarDataModel" />
+  <xs:complexType name="ArrayOfUserDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDataModel" nillable="true" type="tns:UserDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDataModel" nillable="true" type="tns:ArrayOfUserDataModel" />
+  <xs:complexType name="UserDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EncryptedPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsAuthenticated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserRole" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDataModel" nillable="true" type="tns:UserDataModel" />
 </xs:schema>

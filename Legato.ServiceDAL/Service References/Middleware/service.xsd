@@ -382,6 +382,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetUsersResult" nillable="true" type="q37:ArrayOfUserDataModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="FindUserByUsername">
     <xs:complexType>
       <xs:sequence>
@@ -415,6 +427,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="accessToken" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="expireMinutes" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -436,14 +449,14 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="BanToken">
+  <xs:element name="BanUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BanTokenResponse">
+  <xs:element name="BanUserResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -510,7 +523,7 @@
   <xs:element name="GetUserClaimsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetUserClaimsResult" nillable="true" type="q37:ArrayOfstring" />
+        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetUserClaimsResult" nillable="true" type="q38:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
