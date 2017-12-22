@@ -13,6 +13,9 @@ namespace Legato.DAL.Models
         public string Token { get; set; }
 
         [Required]
+        public string IssuedTo { get; set; }
+
+        [Required]
         public DateTime Expiry { get; set; }
     }
 }
