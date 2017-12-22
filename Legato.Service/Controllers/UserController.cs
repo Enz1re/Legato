@@ -8,17 +8,26 @@ using Legato.Service.Interfaces;
 
 namespace Legato.Service.Controllers
 {
-    [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    [RoutePrefix("api/User")]
+    public class UserController : ApiController
     {
         // set default token expiry to one day
         private const int TokenExpiryMinutes = 60 * 24;
         private ILegatoUserServiceWorker _serviceWorker;
 
         [Inject]
-        public AccountController(ILegatoUserServiceWorker serviceWorker)
+        public UserController(ILegatoUserServiceWorker serviceWorker)
         {
             _serviceWorker = serviceWorker;
+        }
+
+        [HttpGet]
+        [Route("GetAll")]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.GetListOfUsers)]
+        public IHttpActionResult GetUsers()
+        {
+            return Ok(_serviceWorker.GetUsers());
         }
 
         [HttpPost]
@@ -26,8 +35,8 @@ namespace Legato.Service.Controllers
         public IHttpActionResult Login([FromBody]dynamic creds)
         {
             var username = creds.username.Value;
-            var password = creds.password.Value;
-
+            var password = creds.encryptedPassword.Value;
+            
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 return BadRequest(Strings.UsernameAndPasswordAreRequired);
@@ -37,11 +46,11 @@ namespace Legato.Service.Controllers
                 return BadRequest(Strings.UsernameIsIncorrect(username));
             }
 
-            var userClaims = _serviceWorker.GetClaims(username);
+            var userClaims = _serviceWorker.GetClaims(username).UserClaims;
             var userRole = _serviceWorker.GetUserRole(username);
-            var accessToken = JwtManager.GenerateToken(username, userRole, userClaims.UserClaims, TokenExpiryMinutes);
+            var accessToken = JwtManager.GenerateToken(username, userRole, userClaims, TokenExpiryMinutes);
 
-            if (!_serviceWorker.AddToken(accessToken, TokenExpiryMinutes))
+            if (!_serviceWorker.AddToken(accessToken, username, TokenExpiryMinutes))
             {
                 return InternalServerError(new Exception(Strings.FailedToIssueToken));
             }
@@ -75,35 +84,17 @@ namespace Legato.Service.Controllers
         public IHttpActionResult BlockUser([FromBody]dynamic requestBody)
         {
             var username = requestBody.username.Value;
-            var accessToken = Request.Headers.Authorization?.Parameter;
-
-            if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(username))
+            if (string.IsNullOrEmpty(username))
             {
                 return BadRequest(Strings.AccessTokenIsMissing);
             }
-            if (!_serviceWorker.IsTokenActive(accessToken))
-            {
-                return BadRequest(Strings.AccessTokenIsInvalid);
-            }
-            if (_serviceWorker.IsTokenBanned(accessToken))
-            {
-                return BadRequest(Strings.AccessTokenIsAlreadyBanned);
-            }
-            if (!_serviceWorker.BanToken(accessToken))
+
+            if (!_serviceWorker.BanUser(username))
             {
                 return InternalServerError(new Exception(Strings.FailedToBlockUser(username)));
             }
 
             return Ok();
-        }
-
-        [HttpGet]
-        [Route("Users")]
-        [LegatoAuthentication]
-        [LegatoAuthorize(Strings.GetListOfUsers)]
-        public IHttpActionResult GetUsers()
-        {
-
         }
     }
 }
