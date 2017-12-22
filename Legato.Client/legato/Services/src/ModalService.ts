@@ -1,4 +1,6 @@
-﻿import { IModalService } from "../../Interfaces/interfaces";
+﻿import { UserViewModel } from "../../Models/models";
+
+import { IModalService } from "../../Interfaces/interfaces";
 
 
 export default class ModalService implements IModalService {
@@ -40,15 +42,17 @@ export default class ModalService implements IModalService {
         });
     }
 
-    openGuitarDeleteDialog(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance {
+    openYesNoDialog(text: string): ng.ui.bootstrap.IModalServiceInstance {
         return this.$uibModal.open({
             animation: true,
             size: "sm",
-            controller: "GuitarDeleteModalController",
-            controllerAs: "guitarDeleteModalCtrl",
-            templateUrl: "legato/Components/src/guitarModal/guitarDeleteModal.html",
+            controller: "YesNoModalController",
+            controllerAs: "yesNoModalCtrl",
+            templateUrl: "legato/Components/src/guitarModal/yesNoDialog.html",
             bindToController: true,
-            resolve: resolve
+            resolve: {
+                text: () => text
+            }
         });
     }
 
@@ -73,6 +77,19 @@ export default class ModalService implements IModalService {
             resolve: {
                 modalContent: () => text,
                 mode: () => mode
+            }
+        });
+    }
+
+    openUserModal(users: UserViewModel[] | ng.IPromise<UserViewModel[]>): ng.ui.bootstrap.IModalServiceInstance {
+        return this.$uibModal.open({
+            animation: true,
+            controller: "UserModalController",
+            controllerAs: "userModalCtrl",
+            templateUrl: "legato/Components/src/userModal/userModal.html",
+            bindToController: true,
+            resolve: {
+                users: users
             }
         });
     }

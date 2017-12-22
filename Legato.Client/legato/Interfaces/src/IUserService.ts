@@ -1,6 +1,7 @@
-﻿import { User } from "../../Models/models";
+﻿import { UserViewModel } from "../../Models/models";
 
 
 export interface IUserService {
-    getUsers(): ng.IPromise<User[]>;
+    getUsers(): ng.IPromise<UserViewModel[]>;
+    blockUser(username: string): ng.IPromise<any>;
 }

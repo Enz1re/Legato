@@ -1,6 +1,7 @@
-﻿import { User } from "../../Models/models";
+﻿import { UserViewModel } from "../../Models/models";
 
 
 export interface IUserResource {
-    getAll(): ng.IPromise<User[]>;
+    getAll(): ng.IPromise<UserViewModel[]>;
+    blockUserSession(username: string): ng.IPromise<any>;
 }
