@@ -16,6 +16,48 @@ body {
     font-size: 20px !important;
 }
 
+table, td, th {
+    border: 1px solid black;
+}
+
+th, td {
+    text-align: center !important;
+    word-wrap: break-word;
+}
+
+td div {
+    line-height: 1.5em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+tbody td {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+thead tr:hover {
+    cursor: default !important;
+}
+
+tbody tr:hover {
+    cursor: pointer !important;
+}
+
+tbody tr:hover {
+    background-color: #cde1f7;
+}
+
+th {
+    text-align: center;
+    background-color: #e0e1e0;
+}
+
+th div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 label {
     font-family: inherit !important;
     font-weight: inherit !important;
@@ -226,8 +268,8 @@ div.messaging {
 }
 
 .site-icon-container:hover {
-    transform: scale(1.1);
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 .site-icon {
@@ -379,8 +421,14 @@ div.messaging {
     padding-bottom: 10px;
 }
 
-.legato-modal-body {
+.legato-modal-body,
+.legato-modal-body-user-table {
     background-color: aliceblue;
+}
+
+.legato-modal-body-user-table {
+    height: 20em;
+    overflow: scroll;
 }
 
 /* Login form styles */
@@ -481,7 +529,7 @@ div.messaging {
 
 .admin-panel {
     height: 3em;
-    width: 6.5em;
+    width: 10em;
     display: flex;
     margin-top: 1em;
     margin-left: 4em;
@@ -516,4 +564,20 @@ img.admin-panel-item-img {
     float: none;
     position: relative;
     top: 4px;
+}
+
+.user-table {
+    width: 100%;
+    border: 1px solid;
+}
+
+.user-table-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.user-table-icon-sm {
+    width: 16px;
+    height: 16px;
+    vertical-align: baseline !important;
 }
