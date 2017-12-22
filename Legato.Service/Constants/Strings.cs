@@ -2,10 +2,13 @@
 {
     public static class Strings
     {
+        internal const string ClaimType = "LegatoClaim";
         internal const string AddGuitarClaim = "AddGuitar";
         internal const string RemoveGuitarClaim = "RemoveGuitar";
         internal const string EditGuitarClaim = "EditGuitar";
         internal const string ChangeDisplayAmounClaim = "ChangeDisplayAmount";
+        internal const string BlockUserClaim = "BlockUser";
+        internal const string GetListOfUsers = "GetListOfUsers";
 
         public static string LowerBoundMustBePresent => "Lower bound must be present.";
 
@@ -31,13 +34,17 @@
 
         public static string AccessTokenIsInvalid => "Access token is invalid";
 
+        public static string AuthSchemeIsInvalid => "Invalid authentication scheme is used. Use 'Bearer' scheme";
+
+        public static string AccessTokenIsBanned => "This access token is compromised. Please contact your system administrator or re-login";
+
         public static string FailedToIssueToken => "Failed to issue access token. Please try again later";
 
         public static string FailedToLogOff => "Failed to log off the user. Please try again later";
 
-        public static string AccessTokenIsAlreadyBanned => "Access token is already banned.";
+        public static string UserSessionIsAlreadyBanned => "User session is already banned.";
 
-        public static string Unauthorized => "You have not enought rights to perform this action";
+        public static string Unauthorized => "You are not authorized to perform this action";
 
         public static string FailedToBlockUser(string username) => $@"Failed to ban access token for user '{username}'. Please try again later";
     }
