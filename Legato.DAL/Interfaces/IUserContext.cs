@@ -2,6 +2,7 @@
 using Legato.DAL.Models;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using System.Data.Entity.Infrastructure;
 
 
 namespace Legato.DAL.Interfaces
@@ -21,5 +22,9 @@ namespace Legato.DAL.Interfaces
         int SaveChanges();
 
         Task<int> SaveChangesAsync();
+
+        DbEntityEntry Entry(object entity);
+
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
     }
 }
