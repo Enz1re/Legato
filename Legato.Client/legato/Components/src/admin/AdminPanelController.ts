@@ -1,6 +1,7 @@
-﻿import { Guitar } from "../../../Models/models";
+﻿import { Guitar, User } from "../../../Models/models";
 
 import {
+    IUserService,
     IModalService,
     IManageService,
     IPagingService,
@@ -10,10 +11,10 @@ import {
 
 
 export class AdminPanelController {
-    static $inject = ["ManageService", "ModalService", "PagingService", "UpdateService", "RoutingService"];
+    static $inject = ["ManageService", "ModalService", "PagingService", "UpdateService", "RoutingService", "UserService"];
 
     constructor(private manageService: IManageService, private modalService: IModalService, private pagingService: IPagingService,
-                private updateService: IUpdateService, private routingService: IRoutingService) {
+                private updateService: IUpdateService, private routingService: IRoutingService, private userService: IUserService) {
 
     }
 
@@ -37,7 +38,13 @@ export class AdminPanelController {
                 this.updateService.updateCurrentPage();
             }).catch(() => {
                 this.modalService.openAlertModal("Failed to change display amount", "danger").result.catch(() => { });
-            })
+            });
+        }).catch(() => { });
+    }
+
+    listUsers() {
+        this.modalService.openUserModal(this.userService.getUsers()).result.then(() => {
+
         }).catch(() => { });
     }
 }
