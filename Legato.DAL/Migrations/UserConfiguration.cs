@@ -20,15 +20,19 @@ namespace Legato.DAL.Migrations
             var removeGuitar = new UserClaim { ClaimName = "RemoveGuitar" };
             var editGuitar = new UserClaim { ClaimName = "EditGuitar" };
             var changeDisplayAmount = new UserClaim { ClaimName = "ChangeDisplayAmount" };
+            var blockUser = new UserClaim { ClaimName = "BlockUser" };
+            var getListOfUsers = new UserClaim { ClaimName = "GetListOfUsers" };
 
             var user = new UserRole { RoleName = "User", UserClaims = new List<UserClaim>() };
-            var admin = new UserRole { RoleName = "Admin", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar } };
-            var superuser = new UserRole { RoleName = "Superuser", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar, changeDisplayAmount } };
+            var admin = new UserRole { RoleName = "Admin", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar, blockUser } };
+            var superuser = new UserRole { RoleName = "Superuser", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar, blockUser, changeDisplayAmount, getListOfUsers } };
 
             context.UserClaims.Add(addGuitar);
             context.UserClaims.Add(removeGuitar);
             context.UserClaims.Add(editGuitar);
             context.UserClaims.Add(changeDisplayAmount);
+            context.UserClaims.Add(blockUser);
+            context.UserClaims.Add(getListOfUsers);
 
             context.UserRoles.Add(user);
             context.UserRoles.Add(admin);
@@ -36,8 +40,8 @@ namespace Legato.DAL.Migrations
 
             var adminPassword = Hashing.HashData("admin");
             var superuserPassword = Hashing.HashData("superuser");
-            context.Users.Add(new UserModel { Username = "admin", EncryptedPassword = adminPassword, UserRole = admin });
-            context.Users.Add(new UserModel { Username = "superuser", EncryptedPassword = superuserPassword, UserRole = superuser });
+            context.Users.Add(new UserModel { Username = "admin", EncryptedPassword = adminPassword, IsAuthenticated = false, UserRole = admin });
+            context.Users.Add(new UserModel { Username = "superuser", EncryptedPassword = superuserPassword, IsAuthenticated = false, UserRole = superuser });
         }
     }
 }
