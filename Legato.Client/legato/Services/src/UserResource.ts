@@ -1,4 +1,8 @@
-﻿import { UserList, UserViewModel } from "../../Models/models";
+﻿import {
+    UserList,
+    UserViewModel,
+    CompromisedAttemptList
+} from "../../Models/models";
 
 import { IUserResource } from "../../Interfaces/interfaces";
 
@@ -17,6 +21,16 @@ export default class UserResource implements IUserResource {
 
     blockUserSession(username: string): ng.IPromise<any> {
         return this.$http.post(`http://localhost/api/User/Block`, { username: username })
+            .then((response: ng.IHttpResponse<any>) => response.data);
+    }
+
+    getCompromisedAttempts(): ng.IPromise<CompromisedAttemptList> {
+        return this.$http.get("http://localhost/api/User/CompromisedAttempts")
+            .then((response: ng.IHttpResponse<CompromisedAttemptList>) => response.data);
+    }
+
+    removeCompromisedAttempts(compromisedAttempts: number[]): ng.IPromise<any> {
+        return this.$http.post(`http://localhost/api/User/CompromisedAttemts`, { compromisedAttempts: compromisedAttempts })
             .then((response: ng.IHttpResponse<any>) => response.data);
     }
 }

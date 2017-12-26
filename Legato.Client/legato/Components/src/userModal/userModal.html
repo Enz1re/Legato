@@ -15,13 +15,13 @@
                         <td>{{user.role}}</td>
                         <td>
                             <div>
-                                <img ng-if="user.isAuthenticated" class="user-table-icon-sm" title="Authenticated" src="../../../../Content/icons/greenlight.png" />
-                                <img ng-if="!user.isAuthenticated" class="user-table-icon-sm" title="Not authenticated" src="../../../../Content/icons/redlight.png" />
+                                <img ng-if="user.isAuthenticated" class="icon-sm" title="Authenticated" src="../../../../Content/icons/greenlight.png" />
+                                <img ng-if="!user.isAuthenticated" class="icon-sm" title="Not authenticated" src="../../../../Content/icons/redlight.png" />
                             </div>
                         </td>
                         <td ng-if="user.isAuthenticated">
                             <a href="" ng-click="userModalCtrl.blockUserSession()">
-                                <img class="user-table-icon" title="Block user session" src="../../../../Content/icons/block.png" />
+                                <img class="icon" title="Block user session" src="../../../../Content/icons/block.png" />
                             </a>
                         </td>
                     </tr>

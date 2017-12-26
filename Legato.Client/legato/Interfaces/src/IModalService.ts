@@ -1,4 +1,4 @@
-﻿import { UserViewModel } from "../../Models/models";
+﻿import { UserViewModel, CompromisedAttempt } from "../../Models/models";
 
 
 export interface IModalService {
@@ -9,4 +9,5 @@ export interface IModalService {
     openDisplayAmountModal(resolve?: { [key: string]: string | Object | Function | (string | Function)[] }): ng.ui.bootstrap.IModalServiceInstance;
     openAlertModal(text: string, mode: "success" | "info" | "warning" | "danger"): ng.ui.bootstrap.IModalServiceInstance;
     openUserModal(users: UserViewModel[] | ng.IPromise<UserViewModel[]>): ng.ui.bootstrap.IModalServiceInstance;
+    openCompromisedAttemptsModal(compromisedAttempts: CompromisedAttempt[]): ng.ui.bootstrap.IModalServiceInstance;
 }

@@ -1,4 +1,8 @@
-﻿import { Guitar, User } from "../../../Models/models";
+﻿import {
+    User,
+    Guitar,
+    CompromisedAttempt
+} from "../../../Models/models";
 
 import {
     IUserService,
@@ -6,16 +10,19 @@ import {
     IManageService,
     IPagingService,
     IUpdateService,
-    IRoutingService
+    IRoutingService,
 } from "../../../Interfaces/interfaces";
 
 
 export class AdminPanelController {
+    compromisedAttempts: CompromisedAttempt[] = [];
     static $inject = ["ManageService", "ModalService", "PagingService", "UpdateService", "RoutingService", "UserService"];
 
     constructor(private manageService: IManageService, private modalService: IModalService, private pagingService: IPagingService,
                 private updateService: IUpdateService, private routingService: IRoutingService, private userService: IUserService) {
-
+        userService.getCompromisedAttempts().then(result => {
+            this.compromisedAttempts = result.compromisedAttempts;
+        });
     }
 
     addGuitar() {
@@ -44,6 +51,12 @@ export class AdminPanelController {
 
     listUsers() {
         this.modalService.openUserModal(this.userService.getUsers()).result.then(() => {
+
+        }).catch(() => { });
+    }
+
+    showCompromisedAttempts() {
+        this.modalService.openCompromisedAttemptsModal(this.compromisedAttempts).result.then(() => {
 
         }).catch(() => { });
     }

@@ -8,4 +8,11 @@
     <div class="admin-panel-item" ng-click="adminCtrl.listUsers()">
         <img class="admin-panel-item-img" src="../../../../Content/icons/users.png" title="List users" />
     </div>
+    <div class="admin-panel-item-right" ng-if="adminCtrl.compromisedAttempts.length > 0">
+        <span class="warning">Warning:&nbsp;
+            <a href="" ng-click="adminCtrl.showCompromisedAttempts()">
+                {{adminCtrl.compromisedAttemptsNumber}} uses of banned tokens found.
+            </a>
+        </span>
+    </div>
 </div>

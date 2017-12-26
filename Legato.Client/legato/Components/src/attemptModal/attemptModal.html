@@ -1,0 +1,30 @@
+﻿<div>
+    <div class="modal-header">Users</div>
+    <div class="modal-body legato-modal-body-user-table">
+        <div>
+            <table class="user-table">
+                <tbody>
+                    <tr>
+                        <th>Token</th>
+                        <th>IP</th>
+                        <th>Username</th>
+                        <th>Date</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr ng-class="{'checked-row': attempt.isSelected}" ng-repeat="attempt in attemptCtrl.compromisedAttempts" 
+                                                                               context-menu="attemptCtrl.contextMenu.attemptOptions" 
+                                                                               model="attempt"
+                                                                               data="attemptCtrl.compromisedAttempts">
+                        <td>{{attempt.compromisedToken}}</td>
+                        <td>{{attempt.requestIP}}</td>
+                        <td>{{attempt.username}}</td>
+                        <td>{{attempt.requestDateTime}}</td>
+                        <td><div><input type="checkbox" ng-model="attempt.isSelected"></div></td>
+                        <td><a ng-href="" ng-click="attemptCtrl.removeAttempt(attempt)"><img class="icon" src="../../../../Content/icons/delete.ico" /></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

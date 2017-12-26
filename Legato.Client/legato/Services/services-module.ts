@@ -1,5 +1,6 @@
 ﻿import angular from "angular";
 
+import CompromisedAttemptHelperService from "./src/CompromisedAttemptHelperService";
 import ClassicalGuitarService from "./src/ClassicalGuitarService";
 import AuthenticationService from "./src/AuthenticationService";
 import ElectricGuitarService from "./src/ElectricGuitarService";
@@ -46,9 +47,11 @@ angular.module(servicesModuleName, [])
     .service("GuitarDataService", GuitarDataService)
     .service("UserResource", UserResource)
     .service("UserService", UserService)
-    .service("SHA1", SHA1);
+    .service("SHA1", SHA1)
+    .service("CompromisedAttemptHelperService", CompromisedAttemptHelperService);
 
 export {
+    CompromisedAttemptHelperService,
     ClassicalGuitarService,
     AuthenticationService,
     ElectricGuitarService,

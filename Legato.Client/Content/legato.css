@@ -68,6 +68,21 @@ ol, ul {
     overflow: hidden;
 }
 
+tr.selected-row {
+    background-color: #cde1f7
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+}
+
+.icon-sm {
+    width: 16px;
+    height: 16px;
+    vertical-align: baseline !important;
+}
+
 .guitar-li {
     float: left;
 }
@@ -569,15 +584,4 @@ img.admin-panel-item-img {
 .user-table {
     width: 100%;
     border: 1px solid;
-}
-
-.user-table-icon {
-    width: 32px;
-    height: 32px;
-}
-
-.user-table-icon-sm {
-    width: 16px;
-    height: 16px;
-    vertical-align: baseline !important;
 }

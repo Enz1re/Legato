@@ -1,4 +1,8 @@
-﻿import { Guitar, UserViewModel } from "../../Models/models";
+﻿import {
+    Guitar,
+    UserViewModel,
+    CompromisedAttempt
+} from "../../Models/models";
 
 import {
     IUserService,
@@ -6,11 +10,12 @@ import {
     IManageService,
     IUpdateService,
     IContextMenuService,
+    ICompromisedAttemptHelperService
 } from "../../Interfaces/interfaces";
 
 
 export default class ContextMenuService implements IContextMenuService {
-    static $inject = ["ManageService", "ModalService", "UpdateService", "UserService"];
+    static $inject = ["ManageService", "ModalService", "UpdateService", "UserService", "CompromisedAttemptHelperService"];
     guitarOptions = [
         {
             text: "Remove",
@@ -56,8 +61,40 @@ export default class ContextMenuService implements IContextMenuService {
         }
     ];
 
-    constructor(private manageService: IManageService, private modalService: IModalService,
-                private updateService: IUpdateService, private userService: IUserService) {
+    attemptOptions = [
+        {
+            text: "Delete",
+            displayed: () => this.attemptService.getAttempts().length === 1,
+            click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data: CompromisedAttempt[]) => {
+                this.modalService.openYesNoDialog(`Detele attempt '${modelValue.requestDateTime}'? This action is irreversible`).result.then(() => {
+                    this.userService.removeCompromisedAttempts([modelValue.attemptId]).then(() => {
+                        data.splice(data.indexOf(modelValue), 1);
+                    }).catch(err => {
+                        this.modalService.openAlertModal(err.data.exceptionMessage, "danger").result.catch(() => { });
+                    });
+                }).catch(() => { });
+            }
+        },
+        {
+            text: "Delete checked",
+            displayed: () => this.attemptService.getAttempts().length > 0,
+            click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data: CompromisedAttempt[]) => {
+                this.modalService.openYesNoDialog("Do you want to delete checked attempts? This action is irreversible").result.then(() => {
+                    var attempts = this.attemptService.getAttempts();
+                    this.userService.removeCompromisedAttempts(attempts.map(attempt => attempt.attemptId)).then(() => {
+                        for (let i = attempts.length - 1; i >= 0; i--) {
+                            data.splice(data.indexOf(attempts[i]), 1);
+                        }
+                    }).catch(err => {
+                        this.modalService.openAlertModal(err.data.exceptionMessage, "danger").result.catch(() => { });
+                    });
+                }).catch(() => { });
+            }
+        }
+    ];
+
+    constructor(private manageService: IManageService, private modalService: IModalService, private updateService: IUpdateService,
+                private userService: IUserService, private attemptService: ICompromisedAttemptHelperService) {
 
     }
 }

@@ -1,4 +1,4 @@
-﻿import { UserViewModel } from "../../Models/models";
+﻿import { UserViewModel, CompromisedAttempt } from "../../Models/models";
 
 import { IModalService } from "../../Interfaces/interfaces";
 
@@ -92,5 +92,18 @@ export default class ModalService implements IModalService {
                 users: users
             }
         });
+    }
+
+    openCompromisedAttemptsModal(compromisedAttempts: CompromisedAttempt[]): ng.ui.bootstrap.IModalServiceInstance {
+        return this.$uibModal.open({
+            animation: true,
+            controller: "CompromisedAttemptsController",
+            controllerAs: "attemptCtrl",
+            templateUrl: "legato/Components/src/attemptModal/attemptModal.html",
+            bindToController: true,
+            resolve: {
+                compromisedAttempts: compromisedAttempts
+            }
+        })
     }
 }
