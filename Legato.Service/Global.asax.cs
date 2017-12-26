@@ -5,6 +5,7 @@ using System.Web.Http;
 using Legato.ServiceDAL;
 using System.Web.Routing;
 using System.Web.Optimization;
+using Legato.Service.Workers;
 
 
 namespace Legato.Service
@@ -20,6 +21,8 @@ namespace Legato.Service
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ServiceMappings.CreateMappings();
             GlobalConfiguration.Configuration.EnsureInitialized();
+
+            (new TokenMonitorWorker()).Start();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

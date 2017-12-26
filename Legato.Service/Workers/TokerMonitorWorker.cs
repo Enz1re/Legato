@@ -1,26 +1,22 @@
 ﻿using System;
 using Ninject;
 using System.Threading;
-using Legato.BL.Interfaces;
 using System.ComponentModel;
+using Legato.ServiceDAL.Interfaces;
 
 
-namespace Legato.Middleware
+namespace Legato.Service.Workers
 {
     public class TokenMonitorWorker : IDisposable
     {
-        private readonly ILegatoUserBLWorker _userWorker;
         private readonly BackgroundWorker _tokenMonitorWorker = new BackgroundWorker();
 
         [Inject]
-        public TokenMonitorWorker(ILegatoUserBLWorker userWorker)
-        {
-            _userWorker = userWorker;
-        }
+        public IUserRepository UserWorker { get; set; }
 
         private void DoWork(object sender, DoWorkEventArgs e)
         {
-            _userWorker.RemoveExpiredTokens();
+            UserWorker.RemoveExpiredTokens();
             Thread.Sleep(1000 * 60);
         }
 
