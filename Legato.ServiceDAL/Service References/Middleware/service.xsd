@@ -540,4 +540,40 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="AddCompromisedAttempt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="attempt" nillable="true" type="q39:CompromisedAttemptDataModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCompromisedAttemptResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompromisedAttempts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompromisedAttemptsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetCompromisedAttemptsResult" nillable="true" type="q40:ArrayOfCompromisedAttemptDataModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCompromisedAttempts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="attemptIds" nillable="true" type="q41:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCompromisedAttemptsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -1616,6 +1616,120 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddCompromisedAttempt_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_AddCompromisedAttempt_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_GetCompromisedAttempts_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_GetCompromisedAttempts_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveCompromisedAttempts_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ILegatoMiddleware_RemoveCompromisedAttempts_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
@@ -1864,6 +1978,24 @@
   <wsdl:message name="ILegatoMiddleware_AddClaim_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddClaimResponse" />
   </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddCompromisedAttempt_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCompromisedAttempt" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_AddCompromisedAttempt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCompromisedAttemptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_GetCompromisedAttempts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompromisedAttempts" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_GetCompromisedAttempts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompromisedAttemptsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveCompromisedAttempts_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCompromisedAttempts" />
+  </wsdl:message>
+  <wsdl:message name="ILegatoMiddleware_RemoveCompromisedAttempts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCompromisedAttemptsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ILegatoMiddleware">
     <wsdl:operation name="AddAcousticClassicalGuitar">
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddAcousticClassicalGuitar" message="tns:ILegatoMiddleware_AddAcousticClassicalGuitar_InputMessage" />
@@ -2024,6 +2156,18 @@
     <wsdl:operation name="AddClaim">
       <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddClaim" message="tns:ILegatoMiddleware_AddClaim_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddClaimResponse" message="tns:ILegatoMiddleware_AddClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCompromisedAttempt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttempt" message="tns:ILegatoMiddleware_AddCompromisedAttempt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttemptResponse" message="tns:ILegatoMiddleware_AddCompromisedAttempt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompromisedAttempts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetCompromisedAttempts" message="tns:ILegatoMiddleware_GetCompromisedAttempts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/GetCompromisedAttemptsResponse" message="tns:ILegatoMiddleware_GetCompromisedAttempts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCompromisedAttempts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveCompromisedAttempts" message="tns:ILegatoMiddleware_RemoveCompromisedAttempts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILegatoMiddleware/RemoveCompromisedAttemptsResponse" message="tns:ILegatoMiddleware_RemoveCompromisedAttempts_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ILegatoMiddleware" type="tns:ILegatoMiddleware">
@@ -2466,6 +2610,39 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddClaim_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCompromisedAttempt">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttempt" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddCompromisedAttempt_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_AddCompromisedAttempt_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompromisedAttempts">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/GetCompromisedAttempts" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_GetCompromisedAttempts_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_GetCompromisedAttempts_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCompromisedAttempts">
+      <soap12:operation soapAction="http://tempuri.org/ILegatoMiddleware/RemoveCompromisedAttempts" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveCompromisedAttempts_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ILegatoMiddleware_RemoveCompromisedAttempts_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

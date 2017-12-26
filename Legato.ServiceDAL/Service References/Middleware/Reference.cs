@@ -254,6 +254,24 @@ namespace Legato.ServiceDAL.Middleware {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/AddClaim", ReplyAction="http://tempuri.org/ILegatoMiddleware/AddClaimResponse")]
         System.Threading.Tasks.Task AddClaimAsync(string username, string userClaim);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttempt", ReplyAction="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttemptResponse")]
+        void AddCompromisedAttempt(Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel attempt);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttempt", ReplyAction="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttemptResponse")]
+        System.Threading.Tasks.Task AddCompromisedAttemptAsync(Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel attempt);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetCompromisedAttempts", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetCompromisedAttemptsResponse")]
+        Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel[] GetCompromisedAttempts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetCompromisedAttempts", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetCompromisedAttemptsResponse")]
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel[]> GetCompromisedAttemptsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/RemoveCompromisedAttempts", ReplyAction="http://tempuri.org/ILegatoMiddleware/RemoveCompromisedAttemptsResponse")]
+        void RemoveCompromisedAttempts(int[] attemptIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/RemoveCompromisedAttempts", ReplyAction="http://tempuri.org/ILegatoMiddleware/RemoveCompromisedAttemptsResponse")]
+        System.Threading.Tasks.Task RemoveCompromisedAttemptsAsync(int[] attemptIds);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -601,6 +619,30 @@ namespace Legato.ServiceDAL.Middleware {
         
         public System.Threading.Tasks.Task AddClaimAsync(string username, string userClaim) {
             return base.Channel.AddClaimAsync(username, userClaim);
+        }
+        
+        public void AddCompromisedAttempt(Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel attempt) {
+            base.Channel.AddCompromisedAttempt(attempt);
+        }
+        
+        public System.Threading.Tasks.Task AddCompromisedAttemptAsync(Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel attempt) {
+            return base.Channel.AddCompromisedAttemptAsync(attempt);
+        }
+        
+        public Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel[] GetCompromisedAttempts() {
+            return base.Channel.GetCompromisedAttempts();
+        }
+        
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel[]> GetCompromisedAttemptsAsync() {
+            return base.Channel.GetCompromisedAttemptsAsync();
+        }
+        
+        public void RemoveCompromisedAttempts(int[] attemptIds) {
+            base.Channel.RemoveCompromisedAttempts(attemptIds);
+        }
+        
+        public System.Threading.Tasks.Task RemoveCompromisedAttemptsAsync(int[] attemptIds) {
+            return base.Channel.RemoveCompromisedAttemptsAsync(attemptIds);
         }
     }
 }

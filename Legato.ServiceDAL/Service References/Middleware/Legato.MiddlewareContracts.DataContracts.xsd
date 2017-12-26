@@ -152,4 +152,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserDataModel" nillable="true" type="tns:UserDataModel" />
+  <xs:complexType name="CompromisedAttemptDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompromisedToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RequestIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompromisedAttemptDataModel" nillable="true" type="tns:CompromisedAttemptDataModel" />
+  <xs:complexType name="ArrayOfCompromisedAttemptDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompromisedAttemptDataModel" nillable="true" type="tns:CompromisedAttemptDataModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompromisedAttemptDataModel" nillable="true" type="tns:ArrayOfCompromisedAttemptDataModel" />
 </xs:schema>
