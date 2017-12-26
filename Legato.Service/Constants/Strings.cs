@@ -9,6 +9,8 @@
         internal const string ChangeDisplayAmounClaim = "ChangeDisplayAmount";
         internal const string BlockUserClaim = "BlockUser";
         internal const string GetListOfUsers = "GetListOfUsers";
+        internal const string GetCompromisedAttempts = "GetCompromisedAttempts";
+        internal const string RemoveCompromisedAttempts = "RemoveCompromisedAttempts";
 
         public static string LowerBoundMustBePresent => "Lower bound must be present.";
 
@@ -36,7 +38,7 @@
 
         public static string AuthSchemeIsInvalid => "Invalid authentication scheme is used. Use 'Bearer' scheme";
 
-        public static string AccessTokenIsBanned => "This access token is compromised. Please contact your system administrator or re-login";
+        public static string AccessTokenIsBanned => "This access token is banned. Please contact your system administrator or re-login";
 
         public static string FailedToIssueToken => "Failed to issue access token. Please try again later";
 
