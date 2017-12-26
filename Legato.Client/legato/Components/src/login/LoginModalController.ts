@@ -1,6 +1,4 @@
-﻿import { User } from "../../../Models/models";
-
-import { IAuthenticationService } from "../../../Interfaces/interfaces";
+﻿import { IAuthenticationService } from "../../../Interfaces/interfaces";
 
 
 export class LoginModalController {
@@ -9,7 +7,8 @@ export class LoginModalController {
         error: true,
         message: "",
     };
-    user: User = new User();
+    private username: string;
+    private password: string;
     static $inject = ["$uibModalInstance", "AuthenticationService"];
 
     constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private authService: IAuthenticationService) {
@@ -18,10 +17,10 @@ export class LoginModalController {
 
     onOkButtonPressed() {
         this.messaging.loading = true;
-        this.authService.login(this.user.username, this.user.password).then((accessToken: string) => {
-            this.authService.setCredentials(this.user.username, accessToken);
+        this.authService.login(this.username, this.password).then((accessToken: string) => {
+            this.authService.setCredentials(this.username, accessToken);
             this.messaging.loading = false;
-            this.$uibModalInstance.close(this.user);
+            this.$uibModalInstance.close();
         }).catch(err => {
             this.messaging.loading = false;
             this.messaging.error = true;

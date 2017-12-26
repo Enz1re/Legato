@@ -6,16 +6,16 @@
     <div class="modal-body loginmodal-container">
         <form>
             <p>
-                <input type="text" ng-model="loginModalCtrl.user.username" placeholder="Username">
+                <input type="text" ng-model="loginModalCtrl.username" placeholder="Username">
             </p>
             <p>
-                <input type="password" ng-model="loginModalCtrl.user.password" placeholder="Password">
+                <input type="password" ng-model="loginModalCtrl.password" placeholder="Password">
             </p>
             <p class="error-message" ng-if="loginModalCtrl.messaging.error">
                 <span>{{loginModalCtrl.messaging.message}}</span>
             </p>
             <p>
-                <button ng-click="loginModalCtrl.onOkButtonPressed()" ng-disabled="!loginModalCtrl.user.username || !loginModalCtrl.user.password" class="btn btn-primary">Sign in</button>
+                <button ng-click="loginModalCtrl.onOkButtonPressed()" ng-disabled="!loginModalCtrl.username || !loginModalCtrl.password" class="btn btn-primary">Sign in</button>
             </p>
             <p class="login-loading">
                 <img ng-if="loginModalCtrl.messaging.loading" src="../../../../Content/icons/loading.gif">
