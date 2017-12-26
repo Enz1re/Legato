@@ -23,7 +23,9 @@ namespace Legato.DAL.Models
         public DbSet<TokenModel> TokenStorage { get; set; }
 
         public DbSet<BannedTokenModel> BannedTokens { get; set; }
-       
+
+        public DbSet<CompromisedAttemptModel> CompromisedAttempts { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<UserRole>()

@@ -20,11 +20,9 @@ namespace Legato.DAL.Models
         [Required]
         public bool IsAuthenticated { get; set; }
 
-        [Required]
         public virtual UserRole UserRole { get; set; }
 
-        [Required]
         [ForeignKey("UserRole")]
-        public int UserRoleId { get; set; }
+        public int? UserRoleId { get; set; }
     }
 }

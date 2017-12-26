@@ -21,9 +21,8 @@ namespace Legato.DAL.Models
 
         public virtual VendorModel Vendor { get; set; }
 
-        [Required]
         [ForeignKey("Vendor")]
-        public int VendorId { get; set; }
+        public int? VendorId { get; set; }
 
         public string ImgPath { get; set; }
     }

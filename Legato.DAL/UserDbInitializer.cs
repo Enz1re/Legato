@@ -15,16 +15,18 @@ namespace Legato.DAL
             var editGuitar = new UserClaim { ClaimName = "EditGuitar" };
             var changeDisplayAmount = new UserClaim { ClaimName = "ChangeDisplayAmount" };
             var blockUser = new UserClaim { ClaimName = "BlockUser" };
+            var getListOfUsers = new UserClaim { ClaimName = "GetListOfUsers" };
 
             context.UserClaims.Add(addGuitar);
             context.UserClaims.Add(removeGuitar);
             context.UserClaims.Add(editGuitar);
             context.UserClaims.Add(changeDisplayAmount);
             context.UserClaims.Add(blockUser);
+            context.UserClaims.Add(getListOfUsers);
 
             var user = new UserRole { RoleName = "User", UserClaims = new List<UserClaim>() };
             var admin = new UserRole { RoleName = "Admin", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar } };
-            var superuser = new UserRole { RoleName = "Superuser", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar, changeDisplayAmount, blockUser } };
+            var superuser = new UserRole { RoleName = "Superuser", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar, changeDisplayAmount, blockUser, getListOfUsers } };
 
             context.UserRoles.Add(user);
             context.UserRoles.Add(admin);
