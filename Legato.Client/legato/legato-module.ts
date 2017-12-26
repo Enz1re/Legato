@@ -9,14 +9,17 @@ import services from "./Services/services-module";
 import components from "./Components/components-module";
 import filters from "./Filters/filters-module";
 
+import { IUserService } from "./Interfaces/interfaces";
+
 import Router from "./Routes/Router";
 
 angular.module("legato", [ngCookies, uiRouter, ngAnimate, uiBootstrap, ngFileUpload, services, components, filters])
     .config(Router)
-    .run(["$rootScope", "$state", "$cookies", "$http", ($rootScope, $state: ng.ui.IStateService, $cookies: ng.cookies.ICookiesService, $http: ng.IHttpService) => {
-        $rootScope.globals = $cookies.getObject("globals") || {};
-        if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common["Authorization"] = `Bearer ${$rootScope.globals.currentUser.accessToken}`;
+    .run(["$state", "$cookies", "$http", "UserService", ($state: ng.ui.IStateService, $cookies: ng.cookies.ICookiesService, $http: ng.IHttpService, userService: IUserService) => {
+        let globals = $cookies.getObject("globals") || {};
+        userService.currentUser = globals.currentUser;
+        if (globals.accessToken) {
+            $http.defaults.headers.common["Authorization"] = `Bearer ${globals.accessToken}`;
         }
     }]);
 
