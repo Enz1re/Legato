@@ -146,6 +146,15 @@ namespace Legato.MiddlewareContracts
         [OperationContract]
         void AddClaim(string username, string userClaim);
 
+        [OperationContract]
+        void AddCompromisedAttempt(CompromisedAttemptDataModel attempt);
+
+        [OperationContract]
+        IEnumerable<CompromisedAttemptDataModel> GetCompromisedAttempts();
+
+        [OperationContract]
+        void RemoveCompromisedAttempts(int[] attemptIds);
+
         #endregion
     }
 }

@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Linq;
 using Legato.DAL.Models;
-using System.Collections.Generic;
 
 
 namespace Legato.DAL.Interfaces
 {
     public interface IUserRepository : IDisposable
     {
-        IEnumerable<UserModel> GetUsers();
+        IQueryable<UserModel> GetUsers();
 
         UserModel GetUser(string username);
 
@@ -26,5 +26,11 @@ namespace Legato.DAL.Interfaces
         void RemoveExpiredTokens();
 
         void AddClaim(string username, UserClaim userClaim);
+
+        void AddCompromisedAttempt(CompromisedAttemptModel attempt);
+
+        IQueryable<CompromisedAttemptModel> GetCompromisedAttempts();
+
+        void RemoveCompromisedAttempts(CompromisedAttemptModel[] attempts);
     }
 }

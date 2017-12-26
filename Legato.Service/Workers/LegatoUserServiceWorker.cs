@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Legato.Service.ReturnTypes;
 using Legato.ServiceDAL.Interfaces;
 using Legato.ServiceDAL.ViewModels;
+using Legato.MiddlewareContracts.DataContracts;
 
 
 namespace Legato.Service.Workers
@@ -111,6 +112,24 @@ namespace Legato.Service.Workers
             {
                 return false;
             }
+        }
+
+        public void AddCompromisedAttempt(CompromisedAttemptViewModel attempt)
+        {
+            _userRepository.AddCompromisedAttempt(ServiceMappings.Map<CompromisedAttemptDataModel>(attempt));
+        }
+
+        public CompromisedAttemptList GetCompromisedAttempts()
+        {
+            return new CompromisedAttemptList
+            {
+                CompromisedAttempts = ServiceMappings.Map<List<CompromisedAttemptViewModel>>(_userRepository.GetCompormisedAttempts())
+            };
+        }
+
+        public void RemoveCompromisedAttempts(int[] attemptIds)
+        {
+            _userRepository.RemoveCompromisedAttempts(attemptIds);
         }
     }
 }

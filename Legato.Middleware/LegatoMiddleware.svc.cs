@@ -256,6 +256,21 @@ namespace Legato.Middleware
             _blUserWorker.AddClaim(username, userClaim);
         }
 
+        public void AddCompromisedAttempt(CompromisedAttemptDataModel attempt)
+        {
+            _blUserWorker.AddCompromisedAttempt(attempt);
+        }
+
+        public IEnumerable<CompromisedAttemptDataModel> GetCompromisedAttempts()
+        {
+            return _blUserWorker.GetCompromisedAttempts();
+        }
+
+        public void RemoveCompromisedAttempts(int[] attemptIds)
+        {
+            _blUserWorker.RemoveCompromisedAttempts(attemptIds);
+        }
+
         #endregion
     }
 }

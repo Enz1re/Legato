@@ -19,6 +19,8 @@ namespace Legato.DAL.Interfaces
 
         DbSet<BannedTokenModel> BannedTokens { get; set; }
 
+        DbSet<CompromisedAttemptModel> CompromisedAttempts { get; set; }
+
         int SaveChanges();
 
         Task<int> SaveChangesAsync();

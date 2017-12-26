@@ -22,10 +22,18 @@ namespace Legato.ServiceDAL.Interfaces
 
         bool IsTokenBanned(string token);
 
+        void RemoveExpiredTokens();
+
         string GetUserRole(string username);
 
         IEnumerable<string> GetUserClaims(string username);
 
         void AddClaim(string username, string claimName);
+
+        void AddCompromisedAttempt(CompromisedAttemptDataModel attempt);
+
+        IEnumerable<CompromisedAttemptDataModel> GetCompormisedAttempts();
+
+        void RemoveCompromisedAttempts(int[] attemptIds);
     }
 }

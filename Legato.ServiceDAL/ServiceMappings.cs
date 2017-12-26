@@ -44,6 +44,9 @@ namespace Legato.ServiceDAL
                 cfg.CreateMap<UserDataModel, UserViewModel>()
                     .ForMember(dist => dist.Name, opt => opt.MapFrom(src => src.Username))
                     .ForMember(dist => dist.Role, opt => opt.MapFrom(src => src.UserRole));
+
+                cfg.CreateMap<CompromisedAttemptViewModel, CompromisedAttemptDataModel>();
+                cfg.CreateMap<CompromisedAttemptDataModel, CompromisedAttemptViewModel>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();

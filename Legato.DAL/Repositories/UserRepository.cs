@@ -5,9 +5,6 @@ using Legato.DAL.Util;
 using Legato.DAL.Models;
 using Legato.DAL.Constants;
 using Legato.DAL.Interfaces;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Data.Entity.Validation;
 
 
 namespace Legato.DAL.Repositories
@@ -22,9 +19,9 @@ namespace Legato.DAL.Repositories
             _context = context;
         }
 
-        public IEnumerable<UserModel> GetUsers()
+        public IQueryable<UserModel> GetUsers()
         {
-            return _context.Users.ToList();
+            return _context.Users.OrderBy(u => u.Id);
         }
 
         public UserModel GetUser(string username)
@@ -72,26 +69,17 @@ namespace Legato.DAL.Repositories
 
         public void BanUser(string username)
         {
-            try
+            var selectedToken = _context.TokenStorage.FirstOrDefault(t => t.IssuedTo == username);
+            if (selectedToken != null)
             {
-                var selectedToken = _context.TokenStorage.FirstOrDefault(t => t.IssuedTo == username);
-                if (selectedToken != null)
-                {
-                    ChangeUserAuthStatus(username, false);
-                    _context.SaveChanges();
-                    _context.TokenStorage.Remove(selectedToken);
-                    _context.SaveChanges();
-                    _context.BannedTokens.Add(new BannedTokenModel { Token = selectedToken.Token });
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    throw new ArgumentException(Messages.NotAuthenticated($@"User '{selectedToken.IssuedTo}'"), nameof(username));
-                }
+                ChangeUserAuthStatus(username, false);
+                _context.TokenStorage.Remove(selectedToken);
+                _context.BannedTokens.Add(new BannedTokenModel { Token = selectedToken.Token });
+                _context.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            else
             {
-                throw e;
+                throw new ArgumentException(Messages.NotAuthenticated($@"User '{selectedToken.IssuedTo}'"), nameof(username));
             }
         }
 
@@ -125,12 +113,35 @@ namespace Legato.DAL.Repositories
                 throw new ArgumentException(Messages.NotFound($@"User '{username}'"), nameof(username));
             }
         }
-        
+
+        public void AddCompromisedAttempt(CompromisedAttemptModel attempt)
+        {
+            _context.CompromisedAttempts.Add(attempt);
+            _context.SaveChanges();
+        }
+
+        public IQueryable<CompromisedAttemptModel> GetCompromisedAttempts()
+        {
+            return _context.CompromisedAttempts.OrderBy(u => u.AttemptId);
+        }
+
+        public void RemoveCompromisedAttempts(CompromisedAttemptModel[] attempts)
+        {
+            foreach (var attempt in attempts)
+            {
+                _context.CompromisedAttempts.Remove(attempt);
+            }
+
+            _context.SaveChanges();
+        }
+
         private void ChangeUserAuthStatus(string username, bool status)
         {
             var selectedUser = GetUser(username);
             selectedUser.IsAuthenticated = status;
-            _context.Users.AddOrUpdate(selectedUser);
+            _context.Entry(selectedUser).Reference(u => u.UserRole).Load();
+            _context.Users.Attach(selectedUser);
+            _context.Entry(selectedUser).Property(u => u.IsAuthenticated).IsModified = true;
         }
 
         public void Dispose()

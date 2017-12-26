@@ -96,5 +96,26 @@ namespace Legato.Service.Controllers
 
             return Ok();
         }
+
+        [HttpGet]
+        [Route("CompromisedAttempts")]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.GetCompromisedAttempts)]
+        public IHttpActionResult GetCompromisedAttempts()
+        {
+            return Ok(_serviceWorker.GetCompromisedAttempts());
+        }
+
+        [HttpPost]
+        [Route("CompromisedAttempts")]
+        [LegatoAuthentication]
+        [LegatoAuthorize(Strings.RemoveCompromisedAttempts)]
+        public IHttpActionResult RemoveCompromisedAttempt(dynamic request)
+        {
+            var compromisedAttemptsIds = request.compromisedAttempts.Value;
+            _serviceWorker.RemoveCompromisedAttempts(compromisedAttemptsIds);
+
+            return Ok();
+        }
     }
 }

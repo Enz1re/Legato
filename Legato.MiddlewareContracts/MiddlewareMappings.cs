@@ -34,6 +34,9 @@ namespace Legato.MiddlewareContracts
 
                 cfg.CreateMap<UserModel, UserDataModel>()
                     .ForMember(dest => dest.UserRole, opt => opt.MapFrom(src => src.UserRole.RoleName));
+
+                cfg.CreateMap<CompromisedAttemptDataModel, CompromisedAttemptModel>();
+                cfg.CreateMap<CompromisedAttemptModel, CompromisedAttemptDataModel>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();

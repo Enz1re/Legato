@@ -62,7 +62,7 @@
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="DatabaseInitializer.cs" />
-    <Compile Include="Interfaces\IGuitarUnitOfWork.cs" />
+    <Compile Include="Interfaces\IGuitarRepository.cs" />
     <Compile Include="Interfaces\IUserContext.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="LegatoDALDI.cs" />
@@ -86,6 +86,7 @@
     <Compile Include="Models\AcousticWesternGuitarModel.cs" />
     <Compile Include="Models\BannedTokenModel.cs" />
     <Compile Include="Models\BassGuitarModel.cs" />
+    <Compile Include="Models\CompromisedAttemptModel.cs" />
     <Compile Include="Models\ElectricGuitarModel.cs" />
     <Compile Include="Models\GuitarModel.cs" />
     <Compile Include="Models\GuitarContext.cs" />

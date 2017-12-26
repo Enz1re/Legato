@@ -23,7 +23,7 @@ namespace Legato.BL.Workers
         
         public IEnumerable<UserDataModel> GetUsers()
         {
-            return MiddlewareMappings.Map<List<UserDataModel>>(_userRepository.GetUsers().Where(u => u.UserRole.RoleName.ToLower() != "superuser"));
+            return MiddlewareMappings.Map<List<UserDataModel>>(_userRepository.GetUsers().Where(u => u.UserRole.RoleName.ToLower() != "superuser").ToList());
         }
 
         public bool FindUser(string username)
@@ -95,6 +95,23 @@ namespace Legato.BL.Workers
         public void AddClaim(string username, string userClaim)
         {
             _userRepository.AddClaim(username, new UserClaim { ClaimName = userClaim });
+        }
+
+        public void AddCompromisedAttempt(CompromisedAttemptDataModel attempt)
+        {
+            _userRepository.AddCompromisedAttempt(MiddlewareMappings.Map<CompromisedAttemptModel>(attempt));
+        }
+
+        public IEnumerable<CompromisedAttemptDataModel> GetCompromisedAttempts()
+        {
+            return MiddlewareMappings.Map<List<CompromisedAttemptDataModel>>(_userRepository.GetCompromisedAttempts().ToList());
+        }
+
+        public void RemoveCompromisedAttempts(int[] ids)
+        {
+            var attempts = _userRepository.GetCompromisedAttempts().Where(attempt => ids.Contains(attempt.AttemptId)).ToArray();
+
+            _userRepository.RemoveCompromisedAttempts(MiddlewareMappings.Map<CompromisedAttemptModel[]>(attempts));
         }
 
         public virtual void Dispose(bool disposing)

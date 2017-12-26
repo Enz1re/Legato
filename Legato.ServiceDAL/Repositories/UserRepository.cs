@@ -57,6 +57,11 @@ namespace Legato.ServiceDAL.Repositories
             return _client.IsTokenBanned(token);
         }
 
+        public void RemoveExpiredTokens()
+        {
+            _client.RemoveExpiredTokens();
+        }
+
         public string GetUserRole(string username)
         {
             return _client.GetUserRole(username);
@@ -70,6 +75,21 @@ namespace Legato.ServiceDAL.Repositories
         public void AddClaim(string username, string claimName)
         {
             _client.AddClaim(username, claimName);
+        }
+
+        public void AddCompromisedAttempt(CompromisedAttemptDataModel attempt)
+        {
+            _client.AddCompromisedAttempt(attempt);
+        }
+
+        public IEnumerable<CompromisedAttemptDataModel> GetCompormisedAttempts()
+        {
+            return _client.GetCompromisedAttempts();
+        }
+
+        public void RemoveCompromisedAttempts(int[] attemptIds)
+        {
+            _client.RemoveCompromisedAttempts(attemptIds);
         }
     }
 }

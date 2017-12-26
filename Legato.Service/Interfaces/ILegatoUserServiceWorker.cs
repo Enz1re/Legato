@@ -1,4 +1,5 @@
 ﻿using Legato.Service.ReturnTypes;
+using Legato.ServiceDAL.ViewModels;
 
 
 namespace Legato.Service.Interfaces
@@ -26,5 +27,11 @@ namespace Legato.Service.Interfaces
         ClaimList GetClaims(string username);
 
         bool AddClaim(string username, string claimName);
+
+        void AddCompromisedAttempt(CompromisedAttemptViewModel attempt);
+
+        CompromisedAttemptList GetCompromisedAttempts();
+
+        void RemoveCompromisedAttempts(int[] attemptIds);
     }
 }
