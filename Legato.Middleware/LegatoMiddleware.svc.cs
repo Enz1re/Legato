@@ -256,6 +256,11 @@ namespace Legato.Middleware
             _blUserWorker.AddClaim(username, userClaim);
         }
 
+        public bool HasClaim(string username, string claimName)
+        {
+            return _blUserWorker.ValidateClaim(username, claimName);
+        }
+
         public void AddCompromisedAttempt(CompromisedAttemptDataModel attempt)
         {
             _blUserWorker.AddCompromisedAttempt(attempt);

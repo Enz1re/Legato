@@ -46,16 +46,15 @@ namespace Legato.Service.Controllers
                 return BadRequest(Strings.UsernameIsIncorrect(username));
             }
 
-            var userClaims = _serviceWorker.GetClaims(username).UserClaims;
             var userRole = _serviceWorker.GetUserRole(username);
-            var accessToken = JwtManager.GenerateToken(username, userRole, userClaims, TokenExpiryMinutes);
+            var accessToken = JwtManager.GenerateToken(username, userRole, TokenExpiryMinutes);
 
             if (!_serviceWorker.AddToken(accessToken, username, TokenExpiryMinutes))
             {
                 return InternalServerError(new Exception(Strings.FailedToIssueToken));
             }
 
-            return Ok(new { accessToken = accessToken });
+            return Ok(new { accessToken = accessToken, role = userRole });
         }
 
         [HttpPost]
@@ -107,7 +106,7 @@ namespace Legato.Service.Controllers
         }
 
         [HttpPost]
-        [Route("CompromisedAttempts")]
+        [Route("RemoveCompromisedAttempts")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.RemoveCompromisedAttempts)]
         public IHttpActionResult RemoveCompromisedAttempt(dynamic request)

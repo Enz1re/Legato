@@ -77,6 +77,11 @@ namespace Legato.ServiceDAL.Repositories
             _client.AddClaim(username, claimName);
         }
 
+        public bool HasClaim(string username, string claimName)
+        {
+            return _client.HasClaim(username, claimName);
+        }
+
         public void AddCompromisedAttempt(CompromisedAttemptDataModel attempt)
         {
             _client.AddCompromisedAttempt(attempt);

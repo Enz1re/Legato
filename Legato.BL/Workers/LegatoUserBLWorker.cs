@@ -97,6 +97,11 @@ namespace Legato.BL.Workers
             _userRepository.AddClaim(username, new UserClaim { ClaimName = userClaim });
         }
 
+        public bool ValidateClaim(string username, string claimName)
+        {
+            return _userRepository.ValidateClaim(username, claimName);
+        }
+
         public void AddCompromisedAttempt(CompromisedAttemptDataModel attempt)
         {
             _userRepository.AddCompromisedAttempt(MiddlewareMappings.Map<CompromisedAttemptModel>(attempt));

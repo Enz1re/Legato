@@ -27,6 +27,8 @@ namespace Legato.DAL.Interfaces
 
         void AddClaim(string username, UserClaim userClaim);
 
+        bool ValidateClaim(string username, string claimName);
+
         void AddCompromisedAttempt(CompromisedAttemptModel attempt);
 
         IQueryable<CompromisedAttemptModel> GetCompromisedAttempts();

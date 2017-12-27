@@ -30,6 +30,8 @@ namespace Legato.ServiceDAL.Interfaces
 
         void AddClaim(string username, string claimName);
 
+        bool HasClaim(string username, string claimName);
+
         void AddCompromisedAttempt(CompromisedAttemptDataModel attempt);
 
         IEnumerable<CompromisedAttemptDataModel> GetCompormisedAttempts();

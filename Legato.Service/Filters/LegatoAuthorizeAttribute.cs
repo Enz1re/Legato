@@ -41,7 +41,7 @@ namespace Legato.Service.Filters
             {
                 return Task.FromResult(actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, Strings.AccessTokenIsInvalid));
             }
-            if (!principal.HasClaim(Strings.ClaimType, _currentClaim))
+            if (!ServiceWorker.HasClaim(principal.Identity.Name, _currentClaim))
             {
                 return Task.FromResult(actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, Strings.Unauthorized));
             }

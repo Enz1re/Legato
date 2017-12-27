@@ -114,6 +114,11 @@ namespace Legato.Service.Workers
             }
         }
 
+        public bool HasClaim(string username, string claimName)
+        {
+            return _userRepository.HasClaim(username, claimName);
+        }
+
         public void AddCompromisedAttempt(CompromisedAttemptViewModel attempt)
         {
             _userRepository.AddCompromisedAttempt(ServiceMappings.Map<CompromisedAttemptDataModel>(attempt));

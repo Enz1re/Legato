@@ -36,7 +36,6 @@ namespace Legato.DAL.Repositories
 
         public void AddToken(string token, string issuedTo, int expireMinutes)
         {
-            var s = token.Length;
             ChangeUserAuthStatus(issuedTo, true);
             _context.TokenStorage.Add(new TokenModel { Token = token, IssuedTo = issuedTo, Expiry = Constants.Constants.Now().AddMinutes(expireMinutes) });
             _context.SaveChanges();
@@ -99,7 +98,7 @@ namespace Legato.DAL.Repositories
         
         public void AddClaim(string username, UserClaim userClaim)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            var user = GetUser(username);
             if (user != null)
             {
                 if (!user.UserRole.UserClaims.Contains(userClaim, new UserClaimEqualityComparer()))
@@ -107,6 +106,20 @@ namespace Legato.DAL.Repositories
                     user.UserRole.UserClaims.Add(userClaim);
                     _context.SaveChanges();
                 }
+            }
+            else
+            {
+                throw new ArgumentException(Messages.NotFound($@"User '{username}'"), nameof(username));
+            }
+        }
+
+        public bool ValidateClaim(string username, string claimName)
+        {
+            var user = GetUser(username);
+            if (user != null)
+            {
+                var ses = user.UserRole.UserClaims.ToList();
+                return user.UserRole.UserClaims.Contains(new UserClaim { ClaimName = claimName }, new UserClaimEqualityComparer());
             }
             else
             {

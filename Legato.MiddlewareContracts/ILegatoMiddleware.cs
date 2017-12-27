@@ -147,6 +147,9 @@ namespace Legato.MiddlewareContracts
         void AddClaim(string username, string userClaim);
 
         [OperationContract]
+        bool HasClaim(string username, string claimName);
+
+        [OperationContract]
         void AddCompromisedAttempt(CompromisedAttemptDataModel attempt);
 
         [OperationContract]

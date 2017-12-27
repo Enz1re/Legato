@@ -28,6 +28,8 @@ namespace Legato.Service.Interfaces
 
         bool AddClaim(string username, string claimName);
 
+        bool HasClaim(string username, string claimName);
+
         void AddCompromisedAttempt(CompromisedAttemptViewModel attempt);
 
         CompromisedAttemptList GetCompromisedAttempts();

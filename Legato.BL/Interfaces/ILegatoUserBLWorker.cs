@@ -31,6 +31,8 @@ namespace Legato.BL.Interfaces
 
         void AddClaim(string username, string userClaim);
 
+        bool ValidateClaim(string username, string claimName);
+
         void AddCompromisedAttempt(CompromisedAttemptDataModel attempt);
 
         IEnumerable<CompromisedAttemptDataModel> GetCompromisedAttempts();
