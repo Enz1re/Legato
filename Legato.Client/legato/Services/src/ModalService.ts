@@ -102,7 +102,7 @@ export default class ModalService implements IModalService {
             templateUrl: "legato/Components/src/attemptModal/attemptModal.html",
             bindToController: true,
             resolve: {
-                compromisedAttempts: compromisedAttempts
+                compromisedAttempts: () => compromisedAttempts
             }
         })
     }
