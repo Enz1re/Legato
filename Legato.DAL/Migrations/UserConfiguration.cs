@@ -1,9 +1,7 @@
 ﻿using Legato.DAL.Util;
 using Legato.DAL.Models;
-using System.Diagnostics;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using System.Data.Entity.Validation;
 
 
 namespace Legato.DAL.Migrations
@@ -51,6 +49,8 @@ namespace Legato.DAL.Migrations
             context.UserClaims.Add(changeDisplayAmount);
             context.UserClaims.Add(blockUser);
             context.UserClaims.Add(getListOfUsers);
+            context.UserClaims.Add(getCompromisedAttempts);
+            context.UserClaims.Add(removeCompromisedAttempts);
 
             context.UserRoles.Add(user);
             context.UserRoles.Add(admin);
