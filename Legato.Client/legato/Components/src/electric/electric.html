@@ -16,7 +16,7 @@
     <ul ng-if="!electricCtrl.error">
         <li class="guitar-li" ng-repeat="guitar in electricCtrl.guitars">
             <div class="guitar-container" ng-click="electricCtrl.onGuitarClick('electric', $index)" context-menu="electricCtrl.contextMenu.menuOptions"
-                                                                                                    context-menu-if="electricCtrl.globals.currentUser"
+                                                                                                    context-menu-if="electricCtrl.userService.currentUser"
                                                                                                     context-menu-data="{ type: 'electric' }" 
                                                                                                     model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>

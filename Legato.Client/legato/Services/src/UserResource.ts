@@ -30,7 +30,7 @@ export default class UserResource implements IUserResource {
     }
 
     removeCompromisedAttempts(compromisedAttempts: number[]): ng.IPromise<any> {
-        return this.$http.post(`http://localhost/api/User/CompromisedAttemts`, { compromisedAttempts: compromisedAttempts })
+        return this.$http.post(`http://localhost/api/User/RemoveCompromisedAttempts`, { compromisedAttempts: compromisedAttempts })
             .then((response: ng.IHttpResponse<any>) => response.data);
     }
 }

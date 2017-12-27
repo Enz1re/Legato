@@ -7,6 +7,7 @@
 } from "../../Models/models";
 
 import {
+    IUserService,
     IModalService,
     IGuitarService,
     IPagingService,
@@ -25,16 +26,15 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         sorting: new Sorting(),
         search: ""
     };
-    globals: any;
     guitars: TGuitar[];
     error = false;
 
-    constructor(protected $rootScope, protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService,
+    constructor(protected $scope: ng.IScope, protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService,
                 protected pendingTaskService: IPendingTaskService, protected updateService: IUpdateService,
-                protected modalService: IModalService, protected contextMenu: IContextMenuService, protected pagingService: IPagingService) {
-        this.setWatchers($rootScope);
+                protected modalService: IModalService, protected contextMenu: IContextMenuService, protected pagingService: IPagingService,
+                protected userService: IUserService) {
+        this.setWatchers();
 
-        this.globals = this.$rootScope.globals;
         const stateName = this.routingService.urlSegments[1];
         const urlParamResolver = routingService.getParamResolver();
         
@@ -120,8 +120,8 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         });
     }
 
-    private setWatchers(scope) {
-        scope.$watch(() => this.updateService.filter, (newValue, oldValue) => {
+    private setWatchers() {
+        this.$scope.$watch(() => this.updateService.filter, (newValue, oldValue) => {
             const stateName = this.routingService.urlSegments[1];
             this.pendingTaskService.cancelPendingTask();
 
@@ -162,7 +162,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 });
             }
         }, true);
-        scope.$watch(() => this.updateService.updatePage, (newValue, oldValue) => {
+        this.$scope.$watch(() => this.updateService.updatePage, (newValue, oldValue) => {
             if (!newValue || !oldValue) {
                 return;
             }
@@ -176,10 +176,10 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 this.pagingService.goToLastPage(() => { this.init(); });
             }
         }, true);
-        scope.$watch(() => scope.globals.currentUser, (newVal, oldVal) => {
+        this.$scope.$watch(() => this.userService.currentUser, (newVal, oldVal) => {
             if (newVal || oldVal) {
-                if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username || newVal.authData !== oldVal.authData)) {
-                    this.globals.currentUser = newVal;
+                if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username)) {
+                    this.userService.currentUser = newVal;
                 }
             }
         }, true);

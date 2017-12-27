@@ -4,8 +4,10 @@
             <div class="site-name-caption">Legato</div>
             <div class="site-name-signature">Easy-going guitar catalog</div>
         </div>
-        <div class="logging-info" ng-if="mainCtrl.globals.currentUser">
-            You logged in as {{mainCtrl.globals.currentUser.username}}. <a href="" ng-click="mainCtrl.logOut()">Log off</a>
+        <div class="logging-info" ng-if="mainCtrl.userService.currentUser">
+            You logged in as {{mainCtrl.userService.currentUser.username}}.&nbsp;
+            <a ng-if="!mainCtrl.authService.hasPendingRequests()" href="" ng-click="mainCtrl.logOut()">Log off</a>
+            <span><img class="icon" ng-if="mainCtrl.authService.hasPendingRequests()" src="../../../../Content/icons/loading.gif"></span>
         </div>
         <div class="site-icon-container">
             <a href="" ng-click="mainCtrl.logIn()">
@@ -59,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div class="button-container">
+            <div class="button-container-center">
                 <button class="btn btn-primary" ng-click="mainCtrl.unfilter()">Unfilter</button>
             </div>
         </div>
@@ -72,7 +74,7 @@
             <uib-tab select="mainCtrl.checkTab($event, 'bass')" deselect="mainCtrl.onTabDeselected($event, 'bass')" index="'bass'" heading="Bass"></uib-tab>
         </uib-tabset>
         <div class="guitar-list-container">
-            <admin-panel ng-show="mainCtrl.$rootScope.globals.currentUser"></admin-panel>
+            <admin-panel ng-if="mainCtrl.userService.currentUser"></admin-panel>
             <ui-view></ui-view>
         </div>
     </div>

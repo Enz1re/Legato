@@ -18,7 +18,7 @@
                 <button ng-click="loginModalCtrl.onOkButtonPressed()" ng-disabled="!loginModalCtrl.username || !loginModalCtrl.password" class="btn btn-primary">Sign in</button>
             </p>
             <p class="login-loading">
-                <img ng-if="loginModalCtrl.messaging.loading" src="../../../../Content/icons/loading.gif">
+                <img ng-if="loginModalCtrl.authService.hasPendingRequests()" src="../../../../Content/icons/loading.gif">
             </p>
         </form>
     </div>

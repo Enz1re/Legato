@@ -19,6 +19,7 @@ import PagingService from "./src/PagingService";
 import VendorService from "./src/VendorService";
 import UpdateService from "./src/UpdateService";
 import CacheService from "./src/CacheService";
+import ClaimService from "./src/ClaimService";
 import ModalService from "./src/ModalService";
 import UserResource from "./src/UserResource";
 import UserService from "./src/UserService";
@@ -47,6 +48,7 @@ angular.module(servicesModuleName, [])
     .service("GuitarDataService", GuitarDataService)
     .service("UserResource", UserResource)
     .service("UserService", UserService)
+    .service("ClaimService", ClaimService)
     .service("SHA1", SHA1)
     .service("CompromisedAttemptHelperService", CompromisedAttemptHelperService);
 

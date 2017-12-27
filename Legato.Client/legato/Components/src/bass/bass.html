@@ -16,7 +16,7 @@
     <ul ng-if="!bassCtrl.error">
         <li class="guitar-li" ng-repeat="guitar in bassCtrl.guitars">
             <div class="guitar-container" ng-click="bassCtrl.onGuitarClick('bass', $index)" context-menu="bassCtrl.contextMenu.menuOptions"
-                                                                                            context-menu-if="bassCtrl.globals.currentUser"
+                                                                                            context-menu-if="bassCtrl.userService.currentUser"
                                                                                             context-menu-data="{ type: 'bass' }"
                                                                                             model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>

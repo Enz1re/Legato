@@ -18,6 +18,7 @@ import { WesternController } from "./src/western/WesternController";
 import { ElectricController } from "./src/electric/ElectricController";
 import { BassController } from "./src/bass/BassController";
 import { ControllerBase } from "./src/ControllerBase";
+import { CompromisedAttemptsController } from "./src/attemptModal/CompromisedAttemptsController";
 import { GuitarModalController } from "./src/guitarModal/GuitarModalController";
 import { LoginModalController } from "./src/login/LoginModalController";
 import { AdminPanelController } from "./src/admin/AdminPanelController";
@@ -55,7 +56,8 @@ angular.module(directivesModuleName, [])
     .controller("YesNoModalController", YesNoModalController)
     .controller("AdminPanelController", AdminPanelController)
     .controller("AlertModalController", AlertModalController)
-    .controller("UserModalController", UserModalController);
+    .controller("UserModalController", UserModalController)
+    .controller("CompromisedAttemptsController", CompromisedAttemptsController);
 
 export {
     MainController,

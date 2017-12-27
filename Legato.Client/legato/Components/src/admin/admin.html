@@ -1,17 +1,20 @@
 ﻿<div class="admin-panel">
-    <div class="admin-panel-item" ng-click="adminCtrl.addGuitar()">
-        <img class="admin-panel-item-img" src="../../../../Content/icons/add.ico" title="Add guitar" />
+    <div class="flexbox">
+        <div class="admin-panel-item" ng-click="adminCtrl.addGuitar()">
+            <img class="admin-panel-item-img" src="../../../../Content/icons/add.ico" title="Add guitar" />
+        </div>
+        <div class="admin-panel-item" ng-click="adminCtrl.changeDisplayAmount()">
+            <img class="admin-panel-item-img" src="../../../../Content/icons/list.ico" title="Change display amount" />
+        </div>
+        <div class="admin-panel-item" ng-if="adminCtrl.userService.currentUser.role === 'Superuser'" ng-click="adminCtrl.listUsers()">
+            <img class="admin-panel-item-img" src="../../../../Content/icons/users.png" title="List users" />
+        </div>
     </div>
-    <div class="admin-panel-item" ng-click="adminCtrl.changeDisplayAmount()">
-        <img class="admin-panel-item-img" src="../../../../Content/icons/list.ico" title="Change display amount" />
-    </div>
-    <div class="admin-panel-item" ng-click="adminCtrl.listUsers()">
-        <img class="admin-panel-item-img" src="../../../../Content/icons/users.png" title="List users" />
-    </div>
-    <div class="admin-panel-item-right" ng-if="adminCtrl.compromisedAttempts.length > 0">
-        <span class="warning">Warning:&nbsp;
+    <div class="flexbox" ng-if="adminCtrl.compromisedAttempts.length > 0 && adminCtrl.userService.currentUser.role === 'Superuser'">
+        <span class="alert alert-danger">
+            Warning:&nbsp;
             <a href="" ng-click="adminCtrl.showCompromisedAttempts()">
-                {{adminCtrl.compromisedAttemptsNumber}} uses of banned tokens found.
+                {{adminCtrl.compromisedAttempts.length}} uses of banned tokens found.
             </a>
         </span>
     </div>

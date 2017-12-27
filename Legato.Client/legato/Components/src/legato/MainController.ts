@@ -5,6 +5,7 @@
 } from "../../../Models/models";
 
 import {
+    IUserService,
     IModalService,
     IFilterService,
     IVendorService,
@@ -20,14 +21,12 @@ export class MainController implements ng.IController {
     error = false;
     activeTab: string;
     search: string;
-    globals: any;
-    static $inject = ["$rootScope", "RoutingService", "UpdateService", "FilterService", "VendorService", "AuthenticationService", "ModalService"];
+    static $inject = ["$scope", "RoutingService", "UpdateService", "FilterService", "VendorService", "AuthenticationService", "ModalService", "UserService"];
 
-    constructor(private $rootScope, private routingService: IRoutingService, private updateService: IUpdateService, private filterService: IFilterService,
-                private service: IVendorService, private authService: IAuthenticationService, private modalService: IModalService) {
+    constructor(private $scope: ng.IScope, private routingService: IRoutingService, private updateService: IUpdateService, private filterService: IFilterService,
+                private service: IVendorService, private authService: IAuthenticationService, private modalService: IModalService, private userService: IUserService) {
         const name = routingService.urlSegments[1];
         this.initVendorList(name).then(() => {
-            this.globals = this.$rootScope.globals;
             this.activeTab = name;
             const urlParamResolver = routingService.getParamResolver();
             this.updateService.filter.price = urlParamResolver.resolvePrice();
@@ -35,10 +34,10 @@ export class MainController implements ng.IController {
             this.updateService.filter.vendors = urlParamResolver.resolveVendors(this.updateService.filter.vendors);
             this.updateService.filter.search = this.search = urlParamResolver.resolveSearchString();
         });
-        $rootScope.$watch(() => $rootScope.globals.currentUser, (newVal, oldVal) => {
+        $scope.$watch(() => this.userService.currentUser, (newVal, oldVal) => {
             if (newVal || oldVal) {
-                if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username || newVal.authData !== oldVal.authData)) {
-                    this.globals.currentUser = newVal;
+                if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username)) {
+                    this.userService.currentUser = newVal;
                 }
             }
         }, true);
@@ -89,7 +88,9 @@ export class MainController implements ng.IController {
     }
 
     logOut() {
-        this.authService.clearCredentials();
+        this.authService.logOff().catch(err => {
+            console.log(err.data.message);
+        });
     }
 
     doSearch(event) {

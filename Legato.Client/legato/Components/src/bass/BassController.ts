@@ -3,6 +3,7 @@
 import { ControllerBase } from "../ControllerBase";
 
 import {
+    IUserService,
     IModalService,
     IGuitarService,
     IPagingService,
@@ -14,10 +15,11 @@ import {
 
 
 export class BassController extends ControllerBase<BassGuitar> implements ng.IController {
-    static $inject = ["$rootScope", "BassGuitarService", "RoutingService", "PendingTaskService", "UpdateService", "ModalService", "ContextMenuService", "PagingService"];
+    static $inject = ["$scope", "BassGuitarService", "RoutingService", "PendingTaskService", "UpdateService",
+                      "ModalService", "ContextMenuService", "PagingService", "UserService"];
 
-    constructor($rootScope: ng.IRootScopeService, service: IGuitarService<BassGuitar>, routingService: IRoutingService, pendingTaskService: IPendingTaskService,
-                updateService: IUpdateService, modalService: IModalService, contextMenu: IContextMenuService, pagingService: IPagingService) {
-        super($rootScope, service, routingService, pendingTaskService, updateService, modalService, contextMenu, pagingService);
+    constructor($scope: ng.IScope, service: IGuitarService<BassGuitar>, routingService: IRoutingService, pendingTaskService: IPendingTaskService,
+                updateService: IUpdateService, modalService: IModalService, contextMenu: IContextMenuService, pagingService: IPagingService, userService: IUserService) {
+        super($scope, service, routingService, pendingTaskService, updateService, modalService, contextMenu, pagingService, userService);
     }
 }

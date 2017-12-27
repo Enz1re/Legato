@@ -16,7 +16,7 @@
     <ul ng-if="!classicalCtrl.error">
         <li class="guitar-li" ng-repeat="guitar in classicalCtrl.guitars">
             <div class="guitar-container" ng-click="classicalCtrl.onGuitarClick('classical', $index)" context-menu="classicalCtrl.contextMenu.menuOptions"
-                                                                                                      context-menu-if="classicalCtrl.globals.currentUser"
+                                                                                                      context-menu-if="classicalCtrl.userService.currentUser"
                                                                                                       context-menu-data="{ type: 'classical' }"
                                                                                                       model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>

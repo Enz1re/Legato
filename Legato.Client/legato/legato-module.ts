@@ -17,6 +17,7 @@ angular.module("legato", [ngCookies, uiRouter, ngAnimate, uiBootstrap, ngFileUpl
     .config(Router)
     .run(["$state", "$cookies", "$http", "UserService", ($state: ng.ui.IStateService, $cookies: ng.cookies.ICookiesService, $http: ng.IHttpService, userService: IUserService) => {
         let globals = $cookies.getObject("globals") || {};
+
         userService.currentUser = globals.currentUser;
         if (globals.accessToken) {
             $http.defaults.headers.common["Authorization"] = `Bearer ${globals.accessToken}`;

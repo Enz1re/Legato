@@ -54,7 +54,7 @@ export default class ContextMenuService implements IContextMenuService {
                     this.userService.blockUser(modelValue.name).then(() => {
                         modelValue.isAuthenticated = false;
                     }).catch(err => {
-                        this.modalService.openAlertModal(err.data.exceptionMessage, "danger").result.catch(() => { });
+                        this.modalService.openAlertModal(err.data.message, "danger").result.catch(() => { });
                     });
                 }).catch(() => { });
             }
@@ -64,29 +64,29 @@ export default class ContextMenuService implements IContextMenuService {
     attemptOptions = [
         {
             text: "Delete",
-            displayed: () => this.attemptService.getAttempts().length === 1,
-            click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data: CompromisedAttempt[]) => {
+            displayed: () => this.attemptService.checkedCompromisedAttempts.length === 1,
+            click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data) => {
                 this.modalService.openYesNoDialog(`Detele attempt '${modelValue.requestDateTime}'? This action is irreversible`).result.then(() => {
                     this.userService.removeCompromisedAttempts([modelValue.attemptId]).then(() => {
-                        data.splice(data.indexOf(modelValue), 1);
+                        this.attemptService.removeAttempt(modelValue);
                     }).catch(err => {
-                        this.modalService.openAlertModal(err.data.exceptionMessage, "danger").result.catch(() => { });
+                        this.modalService.openAlertModal(err.data.message, "danger").result.catch(() => { });
                     });
                 }).catch(() => { });
             }
         },
         {
             text: "Delete checked",
-            displayed: () => this.attemptService.getAttempts().length > 0,
-            click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data: CompromisedAttempt[]) => {
+            displayed: () => this.attemptService.checkedCompromisedAttempts.length > 1,
+            click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data) => {
                 this.modalService.openYesNoDialog("Do you want to delete checked attempts? This action is irreversible").result.then(() => {
-                    var attempts = this.attemptService.getAttempts();
+                    var attempts = this.attemptService.allCompromisedAttempts;
                     this.userService.removeCompromisedAttempts(attempts.map(attempt => attempt.attemptId)).then(() => {
                         for (let i = attempts.length - 1; i >= 0; i--) {
-                            data.splice(data.indexOf(attempts[i]), 1);
+                            this.attemptService.removeAttempt(attempts[i]);
                         }
                     }).catch(err => {
-                        this.modalService.openAlertModal(err.data.exceptionMessage, "danger").result.catch(() => { });
+                        this.modalService.openAlertModal(err.data.message, "danger").result.catch(() => { });
                     });
                 }).catch(() => { });
             }
