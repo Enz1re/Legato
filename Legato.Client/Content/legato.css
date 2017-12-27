@@ -11,18 +11,18 @@ html {
 }
 
 body {
-    background-color: aliceblue !important;
-    font-family: Dosis !important;
     font-size: 20px !important;
+    font-family: Dosis !important;
+    background-color: aliceblue !important;
 }
 
-table, td, th {
-    border: 1px solid black;
+table {
+    width: 100%;
 }
 
 th, td {
-    text-align: center !important;
     word-wrap: break-word;
+    text-align: center !important;
 }
 
 td div {
@@ -66,6 +66,11 @@ label {
 ol, ul {
     list-style: none;
     overflow: hidden;
+}
+
+.table-container {
+    max-height: 18em;
+    overflow-y: scroll;
 }
 
 tr.selected-row {
@@ -349,8 +354,13 @@ div.messaging {
     margin-bottom: 0.6em;
 }
 
-.button-container {
+.button-container,
+.button-container-center {
     margin-top: 2em;
+}
+
+.button-container {
+    text-align: right;
 }
 
 .search {
@@ -437,11 +447,11 @@ div.messaging {
 }
 
 .legato-modal-body,
-.legato-modal-body-user-table {
+.legato-modal-body-table {
     background-color: aliceblue;
 }
 
-.legato-modal-body-user-table {
+.legato-modal-body-table {
     height: 20em;
     overflow: scroll;
 }
@@ -544,12 +554,15 @@ div.messaging {
 
 .admin-panel {
     height: 3em;
-    width: 10em;
     display: flex;
     margin-top: 1em;
     margin-left: 4em;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.flexbox {
+    display: flex;
 }
 
 .admin-panel-item {
@@ -558,6 +571,7 @@ div.messaging {
     display: flex;
     border: 3px solid;
     border-radius: 1em;
+    margin: 0 0.45em 0;
     align-items: center;
     justify-content: center;
 }
@@ -584,4 +598,8 @@ img.admin-panel-item-img {
 .user-table {
     width: 100%;
     border: 1px solid;
+}
+
+.alert {
+    margin-bottom: inherit !important;
 }
