@@ -2,6 +2,10 @@
 
 
 export interface ICompromisedAttemptHelperService {
-    getAttempts(): CompromisedAttempt[];
-    addAttempt(attempt: CompromisedAttempt);
+    allCompromisedAttempts: CompromisedAttempt[];
+    checkedCompromisedAttempts: CompromisedAttempt[];
+
+    addAttemptToCheckList(attempt: CompromisedAttempt);
+    removeAttemptFromCheckList(attempt: CompromisedAttempt);
+    removeAttempt(attempt: CompromisedAttempt);
 }

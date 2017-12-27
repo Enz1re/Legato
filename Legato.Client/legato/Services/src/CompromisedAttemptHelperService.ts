@@ -4,15 +4,25 @@ import { ICompromisedAttemptHelperService } from "../../Interfaces/interfaces";
 
 
 export default class CompromisedAttemptHelperService implements ICompromisedAttemptHelperService {
-    private _compromisedAttempts: CompromisedAttempt[];
+    private _checkedAttempts: CompromisedAttempt[] = [];
 
-    getAttempts(): CompromisedAttempt[] {
-        return this._compromisedAttempts;
+    allCompromisedAttempts: CompromisedAttempt[] = [];
+
+    get checkedCompromisedAttempts() {
+        return this._checkedAttempts;
     }
 
-    addAttempt(attempt: CompromisedAttempt) {
-        if (this._compromisedAttempts.indexOf(attempt) === -1) {
-            this._compromisedAttempts.push(attempt);
+    addAttemptToCheckList(attempt: CompromisedAttempt) {
+        if (this._checkedAttempts.indexOf(attempt) === -1) {
+            this._checkedAttempts.push(attempt);
         }
+    }
+
+    removeAttemptFromCheckList(attempt: CompromisedAttempt) {
+        this._checkedAttempts.splice(this._checkedAttempts.indexOf(attempt), 1);
+    }
+
+    removeAttempt(attempt: CompromisedAttempt) {
+        this.allCompromisedAttempts.splice(this.allCompromisedAttempts.indexOf(attempt), 1);
     }
 }
