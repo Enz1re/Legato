@@ -8,7 +8,7 @@ namespace Legato.DAL.Models
     public class BannedTokenModel
     {
         [Key]
-        [StringLength(400)]
+        [StringLength(256)]
         public string Token { get; set; }
     }
 }
