@@ -1,30 +1,38 @@
 ﻿<div>
     <div class="modal-header">Users</div>
-    <div class="modal-body legato-modal-body-user-table">
-        <div>
-            <table class="user-table">
-                <tbody>
+    <div class="modal-body legato-modal-body-long">
+        <div class="table-container">
+            <table>
+                <thead>
                     <tr>
-                        <th>Token</th>
-                        <th>IP</th>
+                        <th></th>
                         <th>Username</th>
+                        <th>IP</th>
                         <th>Date</th>
                         <th></th>
-                        <th></th>
                     </tr>
-                    <tr ng-class="{'checked-row': attempt.isSelected}" ng-repeat="attempt in attemptCtrl.compromisedAttempts" 
-                                                                               context-menu="attemptCtrl.contextMenu.attemptOptions" 
-                                                                               model="attempt"
-                                                                               data="attemptCtrl.compromisedAttempts">
-                        <td>{{attempt.compromisedToken}}</td>
-                        <td>{{attempt.requestIP}}</td>
+                </thead>
+                <tbody>
+                    <tr ng-class="{'selected-row': attempt.isSelected}" ng-repeat="attempt in attemptCtrl.attemptService.allCompromisedAttempts"
+                                                                               ng-click="attemptCtrl.checkOrUncheckRow($event, attempt)"
+                                                                               contextmenu="attemptCtrl.checkOrUncheckRow(attempt)"
+                                                                               context-menu="attemptCtrl.contextMenu.attemptOptions"
+                                                                               model="attempt">
+                        <td><div><input ng-click="attemptCtrl.checkOrUncheckAttempt($event, attempt)" type="checkbox" ng-model="attempt.isSelected"></div></td>
                         <td>{{attempt.username}}</td>
+                        <td>{{attempt.requestIP}}</td>
                         <td>{{attempt.requestDateTime}}</td>
-                        <td><div><input type="checkbox" ng-model="attempt.isSelected"></div></td>
-                        <td><a ng-href="" ng-click="attemptCtrl.removeAttempt(attempt)"><img class="icon" src="../../../../Content/icons/delete.ico" /></a></td>
+                        <td>
+                            <a ng-href="" ng-click="attemptCtrl.removeAttempt($event, attempt)">
+                                <img title="Delete" class="icon" src="../../../../Content/icons/delete.ico" />
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="button-container">
+            <button ng-click="attemptCtrl.onOkButtonClicked()" class="btn btn-primary">Ok</button>
         </div>
     </div>
 </div>
