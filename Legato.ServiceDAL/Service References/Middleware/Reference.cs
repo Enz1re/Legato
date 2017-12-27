@@ -255,6 +255,12 @@ namespace Legato.ServiceDAL.Middleware {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/AddClaim", ReplyAction="http://tempuri.org/ILegatoMiddleware/AddClaimResponse")]
         System.Threading.Tasks.Task AddClaimAsync(string username, string userClaim);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/HasClaim", ReplyAction="http://tempuri.org/ILegatoMiddleware/HasClaimResponse")]
+        bool HasClaim(string username, string claimName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/HasClaim", ReplyAction="http://tempuri.org/ILegatoMiddleware/HasClaimResponse")]
+        System.Threading.Tasks.Task<bool> HasClaimAsync(string username, string claimName);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttempt", ReplyAction="http://tempuri.org/ILegatoMiddleware/AddCompromisedAttemptResponse")]
         void AddCompromisedAttempt(Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel attempt);
         
@@ -619,6 +625,14 @@ namespace Legato.ServiceDAL.Middleware {
         
         public System.Threading.Tasks.Task AddClaimAsync(string username, string userClaim) {
             return base.Channel.AddClaimAsync(username, userClaim);
+        }
+        
+        public bool HasClaim(string username, string claimName) {
+            return base.Channel.HasClaim(username, claimName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> HasClaimAsync(string username, string claimName) {
+            return base.Channel.HasClaimAsync(username, claimName);
         }
         
         public void AddCompromisedAttempt(Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel attempt) {
