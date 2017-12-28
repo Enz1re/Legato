@@ -1,15 +1,17 @@
-﻿<div>
+﻿<div class="legato-modal-body-table">
     <div class="modal-header">Users</div>
-    <div class="modal-body legato-modal-body-user-table">
-        <div>
-            <table class="user-table">
-                <tbody>
+    <div class="modal-body legato-modal-body-long">
+        <div class="table-container">
+            <table>
+                <thead>
                     <tr>
                         <th>Name</th>
                         <th>Role</th>
                         <th></th>
                         <th ng-if="user.isAuthenticated"></th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr ng-repeat="user in userModalCtrl.users" context-menu="userModalCtrl.contextMenu.userOptions" model="user">
                         <td>{{user.name}}</td>
                         <td>{{user.role}}</td>
@@ -27,6 +29,9 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="button-container">
+            <button class="btn btn-primary modal-button" ng-click="userModalCtrl.onOkButtonClicked()">Ok</button>
         </div>
     </div>
 </div>

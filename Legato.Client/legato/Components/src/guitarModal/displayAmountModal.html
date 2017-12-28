@@ -6,9 +6,9 @@
             <div><input ng-model="displayAmountModalCtrl.amount" type="number" placeholder="Display amount" /></div>
         </div>
         <div class="button-container">
-            <button ng-click="displayAmountModalCtrl.onOkButtonClicked()" class="btn btn-primary" 
+            <button ng-click="displayAmountModalCtrl.onOkButtonClicked()" class="btn btn-primary modal-button" 
                     ng-disabled="displayAmountModalCtrl.amount < 10 || displayAmountModalCtrl.amount > 1000">Ok</button>
-            <button ng-click="displayAmountModalCtrl.onCancelButtonClicked()" class="btn btn-primary">Cancel</button>
+            <button ng-click="displayAmountModalCtrl.onCancelButtonClicked()" class="btn btn-primary modal-button">Cancel</button>
         </div>
     </div>
 </div>
