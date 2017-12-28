@@ -18,6 +18,10 @@ export default class UserService implements IUserService {
 
     }
 
+    get authenticated() {
+        return !!this.currentUser;
+    }
+
     getUsers(): ng.IPromise<UserViewModel[]> {
         return this.resource.getAll();
     }

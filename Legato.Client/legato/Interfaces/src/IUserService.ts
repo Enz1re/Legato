@@ -7,6 +7,7 @@
 
 export interface IUserService {
     currentUser: User;
+    authenticated: boolean;
 
     getUsers(): ng.IPromise<UserViewModel[]>;
     blockUser(username: string): ng.IPromise<any>;
