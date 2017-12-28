@@ -17,12 +17,28 @@ export default class AuthenticationService extends ServiceBase implements IAuthe
         super(null);
     }
 
+    getUser(accessToken: string): ng.IPromise<User> {
+        this.pendingRequests++;
+        return this.$http({
+            method: "GET",
+            url: "http://localhost/api/User/Session",
+            params: { accessToken: accessToken }
+        }).then((response: ng.IHttpResponse<User>) => {
+            this.pendingRequests--;
+            this.userService.currentUser = response.data;
+            return response.data;
+        }).catch(err => {
+            this.pendingRequests = 0;
+            throw err;
+        });
+    }
+
     login(username: string, password: string): ng.IPromise<string> {
         this.pendingRequests++;
         return this.$http({
             method: "POST",
             url: "http://localhost/api/User/Login",
-            data: { username: username, encryptedPassword: this.sha1.hash(password) }
+            data: { username: username, password: this.sha1.hash(password) }
         }).then((response: ng.IHttpResponse<any>) => {
             this.pendingRequests--;
             this.setCredentials(username, response.data.role, response.data.accessToken);
@@ -41,12 +57,13 @@ export default class AuthenticationService extends ServiceBase implements IAuthe
             data: { username: this.userService.currentUser.username, accessToken: this.$cookies.getObject("globals").accessToken }
         }).then(response => {
             this.pendingRequests--;
-            this.clearCredentials();
             return response.data;
         }).catch(err => {
             this.pendingRequests = 0;
             throw err;
-        })
+        }).finally(() => {
+            this.clearCredentials();
+        });
     }
 
     private setCredentials(username: string, role: string, accessToken: string) {
