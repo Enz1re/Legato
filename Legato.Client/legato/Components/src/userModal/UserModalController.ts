@@ -19,8 +19,4 @@ export class UserModalController {
     onOkButtonClicked() {
         this.$uibModalInstance.close();
     }
-
-    onCancelButtonClicked() {
-        this.$uibModalInstance.dismiss();
-    }
 }
