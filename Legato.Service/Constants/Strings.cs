@@ -28,6 +28,8 @@
 
         public static string UsernameAndPasswordAreRequired => "Username and password are required.";
 
+        public static string DisplayAmountIsInvalid => "Display amount must be greater than 10 and lower than 1000";
+
         public static string UsernameIsIncorrect(string username) => $@"Username '{username}' is incorrect.";
 
         public static string GuitarIsInvalid => "Guitar data is invalid.";
