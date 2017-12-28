@@ -5,6 +5,8 @@ namespace Legato.ServiceDAL.ViewModels
 {
     public class CompromisedAttemptViewModel
     {
+        public int AttemptId { get; set; }
+
         public string CompromisedToken { get; set; }
 
         public string RequestIP { get; set; }
