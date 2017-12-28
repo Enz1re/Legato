@@ -69,11 +69,12 @@ ol, ul {
 }
 
 .table-container {
-    max-height: 18em;
+    height: 13em;
+    max-height: 13em;
     overflow-y: scroll;
 }
 
-tr.selected-row {
+.selected-row {
     background-color: #cde1f7
 }
 
@@ -107,31 +108,33 @@ div.m-app-loading {
 }
 
 div.animated-container {
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     opacity: 1.0;
     position: fixed;
-    right: 0px;
-    top: 0px;
+    right: 0;
+    top: 0;
     min-width: 100%;
     min-height: 100%;
     z-index: 999999;
 }
 
-div.m-app-loading div.animated-container.ng-leave {
+.m-app-loading .animated-container.ng-leave {
     opacity: 1.0;
     transition: all linear 200ms;
     -webkit-transition: all linear 200ms;
+    -moz-transition: all linear 200ms;
+    -o-transition: all linear 200ms;
 }
 
-div.m-app-loading div.animated-container.ng-leave-active {
+.m-app-loading .animated-container.ng-leave-active {
     opacity: 0;
 }
 
-div.messaging {
+.messaging {
     font-family: monospace;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
     text-align: center;
     margin-top: 100px;
 }
@@ -158,8 +161,8 @@ div.messaging {
     position: relative;
     left: 50%;
     top: 50%;
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     border: 3px solid #F00;
 }
 
@@ -356,7 +359,7 @@ div.messaging {
 
 .button-container,
 .button-container-center {
-    margin-top: 2em;
+    margin-top: 1.46em;
 }
 
 .button-container {
@@ -452,8 +455,11 @@ div.messaging {
 }
 
 .legato-modal-body-table {
-    height: 20em;
-    overflow: scroll;
+    height: 22em;
+}
+
+.modal-button {
+    min-width: 4em;
 }
 
 /* Login form styles */
@@ -470,7 +476,7 @@ div.messaging {
     background-color: #F7F7F7;
     margin: 0 auto;
     border-radius: 2px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
@@ -488,25 +494,27 @@ div.messaging {
 }
 
 .loginmodal-container input[type=text], input[type=password] {
+    width: 100%;
     height: 44px;
     font-size: 16px;
-    width: 100%;
-    margin-bottom: 10px;
-    -webkit-appearance: none;
+    padding: 0 8px;
     background: #fff;
+    margin-bottom: 10px;
     border: 1px solid #d9d9d9;
     border-top: 1px solid #c0c0c0;
-    padding: 0 8px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-appearance: none;
     -moz-box-sizing: border-box;
+    -moz-appearance: none;
+    box-sizing: border-box;
 }
 
 .loginmodal-container input[type=text]:hover, input[type=password]:hover {
     border: 1px solid #b9b9b9;
     border-top: 1px solid #a0a0a0;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .loginmodal {
@@ -518,17 +526,17 @@ div.messaging {
 }
 
 .loginmodal-submit {
-    border: 0px;
+    border: 0;
     color: #fff;
     text-shadow: 0 1px rgba(0,0,0,0.1); 
     background-color: #4d90fe;
-    padding: 17px 0px;
+    padding: 17px 0;
     font-family: roboto;
     font-size: 14px;
 }
 
 .loginmodal-submit:hover {
-    border: 0px;
+    border: 0;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     background-color: #357ae8;
 }
@@ -582,7 +590,7 @@ div.messaging {
     box-shadow: rgba(0, 0, 0, 0.5) 8px 5px 10px;
 }
 
-img.admin-panel-item-img {
+.admin-panel-item-img {
     width: 90%;
     height: 90%;
 }
