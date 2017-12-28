@@ -123,6 +123,11 @@ namespace Legato.Service.Controllers
         [LegatoAuthorize(Strings.ChangeDisplayAmounClaim)]
         public IHttpActionResult ChangeDisplayAmount(int amount)
         {
+            if (10 > amount || amount > 1000)
+            {
+                return BadRequest(Strings.DisplayAmountIsInvalid);
+            }
+
             try
             {
                 var root = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText($@"{AppDomain.CurrentDomain.BaseDirectory}/settings.json"));
