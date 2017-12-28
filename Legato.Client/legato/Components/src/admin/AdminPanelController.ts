@@ -71,8 +71,12 @@ export class AdminPanelController {
     }
 
     showCompromisedAttempts() {
-        this.modalService.openCompromisedAttemptsModal(this.compromisedAttempts).result.then(() => {
-
+        this.modalService.openCompromisedAttemptsModal(this.compromisedAttempts).result.then(isPristine => {
+            if (!isPristine) {
+                this.userService.getCompromisedAttempts().then(result => {
+                    this.compromisedAttempts = result.compromisedAttempts;
+                });
+            }
         }).catch(() => { });
     }
 }
