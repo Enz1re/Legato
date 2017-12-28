@@ -19,7 +19,7 @@ namespace Legato.Service.Controllers
         }
 
         [HttpGet]
-        [Route("ValidateClaim/{username}/{claimName}")]
+        [Route("ValidateUserClaim/{username}/{claimName}")]
         public IHttpActionResult ValidateUserClaim(string username, string claimName)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(claimName))
