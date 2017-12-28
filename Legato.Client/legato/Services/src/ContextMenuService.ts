@@ -80,7 +80,7 @@ export default class ContextMenuService implements IContextMenuService {
             displayed: () => this.attemptService.checkedCompromisedAttempts.length > 1,
             click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data) => {
                 this.modalService.openYesNoDialog("Do you want to delete checked attempts? This action is irreversible").result.then(() => {
-                    var attempts = this.attemptService.allCompromisedAttempts;
+                    var attempts = this.attemptService.checkedCompromisedAttempts;
                     this.userService.removeCompromisedAttempts(attempts.map(attempt => attempt.attemptId)).then(() => {
                         for (let i = attempts.length - 1; i >= 0; i--) {
                             this.attemptService.removeAttempt(attempts[i]);
