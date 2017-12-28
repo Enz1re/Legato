@@ -42,7 +42,22 @@ export class CompromisedAttemptsController {
         }
     }
 
+    selectAll() {
+        this.attemptService.allCompromisedAttempts.forEach(attempt => {
+            attempt.isSelected = true;
+        });
+        this.attemptService.selectAll();
+    }
+
+    deselectAll() {
+        this.attemptService.allCompromisedAttempts.forEach(attempt => {
+            attempt.isSelected = false;
+        });
+        this.attemptService.deselectAll();
+    }
+
     onOkButtonClicked() {
-        this.$uibModalInstance.close();
+        this.attemptService.clear();
+        this.$uibModalInstance.close(this.attemptService.pristine);
     }
 }

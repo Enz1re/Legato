@@ -1,5 +1,5 @@
-﻿<div>
-    <div class="modal-header">Users</div>
+﻿<div class="legato-modal-body-table">
+    <div class="modal-header">Compromised attempts</div>
     <div class="modal-body legato-modal-body-long">
         <div class="table-container">
             <table>
@@ -17,6 +17,7 @@
                                                                                ng-click="attemptCtrl.checkOrUncheckRow($event, attempt)"
                                                                                contextmenu="attemptCtrl.checkOrUncheckRow(attempt)"
                                                                                context-menu="attemptCtrl.contextMenu.attemptOptions"
+                                                                               allow-event-propagation="true"
                                                                                model="attempt">
                         <td><div><input ng-click="attemptCtrl.checkOrUncheckAttempt($event, attempt)" type="checkbox" ng-model="attempt.isSelected"></div></td>
                         <td>{{attempt.username}}</td>
@@ -31,8 +32,15 @@
                 </tbody>
             </table>
         </div>
+        <div>
+            {{attemptCtrl.attemptService.checkedCompromisedAttempts.length}} selected.&nbsp;
+            <button class="btn btn-primary" ng-click="attemptCtrl.selectAll()" 
+                    ng-disabled="attemptCtrl.attemptService.allCompromisedAttempts.length === attemptCtrl.attemptService.checkedCompromisedAttempts.length">Select all</button>&nbsp;
+            <button class="btn btn-primary" ng-click="attemptCtrl.deselectAll()"
+                    ng-disabled="attemptCtrl.attemptService.checkedCompromisedAttempts.length === 0">Deselect all</button>
+        </div>
         <div class="button-container">
-            <button ng-click="attemptCtrl.onOkButtonClicked()" class="btn btn-primary">Ok</button>
+            <button ng-click="attemptCtrl.onOkButtonClicked()" class="btn btn-primary modal-button">Ok</button>
         </div>
     </div>
 </div>
