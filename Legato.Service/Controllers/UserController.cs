@@ -35,7 +35,7 @@ namespace Legato.Service.Controllers
         public IHttpActionResult Login([FromBody]dynamic creds)
         {
             var username = creds.username.Value;
-            var password = creds.encryptedPassword.Value;
+            var password = creds.password.Value;
             
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
@@ -57,6 +57,22 @@ namespace Legato.Service.Controllers
             return Ok(new { accessToken = accessToken, role = userRole });
         }
 
+        [HttpGet]
+        [Route("Session")]
+        public IHttpActionResult GetUserSession([FromUri]string accessToken)
+        {
+            var principal = JwtManager.GetPrincipal(accessToken);
+            if (principal == null || !_serviceWorker.IsTokenActive(accessToken))
+            {
+                return BadRequest(Strings.AccessTokenIsInvalid);
+            }
+
+            var username = principal.Identity.Name;
+            var role = _serviceWorker.GetUserRole(username);
+
+            return Ok(new { username = username, role = role });
+        }
+
         [HttpPost]
         [Route("Logout")]
         public IHttpActionResult LogOut([FromBody]dynamic requestBody)
@@ -68,7 +84,7 @@ namespace Legato.Service.Controllers
             {
                 return BadRequest(Strings.AccessTokenIsMissing);
             }
-            if (!_serviceWorker.IsTokenActive(accessToken) || !_serviceWorker.RemoveToken(accessToken))
+            if (!_serviceWorker.RemoveToken(accessToken))
             {
                 return InternalServerError(new Exception(Strings.FailedToLogOff));
             }
@@ -111,7 +127,7 @@ namespace Legato.Service.Controllers
         [LegatoAuthorize(Strings.RemoveCompromisedAttempts)]
         public IHttpActionResult RemoveCompromisedAttempt(dynamic request)
         {
-            var compromisedAttemptsIds = request.compromisedAttempts.Value;
+            var compromisedAttemptsIds = request.compromisedAttempts.ToObject<int[]>();
             _serviceWorker.RemoveCompromisedAttempts(compromisedAttemptsIds);
 
             return Ok();
