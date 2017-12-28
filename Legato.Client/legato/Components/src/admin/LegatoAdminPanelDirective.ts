@@ -4,9 +4,6 @@
     controller = "AdminPanelController";
     controllerAs = "adminCtrl";
     bindToController = true;
-    scope = {
-        paging: "@"
-    };
 
     static create(): ng.IDirectiveFactory {
         const directive: ng.IDirectiveFactory = () => new LegatoAdminPanelDirective();
