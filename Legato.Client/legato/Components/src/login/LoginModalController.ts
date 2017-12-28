@@ -1,4 +1,4 @@
-﻿import { IAuthenticationService } from "../../../Interfaces/interfaces";
+﻿import { IUserService, IAuthenticationService } from "../../../Interfaces/interfaces";
 
 
 export class LoginModalController {
@@ -9,23 +9,31 @@ export class LoginModalController {
     };
     private username: string;
     private password: string;
-    static $inject = ["$uibModalInstance", "AuthenticationService"];
+    static $inject = ["$uibModalInstance", "AuthenticationService", "UserService"];
 
-    constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private authService: IAuthenticationService) {
+    constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private authService: IAuthenticationService, private userService: IUserService) {
 
     }
 
-    onOkButtonPressed() {
+    onSignInButtonPressed() {
         this.messaging.loading = true;
+        if (this.userService.authenticated) {
+            this.authService.logOff().then(() => { this.login(); });
+        } else {
+            this.login();
+        }
+    }
+
+    onCancelPressed() {
+        this.$uibModalInstance.dismiss();
+    }
+
+    private login() {
         this.authService.login(this.username, this.password).then((accessToken: string) => {
             this.$uibModalInstance.close();
         }).catch(err => {
             this.messaging.error = true;
             this.messaging.message = err.data.message;
         });
-    }
-
-    onCancelPressed() {
-        this.$uibModalInstance.dismiss();
     }
 }
