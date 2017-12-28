@@ -18,7 +18,6 @@ namespace Legato.Service.Filters
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class LegatoAuthenticationAttribute : Attribute, IAuthenticationFilter
     {
-        private const string RemoteAddr = "REMOTE_ADDR";
         private const string Context = "MS_HttpContext";
 
         [Inject]
@@ -90,15 +89,8 @@ namespace Legato.Service.Filters
 
         private string GetRequestIP(HttpRequestMessage request)
         {
-            string ip1 = HttpContext.Current?.Request.ServerVariables[RemoteAddr];
-            string ip2 = HttpContext.Current?.Request.UserHostAddress;
-            string ip3 = ((HttpContextWrapper)request.Properties[Context]).Request.UserHostAddress;
-            var propfd = (RemoteEndpointMessageProperty)request.Properties[RemoteEndpointMessageProperty.Name];
-            string ip4 = propfd.Address;
-
             if (HttpContext.Current != null)
             {
-                //return HttpContext.Current.Request.ServerVariables[RemoteAddr];
                 return HttpContext.Current.Request.UserHostAddress;
             }
             if (request.Properties.ContainsKey(Context))
