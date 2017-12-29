@@ -75,6 +75,10 @@
     <Compile Include="Migrations\201712290837426_New.Designer.cs">
       <DependentUpon>201712290837426_New.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712290910053_New_2.cs" />
+    <Compile Include="Migrations\201712290910053_New_2.Designer.cs">
+      <DependentUpon>201712290910053_New_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AcousticClassicalGuitarModel.cs" />
     <Compile Include="Models\AcousticWesternGuitarModel.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712290837426_New.resx">
       <DependentUpon>201712290837426_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712290910053_New_2.resx">
+      <DependentUpon>201712290910053_New_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

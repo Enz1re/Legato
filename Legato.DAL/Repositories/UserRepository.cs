@@ -11,10 +11,10 @@ namespace Legato.DAL.Repositories
 {
     class UserRepository : IUserRepository
     {
-        private IUserContext _context;
+        private ILegatoContext _context;
 
         [Inject]
-        public UserRepository(IUserContext context)
+        public UserRepository(ILegatoContext context)
         {
             _context = context;
         }
