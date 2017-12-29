@@ -184,10 +184,10 @@ namespace Legato.ServiceDAL.Middleware {
         System.Threading.Tasks.Task<int> GetBassGuitarQuantityAsync(Legato.MiddlewareContracts.DataContracts.FilterDataModel filter);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUsers", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUsersResponse")]
-        Legato.MiddlewareContracts.DataContracts.UserDataModel[] GetUsers();
+        Legato.MiddlewareContracts.DataContracts.UserDataModel[] GetUsers(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUsers", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUsersResponse")]
-        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.UserDataModel[]> GetUsersAsync();
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.UserDataModel[]> GetUsersAsync(int lowerBound, int upperBound);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/FindUserByUsername", ReplyAction="http://tempuri.org/ILegatoMiddleware/FindUserByUsernameResponse")]
         bool FindUserByUsername(string username);
@@ -531,12 +531,12 @@ namespace Legato.ServiceDAL.Middleware {
             return base.Channel.GetBassGuitarQuantityAsync(filter);
         }
         
-        public Legato.MiddlewareContracts.DataContracts.UserDataModel[] GetUsers() {
-            return base.Channel.GetUsers();
+        public Legato.MiddlewareContracts.DataContracts.UserDataModel[] GetUsers(int lowerBound, int upperBound) {
+            return base.Channel.GetUsers(lowerBound, upperBound);
         }
         
-        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.UserDataModel[]> GetUsersAsync() {
-            return base.Channel.GetUsersAsync();
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.UserDataModel[]> GetUsersAsync(int lowerBound, int upperBound) {
+            return base.Channel.GetUsersAsync(lowerBound, upperBound);
         }
         
         public bool FindUserByUsername(string username) {

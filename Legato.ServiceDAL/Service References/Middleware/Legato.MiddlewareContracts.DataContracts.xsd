@@ -154,6 +154,7 @@
   <xs:element name="UserDataModel" nillable="true" type="tns:UserDataModel" />
   <xs:complexType name="CompromisedAttemptDataModel">
     <xs:sequence>
+      <xs:element minOccurs="0" name="AttemptId" type="xs:int" />
       <xs:element minOccurs="0" name="CompromisedToken" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RequestDateTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="RequestIP" nillable="true" type="xs:string" />
