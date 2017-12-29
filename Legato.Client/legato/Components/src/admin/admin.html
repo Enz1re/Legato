@@ -1,16 +1,16 @@
 ﻿<div class="admin-panel">
     <div class="flexbox">
-        <div class="admin-panel-item" ng-click="adminCtrl.addGuitar()">
+        <div class="admin-panel-item" ng-if="adminCtrl.claimService.claims.addGuitar" ng-click="adminCtrl.addGuitar()">
             <img class="admin-panel-item-img" src="../../../../Content/icons/add.ico" title="Add guitar" />
         </div>
-        <div class="admin-panel-item" ng-click="adminCtrl.changeDisplayAmount()">
+        <div class="admin-panel-item" ng-if="adminCtrl.claimService.claims.changeDisplayAmount" ng-click="adminCtrl.changeDisplayAmount()">
             <img class="admin-panel-item-img" src="../../../../Content/icons/list.ico" title="Change display amount" />
         </div>
-        <div class="admin-panel-item" ng-if="adminCtrl.userService.currentUser.role === 'Superuser'" ng-click="adminCtrl.listUsers()">
+        <div class="admin-panel-item" ng-if="adminCtrl.claimService.claims.getUserList" ng-click="adminCtrl.listUsers()">
             <img class="admin-panel-item-img" src="../../../../Content/icons/users.png" title="List users" />
         </div>
     </div>
-    <div class="flexbox" ng-if="adminCtrl.compromisedAttempts.length > 0 && adminCtrl.userService.currentUser.role === 'Superuser'">
+    <div class="flexbox" ng-if="adminCtrl.compromisedAttempts.length > 0 && adminCtrl.claimService.claims.getCompromisedAttempts">
         <span class="alert alert-danger">
             Warning:&nbsp;
             <a href="" ng-click="adminCtrl.showCompromisedAttempts()">

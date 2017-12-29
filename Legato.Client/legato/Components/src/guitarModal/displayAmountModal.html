@@ -2,12 +2,12 @@
     <div class="modal-header">Display amount</div>
     <div class="modal-body legato-modal-body">
         <div>
-            <div>Please enter display amount (min 10, max 1000)</div>
+            <div>Please enter display amount (min 10, max 100)</div>
             <div><input ng-model="displayAmountModalCtrl.amount" type="number" placeholder="Display amount" /></div>
         </div>
         <div class="button-container">
             <button ng-click="displayAmountModalCtrl.onOkButtonClicked()" class="btn btn-primary modal-button" 
-                    ng-disabled="displayAmountModalCtrl.amount < 10 || displayAmountModalCtrl.amount > 1000">Ok</button>
+                    ng-disabled="displayAmountModalCtrl.amount < 10 || displayAmountModalCtrl.amount > 100">Ok</button>
             <button ng-click="displayAmountModalCtrl.onCancelButtonClicked()" class="btn btn-primary modal-button">Cancel</button>
         </div>
     </div>

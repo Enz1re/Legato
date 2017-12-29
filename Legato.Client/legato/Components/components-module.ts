@@ -11,6 +11,7 @@ import { LegatoSmoothScrollDirective } from "./src/smoothScroll/LegatoSmoothScro
 import { LegatoRequestLoaderDirective } from "./src/loading/LegatoRequestLoaderDirective";
 import { LegatoContextMenuDirective } from "./src/contextMenu/LegatoContextMenuDirective";
 import { LegatoAdminPanelDirective } from "./src/admin/LegatoAdminPanelDirective";
+import { LegatoLoadOnScrollDirective } from "./src/loadOnScroll/LegatoLoadOnScrollDirective";
 
 import { MainController } from "./src/legato/MainController";
 import { ClassicalController } from "./src/classical/ClassicalController";
@@ -43,6 +44,7 @@ angular.module(directivesModuleName, [])
     .directive("legatoRequestLoader", LegatoRequestLoaderDirective.create())
     .directive("contextMenu", LegatoContextMenuDirective.create())
     .directive("adminPanel", LegatoAdminPanelDirective.create())
+    .directive("loadOnScroll", LegatoLoadOnScrollDirective.create())
     // controller declarations
     .controller("MainController", MainController)
     .controller("ClassicalController", ClassicalController)

@@ -74,7 +74,7 @@
             <uib-tab select="mainCtrl.checkTab($event, 'bass')" deselect="mainCtrl.onTabDeselected($event, 'bass')" index="'bass'" heading="Bass"></uib-tab>
         </uib-tabset>
         <div class="guitar-list-container">
-            <admin-panel ng-if="mainCtrl.userService.currentUser"></admin-panel>
+            <admin-panel ng-if="mainCtrl.userService.currentUser.role !== 'User'"></admin-panel>
             <ui-view></ui-view>
         </div>
     </div>

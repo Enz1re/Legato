@@ -6,6 +6,7 @@
 
 import {
     IUserService,
+    IClaimService,
     IModalService,
     IFilterService,
     IVendorService,
@@ -21,10 +22,12 @@ export class MainController implements ng.IController {
     error = false;
     activeTab: string;
     search: string;
-    static $inject = ["$scope", "RoutingService", "UpdateService", "FilterService", "VendorService", "AuthenticationService", "ModalService", "UserService"];
+    static $inject = ["$scope", "RoutingService", "UpdateService", "FilterService", "VendorService",
+                      "AuthenticationService", "ModalService", "UserService", "ClaimService"];
 
     constructor(private $scope: ng.IScope, private routingService: IRoutingService, private updateService: IUpdateService, private filterService: IFilterService,
-                private service: IVendorService, private authService: IAuthenticationService, private modalService: IModalService, private userService: IUserService) {
+                private service: IVendorService, private authService: IAuthenticationService, private modalService: IModalService, private userService: IUserService,
+                private claimService: IClaimService) {
         const name = routingService.urlSegments[1];
         this.initVendorList(name).then(() => {
             this.activeTab = name;
@@ -34,13 +37,13 @@ export class MainController implements ng.IController {
             this.updateService.filter.vendors = urlParamResolver.resolveVendors(this.updateService.filter.vendors);
             this.updateService.filter.search = this.search = urlParamResolver.resolveSearchString();
         });
-        $scope.$watch(() => this.userService.currentUser, (newVal, oldVal) => {
-            if (newVal || oldVal) {
-                if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username)) {
-                    this.userService.currentUser = newVal;
-                }
-            }
-        }, true);
+        //$scope.$watch(() => this.userService.currentUser, (newVal, oldVal) => {
+        //    if (newVal || oldVal) {
+        //        if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username)) {
+        //            this.userService.currentUser = newVal;
+        //        }
+        //    }
+        //}, true);
     }
 
     checkTab(click, guitarTypeName: string) {

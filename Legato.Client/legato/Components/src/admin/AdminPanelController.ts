@@ -21,7 +21,7 @@ export class AdminPanelController {
 
     constructor(private manageService: IManageService, private modalService: IModalService, private pagingService: IPagingService, private updateService: IUpdateService,
                 private routingService: IRoutingService, private userService: IUserService, private claimService: IClaimService) {
-        if (userService.currentUser.role === "Superuser") {
+        if (claimService.claims.getCompromisedAttempts) {
             userService.getCompromisedAttempts().then(result => {
                 this.compromisedAttempts = result.compromisedAttempts;
             });
@@ -33,39 +33,30 @@ export class AdminPanelController {
             guitar: null,
             type: () => this.routingService.urlSegments[1]
         }).result.then(resp => {
-            this.claimService.canAddGuitar().then(result => {
-                if (result) {
-                    this.manageService.addGuitar(resp.guitar, resp.type).then(() => {
-                        this.updateService.updateLastPage();
-                    }).catch(() => {
-                        this.modalService.openAlertModal("Failed to add new guitar", "danger").result.catch(() => { });
-                    });
-                } else {
-                    this.modalService.openAlertModal("You are not authorized to perform this action", "danger").result.catch(() => { });
-                }
+            this.manageService.addGuitar(resp.guitar, resp.type).then(() => {
+                this.updateService.updateLastPage();
+            }).catch(err => {
+                this.modalService.openAlertModal(err.data.message, "danger").result.catch(() => { });
             });
         }).catch(() => { });
     }
 
     changeDisplayAmount() {
-        this.modalService.openDisplayAmountModal({ amount: this.pagingService.itemsToShow }).result.then((amount: number) => {
-            this.claimService.canChangeDisplayAmount().then(result => {
-                if (result) {
-                    this.manageService.changeDisplayAmount(amount).then(() => {
-                        this.pagingService.itemsToShow = amount;
-                        this.updateService.updateCurrentPage();
-                    }).catch(() => {
-                        this.modalService.openAlertModal("Failed to change display amount", "danger").result.catch(() => { });
-                    });
-                } else {
-                    this.modalService.openAlertModal("You are not authorized to perform this action", "danger").result.catch(() => { });
-                }
-            });
-        }).catch(() => { });
+        const prevAmountValue = this.pagingService.itemsToShow;
+        this.modalService.openDisplayAmountModal({ amount: prevAmountValue }).result.then((newAmount: number) => {
+            if (prevAmountValue !== newAmount) {
+                this.manageService.changeDisplayAmount(newAmount).then(() => {
+                    this.pagingService.itemsToShow = newAmount;
+                    this.updateService.updateCurrentPage();
+                }).catch(err => {
+                    this.modalService.openAlertModal(err.data.message, "danger").result.catch(() => { });
+                });
+            }
+         }).catch(() => { });
     }
 
     listUsers() {
-        this.modalService.openUserModal(this.userService.getUsers()).result.then(() => {
+        this.modalService.openUserModal().result.then(() => {
 
         }).catch(() => { });
     }

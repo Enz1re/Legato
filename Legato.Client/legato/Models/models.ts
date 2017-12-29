@@ -5,6 +5,7 @@ import ElectricGuitar from "./src/ElectricGuitar";
 import WesternGuitar from "./src/WesternGuitar";
 import UserViewModel from "./src/UserViewModel";
 import GuitarFilter from "./src/GuitarFilter";
+import LegatoClaims from "./src/LegatoClaims";
 import BassGuitar from "./src/BassGuitar";
 import GuitarList from "./src/GuitarList";
 import VendorList from "./src/VendorList";
@@ -27,6 +28,7 @@ export {
     WesternGuitar,
     UserViewModel,
     GuitarFilter,
+    LegatoClaims,
     BassGuitar,
     GuitarList,
     VendorList,
