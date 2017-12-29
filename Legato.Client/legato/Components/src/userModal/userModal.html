@@ -1,7 +1,9 @@
 ﻿<div class="legato-modal-body-table">
     <div class="modal-header">Users</div>
     <div class="modal-body legato-modal-body-long">
-        <div class="table-container">
+        <div class="table-container" load-on-scroll scroll-callback="userModalCtrl.loadUsers"
+                                                    scroll-controller="userModalCtrl"
+                                                    scroll-if="!userModalCtrl.allUsersLoaded">
             <table>
                 <thead>
                     <tr>
@@ -14,21 +16,24 @@
                 <tbody>
                     <tr ng-repeat="user in userModalCtrl.users" context-menu="userModalCtrl.contextMenu.userOptions" model="user">
                         <td>{{user.name}}</td>
-                        <td>{{user.role}}</td>
+                        <td>{{user.role}} <span ng-if="user.role === 'Admin'" class="glyphicon glyphicon-star" /></td>
                         <td>
                             <div>
-                                <img ng-if="user.isAuthenticated" class="icon-sm" title="Authenticated" src="../../../../Content/icons/greenlight.png" />
-                                <img ng-if="!user.isAuthenticated" class="icon-sm" title="Not authenticated" src="../../../../Content/icons/redlight.png" />
+                                <img ng-if="user.isAuthenticated" class="icon-sm icon-sm-scalable" title="Authenticated" src="../../../../Content/icons/greenlight.png" />
+                                <img ng-if="!user.isAuthenticated" class="icon-sm icon-sm-scalable" title="Not authenticated" src="../../../../Content/icons/redlight.png" />
                             </div>
                         </td>
                         <td ng-if="user.isAuthenticated">
-                            <a href="" ng-click="userModalCtrl.blockUserSession()">
-                                <img class="icon" title="Block user session" src="../../../../Content/icons/block.png" />
+                            <a href="" ng-click="userModalCtrl.blockUserSession(user)">
+                                <img class="icon icon-scalable" title="Block user session" src="../../../../Content/icons/block.png" />
                             </a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div ng-if="userModalCtrl.loading" class="modal-loading">
+                <img class="icon" src="../../../../Content/icons/loading.gif" />
+            </div>
         </div>
         <div class="button-container">
             <button class="btn btn-primary modal-button" ng-click="userModalCtrl.onOkButtonClicked()">Ok</button>
