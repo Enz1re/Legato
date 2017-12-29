@@ -15,9 +15,9 @@
     <legato-request-loader ng-if="bassCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
     <ul ng-if="!bassCtrl.error">
         <li class="guitar-li" ng-repeat="guitar in bassCtrl.guitars">
-            <div class="guitar-container" ng-click="bassCtrl.onGuitarClick('bass', $index)" context-menu="bassCtrl.contextMenu.menuOptions"
-                                                                                            context-menu-if="bassCtrl.userService.currentUser"
+            <div class="guitar-container" ng-click="bassCtrl.onGuitarClick('bass', $index)" context-menu="bassCtrl.contextMenu.guitarOptions"
                                                                                             context-menu-data="{ type: 'bass' }"
+                                                                                            context-menu-if="bassCtrl.userHasRightsToChangeGuitars()"
                                                                                             model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
                 <div>{{guitar.vendor.name}} {{guitar.model}}</div>

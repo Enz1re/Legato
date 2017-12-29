@@ -15,9 +15,9 @@
     <legato-request-loader ng-if="westernCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
     <ul ng-if="!westernCtrl.error">
         <li class="guitar-li" ng-repeat="guitar in westernCtrl.guitars">
-            <div class="guitar-container" ng-click="westernCtrl.onGuitarClick('western', $index)" context-menu="westernCtrl.contextMenu.menuOptions"
-                                                                                                  context-menu-if="westernCtrl.userService.currentUser"
+            <div class="guitar-container" ng-click="westernCtrl.onGuitarClick('western', $index)" context-menu="westernCtrl.contextMenu.guitarOptions"
                                                                                                   context-menu-data="{ type: 'western' }"
+                                                                                                  context-menu-if="westernCtrl.userHasRightsToChangeGuitars()"
                                                                                                   model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
                 <div>{{guitar.vendor.name}} {{guitar.model}}</div>

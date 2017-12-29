@@ -15,9 +15,9 @@
     <legato-request-loader ng-if="electricCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
     <ul ng-if="!electricCtrl.error">
         <li class="guitar-li" ng-repeat="guitar in electricCtrl.guitars">
-            <div class="guitar-container" ng-click="electricCtrl.onGuitarClick('electric', $index)" context-menu="electricCtrl.contextMenu.menuOptions"
-                                                                                                    context-menu-if="electricCtrl.userService.currentUser"
-                                                                                                    context-menu-data="{ type: 'electric' }" 
+            <div class="guitar-container" ng-click="electricCtrl.onGuitarClick('electric', $index)" context-menu="electricCtrl.contextMenu.guitarOptions"
+                                                                                                    context-menu-data="{ type: 'electric' }"
+                                                                                                    context-menu-if="electricCtrl.userHasRightsToChangeGuitars()"
                                                                                                     model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
                 <div>{{guitar.vendor.name}} {{guitar.model}}</div>
