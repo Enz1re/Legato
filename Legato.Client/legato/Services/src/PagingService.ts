@@ -2,12 +2,12 @@
 
 
 export default class PagingService implements IPagingService {
+    private _itemsToShow: number;
     static $inject = ["ManageService"];
     total: number;
     lowerBound: number;
     upperBound: number;
     currentPage: number;
-    itemsToShow: number;
 
     constructor(private manageService: IManageService) {
         manageService.getDisplayAmount().then(amount => {
@@ -15,6 +15,19 @@ export default class PagingService implements IPagingService {
             this.lowerBound = 0;
             this.upperBound = this.itemsToShow;
         });
+    }
+
+    get itemsToShow() {
+        return this._itemsToShow;
+    }
+
+    set itemsToShow(value: number) {
+        if (value < this._itemsToShow) {
+            this.upperBound = this.upperBound - (this.upperBound - value);
+        } else {
+            this.upperBound = this.upperBound + (value - this.upperBound);
+        }
+        this._itemsToShow = value;
     }
 
     goToSelectedPage() {
