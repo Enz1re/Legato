@@ -89,6 +89,19 @@ ol, ul {
     vertical-align: baseline !important;
 }
 
+.icon-scalable,
+.icon-sm-scalable {
+    cursor: pointer;
+}
+
+.icon-scalable:hover {
+    transform: scale(1.1);
+}
+
+.icon-sm-scalable:hover {
+    transform: scale(1.08);
+}
+
 .guitar-li {
     float: left;
 }
@@ -551,7 +564,7 @@ div.animated-container {
     transition: opacity ease 0.5s;
 }
 
-.login-loading {
+.modal-loading {
     text-align: center;
 }
 
