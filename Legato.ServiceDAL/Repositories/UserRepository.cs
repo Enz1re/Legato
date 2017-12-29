@@ -17,9 +17,9 @@ namespace Legato.ServiceDAL.Repositories
             _client = client;
         }
 
-        public IEnumerable<UserDataModel> GetUsers()
+        public IEnumerable<UserDataModel> GetUsers(int lowerBound, int upperBound)
         {
-            return _client.GetUsers();
+            return _client.GetUsers(lowerBound, upperBound);
         }
 
         public bool FindUser(string username)

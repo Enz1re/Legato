@@ -22,12 +22,12 @@ namespace Legato.Service.Controllers
         }
 
         [HttpGet]
-        [Route("GetAll")]
+        [Route("GetAll/{lowerBound}/{upperBound}")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.GetListOfUsers)]
-        public IHttpActionResult GetUsers()
+        public IHttpActionResult GetUsers(int lowerBound, int upperBound)
         {
-            return Ok(_serviceWorker.GetUsers());
+            return Ok(_serviceWorker.GetUsers(lowerBound, upperBound));
         }
 
         [HttpPost]
@@ -110,6 +110,14 @@ namespace Legato.Service.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("{username}/Claims")]
+        public IHttpActionResult GetUserClaims(string username)
+        {
+            // TODO: return Claims object instead of array
+            return Ok(_serviceWorker.GetClaims(username));
         }
 
         [HttpGet]

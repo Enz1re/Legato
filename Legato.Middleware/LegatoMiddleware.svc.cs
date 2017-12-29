@@ -193,9 +193,9 @@ namespace Legato.Middleware
 
         #region User
 
-        public IEnumerable<UserDataModel> GetUsers()
+        public IEnumerable<UserDataModel> GetUsers(int lowerBound, int upperBound)
         {
-            return _blUserWorker.GetUsers();
+            return _blUserWorker.GetUsers(lowerBound, upperBound);
         }
 
         public bool FindUserByUsername(string username)

@@ -3,9 +3,11 @@ using Ninject;
 using System.IO;
 using Newtonsoft.Json;
 using System.Web.Http;
+using System.Net.Http;
 using System.Threading;
 using Legato.Service.Filters;
 using Legato.Service.Constants;
+using Legato.Service.Extensions;
 using Legato.Service.Interfaces;
 using System.Collections.Generic;
 using Legato.ServiceDAL.ViewModels;
@@ -13,6 +15,7 @@ using Legato.ServiceDAL.ViewModels;
 
 namespace Legato.Service.Controllers
 {
+
     [RoutePrefix("api/Manage")]
     public class ManageController : ApiController
     {
@@ -123,7 +126,7 @@ namespace Legato.Service.Controllers
         [LegatoAuthorize(Strings.ChangeDisplayAmounClaim)]
         public IHttpActionResult ChangeDisplayAmount(int amount)
         {
-            if (10 > amount || amount > 1000)
+            if (10 > amount || amount > 100)
             {
                 return BadRequest(Strings.DisplayAmountIsInvalid);
             }
@@ -131,9 +134,18 @@ namespace Legato.Service.Controllers
             try
             {
                 var root = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText($@"{AppDomain.CurrentDomain.BaseDirectory}/settings.json"));
-                root["displayAmount"] = amount.ToString();
-                File.WriteAllText($@"{AppDomain.CurrentDomain.BaseDirectory}/settings.json", JsonConvert.SerializeObject(root, Formatting.Indented));
-                return Ok();
+                int displayAmountValue = Convert.ToInt32(root["displayAmount"]);
+
+                if (displayAmountValue != amount)
+                {
+                    root["displayAmount"] = amount.ToString();
+                    File.WriteAllText($@"{AppDomain.CurrentDomain.BaseDirectory}/settings.json", JsonConvert.SerializeObject(root, Formatting.Indented));
+                    return Ok();
+                }
+
+                // call extension method from base class only with this.-syntax
+                // Either it doesn't work
+                return this.NotModified();
             }
             catch (Exception e)
             {

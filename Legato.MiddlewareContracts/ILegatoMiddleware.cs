@@ -111,7 +111,7 @@ namespace Legato.MiddlewareContracts
         #region User
 
         [OperationContract]
-        IEnumerable<UserDataModel> GetUsers();
+        IEnumerable<UserDataModel> GetUsers(int lowerBound, int upperBound);
 
         [OperationContract]
         bool FindUserByUsername(string username);

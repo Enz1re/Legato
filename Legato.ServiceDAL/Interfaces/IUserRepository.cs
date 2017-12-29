@@ -6,7 +6,7 @@ namespace Legato.ServiceDAL.Interfaces
 {
     public interface IUserRepository
     {
-        IEnumerable<UserDataModel> GetUsers();
+        IEnumerable<UserDataModel> GetUsers(int lowerBound, int upperBound);
 
         bool FindUser(string username);
 

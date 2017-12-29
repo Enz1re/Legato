@@ -7,7 +7,7 @@ namespace Legato.BL.Interfaces
 {
     public interface ILegatoUserBLWorker : IDisposable
     {
-        IEnumerable<UserDataModel> GetUsers();
+        IEnumerable<UserDataModel> GetUsers(int lowerBound, int upperBound);
 
         bool FindUser(string username);
 

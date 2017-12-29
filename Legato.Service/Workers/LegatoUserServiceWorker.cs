@@ -21,11 +21,11 @@ namespace Legato.Service.Workers
             _userRepository = userRepo;
         }
 
-        public UserList GetUsers()
+        public UserList GetUsers(int lowerBound, int upperBound)
         {
             return new UserList
             {
-                Users = ServiceMappings.Map<List<UserViewModel>>(_userRepository.GetUsers())
+                Users = ServiceMappings.Map<List<UserViewModel>>(_userRepository.GetUsers(lowerBound, upperBound))
             };
         }
 

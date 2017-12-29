@@ -21,9 +21,13 @@ namespace Legato.BL.Workers
             _userRepository = userRepo;
         }
         
-        public IEnumerable<UserDataModel> GetUsers()
+        public IEnumerable<UserDataModel> GetUsers(int lowerBound, int upperBound)
         {
-            return MiddlewareMappings.Map<List<UserDataModel>>(_userRepository.GetUsers().Where(u => u.UserRole.RoleName.ToLower() != "superuser").ToList());
+            return MiddlewareMappings.Map<List<UserDataModel>>(_userRepository.GetUsers()
+                                                                              .Where(u => u.UserRole.RoleName.ToLower() != "superuser")
+                                                                              .Skip(lowerBound)
+                                                                              .Take(upperBound - lowerBound)
+                                                                              .ToList());
         }
 
         public bool FindUser(string username)

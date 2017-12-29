@@ -6,7 +6,7 @@ namespace Legato.Service.Interfaces
 {
     public interface ILegatoUserServiceWorker
     {
-        UserList GetUsers();
+        UserList GetUsers(int lowerBound, int upperBound);
 
         bool FindUser(string username);
 
