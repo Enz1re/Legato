@@ -2,7 +2,7 @@
 
 
 export interface IUserResource {
-    getAll(): ng.IPromise<UserViewModel[]>;
+    getAll(lowerBound: number, upperBound: number): ng.IPromise<UserViewModel[]>;
     blockUserSession(username: string): ng.IPromise<any>;
     getCompromisedAttempts(): ng.IPromise<CompromisedAttemptList>;
     removeCompromisedAttempts(compromisedAttempts: number[]): ng.IPromise<any>;

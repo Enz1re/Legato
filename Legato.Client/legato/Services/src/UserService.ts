@@ -6,7 +6,8 @@
 
 import {
     IUserService,
-    IUserResource,    
+    IClaimService,
+    IUserResource
 } from "../../Interfaces/interfaces";
 
 
@@ -22,8 +23,8 @@ export default class UserService implements IUserService {
         return !!this.currentUser;
     }
 
-    getUsers(): ng.IPromise<UserViewModel[]> {
-        return this.resource.getAll();
+    getUsers(lowerBound: number, upperBound: number): ng.IPromise<UserViewModel[]> {
+        return this.resource.getAll(lowerBound, upperBound);
     }
 
     blockUser(username: string): ng.IPromise<any> {

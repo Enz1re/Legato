@@ -14,8 +14,8 @@ export default class UserResource implements IUserResource {
 
     }
 
-    getAll(): ng.IPromise<UserViewModel[]> {
-        return this.$http.get(`http://localhost/api/User/GetAll`)
+    getAll(lowerBound: number, upperBound: number): ng.IPromise<UserViewModel[]> {
+        return this.$http.get(`http://localhost/api/User/GetAll/${lowerBound}/${upperBound}`)
             .then((response: ng.IHttpResponse<UserList>) => response.data.users);
     }
 

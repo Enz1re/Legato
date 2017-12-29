@@ -9,7 +9,7 @@ export interface IUserService {
     currentUser: User;
     authenticated: boolean;
 
-    getUsers(): ng.IPromise<UserViewModel[]>;
+    getUsers(lowerBound: number, upperBound: number): ng.IPromise<UserViewModel[]>;
     blockUser(username: string): ng.IPromise<any>;
     getCompromisedAttempts(): ng.IPromise<CompromisedAttemptList>;
     removeCompromisedAttempts(compromisedAttempts: number[]): ng.IPromise<any>;
