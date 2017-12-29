@@ -1,4 +1,4 @@
-﻿namespace Legato.Service.Extensions.Controllers
+﻿namespace Legato.Service.Extensions
 {
     using System.Net;
     using System.Web.Http;

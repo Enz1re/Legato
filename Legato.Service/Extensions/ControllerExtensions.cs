@@ -1,9 +1,9 @@
 ﻿using System.Web.Http;
 
 
-namespace Legato.Service.Extensions.Controllers
+namespace Legato.Service.Extensions
 {
-    public static class Controllers
+    public static class ControllerExtensions
     {
         //
         // Summary:
