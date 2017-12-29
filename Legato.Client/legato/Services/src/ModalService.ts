@@ -81,16 +81,13 @@ export default class ModalService implements IModalService {
         });
     }
 
-    openUserModal(users: UserViewModel[] | ng.IPromise<UserViewModel[]>): ng.ui.bootstrap.IModalServiceInstance {
+    openUserModal(): ng.ui.bootstrap.IModalServiceInstance {
         return this.$uibModal.open({
             animation: true,
             controller: "UserModalController",
             controllerAs: "userModalCtrl",
             templateUrl: "legato/Components/src/userModal/userModal.html",
             bindToController: true,
-            resolve: {
-                users: users
-            }
         });
     }
 
