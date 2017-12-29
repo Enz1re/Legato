@@ -1,6 +1,7 @@
 ﻿namespace Legato.DAL.Migrations
 {
     using Util;
+    using System;
     using Models;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
@@ -107,10 +108,20 @@
             context.UserRoles.Add(admin);
             context.UserRoles.Add(superuser);
 
-            var adminPassword = Hashing.HashData("admin");
-            var superuserPassword = Hashing.HashData("superuser");
+            string adminPassword = Hashing.HashData("admin");
+            string superuserPassword = Hashing.HashData("superuser");
+            string userPassword = Hashing.HashData("user");
             context.Users.Add(new UserModel { Username = "admin", EncryptedPassword = adminPassword, IsAuthenticated = false, UserRole = admin });
             context.Users.Add(new UserModel { Username = "superuser", EncryptedPassword = superuserPassword, IsAuthenticated = false, UserRole = superuser });
+            context.Users.Add(new UserModel { Username = "user", EncryptedPassword = userPassword, IsAuthenticated = false, UserRole = user });
+
+            // seeding fake user data
+            for (int i = 0; i < 100; i++)
+            {
+                string password = Hashing.HashData("qwerty");
+                context.Users.Add(new UserModel { Username = Guid.NewGuid().ToString().Replace("-", string.Empty).Substring(0, 8),
+                                                  EncryptedPassword = password, IsAuthenticated = false, UserRole = user });
+            }
         }
     }
 }
