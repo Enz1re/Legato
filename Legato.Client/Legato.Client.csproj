@@ -97,6 +97,7 @@
     <TypeScriptCompile Include="legato\Components\src\guitarModal\GuitarModalController.ts" />
     <TypeScriptCompile Include="legato\Components\src\legato\MainController.ts" />
     <TypeScriptCompile Include="legato\Components\src\loading\LegatoRequestLoaderDirective.ts" />
+    <TypeScriptCompile Include="legato\Components\src\loadOnScroll\LegatoLoadOnScrollDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\login\LoginModalController.ts" />
     <TypeScriptCompile Include="legato\Components\src\smoothScroll\LegatoSmoothScrollDirective.ts" />
     <TypeScriptCompile Include="legato\Components\src\userModal\UserModalController.ts" />
@@ -148,6 +149,7 @@
     <TypeScriptCompile Include="legato\Models\src\Guitar.ts" />
     <TypeScriptCompile Include="legato\Models\src\GuitarFilter.ts" />
     <TypeScriptCompile Include="legato\Models\src\GuitarList.ts" />
+    <TypeScriptCompile Include="legato\Models\src\LegatoClaims.ts" />
     <TypeScriptCompile Include="legato\Models\src\Price.ts" />
     <TypeScriptCompile Include="legato\Models\src\Sorting.ts" />
     <TypeScriptCompile Include="legato\Models\src\UrlParams.ts" />
