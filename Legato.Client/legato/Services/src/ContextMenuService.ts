@@ -19,6 +19,7 @@ export default class ContextMenuService implements IContextMenuService {
     guitarOptions = [
         {
             text: "Remove",
+            displayed: () => true,
             click: ($itemScope, $event, modelValue: Guitar, text, $li, data) => {
                 this.modalService.openYesNoDialog(`Are you sure you want to delete guitar ${modelValue.vendor.name} ${modelValue.model} with product id ${modelValue.id}?`).result.then(() => {
                     this.manageService.removeGuitar(modelValue, data.type).then(val => {
@@ -31,6 +32,7 @@ export default class ContextMenuService implements IContextMenuService {
         },
         {
             text: "Edit",
+            displayed: () => true,
             click: ($itemScope, $event, modelValue: Guitar, text, $li, data) => {
                 this.modalService.openGuitarAddOrEditModal({
                     guitar: { ...modelValue, vendor: { ...modelValue.vendor } },
@@ -49,6 +51,7 @@ export default class ContextMenuService implements IContextMenuService {
     userOptions = [
         {
             text: "Block",
+            displayed: () => true,
             click: ($itemScope, $event, modelValue: UserViewModel, text, $li, data) => {
                 this.modalService.openYesNoDialog(`Are you sure you want to block user ${modelValue.name}? This action is irreversible.`).result.then(() => {
                     this.userService.blockUser(modelValue.name).then(() => {
