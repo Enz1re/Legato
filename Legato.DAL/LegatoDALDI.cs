@@ -10,7 +10,7 @@ namespace Legato.DAL
     {
         public static void Register(IKernel kernel)
         {
-            kernel.Bind<IGuitarContext>().To<GuitarContext>()
+            kernel.Bind<ILegatoContext>().To<LegatoContext>()
                 .WithConstructorArgument("connectionString", Constants.Constants.DefaultConnectionStringName);
             kernel.Bind<IUserContext>().To<UserContext>()
                 .WithConstructorArgument("connectionString", Constants.Constants.DefaultConnectionStringName);

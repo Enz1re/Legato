@@ -63,25 +63,19 @@
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Interfaces\IGuitarRepository.cs" />
-    <Compile Include="Interfaces\IUserContext.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="LegatoDALDI.cs" />
-    <Compile Include="Interfaces\IGuitarContext.cs" />
+    <Compile Include="Interfaces\ILegatoContext.cs" />
     <Compile Include="Interfaces\IRepositoryProvider.cs" />
     <Compile Include="Migrations\201711010846006_Initial.cs" />
     <Compile Include="Migrations\201711010846006_Initial.Designer.cs">
       <DependentUpon>201711010846006_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712150853092_New.cs" />
-    <Compile Include="Migrations\201712150853092_New.Designer.cs">
-      <DependentUpon>201712150853092_New.cs</DependentUpon>
+    <Compile Include="Migrations\201712290837426_New.cs" />
+    <Compile Include="Migrations\201712290837426_New.Designer.cs">
+      <DependentUpon>201712290837426_New.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712201216231_AddedUsers.cs" />
-    <Compile Include="Migrations\201712201216231_AddedUsers.Designer.cs">
-      <DependentUpon>201712201216231_AddedUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\GuitarConfiguration.cs" />
-    <Compile Include="Migrations\UserConfiguration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AcousticClassicalGuitarModel.cs" />
     <Compile Include="Models\AcousticWesternGuitarModel.cs" />
     <Compile Include="Models\BannedTokenModel.cs" />
@@ -89,11 +83,10 @@
     <Compile Include="Models\CompromisedAttemptModel.cs" />
     <Compile Include="Models\ElectricGuitarModel.cs" />
     <Compile Include="Models\GuitarModel.cs" />
-    <Compile Include="Models\GuitarContext.cs" />
+    <Compile Include="Models\LegatoContext.cs" />
     <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UserClaim.cs" />
-    <Compile Include="Models\UserContext.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\VendorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,7 +96,6 @@
     <Compile Include="Repositories\ElectricGuitarRepository.cs" />
     <Compile Include="GuitarUnitOfWork.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="UserDbInitializer.cs" />
     <Compile Include="Util\CaseInsensitiveStringEqualityComparer.cs" />
     <Compile Include="Util\Hashing.cs" />
     <Compile Include="Util\UserClaimEqualityComparer.cs" />
@@ -120,11 +112,8 @@
     <EmbeddedResource Include="Migrations\201711010846006_Initial.resx">
       <DependentUpon>201711010846006_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712150853092_New.resx">
-      <DependentUpon>201712150853092_New.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712201216231_AddedUsers.resx">
-      <DependentUpon>201712201216231_AddedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712290837426_New.resx">
+      <DependentUpon>201712290837426_New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

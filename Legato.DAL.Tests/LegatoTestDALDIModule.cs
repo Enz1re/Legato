@@ -10,7 +10,7 @@ namespace Legato.DAL.Tests
     {
         public override void Load()
         {
-            Bind<IGuitarContext>().To<GuitarContext>()
+            Bind<ILegatoContext>().To<LegatoContext>()
                 .WithConstructorArgument("connectionString", "TestConnection");
             Bind<IGuitarRepository<AcousticClassicalGuitarModel>>().To<AcousticClassicalGuitarRepository>();
             Bind<IGuitarRepository<AcousticWesternGuitarModel>>().To<AcousticWesternGuitarRepository>();

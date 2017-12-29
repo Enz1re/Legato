@@ -11,10 +11,10 @@ namespace Legato.DAL.Repositories
 {
     class BassGuitarRepository : IGuitarRepository<BassGuitarModel>
     {
-        private IGuitarContext _context;
+        private ILegatoContext _context;
 
         [Inject]
-        public BassGuitarRepository(IGuitarContext context)
+        public BassGuitarRepository(ILegatoContext context)
         {
             _context = context;
         }

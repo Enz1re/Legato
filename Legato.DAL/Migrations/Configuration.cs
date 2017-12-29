@@ -1,16 +1,24 @@
-namespace Legato.DAL.Migrations
+﻿namespace Legato.DAL.Migrations
 {
+    using Util;
     using Models;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
 
-    internal sealed class GuitarConfiguration : DbMigrationsConfiguration<GuitarContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LegatoContext>
     {
-        public GuitarConfiguration()
+        public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(GuitarContext context)
+        protected override void Seed(LegatoContext context)
+        {
+            SeedGuitars(context);
+            SeedUsers(context);
+        }
+
+        private void SeedGuitars(LegatoContext context)
         {
             var lucero = new VendorModel { Name = "Lucero" };
             var lyons = new VendorModel { Name = "Lyons" };
@@ -55,6 +63,54 @@ namespace Legato.DAL.Migrations
                 context.BassGuitars.Add(new BassGuitarModel { Vendor = mitchell, Model = "MB200 Modern Rock Bass", Soundbox = "Humbucker", StringNumber = 4, Mensura = 699, Price = 5766, ImgPath = "Content/img/Bass/mitchell_mb200_modern_rock_bass.png" });
                 context.BassGuitars.Add(new BassGuitarModel { Vendor = bcRich, Model = "MK3B Mockingbird", Soundbox = "Single", StringNumber = 4, Mensura = 702, Price = 11533, ImgPath = "Content/img/Bass/b_c_rich_mk3b_mockingbird.png" });
             }
+        }
+
+        private void SeedUsers(LegatoContext context)
+        {
+            var addGuitar = new UserClaim { ClaimName = "AddGuitar" };
+            var removeGuitar = new UserClaim { ClaimName = "RemoveGuitar" };
+            var editGuitar = new UserClaim { ClaimName = "EditGuitar" };
+            var changeDisplayAmount = new UserClaim { ClaimName = "ChangeDisplayAmount" };
+            var blockUser = new UserClaim { ClaimName = "BlockUser" };
+            var getListOfUsers = new UserClaim { ClaimName = "GetListOfUsers" };
+            var getCompromisedAttempts = new UserClaim { ClaimName = "GetCompromisedAttempts" };
+            var removeCompromisedAttempts = new UserClaim { ClaimName = "RemoveCompromisedAttempts" };
+
+            var user = new UserRole { RoleName = "User", UserClaims = new List<UserClaim>() };
+            var admin = new UserRole { RoleName = "Admin", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar, blockUser } };
+            var superuser = new UserRole
+            {
+                RoleName = "Superuser",
+                UserClaims = new List<UserClaim>
+                             {
+                                 addGuitar,
+                                 removeGuitar,
+                                 editGuitar,
+                                 blockUser,
+                                 changeDisplayAmount,
+                                 getListOfUsers,
+                                 getCompromisedAttempts,
+                                 removeCompromisedAttempts
+                             }
+            };
+
+            context.UserClaims.Add(addGuitar);
+            context.UserClaims.Add(removeGuitar);
+            context.UserClaims.Add(editGuitar);
+            context.UserClaims.Add(changeDisplayAmount);
+            context.UserClaims.Add(blockUser);
+            context.UserClaims.Add(getListOfUsers);
+            context.UserClaims.Add(getCompromisedAttempts);
+            context.UserClaims.Add(removeCompromisedAttempts);
+
+            context.UserRoles.Add(user);
+            context.UserRoles.Add(admin);
+            context.UserRoles.Add(superuser);
+
+            var adminPassword = Hashing.HashData("admin");
+            var superuserPassword = Hashing.HashData("superuser");
+            context.Users.Add(new UserModel { Username = "admin", EncryptedPassword = adminPassword, IsAuthenticated = false, UserRole = admin });
+            context.Users.Add(new UserModel { Username = "superuser", EncryptedPassword = superuserPassword, IsAuthenticated = false, UserRole = superuser });
         }
     }
 }

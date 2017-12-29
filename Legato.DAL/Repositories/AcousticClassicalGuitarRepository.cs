@@ -1,11 +1,9 @@
-﻿using System;
-using Ninject;
+﻿using Ninject;
 using System.Linq;
 using Legato.DAL.Models;
 using Legato.DAL.Interfaces;
 using System.Data.Entity.Migrations;
 using System.Runtime.CompilerServices;
-using System.Data.Entity.Validation;
 
 
 [assembly: InternalsVisibleTo("Legato.DAL.Tests")]
@@ -13,10 +11,10 @@ namespace Legato.DAL.Repositories
 {
     class AcousticClassicalGuitarRepository : IGuitarRepository<AcousticClassicalGuitarModel>
     {
-        private IGuitarContext _context;
+        private ILegatoContext _context;
 
         [Inject]
-        public AcousticClassicalGuitarRepository(IGuitarContext context)
+        public AcousticClassicalGuitarRepository(ILegatoContext context)
         {
             _context = context;
         }

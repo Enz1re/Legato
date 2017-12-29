@@ -4,9 +4,9 @@ using System.Data.Entity;
 
 namespace Legato.DAL.Tests
 {
-    class DatabaseInitializer : CreateDatabaseIfNotExists<GuitarContext>
+    class DatabaseInitializer : CreateDatabaseIfNotExists<LegatoContext>
     {
-        protected override void Seed(GuitarContext context)
+        protected override void Seed(LegatoContext context)
         {
             var lucero = new VendorModel { Name = "Lucero" };
             var lyons = new VendorModel { Name = "Lyons" };

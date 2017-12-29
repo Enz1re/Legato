@@ -13,7 +13,7 @@ namespace Legato.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712150853092_New"; }
+            get { return "201712290837426_New"; }
         }
         
         string IMigrationMetadata.Source

@@ -4,13 +4,13 @@ using Legato.DAL.Interfaces;
 
 namespace Legato.DAL.Models
 {
-    public class GuitarContext : DbContext, IGuitarContext
+    public class LegatoContext : DbContext, ILegatoContext
     {
-        public GuitarContext() : base(Constants.Constants.DefaultConnectionStringName)
+        public LegatoContext() : base(Constants.Constants.DefaultConnectionStringName)
         {
         }
 
-        public GuitarContext(string connectionString) : base(connectionString)
+        public LegatoContext(string connectionString) : base(connectionString)
         {
         }
 
@@ -23,6 +23,18 @@ namespace Legato.DAL.Models
         public DbSet<ElectricGuitarModel> ElectricGuitars { get; set; }
 
         public DbSet<VendorModel> Vendors { get; set; }
+
+        public DbSet<UserClaim> UserClaims { get; set; }
+
+        public DbSet<UserRole> UserRoles { get; set; }
+
+        public DbSet<UserModel> Users { get; set; }
+
+        public DbSet<TokenModel> TokenStorage { get; set; }
+
+        public DbSet<BannedTokenModel> BannedTokens { get; set; }
+
+        public DbSet<CompromisedAttemptModel> CompromisedAttempts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

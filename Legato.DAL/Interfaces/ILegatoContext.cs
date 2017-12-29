@@ -7,8 +7,18 @@ using System.Data.Entity.Infrastructure;
 
 namespace Legato.DAL.Interfaces
 {
-    interface IUserContext : IDisposable
+    public interface ILegatoContext : IDisposable
     {
+        DbSet<AcousticClassicalGuitarModel> ClassicalAcousticGuitars { get; set; }
+
+        DbSet<AcousticWesternGuitarModel> WesternAcousticGuitars { get; set; }
+
+        DbSet<BassGuitarModel> BassGuitars { get; set; }
+
+        DbSet<ElectricGuitarModel> ElectricGuitars { get; set; }
+
+        DbSet<VendorModel> Vendors { get; set; }
+
         DbSet<UserRole> UserRoles { get; set; }
 
         DbSet<UserClaim> UserClaims { get; set; }
