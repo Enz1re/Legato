@@ -3,7 +3,7 @@
 
     changeDisplayAmount?: boolean = false;
 
-    getUserList?: boolean = false;
+    getListOfUsers?: boolean = false;
 
     blockUser?: boolean = false;
 
