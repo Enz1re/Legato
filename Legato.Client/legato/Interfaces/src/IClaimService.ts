@@ -3,6 +3,7 @@
 
 export interface IClaimService {
     claims: LegatoClaims;
+    hasAdminRights: boolean;
 
-    getUserClaims();
+    getUserClaims(): ng.IPromise<LegatoClaims>;
 }
