@@ -8,7 +8,11 @@ namespace Legato.DAL.Constants
         internal const string AddGuitarClaim = "AddGuitar";
         internal const string RemoveGuitarClaim = "RemoveGuitar";
         internal const string EditGuitarClaim = "EditGuitar";
-        internal const string ChangeDisplayAmounClaim = "ChangeDisplayAmount";
+        internal const string ChangeDisplayAmountClaim = "ChangeDisplayAmount";
+        internal const string BlockUserClaim = "BlockUser";
+        internal const string GetListOfUsersClaim = "GetListOfUsers";
+        internal const string GetCompromisedAttemptsClaim = "GetCompromisedAttempts";
+        internal const string RemoveCompromisedAttemptsClaim = "RemoveCompromisedAttempts";
 
         internal static string[] SoundboxNames => new[] { "Single", "Humbucker" };
 

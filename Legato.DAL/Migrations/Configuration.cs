@@ -68,14 +68,14 @@
 
         private void SeedUsers(LegatoContext context)
         {
-            var addGuitar = new UserClaim { ClaimName = "AddGuitar" };
-            var removeGuitar = new UserClaim { ClaimName = "RemoveGuitar" };
-            var editGuitar = new UserClaim { ClaimName = "EditGuitar" };
-            var changeDisplayAmount = new UserClaim { ClaimName = "ChangeDisplayAmount" };
-            var blockUser = new UserClaim { ClaimName = "BlockUser" };
-            var getListOfUsers = new UserClaim { ClaimName = "GetListOfUsers" };
-            var getCompromisedAttempts = new UserClaim { ClaimName = "GetCompromisedAttempts" };
-            var removeCompromisedAttempts = new UserClaim { ClaimName = "RemoveCompromisedAttempts" };
+            var addGuitar = new UserClaim { ClaimName = Constants.Constants.AddGuitarClaim };
+            var removeGuitar = new UserClaim { ClaimName = Constants.Constants.RemoveGuitarClaim };
+            var editGuitar = new UserClaim { ClaimName = Constants.Constants.EditGuitarClaim };
+            var changeDisplayAmount = new UserClaim { ClaimName = Constants.Constants.ChangeDisplayAmountClaim };
+            var blockUser = new UserClaim { ClaimName = Constants.Constants.BlockUserClaim };
+            var getListOfUsers = new UserClaim { ClaimName = Constants.Constants.GetListOfUsersClaim };
+            var getCompromisedAttempts = new UserClaim { ClaimName = Constants.Constants.GetCompromisedAttemptsClaim };
+            var removeCompromisedAttempts = new UserClaim { ClaimName = Constants.Constants.RemoveCompromisedAttemptsClaim };
 
             var user = new UserRole { RoleName = "User", UserClaims = new List<UserClaim>() };
             var admin = new UserRole { RoleName = "Admin", UserClaims = new List<UserClaim> { addGuitar, removeGuitar, editGuitar, blockUser } };
