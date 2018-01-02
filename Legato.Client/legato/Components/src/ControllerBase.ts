@@ -7,7 +7,7 @@
 } from "../../Models/models";
 
 import {
-    IUserService,
+    IClaimService,
     IModalService,
     IGuitarService,
     IPagingService,
@@ -32,10 +32,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
     constructor(protected $scope: ng.IScope, protected service: IGuitarService<TGuitar>, protected routingService: IRoutingService,
                 protected pendingTaskService: IPendingTaskService, protected updateService: IUpdateService,
                 protected modalService: IModalService, protected contextMenu: IContextMenuService, protected pagingService: IPagingService,
-                protected userService: IUserService) {
-        this.setWatchers();
-
-        const stateName = this.routingService.urlSegments[1];
+                protected claimService: IClaimService) {
         const urlParamResolver = routingService.getParamResolver();
         
         this.filter.price = urlParamResolver.resolvePrice();
@@ -52,11 +49,9 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 if (!gIndex) {
                     return;
                 }
-                this.onGuitarClick(stateName, gIndex);
-            });
-        }).catch(err => {
-            this.error = true;
-        });
+                this.onGuitarClick(gIndex);
+            }).then(() => { this.setWatchers(); });
+        }).catch(() => { this.error = true; });
     }
 
     protected init() {
@@ -95,28 +90,24 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         }
     }
 
-    protected onPageChanged(guitarName: string) {
+    protected onPageChanged() {
         this.pagingService.goToSelectedPage();
-        let params = this.routingService.queryParams;
-        params.page = this.pagingService.currentPage;
-        this.routingService.replace(guitarName, params);
         this.loadGuitarList();
     }
 
-    protected onGuitarClick(guitarName: string, index: number) {
+    protected onGuitarClick(index: number) {
         let params = this.routingService.queryParams;
         if (!params.g) {
             params.g = index;
-            this.routingService.replace(guitarName, params);
+            this.routingService.replace(params);
         }
 
         this.modalService.openGuitarModal({
-            gName: () => guitarName,
             guitars: () => this.guitars,
             currentIndex: () => index
         }).result.catch(() => {
             params.g = null;
-            this.routingService.replace(guitarName, params);
+            this.routingService.replace(params);
         });
     }
 
@@ -144,21 +135,21 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                             to = this.getMaxGuitarPrice();
                     }
                     this.filter.price = { from: from, to: to };
-                    this.pagingService.goToFirstPage(() => this.init());
+                    this.pagingService.goToFirstPage(() => { this.init() });
                 });
             }
             if (this.updateService.needUseVendorFilter(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.updateService.replaceVendorQueryParams(stateName);
                     this.filter.vendors = newValue.vendors;
-                    this.pagingService.goToFirstPage(() => this.init());
+                    this.pagingService.goToFirstPage(() => { this.init() });
                 });
             }
             if (this.updateService.needUseSorting(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.updateService.replaceSortingQueryParams(stateName);
                     this.filter.sorting = newValue.sorting;
-                    this.pagingService.goToFirstPage(() => this.init());
+                    this.pagingService.goToFirstPage(() => { this.init() });
                 });
             }
         }, true);
@@ -174,13 +165,6 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
             }
             if (newValue.updateLastPage !== oldValue.updateLastPage) {
                 this.pagingService.goToLastPage(() => { this.init(); });
-            }
-        }, true);
-        this.$scope.$watch(() => this.userService.currentUser, (newVal, oldVal) => {
-            if (newVal || oldVal) {
-                if ((newVal && !oldVal) || (!newVal && oldVal) || (newVal.username !== oldVal.username)) {
-                    this.userService.currentUser = newVal;
-                }
             }
         }, true);
     }
