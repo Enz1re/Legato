@@ -1,0 +1,47 @@
+﻿<div>
+    <div class="search-field">
+        <input type="text" ng-model="filterCtrl.search" ng-keypress="filterCtrl.doSearch($event)" placeholder="Search" />
+    </div>
+    <div class="find-by-cost-title">Find by cost</div>
+    <form name="price" ng-model="filterCtrl.updateService.filter.price" legato-validate-price>
+        <div><label for="from">From:</label></div>
+        <input id="from" type="number" ng-maxlength="8" ng-model="filterCtrl.updateService.filter.price.from" />
+        <div><label for="to">To:</label></div>
+        <input id="to" type="number" ng-maxlength="8" ng-model="filterCtrl.updateService.filter.price.to" />
+        <div ng-if="price.$error.greater">
+            <small class="error">"To" value has to be greater than "from"</small>
+        </div>
+    </form>
+    <div class="vendors-title">Vendors:</div>
+    <legato-request-loader ng-if="filterCtrl.vendorService.hasPendingRequests()" size="small"></legato-request-loader>
+    <div ng-if="filterCtrl.error" class="error">
+        <small>
+            Error processing your request. Please try again later.
+        </small>
+    </div>
+    <div class="vendors-container" ng-repeat="vendor in filterCtrl.updateService.filter.vendors">
+        <div>
+            <input id="{{vendor.name}}" type="checkbox" ng-model="vendor.isSelected">
+            <label for="{{vendor.name}}">{{vendor.name}}</label>
+        </div>
+    </div>
+    <div class="sort-container"><label for="sort">Sort</label> – <input id="sort" type="checkbox" ng-model="filterCtrl.updateService.filter.sorting.required" /></div>
+    <div ng-show="filterCtrl.updateService.filter.sorting.required">
+        <div>By:</div>
+        <div>
+            <select ng-model="filterCtrl.updateService.filter.sorting.name">
+                <option title="Vendor">Vendor</option>
+                <option title="Price">Price</option>
+            </select>
+            <div ng-show="filterCtrl.updateService.filter.sorting.name === 'Price'">
+                <select ng-model="filterCtrl.updateService.filter.sorting.direction">
+                    <option title="Ascending">Ascending</option>
+                    <option title="Descending">Descending</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="button-container-center">
+        <button class="btn btn-primary" ng-click="filterCtrl.unfilter()">Unfilter</button>
+    </div>
+</div>
