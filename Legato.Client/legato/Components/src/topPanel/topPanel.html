@@ -1,0 +1,16 @@
+﻿<div class="navbar-header top-panel">
+    <div class="site-name">
+        <div class="site-name-caption">Legato</div>
+        <div class="site-name-signature">Easy-going guitar catalog</div>
+    </div>
+    <div class="logging-info" ng-if="topPanelCtrl.userService.currentUser">
+        You logged in as {{topPanelCtrl.userService.currentUser.username}}.&nbsp;
+        <a ng-if="!topPanelCtrl.authService.hasPendingRequests()" href="" ng-click="topPanelCtrl.logOut()">Log off</a>
+        <span><img class="icon" ng-if="topPanelCtrl.authService.hasPendingRequests()" src="../../../../Content/icons/loading.gif"></span>
+    </div>
+    <div class="site-icon-container">
+        <a href="" ng-click="topPanelCtrl.logIn()">
+            <img class="site-icon" src="Content/icons/guitar-ico.png" />
+        </a>
+    </div>
+</div>
