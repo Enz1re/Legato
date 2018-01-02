@@ -32,8 +32,8 @@ export default class RoutingService implements IRoutingService {
         this.$state.go(stateName, params);
     }
 
-    replace(stateName: string, params?: Partial<UrlParams>) {
-        this.$state.transitionTo(stateName, params, {
+    replace(params?: Partial<UrlParams>) {
+        this.$state.transitionTo(this.$state.current, params, {
             location: 'replace',
             notify: false
         });

@@ -12,5 +12,5 @@ export interface IRoutingService {
 
     redirect(stateName: string, params?: Partial<UrlParams>);
 
-    replace(stateName: string, params?: Partial<UrlParams>);
+    replace(params?: Partial<UrlParams>);
 }
