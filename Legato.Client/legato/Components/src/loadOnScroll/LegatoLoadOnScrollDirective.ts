@@ -4,9 +4,9 @@
 export class LegatoLoadOnScrollDirective implements ng.IDirective {
     restrict = "A";
 
-    link(scope: ng.IScope, elem: JQLite, attrs: ng.IAttributes) {
+    link(scope: ng.IScope, elem: JQLite, attrs: ng.IAttributes, ctrl) {
         const scrollOffset = 20;
-        const controller = scope.$eval(attrs.scrollController) || {};
+        const controller = scope.$eval(attrs.scrollController) || scope.$eval(this.findController(scope)) || {};
         const callback = scope.$eval(attrs.scrollCallback).bind(controller) || (() => { });
 
         elem.on("scroll", (e: JQueryEventObject) => {
@@ -15,6 +15,16 @@ export class LegatoLoadOnScrollDirective implements ng.IDirective {
                 callback();
             }
         });
+    }
+
+    private findController(scope: ng.IScope) {
+        for (let member in scope) {
+            if (scope.hasOwnProperty(member) && /Ctrl/.exec(member)) {
+                return member;
+            }
+        }
+
+        return "null";
     }
 
     static create(): ng.IDirectiveFactory {
