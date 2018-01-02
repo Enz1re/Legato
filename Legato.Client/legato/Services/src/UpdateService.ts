@@ -49,13 +49,13 @@ export default class UpdateService implements IUpdateService {
             queryParams.vendors = checkedVendors.join();
         }
         
-        this.routingService.replace(stateName, queryParams);
+        this.routingService.replace(queryParams);
     }    
 
     replaceSearchQueryParams(stateName: string) {
         let queryParams = this.routingService.queryParams;
         queryParams.search = this.filter.search;
-        this.routingService.replace(stateName, queryParams);
+        this.routingService.replace(queryParams);
     }
 
     replaceSortingQueryParams(stateName: string) {
@@ -74,7 +74,7 @@ export default class UpdateService implements IUpdateService {
             queryParams.direction = null;
         }
 
-        this.routingService.replace(stateName, queryParams);
+        this.routingService.replace(queryParams);
     }
 
     needUsePriceFilter(newValue, oldValue) {
