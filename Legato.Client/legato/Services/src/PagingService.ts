@@ -1,15 +1,19 @@
-﻿import { IPagingService, IManageService } from "../../Interfaces/interfaces";
+﻿import {
+    IManageService,
+    IPagingService,
+    IRoutingService
+} from "../../Interfaces/interfaces";
 
 
 export default class PagingService implements IPagingService {
     private _itemsToShow: number;
-    static $inject = ["ManageService"];
+    static $inject = ["ManageService", "RoutingService"];
     total: number;
     lowerBound: number;
     upperBound: number;
     currentPage: number;
 
-    constructor(private manageService: IManageService) {
+    constructor(private manageService: IManageService, private routingService: IRoutingService) {
         manageService.getDisplayAmount().then(amount => {
             this.itemsToShow = amount;
             this.lowerBound = 0;
@@ -38,6 +42,10 @@ export default class PagingService implements IPagingService {
             this.lowerBound = 0;
             this.upperBound = this.itemsToShow;
         }
+
+        let params = this.routingService.queryParams;
+        params.page = this.currentPage;
+        this.routingService.replace(params);
     }
 
     goToFirstPage(callback?: Function) {
