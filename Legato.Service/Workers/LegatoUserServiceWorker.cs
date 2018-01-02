@@ -93,12 +93,9 @@ namespace Legato.Service.Workers
             return _userRepository.GetUserRole(username);
         }
 
-        public ClaimList GetClaims(string username)
+        public ClaimsViewModel GetClaims(string username)
         {
-            return new ClaimList
-            {
-                UserClaims = _userRepository.GetUserClaims(username)
-            };
+            return ServiceMappings.Map<ClaimsViewModel>(_userRepository.GetUserClaims(username));
         }
 
         public bool AddClaim(string username, string claimName)

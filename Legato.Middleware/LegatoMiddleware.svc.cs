@@ -246,9 +246,23 @@ namespace Legato.Middleware
             return _blUserWorker.GetUserRole(username);
         }
 
-        public IEnumerable<string> GetUserClaims(string username)
+        public ClaimsDataModel GetUserClaims(string username)
         {
-            return _blUserWorker.GetUserClaims(username);
+            var userClaims = _blUserWorker.GetUserClaims(username);
+            var claimsObject = new ClaimsDataModel();
+            var propertyNames = claimsObject.GetType()
+                                            .GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance)
+                                            .Select(prop => prop.Name);
+
+            foreach (var prop in propertyNames)
+            {
+                if (userClaims.Contains(prop))
+                {
+                    claimsObject.GetType().GetProperty(prop).SetValue(claimsObject, true);
+                }
+            }
+
+            return claimsObject;
         }
 
         public void AddClaim(string username, string userClaim)

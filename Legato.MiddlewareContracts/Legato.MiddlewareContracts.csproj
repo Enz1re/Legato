@@ -49,6 +49,7 @@
     <Compile Include="DataContracts\AcousticClassicalGuitarDataModel.cs" />
     <Compile Include="DataContracts\AcousticWesternGuitarDataModel.cs" />
     <Compile Include="DataContracts\BassGuitarDataModel.cs" />
+    <Compile Include="DataContracts\ClaimsDataModel.cs" />
     <Compile Include="DataContracts\CompromisedAttemptDataModel.cs" />
     <Compile Include="DataContracts\ElectricGuitarDataModel.cs" />
     <Compile Include="DataContracts\FilterDataModel.cs" />

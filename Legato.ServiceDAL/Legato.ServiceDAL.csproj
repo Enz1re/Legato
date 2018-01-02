@@ -73,6 +73,7 @@
     <Compile Include="ViewModels\AcousticClassicalGuitarViewModel.cs" />
     <Compile Include="ViewModels\AcousticWesternGuitarViewModel.cs" />
     <Compile Include="ViewModels\BassGuitarViewModel.cs" />
+    <Compile Include="ViewModels\ClaimsViewModel.cs" />
     <Compile Include="ViewModels\CompromisedAttemptViewModel.cs" />
     <Compile Include="ViewModels\ElectricGuitarViewModel.cs" />
     <Compile Include="ViewModels\FilterViewModel.cs" />
@@ -89,6 +90,7 @@
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.AcousticClassicalGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.AcousticWesternGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.BassGuitarDataModel.datasource" />
+    <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.ClaimsDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.CompromisedAttemptDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.ElectroGuitarDataModel.datasource" />
     <None Include="Properties\DataSources\Legato.MiddlewareContracts.DataContracts.GuitarDataModel.datasource" />

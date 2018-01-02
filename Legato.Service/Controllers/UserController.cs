@@ -54,7 +54,7 @@ namespace Legato.Service.Controllers
                 return InternalServerError(new Exception(Strings.FailedToIssueToken));
             }
 
-            return Ok(new { accessToken = accessToken, role = userRole });
+            return Ok(new { accessToken = accessToken });
         }
 
         [HttpGet]
@@ -68,9 +68,8 @@ namespace Legato.Service.Controllers
             }
 
             var username = principal.Identity.Name;
-            var role = _serviceWorker.GetUserRole(username);
 
-            return Ok(new { username = username, role = role });
+            return Ok(new { username = username });
         }
 
         [HttpPost]
@@ -116,7 +115,6 @@ namespace Legato.Service.Controllers
         [Route("{username}/Claims")]
         public IHttpActionResult GetUserClaims(string username)
         {
-            // TODO: return Claims object instead of array
             return Ok(_serviceWorker.GetClaims(username));
         }
 

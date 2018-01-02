@@ -26,7 +26,7 @@ namespace Legato.ServiceDAL.Interfaces
 
         string GetUserRole(string username);
 
-        IEnumerable<string> GetUserClaims(string username);
+        ClaimsDataModel GetUserClaims(string username);
 
         void AddClaim(string username, string claimName);
 

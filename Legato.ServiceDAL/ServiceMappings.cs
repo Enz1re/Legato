@@ -47,6 +47,8 @@ namespace Legato.ServiceDAL
 
                 cfg.CreateMap<CompromisedAttemptViewModel, CompromisedAttemptDataModel>();
                 cfg.CreateMap<CompromisedAttemptDataModel, CompromisedAttemptViewModel>();
+
+                cfg.CreateMap<ClaimsDataModel, ClaimsViewModel>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();

@@ -67,7 +67,7 @@ namespace Legato.ServiceDAL.Repositories
             return _client.GetUserRole(username);
         }
 
-        public IEnumerable<string> GetUserClaims(string username)
+        public ClaimsDataModel GetUserClaims(string username)
         {
             return _client.GetUserClaims(username);
         }

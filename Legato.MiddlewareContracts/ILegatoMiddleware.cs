@@ -141,7 +141,7 @@ namespace Legato.MiddlewareContracts
         string GetUserRole(string username);
 
         [OperationContract]
-        IEnumerable<string> GetUserClaims(string username);
+        ClaimsDataModel GetUserClaims(string username);
 
         [OperationContract]
         void AddClaim(string username, string userClaim);

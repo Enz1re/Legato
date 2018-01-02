@@ -24,7 +24,7 @@ namespace Legato.Service.Interfaces
 
         string GetUserRole(string username);
 
-        ClaimList GetClaims(string username);
+        ClaimsViewModel GetClaims(string username);
 
         bool AddClaim(string username, string claimName);
 
