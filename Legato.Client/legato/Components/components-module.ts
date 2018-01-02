@@ -12,6 +12,9 @@ import { LegatoRequestLoaderDirective } from "./src/loading/LegatoRequestLoaderD
 import { LegatoContextMenuDirective } from "./src/contextMenu/LegatoContextMenuDirective";
 import { LegatoAdminPanelDirective } from "./src/admin/LegatoAdminPanelDirective";
 import { LegatoLoadOnScrollDirective } from "./src/loadOnScroll/LegatoLoadOnScrollDirective";
+import { LegatoTopPanelDirective } from "./src/topPanel/LegatoTopPanelDirective";
+import { LegatoFilterPanelDirective } from "./src/filterPanel/LegatoFilterPanelDirective";
+import { LegatoTabPanelDirective } from "./src/tabPanel/LegatoTabPanelDirective";
 
 import { MainController } from "./src/legato/MainController";
 import { ClassicalController } from "./src/classical/ClassicalController";
@@ -45,6 +48,9 @@ angular.module(directivesModuleName, [])
     .directive("contextMenu", LegatoContextMenuDirective.create())
     .directive("adminPanel", LegatoAdminPanelDirective.create())
     .directive("loadOnScroll", LegatoLoadOnScrollDirective.create())
+    .directive("topPanel", LegatoTopPanelDirective.create())
+    .directive("filterPanel", LegatoFilterPanelDirective.create())
+    .directive("tabPanel", LegatoTabPanelDirective.create())
     // controller declarations
     .controller("MainController", MainController)
     .controller("ClassicalController", ClassicalController)
