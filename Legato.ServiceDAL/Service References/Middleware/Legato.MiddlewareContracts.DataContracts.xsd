@@ -152,6 +152,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserDataModel" nillable="true" type="tns:UserDataModel" />
+  <xs:complexType name="ClaimsDataModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddGuitar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BlockUser" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ChangeDisplayAmount" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EditGuitar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetCompromisedAttempts" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetListOfUsers" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RemoveCompromisedAttempts" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RemoveGuitar" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClaimsDataModel" nillable="true" type="tns:ClaimsDataModel" />
   <xs:complexType name="CompromisedAttemptDataModel">
     <xs:sequence>
       <xs:element minOccurs="0" name="AttemptId" type="xs:int" />

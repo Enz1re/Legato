@@ -244,10 +244,10 @@ namespace Legato.ServiceDAL.Middleware {
         System.Threading.Tasks.Task<string> GetUserRoleAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUserClaims", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUserClaimsResponse")]
-        string[] GetUserClaims(string username);
+        Legato.MiddlewareContracts.DataContracts.ClaimsDataModel GetUserClaims(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/GetUserClaims", ReplyAction="http://tempuri.org/ILegatoMiddleware/GetUserClaimsResponse")]
-        System.Threading.Tasks.Task<string[]> GetUserClaimsAsync(string username);
+        System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.ClaimsDataModel> GetUserClaimsAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILegatoMiddleware/AddClaim", ReplyAction="http://tempuri.org/ILegatoMiddleware/AddClaimResponse")]
         void AddClaim(string username, string userClaim);
@@ -611,11 +611,11 @@ namespace Legato.ServiceDAL.Middleware {
             return base.Channel.GetUserRoleAsync(username);
         }
         
-        public string[] GetUserClaims(string username) {
+        public Legato.MiddlewareContracts.DataContracts.ClaimsDataModel GetUserClaims(string username) {
             return base.Channel.GetUserClaims(username);
         }
         
-        public System.Threading.Tasks.Task<string[]> GetUserClaimsAsync(string username) {
+        public System.Threading.Tasks.Task<Legato.MiddlewareContracts.DataContracts.ClaimsDataModel> GetUserClaimsAsync(string username) {
             return base.Channel.GetUserClaimsAsync(username);
         }
         

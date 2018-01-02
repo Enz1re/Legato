@@ -526,7 +526,7 @@
   <xs:element name="GetUserClaimsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetUserClaimsResult" nillable="true" type="q38:ArrayOfstring" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Legato.MiddlewareContracts.DataContracts" minOccurs="0" name="GetUserClaimsResult" nillable="true" type="q38:ClaimsDataModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
