@@ -118,7 +118,6 @@ namespace Legato.DAL.Repositories
             var user = GetUser(username);
             if (user != null)
             {
-                var ses = user.UserRole.UserClaims.ToList();
                 return user.UserRole.UserClaims.Contains(new UserClaim { ClaimName = claimName }, new UserClaimEqualityComparer());
             }
             else
