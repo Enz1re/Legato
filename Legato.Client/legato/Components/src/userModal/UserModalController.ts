@@ -52,6 +52,14 @@ export class UserModalController {
             } else {
                 this.allUsersLoaded = true;
             }
+        }).catch(err => {
+            this.modalService.openAlertModal("Unable to load user list. Please try again later", "danger").result
+                .then(() => {
+                    this.$uibModalInstance.dismiss();
+                })
+                .catch(() => {
+                    this.$uibModalInstance.dismiss();
+                })
         });
     }
 }
