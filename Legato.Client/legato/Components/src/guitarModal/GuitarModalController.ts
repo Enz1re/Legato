@@ -7,10 +7,9 @@ export class GuitarModalController {
     guitars: Guitar[];
     gName: string;
     currentIndex: number;
-    static $inject = ["RoutingService", "gName", "guitars", "currentIndex"];
+    static $inject = ["RoutingService", "guitars", "currentIndex"];
 
-    constructor(private routingService: IRoutingService, gName: string, guitars: Guitar[], currentIndex: number) {
-        this.gName = gName;
+    constructor(private routingService: IRoutingService, guitars: Guitar[], currentIndex: number) {
         this.guitars = guitars;
         this.currentIndex = currentIndex;
     }
@@ -36,7 +35,7 @@ export class GuitarModalController {
     private replaceParams() {
         let params = this.routingService.queryParams;
         params.g = this.currentIndex;
-        this.routingService.replace(this.gName, params);
+        this.routingService.replace(params);
     }
 
     private isNextDisabled() {
