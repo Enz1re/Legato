@@ -17,7 +17,7 @@
         <li class="guitar-li" ng-repeat="guitar in classicalCtrl.guitars">
             <div class="guitar-container" ng-click="classicalCtrl.onGuitarClick('classical', $index)" context-menu="classicalCtrl.contextMenu.guitarOptions"
                                                                                                       context-menu-data="{ type: 'classical' }"
-                                                                                                      context-menu-if="classicalCtrl.userHasRightsToChangeGuitars()"
+                                                                                                      context-menu-if="classicalCtrl.claimService.hasAdminRights"
                                                                                                       model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
                 <div>{{guitar.vendor.name}} {{guitar.model}}</div>
