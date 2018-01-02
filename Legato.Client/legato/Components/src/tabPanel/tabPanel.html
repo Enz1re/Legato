@@ -1,0 +1,10 @@
+﻿<uib-tabset active="tabPanelCtrl.activeTab" type="pills" justified="true">
+    <uib-tab select="tabPanelCtrl.checkTab($event, 'classical')" deselect="tabPanelCtrl.onTabDeselected($event, 'classical')" 
+             index="'classical'" heading="Classical acoustic"></uib-tab>
+    <uib-tab select="tabPanelCtrl.checkTab($event, 'western')" deselect="tabPanelCtrl.onTabDeselected($event, 'western')"
+             index="'western'" heading="Western acoustic"></uib-tab>
+    <uib-tab select="tabPanelCtrl.checkTab($event, 'electric')" deselect="tabPanelCtrl.onTabDeselected($event, 'electric')"
+             index="'electric'" heading="Electric"></uib-tab>
+    <uib-tab select="tabPanelCtrl.checkTab($event, 'bass')" deselect="tabPanelCtrl.onTabDeselected($event, 'bass')"
+             index="'bass'" heading="Bass"></uib-tab>
+</uib-tabset>
