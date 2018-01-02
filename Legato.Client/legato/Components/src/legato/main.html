@@ -1,80 +1,20 @@
 ﻿<div class="top-panel-container">
-    <div class="navbar-header top-panel">
-        <div class="site-name">
-            <div class="site-name-caption">Legato</div>
-            <div class="site-name-signature">Easy-going guitar catalog</div>
-        </div>
-        <div class="logging-info" ng-if="mainCtrl.userService.currentUser">
-            You logged in as {{mainCtrl.userService.currentUser.username}}.&nbsp;
-            <a ng-if="!mainCtrl.authService.hasPendingRequests()" href="" ng-click="mainCtrl.logOut()">Log off</a>
-            <span><img class="icon" ng-if="mainCtrl.authService.hasPendingRequests()" src="../../../../Content/icons/loading.gif"></span>
-        </div>
-        <div class="site-icon-container">
-            <a href="" ng-click="mainCtrl.logIn()">
-                <img class="site-icon" src="Content/icons/guitar-ico.png" />
-            </a>
-        </div>
-    </div>
+    <top-panel></top-panel>
 </div>
 <div class="main-container">
     <div class="left-panel">
-        <div>
-            <div class="search-field">
-                <input type="text" ng-model="mainCtrl.search" ng-keypress="mainCtrl.doSearch($event)" placeholder="Search" />
-            </div>
-            <div class="find-by-cost-title">Find by cost</div>
-            <form name="price" ng-model="mainCtrl.updateService.filter.price" legato-validate-price>
-                <div><label for="from">From:</label></div>
-                <input id="from" type="number" ng-maxlength="8" ng-model="mainCtrl.updateService.filter.price.from" />
-                <div><label for="to">To:</label></div>
-                <input id="to" type="number" ng-maxlength="8" ng-model="mainCtrl.updateService.filter.price.to" />
-                <div ng-if="price.$error.greater">
-                    <small class="error">"To" value has to be greater than "from"</small>
-                </div>
-            </form>
-            <div class="vendors-title">Vendors:</div>
-            <legato-request-loader ng-if="mainCtrl.service.hasPendingRequests()" size="small"></legato-request-loader>
-            <div ng-if="mainCtrl.error" class="error">
-                <small>
-                    Error processing your request. Please try again later.
-                </small>
-            </div>
-            <div class="vendors-container" ng-repeat="vendor in mainCtrl.updateService.filter.vendors">
-                <div>
-                    <input id="{{vendor.name}}" type="checkbox" ng-model="vendor.isSelected">
-                     <label for="{{vendor.name}}">{{vendor.name}}</label>
-                </div>
-            </div>
-            <div class="sort-container"><label for="sort">Sort</label> – <input id="sort" type="checkbox" ng-model="mainCtrl.updateService.filter.sorting.required"/></div>
-            <div ng-show="mainCtrl.updateService.filter.sorting.required">
-                <div>By:</div>
-                <div>
-                    <select ng-model="mainCtrl.updateService.filter.sorting.name">
-                        <option title="Vendor">Vendor</option>
-                        <option title="Price">Price</option>
-                    </select>
-                    <div ng-show="mainCtrl.updateService.filter.sorting.name === 'Price'">
-                        <select ng-model="mainCtrl.updateService.filter.sorting.direction">
-                            <option title="Ascending">Ascending</option>
-                            <option title="Descending">Descending</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="button-container-center">
-                <button class="btn btn-primary" ng-click="mainCtrl.unfilter()">Unfilter</button>
-            </div>
-        </div>
+        <filter-panel></filter-panel>
     </div>
     <div id="main-panel" ng-animate-children>
-        <uib-tabset active="mainCtrl.activeTab" type="pills" justified="true">
+        <tab-panel></tab-panel>
+        <!--<uib-tabset active="mainCtrl.activeTab" type="pills" justified="true">
             <uib-tab select="mainCtrl.checkTab($event, 'classical')" deselect="mainCtrl.onTabDeselected($event, 'classical')" index="'classical'" heading="Classical acoustic"></uib-tab>
             <uib-tab select="mainCtrl.checkTab($event, 'western')" deselect="mainCtrl.onTabDeselected($event, 'western')" index="'western'" heading="Western acoustic"></uib-tab>
             <uib-tab select="mainCtrl.checkTab($event, 'electric')" deselect="mainCtrl.onTabDeselected($event, 'electric')" index="'electric'" heading="Electric"></uib-tab>
             <uib-tab select="mainCtrl.checkTab($event, 'bass')" deselect="mainCtrl.onTabDeselected($event, 'bass')" index="'bass'" heading="Bass"></uib-tab>
-        </uib-tabset>
+        </uib-tabset>-->
         <div class="guitar-list-container">
-            <admin-panel ng-if="mainCtrl.userService.currentUser.role !== 'User'"></admin-panel>
+            <admin-panel ng-if="mainCtrl.claimService.hasAdminRights"></admin-panel>
             <ui-view></ui-view>
         </div>
     </div>
