@@ -4,10 +4,10 @@
     Sorting
 } from "../../Models/models";
 
-import { IFilterService } from "../../Interfaces/interfaces";
+import { IFilterStateService } from "../../Interfaces/interfaces";
 
 
-export default class FilterService implements IFilterService {
+export default class FilterStateService implements IFilterStateService {
     guitarFilter: {
         [key: string]: {
             [key: string]: any

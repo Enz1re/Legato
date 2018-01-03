@@ -5,7 +5,7 @@
 } from "../../Models/models";
 
 
-export interface IFilterService {
+export interface IFilterStateService {
     guitarFilter: {
         [key: string]: any
     }

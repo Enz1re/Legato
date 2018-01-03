@@ -13,7 +13,7 @@ import FileUploadService from "./src/FileUploadService";
 import UrlParamResolver from "./src/UrlParamResolver";
 import GuitarResource from "./src/GuitarResource";
 import RoutingService from "./src/RoutingService";
-import FilterService from "./src/FilterService";
+import FilterStateService from "./src/FilterService";
 import ManageService from "./src/ManageService";
 import PagingService from "./src/PagingService";
 import VendorService from "./src/VendorService";
@@ -38,7 +38,7 @@ angular.module(servicesModuleName, [])
     .service("CacheService", CacheService)
     .service("RoutingService", RoutingService)
     .service("UpdateService", UpdateService)
-    .service("FilterService", FilterService)
+    .service("FilterStateService", FilterStateService)
     .service("PagingService", PagingService)
     .service("ModalService", ModalService)
     .service("AuthenticationService", AuthenticationService)
@@ -66,7 +66,7 @@ export {
     GuitarResource,
     RoutingService,
     PagingService,
-    FilterService,
+    FilterStateService,
     UpdateService,
     VendorService,
     CacheService,
