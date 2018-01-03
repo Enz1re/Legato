@@ -1,4 +1,4 @@
-﻿import { GuitarNameConfig } from "../../../Models/models";
+﻿import { Vendor, GuitarNameConfig } from "../../../Models/models";
 
 import {
     IFilterStateService,
@@ -31,48 +31,21 @@ export class VendorController {
     }
 
     private refreshVendorList(guitarName: string) {
-        this.updateService.filter.vendors = [];
+        let promise: ng.IPromise<Vendor[]>;
+
         switch (guitarName) {
             case this.guitarNames.classical:
-                return this.refreshVendorListForClassicalGuitars()
+                promise = this.vendorService.getClassicalGuitarVendors();
             case this.guitarNames.western:
-                return this.refreshVendorListForWesternGuitars();
+                promise = this.vendorService.getWesternGuitarVendors();
             case this.guitarNames.electric:
-                return this.refreshVendorListForElectricGuitars();
+                promise = this.vendorService.getElectricGuitarVendors();
             case this.guitarNames.bass:
-                return this.refreshVendorListForBassGuitars();
+                promise = this.vendorService.getBassGuitarVendors();
         }
-    }
 
-    private refreshVendorListForClassicalGuitars() {
-        return this.vendorService.getClassicalGuitarVendors().then(vendors => {
+        return promise.then(vendors => {
             this.updateService.filter.vendors = vendors;
-        }).catch(err => {
-            this.error = true;
-        });
-    }
-
-    private refreshVendorListForWesternGuitars() {
-        return this.vendorService.getWesternGuitarVendors().then(vendors => {
-            this.updateService.filter.vendors = vendors;
-        }).catch(err => {
-            this.error = true;
-        });
-    }
-
-    private refreshVendorListForElectricGuitars() {
-        return this.vendorService.getElectricGuitarVendors().then(vendors => {
-            this.updateService.filter.vendors = vendors;
-        }).catch(err => {
-            this.error = true;
-        });
-    }
-
-    private refreshVendorListForBassGuitars() {
-        return this.vendorService.getBassGuitarVendors().then(vendors => {
-            this.updateService.filter.vendors = vendors;
-        }).catch(err => {
-            this.error = true;
         });
     }
 }

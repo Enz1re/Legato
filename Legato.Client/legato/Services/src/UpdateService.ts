@@ -28,16 +28,16 @@ export default class UpdateService implements IUpdateService {
         };
     }
 
-    replacePriceQueryParams(stateName: string) {
+    replacePriceQueryParams() {
         let queryParams = this.routingService.queryParams;
 
         queryParams.from = this.filter.price.from;
         queryParams.to = this.filter.price.to;
 
-        this.routingService.redirect(stateName, queryParams);
+        this.routingService.replace(queryParams);
     }
 
-    replaceVendorQueryParams(stateName: string) {
+    replaceVendorQueryParams() {
         const checkedVendors = this.getCheckedVendors();
         let queryParams = this.routingService.queryParams;
 
@@ -52,13 +52,13 @@ export default class UpdateService implements IUpdateService {
         this.routingService.replace(queryParams);
     }    
 
-    replaceSearchQueryParams(stateName: string) {
+    replaceSearchQueryParams() {
         let queryParams = this.routingService.queryParams;
         queryParams.search = this.filter.search;
         this.routingService.replace(queryParams);
     }
 
-    replaceSortingQueryParams(stateName: string) {
+    replaceSortingQueryParams() {
         let queryParams = this.routingService.queryParams;
 
         if (this.filter.sorting.required) {
