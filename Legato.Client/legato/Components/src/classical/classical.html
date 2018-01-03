@@ -1,24 +1,12 @@
 ﻿<div class="guitar-grid">
-    <div class="pagination-container">
-        <ul uib-pagination
-            ng-if="!classicalCtrl.error"
-            total-items="classicalCtrl.pagingService.total" 
-            ng-click="classicalCtrl.onPageChanged('classical')"
-            next-text=">>"
-            previous-text="<<"
-            items-per-page="classicalCtrl.pagingService.itemsToShow" 
-            max-size="10"
-            ng-model="classicalCtrl.pagingService.currentPage" 
-            boundary-links="true"
-            rotate="true" />
-    </div>
+    <legato-pagination ng-if="!classicalCtrl.error && !classicalCtrl.noResults"></legato-pagination>
     <legato-request-loader ng-if="classicalCtrl.service.hasPendingRequests()" size="large"></legato-request-loader>
     <ul ng-if="!classicalCtrl.error">
         <li class="guitar-li" ng-repeat="guitar in classicalCtrl.guitars">
-            <div class="guitar-container" ng-click="classicalCtrl.onGuitarClick('classical', $index)" context-menu="classicalCtrl.contextMenu.guitarOptions"
-                                                                                                      context-menu-data="{ type: 'classical' }"
-                                                                                                      context-menu-if="classicalCtrl.claimService.hasAdminRights"
-                                                                                                      model="guitar">
+            <div class="guitar-container" ng-click="classicalCtrl.onGuitarClick($index)" context-menu="classicalCtrl.contextMenu.guitarOptions"
+                                                                                         context-menu-data="{ type: 'classical' }"
+                                                                                         context-menu-if="classicalCtrl.claimService.hasAdminRights"
+                                                                                         model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
                 <div>{{guitar.vendor.name}} {{guitar.model}}</div>
                 <div>Mensura: {{guitar.mensura}} mm</div>
@@ -33,18 +21,5 @@
     <div ng-if="classicalCtrl.noResults">
         No results found.
     </div>
-    <div class="pagination-container">
-        <ul uib-pagination
-            ng-if="!classicalCtrl.error"
-            legato-smooth-scroll
-            total-items="classicalCtrl.pagingService.total"
-            ng-click="classicalCtrl.onPageChanged('classical')"
-            next-text=">>"
-            previous-text="<<"
-            items-per-page="classicalCtrl.pagingService.itemsToShow"
-            max-size="10"
-            ng-model="classicalCtrl.pagingService.currentPage" 
-            boundary-links="true"
-            rotate="true" />
-    </div>
+    <legato-pagination ng-if="!classicalCtrl.error && !classicalCtrl.noResults"></legato-pagination>
 </div>

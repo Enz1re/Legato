@@ -1,0 +1,11 @@
+﻿<div class="pagination-container">
+    <ul uib-pagination
+        total-items="paginationCtrl.pagingService.total"
+        next-text=">>"
+        previous-text="<<"
+        items-per-page="paginationCtrl.pagingService.itemsToShow"
+        max-size="10"
+        ng-model="paginationCtrl.pagingService.currentPage"
+        boundary-links="true"
+        rotate="true" />
+</div>

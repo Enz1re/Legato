@@ -15,6 +15,8 @@ import { LegatoLoadOnScrollDirective } from "./src/loadOnScroll/LegatoLoadOnScro
 import { LegatoTopPanelDirective } from "./src/topPanel/LegatoTopPanelDirective";
 import { LegatoFilterPanelDirective } from "./src/filterPanel/LegatoFilterPanelDirective";
 import { LegatoTabPanelDirective } from "./src/tabPanel/LegatoTabPanelDirective";
+import { LegatoVendorDirective } from "./src/vendorPanel/LegatoVendorDirective";
+import { LegatoPaginationDirective } from "./src/legatoPagination/LegatoPaginationDirective";
 
 import { MainController } from "./src/legato/MainController";
 import { ClassicalController } from "./src/classical/ClassicalController";
@@ -31,6 +33,7 @@ import { DisplayAmountModalController } from "./src/guitarModal/DisplayAmountMod
 import { YesNoModalController } from "./src/guitarModal/YesNoModalController";
 import { AlertModalController } from "./src/guitarModal/AlertModalController";
 import { UserModalController } from "./src/userModal/UserModalController";
+import { PaginationController } from "./src/legatoPagination/PaginationController";
 
 const directivesModuleName = "legato.components";
 
@@ -51,6 +54,8 @@ angular.module(directivesModuleName, [])
     .directive("topPanel", LegatoTopPanelDirective.create())
     .directive("filterPanel", LegatoFilterPanelDirective.create())
     .directive("tabPanel", LegatoTabPanelDirective.create())
+    .directive("vendorPanel", LegatoVendorDirective.create())
+    .directive("legatoPagination", LegatoPaginationDirective.create())
     // controller declarations
     .controller("MainController", MainController)
     .controller("ClassicalController", ClassicalController)
@@ -65,7 +70,8 @@ angular.module(directivesModuleName, [])
     .controller("AdminPanelController", AdminPanelController)
     .controller("AlertModalController", AlertModalController)
     .controller("UserModalController", UserModalController)
-    .controller("CompromisedAttemptsController", CompromisedAttemptsController);
+    .controller("CompromisedAttemptsController", CompromisedAttemptsController)
+    .controller("PaginationController", PaginationController);
 
 export {
     MainController,
