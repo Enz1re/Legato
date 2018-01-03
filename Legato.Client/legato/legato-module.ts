@@ -9,6 +9,8 @@ import services from "./Services/services-module";
 import components from "./Components/components-module";
 import filters from "./Filters/filters-module";
 
+import { GuitarNameConfig } from "./Models/models";
+
 import {
     IClaimService,
     IAuthenticationService
@@ -30,7 +32,13 @@ angular.module("legato", [ngCookies, uiRouter, ngAnimate, uiBootstrap, ngFileUpl
                 claimService.getUserClaims();
             });
         }
-    }]);
+    }])
+    .constant<GuitarNameConfig>("GuitarName", {
+        classical: "classical",
+        western: "western",
+        electric: "electric",
+        bass: "bass"
+    });
 
 angular.element(document).ready(() => {
     angular.bootstrap(document.documentElement, ["legato"]);

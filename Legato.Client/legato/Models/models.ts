@@ -1,5 +1,6 @@
 ﻿import CompromisedAttemptList from "./src/CompromisedAttemptList";
 import CompromisedAttempt from "./src/CompromisedAttempt";
+import GuitarNameConfig from "./src/GuitarNameConfig";
 import ClassicalGuitar from "./src/ClassicalGuitar";
 import ElectricGuitar from "./src/ElectricGuitar";
 import WesternGuitar from "./src/WesternGuitar";
@@ -23,6 +24,7 @@ import User from "./src/User";
 export {
     CompromisedAttemptList,
     CompromisedAttempt,
+    GuitarNameConfig,
     ClassicalGuitar,
     ElectricGuitar,
     WesternGuitar,
