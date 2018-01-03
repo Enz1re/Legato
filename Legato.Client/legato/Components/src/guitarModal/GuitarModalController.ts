@@ -5,7 +5,6 @@ import { IRoutingService } from "../../../Interfaces/interfaces";
 
 export class GuitarModalController {
     guitars: Guitar[];
-    gName: string;
     currentIndex: number;
     static $inject = ["RoutingService", "guitars", "currentIndex"];
 
