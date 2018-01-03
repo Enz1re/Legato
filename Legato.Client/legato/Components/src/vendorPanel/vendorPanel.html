@@ -1,0 +1,15 @@
+﻿<div>
+    <div class="vendors-title">Vendors:</div>
+    <legato-request-loader ng-if="vendorCtrl.vendorService.hasPendingRequests()" size="small"></legato-request-loader>
+    <div ng-if="vendorCtrl.error" class="error">
+        <small>
+            Error processing your request. Please try again later.
+        </small>
+    </div>
+    <div class="vendors-container" ng-repeat="vendor in vendorCtrl.updateService.filter.vendors">
+        <div>
+            <input id="{{vendor.name}}" type="checkbox" ng-model="vendor.isSelected">
+            <label for="{{vendor.name}}">{{vendor.name}}</label>
+        </div>
+    </div>
+</div>

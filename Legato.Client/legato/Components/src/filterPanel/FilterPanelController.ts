@@ -1,9 +1,9 @@
-﻿import { IUpdateService, IVendorService } from "../../../Interfaces/interfaces";
+﻿import { IUpdateService } from "../../../Interfaces/interfaces";
 
 
 export class FilterPanelController {
     search: string;
-    static $inject = ["UpdateService", "VendorService"];
+    static $inject = ["UpdateService"];
 
     constructor(private updateService: IUpdateService) {
 
