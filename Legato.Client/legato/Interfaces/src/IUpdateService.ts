@@ -9,13 +9,13 @@ export interface IUpdateService {
     filter: { price: Price, vendors: Vendor[], sorting: Sorting, search: string };
     updatePage: { updateCurrentPage: boolean, updateLastPage: boolean }
 
-    replacePriceQueryParams(stateName: string);
+    replacePriceQueryParams();
 
-    replaceVendorQueryParams(stateName: string);
+    replaceVendorQueryParams();
 
-    replaceSearchQueryParams(stateName: string);
+    replaceSearchQueryParams();
 
-    replaceSortingQueryParams(stateName: string);
+    replaceSortingQueryParams();
 
     needUsePriceFilter(thisVal, prevVal);
 

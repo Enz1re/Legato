@@ -21,7 +21,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
             parsedPage = maxPage;
             let params = this.routingService.queryParams;
             params.page = parsedPage;
-            this.routingService.replace(this.routingService.urlSegments[1], params);
+            this.routingService.replace(params);
         }
 
         return parsedPage ? parsedPage : 1;
@@ -78,7 +78,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
             index = maxIndex;
             let params = this.routingService.queryParams;
             params.g = index;
-            this.routingService.replace(this.routingService.urlSegments[1], params);
+            this.routingService.replace(params);
         }
 
         return index ? index : null;
