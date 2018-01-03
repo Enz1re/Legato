@@ -50,7 +50,9 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                     return;
                 }
                 this.onGuitarClick(gIndex);
-            }).then(() => { this.setWatchers(); });
+            }).then(() => {
+                this.setWatchers();
+            });
         }).catch(() => { this.error = true; });
     }
 
@@ -90,11 +92,6 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         }
     }
 
-    protected onPageChanged() {
-        this.pagingService.goToSelectedPage();
-        this.loadGuitarList();
-    }
-
     protected onGuitarClick(index: number) {
         let params = this.routingService.queryParams;
         if (!params.g) {
@@ -113,19 +110,18 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
 
     private setWatchers() {
         this.$scope.$watch(() => this.updateService.filter, (newValue, oldValue) => {
-            const stateName = this.routingService.urlSegments[1];
             this.pendingTaskService.cancelPendingTask();
 
             if (this.updateService.needSearch(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
-                    this.updateService.replaceSearchQueryParams(stateName);
+                    this.updateService.replaceSearchQueryParams();
                     this.filter.search = newValue.search;
                     this.pagingService.goToFirstPage(() => this.init());
                 });
             }
             if (this.updateService.needUsePriceFilter(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
-                    this.updateService.replacePriceQueryParams(stateName);
+                    this.updateService.replacePriceQueryParams();
                     let from = newValue.price.from
                     let to = newValue.price.to;
                     if (from || to) {
@@ -140,14 +136,14 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
             }
             if (this.updateService.needUseVendorFilter(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
-                    this.updateService.replaceVendorQueryParams(stateName);
+                    this.updateService.replaceVendorQueryParams();
                     this.filter.vendors = newValue.vendors;
                     this.pagingService.goToFirstPage(() => { this.init() });
                 });
             }
             if (this.updateService.needUseSorting(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
-                    this.updateService.replaceSortingQueryParams(stateName);
+                    this.updateService.replaceSortingQueryParams();
                     this.filter.sorting = newValue.sorting;
                     this.pagingService.goToFirstPage(() => { this.init() });
                 });
@@ -167,6 +163,12 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 this.pagingService.goToLastPage(() => { this.init(); });
             }
         }, true);
+        this.$scope.$watch(() => this.pagingService.currentPage, (newValue, oldValue) => {
+            if (newValue !== oldValue) {
+                this.pagingService.goToSelectedPage();
+                this.loadGuitarList();
+            }
+        });
     }
 
     private getMaxGuitarPrice() {
