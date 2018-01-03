@@ -7,12 +7,6 @@
     </div>
     <div id="main-panel" ng-animate-children>
         <tab-panel></tab-panel>
-        <!--<uib-tabset active="mainCtrl.activeTab" type="pills" justified="true">
-            <uib-tab select="mainCtrl.checkTab($event, 'classical')" deselect="mainCtrl.onTabDeselected($event, 'classical')" index="'classical'" heading="Classical acoustic"></uib-tab>
-            <uib-tab select="mainCtrl.checkTab($event, 'western')" deselect="mainCtrl.onTabDeselected($event, 'western')" index="'western'" heading="Western acoustic"></uib-tab>
-            <uib-tab select="mainCtrl.checkTab($event, 'electric')" deselect="mainCtrl.onTabDeselected($event, 'electric')" index="'electric'" heading="Electric"></uib-tab>
-            <uib-tab select="mainCtrl.checkTab($event, 'bass')" deselect="mainCtrl.onTabDeselected($event, 'bass')" index="'bass'" heading="Bass"></uib-tab>
-        </uib-tabset>-->
         <div class="guitar-list-container">
             <admin-panel ng-if="mainCtrl.claimService.hasAdminRights"></admin-panel>
             <ui-view></ui-view>
