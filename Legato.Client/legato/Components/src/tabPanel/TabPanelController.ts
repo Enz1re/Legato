@@ -1,6 +1,6 @@
 ﻿import {
     IUpdateService,
-    IFilterService,
+    IFilterStateService,
     IRoutingService
 } from "../../../Interfaces/interfaces";
 
@@ -9,10 +9,10 @@ import { Price, Sorting } from "../../../Models/models";
 
 export class TabPanelController {
     activeTab: string;
-    static $inject = ["UpdateService", "FilterService", "RoutingService"];
+    static $inject = ["UpdateService", "FilterStateService", "RoutingService"];
 
-    constructor (private updateService: IUpdateService, private filterService: IFilterService, private routingService: IRoutingService) {
-
+    constructor(private updateService: IUpdateService, private filterService: IFilterStateService, private routingService: IRoutingService) {
+        this.activeTab = routingService.urlSegments[1];
     }
 
     checkTab(click, guitarTypeName: string) {
@@ -24,12 +24,6 @@ export class TabPanelController {
         this.updateService.filter.price = this.filterService.guitarFilter[guitarTypeName].price || new Price();
         this.updateService.filter.sorting = this.filterService.guitarFilter[guitarTypeName].sorting || new Sorting();
         this.updateService.filter.search = this.filterService.guitarFilter[guitarTypeName].search;
-
-        if (this.filterService.guitarFilter[guitarTypeName].vendors) {
-            this.updateService.filter.vendors = this.filterService.guitarFilter[guitarTypeName].vendors;
-        } else {
-            this.initVendorList(guitarTypeName);
-        }
 
         this.routingService.redirect(this.activeTab, this.filterService.guitarFilter[guitarTypeName].params || { page: "1" });
     }
@@ -44,57 +38,5 @@ export class TabPanelController {
         this.filterService.guitarFilter[guitarTypeName].vendors = [...this.updateService.filter.vendors];
         this.filterService.guitarFilter[guitarTypeName].sorting = { ...this.updateService.filter.sorting };
         this.filterService.guitarFilter[guitarTypeName].search = this.updateService.filter.search;
-    }
-
-    // TODO: make a vendor panel and move this functionality to it
-    private initVendorList(guitarTypeName: string): ng.IPromise<void> {
-        this.updateService.filter.vendors = [];
-
-        switch (guitarTypeName) {
-            case Constants.CLASSICAL:
-                return this.refreshVendorListForClassicalGuitars()
-            case Constants.WESTERN:
-                return this.refreshVendorListForWesternGuitars();
-            case Constants.ELECTRIC:
-                return this.refreshVendorListForElectricGuitars();
-            case Constants.BASS:
-                return this.refreshVendorListForBassGuitars();
-        }
-    }
-
-    private refreshVendorListForClassicalGuitars() {
-        return this.service.getClassicalGuitarVendors().then(vendors => {
-            this.updateService.filter.vendors = vendors;
-        }).catch(err => {
-            this.error = true;
-            throw err;
-        });
-    }
-
-    private refreshVendorListForWesternGuitars() {
-        return this.service.getWesternGuitarVendors().then(vendors => {
-            this.updateService.filter.vendors = vendors;
-        }).catch(err => {
-            this.error = true;
-            throw err;
-        });
-    }
-
-    private refreshVendorListForElectricGuitars() {
-        return this.service.getElectricGuitarVendors().then(vendors => {
-            this.updateService.filter.vendors = vendors;
-        }).catch(err => {
-            this.error = true;
-            throw err;
-        });
-    }
-
-    private refreshVendorListForBassGuitars() {
-        return this.service.getBassGuitarVendors().then(vendors => {
-            this.updateService.filter.vendors = vendors;
-        }).catch(err => {
-            this.error = true;
-            throw err;
-        });
     }
 }
