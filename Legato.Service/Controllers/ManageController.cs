@@ -143,8 +143,6 @@ namespace Legato.Service.Controllers
                     return Ok();
                 }
 
-                // call extension method from base class only with this.-syntax
-                // Either it doesn't work
                 return this.NotModified();
             }
             catch (Exception e)
