@@ -14,7 +14,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="user in userModalCtrl.users" context-menu="userModalCtrl.contextMenu.userOptions" model="user">
+                    <tr ng-repeat="user in userModalCtrl.users" context-menu="userModalCtrl.contextMenu.userOptions"
+                                                                context-menu-if="user.isAuthenticated"
+                                                                model="user">
                         <td>{{user.name}}</td>
                         <td>{{user.role}} <span ng-if="user.role === 'Admin'" class="glyphicon glyphicon-star" /></td>
                         <td>
