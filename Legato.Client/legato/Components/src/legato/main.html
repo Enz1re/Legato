@@ -8,7 +8,7 @@
     <div id="main-panel" ng-animate-children>
         <tab-panel></tab-panel>
         <div class="guitar-list-container">
-            <admin-panel ng-if="mainCtrl.claimService.hasAdminRights"></admin-panel>
+            <admin-panel ng-if="mainCtrl.claimService.hasAdminRights()"></admin-panel>
             <ui-view></ui-view>
         </div>
     </div>
