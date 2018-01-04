@@ -7,23 +7,15 @@ import {
 
 
 export default class ClaimService implements IClaimService {
-    _claims: LegatoClaims = new LegatoClaims();
+    claims: LegatoClaims = new LegatoClaims();
     static $inject = ["$http", "UserService"];
 
     constructor(private $http: ng.IHttpService, private userService: IUserService) {
         
     }
 
-    get hasAdminRights() {
+    hasAdminRights() {
         return this.claims ? this.claims.addGuitar && this.claims.editGuitar && this.claims.removeGuitar && this.claims.blockUser : false;
-    }
-
-    get claims() {
-        return this._claims;
-    }
-
-    set claims(newClaims: LegatoClaims) {
-        this._claims = newClaims;
     }
 
     getUserClaims() {
