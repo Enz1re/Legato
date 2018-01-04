@@ -32,16 +32,19 @@ export class VendorController {
 
     private refreshVendorList(guitarName: string) {
         let promise: ng.IPromise<Vendor[]>;
-
         switch (guitarName) {
             case this.guitarNames.classical:
                 promise = this.vendorService.getClassicalGuitarVendors();
+                break;
             case this.guitarNames.western:
                 promise = this.vendorService.getWesternGuitarVendors();
+                break;
             case this.guitarNames.electric:
                 promise = this.vendorService.getElectricGuitarVendors();
+                break;
             case this.guitarNames.bass:
                 promise = this.vendorService.getBassGuitarVendors();
+                break;
         }
 
         return promise.then(vendors => {
