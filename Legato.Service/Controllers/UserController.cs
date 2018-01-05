@@ -14,20 +14,23 @@ namespace Legato.Service.Controllers
         // set default token expiry to one day
         private const int TokenExpiryMinutes = 60 * 24;
         private ILegatoUserServiceWorker _serviceWorker;
+        private ILegatoUserManager _userManager;
 
         [Inject]
         public UserController(ILegatoUserServiceWorker serviceWorker)
         {
             _serviceWorker = serviceWorker;
+            _userManager = _serviceWorker.GetUserManager();
         }
 
         [HttpGet]
         [Route("GetAll/{lowerBound}/{upperBound}")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.GetListOfUsers)]
+        [ValidateAntiforgeryTokenGet]
         public IHttpActionResult GetUsers(int lowerBound, int upperBound)
         {
-            return Ok(_serviceWorker.GetUsers(lowerBound, upperBound));
+            return Ok(_userManager.GetUsers(lowerBound, upperBound));
         }
 
         [HttpPost]
@@ -41,12 +44,12 @@ namespace Legato.Service.Controllers
             {
                 return BadRequest(Strings.UsernameAndPasswordAreRequired);
             }
-            if (!_serviceWorker.FindUser(username, password))
+            if (!_userManager.FindUser(username, password))
             {
                 return BadRequest(Strings.UsernameIsIncorrect(username));
             }
 
-            var userRole = _serviceWorker.GetUserRole(username);
+            var userRole = _userManager.GetUserRole(username);
             var accessToken = JwtManager.GenerateToken(username, userRole, TokenExpiryMinutes);
 
             if (!_serviceWorker.AddToken(accessToken, username, TokenExpiryMinutes))
@@ -58,7 +61,7 @@ namespace Legato.Service.Controllers
         }
 
         [HttpGet]
-        [Route("Session")]
+        [Route("Session")]        
         public IHttpActionResult GetUserSession([FromUri]string accessToken)
         {
             var principal = JwtManager.GetPrincipal(accessToken);
@@ -74,6 +77,7 @@ namespace Legato.Service.Controllers
 
         [HttpPost]
         [Route("Logout")]
+        [ValidateAntiforgeryTokenPost]
         public IHttpActionResult LogOut([FromBody]dynamic requestBody)
         {
             var username = requestBody.username.Value;
@@ -95,6 +99,7 @@ namespace Legato.Service.Controllers
         [Route("Block")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.BlockUserClaim)]
+        [ValidateAntiforgeryTokenPost]
         public IHttpActionResult BlockUser([FromBody]dynamic requestBody)
         {
             var username = requestBody.username.Value;
@@ -103,7 +108,7 @@ namespace Legato.Service.Controllers
                 return BadRequest(Strings.AccessTokenIsMissing);
             }
 
-            if (!_serviceWorker.BanUser(username))
+            if (!_userManager.BanUser(username))
             {
                 return InternalServerError(new Exception(Strings.FailedToBlockUser(username)));
             }
@@ -115,13 +120,14 @@ namespace Legato.Service.Controllers
         [Route("{username}/Claims")]
         public IHttpActionResult GetUserClaims(string username)
         {
-            return Ok(_serviceWorker.GetClaims(username));
+            return Ok(_userManager.GetClaims(username));
         }
 
         [HttpGet]
         [Route("CompromisedAttempts")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.GetCompromisedAttempts)]
+        [ValidateAntiforgeryTokenGet]
         public IHttpActionResult GetCompromisedAttempts()
         {
             return Ok(_serviceWorker.GetCompromisedAttempts());
@@ -131,6 +137,7 @@ namespace Legato.Service.Controllers
         [Route("RemoveCompromisedAttempts")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.RemoveCompromisedAttempts)]
+        [ValidateAntiforgeryTokenPost]
         public IHttpActionResult RemoveCompromisedAttempt(dynamic request)
         {
             var compromisedAttemptsIds = request.compromisedAttempts.ToObject<int[]>();

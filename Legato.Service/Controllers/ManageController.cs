@@ -3,7 +3,6 @@ using Ninject;
 using System.IO;
 using Newtonsoft.Json;
 using System.Web.Http;
-using System.Net.Http;
 using System.Threading;
 using Legato.Service.Filters;
 using Legato.Service.Constants;
@@ -31,6 +30,7 @@ namespace Legato.Service.Controllers
         [Route("{type}/Add")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.AddGuitarClaim)]
+        [ValidateAntiforgeryTokenPost]
         public IHttpActionResult Add([FromBody] dynamic guitarParam, string type)
         {
             // Capitalize type to be able to parse its enumeration value
@@ -60,6 +60,7 @@ namespace Legato.Service.Controllers
         [Route("{type}/Edit")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.EditGuitarClaim)]
+        [ValidateAntiforgeryTokenPost]
         public IHttpActionResult Edit([FromBody] dynamic guitarParam, string type)
         {
             // Capitalize type to be able to parse its enumeration value
@@ -88,6 +89,7 @@ namespace Legato.Service.Controllers
         [Route("{type}/{id}")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.RemoveGuitarClaim)]
+        [ValidateAntiforgeryTokenDelete]
         public IHttpActionResult Delete(string type, int id)
         {
             // Capitalize type to be able to parse its enumeration value
@@ -124,6 +126,7 @@ namespace Legato.Service.Controllers
         [Route("Display/{amount}")]
         [LegatoAuthentication]
         [LegatoAuthorize(Strings.ChangeDisplayAmounClaim)]
+        [ValidateAntiforgeryTokenPost]
         public IHttpActionResult ChangeDisplayAmount(int amount)
         {
             if (10 > amount || amount > 100)
@@ -149,6 +152,20 @@ namespace Legato.Service.Controllers
             {
                 return InternalServerError(e);
             }
+        }
+
+        [HttpGet]
+        [Route("Tokens")]
+        public IHttpActionResult GetAntiforgeryTokens()
+        {
+            var root = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText($@"{AppDomain.CurrentDomain.BaseDirectory}/settings.json"));
+            string antiforgeryTokenGet = root["antiforgeryTokenGet"];
+            string antiforgeryTokenPost = root["antiforgeryTokenPost"];
+            string antiforgeryTokenDelete = root["antiforgeryTokenDelete"];
+
+            return Ok(new { AntiforgeryTokenGet = antiforgeryTokenGet,
+                            AntiforgeryTokenPost = antiforgeryTokenPost,
+                            AntiforgeryTokenDelete = antiforgeryTokenDelete });
         }
     }
 }
