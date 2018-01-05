@@ -51,5 +51,9 @@
         public static string Unauthorized => "You are not authorized to perform this action";
 
         public static string FailedToBlockUser(string username) => $@"Failed to ban access token for user '{username}'. Please try again later";
+
+        public static string AntiforgeryTokenIsMissing => "Antiforgery token for this request is missing.";
+
+        public static string AntiforgeryTokenIsInvalid => "Antiforgery token for this request is invalid.";
     }
 }
