@@ -38,10 +38,16 @@ export default class CompromisedAttemptHelperService implements ICompromisedAtte
                 this._checkedAttempts.push(value);
             }
         });
+        this.allCompromisedAttempts.forEach(attempt => {
+            attempt.isSelected = true;
+        });
     }
 
     deselectAll() {
         this._checkedAttempts = [];
+        this.allCompromisedAttempts.forEach(attempt => {
+            attempt.isSelected = false;
+        });
     }
 
     clear() {
