@@ -21,6 +21,9 @@ export class CompromisedAttemptsController {
         this.modalService.openYesNoDialog(`Detele attempt '${attempt.requestDateTime}'? This action is irreversible`).result.then(() => {
             this.userService.removeCompromisedAttempts([attempt.attemptId]).then(() => {
                 this.attemptService.removeAttempt(attempt);
+                if (this.attemptService.allCompromisedAttempts.length === 0) {
+                    this.onOkButtonClicked();
+                }
             }).catch(err => {
                 this.modalService.openAlertModal(err.data.message, "danger").result.catch(() => { });
             });
@@ -43,16 +46,10 @@ export class CompromisedAttemptsController {
     }
 
     selectAll() {
-        this.attemptService.allCompromisedAttempts.forEach(attempt => {
-            attempt.isSelected = true;
-        });
         this.attemptService.selectAll();
     }
 
     deselectAll() {
-        this.attemptService.allCompromisedAttempts.forEach(attempt => {
-            attempt.isSelected = false;
-        });
         this.attemptService.deselectAll();
     }
 
