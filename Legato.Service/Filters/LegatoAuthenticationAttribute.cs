@@ -53,7 +53,7 @@ namespace Legato.Service.Filters
             
             var principal = JwtManager.GetPrincipal(token);
 
-            if (principal == null || !ServiceWorker.FindUser(principal.Identity.Name))
+            if (principal == null || !ServiceWorker.GetUserManager().FindUser(principal.Identity.Name))
             {
                 context.ErrorResult = new AuthenticationFailureResult(Strings.AccessTokenIsInvalid, context.ActionContext.Request);
                 return Task.FromResult(0);

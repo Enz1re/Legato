@@ -172,13 +172,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="Antiforgery.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\Strings.cs" />
-    <Compile Include="Controllers\ClaimsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\BassController.cs" />
     <Compile Include="Controllers\ClassicalController.cs" />
@@ -193,7 +193,11 @@
     <Compile Include="Filters\GuitarFilterAttribute.cs" />
     <Compile Include="Filters\LegatoAuthenticationAttribute.cs" />
     <Compile Include="Filters\LegatoAuthorizeAttribute.cs" />
+    <Compile Include="Filters\ValidateAntiforgeryTokenDeleteAttribute.cs" />
+    <Compile Include="Filters\ValidateAntiforgeryTokenGetAttribute.cs" />
+    <Compile Include="Filters\ValidateAntiforgeryTokenPostAttribute.cs" />
     <Compile Include="Interfaces\ILegatoManageServiceWorker.cs" />
+    <Compile Include="Interfaces\ILegatoUserManager.cs" />
     <Compile Include="Interfaces\ILegatoUserServiceWorker.cs" />
     <Compile Include="JwtManager.cs" />
     <Compile Include="ReturnTypes\CompromisedAttemptList.cs" />
@@ -204,6 +208,7 @@
     </Compile>
     <Compile Include="Interfaces\ILegatoGuitarServiceWorker.cs" />
     <Compile Include="Workers\LegatoGuitarServiceWorker.cs" />
+    <Compile Include="Workers\LegatoUserManager.cs" />
     <Compile Include="Workers\LegatoUserServiceWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnTypes\Amount.cs" />

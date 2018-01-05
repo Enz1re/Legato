@@ -14,29 +14,13 @@ namespace Legato.Service.Workers
     public class LegatoUserServiceWorker : ILegatoUserServiceWorker
     {
         private IUserRepository _userRepository;
+        private ILegatoUserManager _userManager;
 
         [Inject]
-        public LegatoUserServiceWorker(IUserRepository userRepo)
+        public LegatoUserServiceWorker(IUserRepository userRepo, ILegatoUserManager userManager)
         {
             _userRepository = userRepo;
-        }
-
-        public UserList GetUsers(int lowerBound, int upperBound)
-        {
-            return new UserList
-            {
-                Users = ServiceMappings.Map<List<UserViewModel>>(_userRepository.GetUsers(lowerBound, upperBound))
-            };
-        }
-
-        public bool FindUser(string username)
-        {
-            return _userRepository.FindUser(username);
-        }
-
-        public bool FindUser(string username, string password)
-        {
-            return _userRepository.FindUser(username, password);
+            _userManager = userManager;
         }
 
         public bool AddToken(string token, string username, int expireMinutes)
@@ -46,7 +30,7 @@ namespace Legato.Service.Workers
                 _userRepository.AddTokenToStorage(token, username, expireMinutes);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -59,20 +43,7 @@ namespace Legato.Service.Workers
                 _userRepository.RemoveTokenFromStorage(token);
                 return true;
             }
-            catch (Exception e)
-            {
-                return false;
-            }
-        }
-
-        public bool BanUser(string username)
-        {
-            try
-            {
-                _userRepository.BanUserSession(username);
-                return true;
-            }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -86,34 +57,6 @@ namespace Legato.Service.Workers
         public bool IsTokenBanned(string token)
         {
             return _userRepository.IsTokenBanned(token);
-        }
-
-        public string GetUserRole(string username)
-        {
-            return _userRepository.GetUserRole(username);
-        }
-
-        public ClaimsViewModel GetClaims(string username)
-        {
-            return ServiceMappings.Map<ClaimsViewModel>(_userRepository.GetUserClaims(username));
-        }
-
-        public bool AddClaim(string username, string claimName)
-        {
-            try
-            {
-                _userRepository.AddClaim(username, claimName);
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-        }
-
-        public bool HasClaim(string username, string claimName)
-        {
-            return _userRepository.HasClaim(username, claimName);
         }
 
         public void AddCompromisedAttempt(CompromisedAttemptViewModel attempt)
@@ -132,6 +75,11 @@ namespace Legato.Service.Workers
         public void RemoveCompromisedAttempts(int[] attemptIds)
         {
             _userRepository.RemoveCompromisedAttempts(attemptIds);
+        }
+        
+        public ILegatoUserManager GetUserManager()
+        {
+            return _userManager;
         }
     }
 }

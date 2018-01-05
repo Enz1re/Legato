@@ -6,34 +6,20 @@ namespace Legato.Service.Interfaces
 {
     public interface ILegatoUserServiceWorker
     {
-        UserList GetUsers(int lowerBound, int upperBound);
-
-        bool FindUser(string username);
-
-        bool FindUser(string username, string password);
-
         bool AddToken(string token, string username, int expireMinutes);
 
         bool RemoveToken(string token);
 
-        bool BanUser(string token);
-
         bool IsTokenActive(string token);
 
         bool IsTokenBanned(string token);
-
-        string GetUserRole(string username);
-
-        ClaimsViewModel GetClaims(string username);
-
-        bool AddClaim(string username, string claimName);
-
-        bool HasClaim(string username, string claimName);
 
         void AddCompromisedAttempt(CompromisedAttemptViewModel attempt);
 
         CompromisedAttemptList GetCompromisedAttempts();
 
         void RemoveCompromisedAttempts(int[] attemptIds);
+
+        ILegatoUserManager GetUserManager();
     }
 }
