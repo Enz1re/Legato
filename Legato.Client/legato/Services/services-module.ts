@@ -5,15 +5,16 @@ import ClassicalGuitarService from "./src/ClassicalGuitarService";
 import AuthenticationService from "./src/AuthenticationService";
 import ElectricGuitarService from "./src/ElectricGuitarService";
 import WesternGuitarService from "./src/WesternGuitarService";
+import AntiforgeryService from "./src/AntiforgeryService";
 import ContextMenuService from "./src/ContextMenuService";
 import PendingTaskService from "./src/PendingTaskService";
+import FilterStateService from "./src/FilterStateService";
 import BassGuitarService from "./src/BassGuitarService";
 import GuitarDataService from "./src/GuitarDataService";
 import FileUploadService from "./src/FileUploadService";
 import UrlParamResolver from "./src/UrlParamResolver";
 import GuitarResource from "./src/GuitarResource";
 import RoutingService from "./src/RoutingService";
-import FilterStateService from "./src/FilterService";
 import ManageService from "./src/ManageService";
 import PagingService from "./src/PagingService";
 import VendorService from "./src/VendorService";
@@ -50,7 +51,8 @@ angular.module(servicesModuleName, [])
     .service("UserService", UserService)
     .service("ClaimService", ClaimService)
     .service("SHA1", SHA1)
-    .service("CompromisedAttemptHelperService", CompromisedAttemptHelperService);
+    .service("CompromisedAttemptHelperService", CompromisedAttemptHelperService)
+    .service("AntiforgeryService", AntiforgeryService);
 
 export {
     CompromisedAttemptHelperService,
@@ -58,6 +60,8 @@ export {
     AuthenticationService,
     ElectricGuitarService,
     WesternGuitarService,
+    AntiforgeryService,
+    FilterStateService,
     PendingTaskService,
     BassGuitarService,
     FileUploadService,
@@ -66,7 +70,6 @@ export {
     GuitarResource,
     RoutingService,
     PagingService,
-    FilterStateService,
     UpdateService,
     VendorService,
     CacheService,

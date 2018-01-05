@@ -1,5 +1,6 @@
 ﻿import { ICompromisedAttemptHelperService } from "./src/ICompromisedAttemptHelperService";
 import { IAuthenticationService } from "./src/IAuthenticationService";
+import { IAntiforgeryService } from "./src/IAntiforgeryService";
 import { IContextMenuService } from "./src/IContextMenuService";
 import { IFilterStateService } from "./src/IFilterStateService";
 import { IPendingTaskService } from "./src/IPendingTaskService";
@@ -25,6 +26,7 @@ import { ISHA1 } from "./src/ISHA1";
 export {
     ICompromisedAttemptHelperService,
     IAuthenticationService,
+    IAntiforgeryService,
     IContextMenuService,
     IFilterStateService,
     IPendingTaskService,
