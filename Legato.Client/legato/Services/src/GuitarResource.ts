@@ -14,13 +14,13 @@ import {
     ClassicalGuitar,
 } from "../../Models/models";
 
-import { IGuitarResource } from "../../interfaces/interfaces";
+import { IGuitarResource, IAntiforgeryService } from "../../interfaces/interfaces";
 
 
 export default class GuitarResource implements IGuitarResource {
-    static $inject = ["$http"];
+    static $inject = ["$http", "AntiforgeryService"];
 
-    constructor (private $http: ng.IHttpService) {
+    constructor (private $http: ng.IHttpService, private antiforgery: IAntiforgeryService) {
 
     }
 
@@ -135,17 +135,17 @@ export default class GuitarResource implements IGuitarResource {
 
     // Manage
     add(guitar: Guitar, type: string): ng.IPromise<any> {
-        return this.$http.post(`http://localhost/api/Manage/${type}/Add`, { guitarJson: angular.toJson(guitar) })
+        return this.$http.post(`http://localhost/api/Manage/${type}/Add`, { guitarJson: angular.toJson(guitar), antiforgeryToken: this.antiforgery.antiforgeryTokenPost })
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
 
     delete(guitar: Guitar, type: string): ng.IPromise<any> {
-        return this.$http.delete(`http://localhost/api/Manage/${type}/${guitar.id}`)
+        return this.$http.delete(`http://localhost/api/Manage/${type}/${guitar.id}`, { data: { antiforgeryToken: this.antiforgery.antiforgeryTokenDelete } })
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
 
     edit(guitar: Guitar, type: string): ng.IPromise<any> {
-        return this.$http.post(`http://localhost/api/Manage/${type}/Edit`, { guitarJson: angular.toJson(guitar) })
+        return this.$http.post(`http://localhost/api/Manage/${type}/Edit`, { guitarJson: angular.toJson(guitar), antiforgeryToken: this.antiforgery.antiforgeryTokenPost })
             .then((result: ng.IHttpResponse<any>) => result.data);
     }
 
@@ -156,7 +156,7 @@ export default class GuitarResource implements IGuitarResource {
     }
 
     changeDisplayAmount(amount: number) {
-        return this.$http.post(`http://localhost/api/Manage/Display/${amount}`, {}).then((result: ng.IHttpResponse<any>) => {
+        return this.$http.post(`http://localhost/api/Manage/Display/${amount}`, { antiforgeryToken: this.antiforgery.antiforgeryTokenPost }).then((result: ng.IHttpResponse<any>) => {
             return result.data;
         });
     }
