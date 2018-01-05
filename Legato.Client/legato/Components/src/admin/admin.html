@@ -10,7 +10,7 @@
             <img class="admin-panel-item-img" src="../../../../Content/icons/users.png" title="List users" />
         </div>
     </div>
-    <div class="flexbox" ng-if="adminCtrl.compromisedAttempts.length > 0 && adminCtrl.claimService.claims.getCompromisedAttempts">
+    <div class="flexbox" ng-if="adminCtrl.compromisedAttempts && adminCtrl.compromisedAttempts.length">
         <span class="alert alert-danger">
             Warning:&nbsp;
             <a href="" ng-click="adminCtrl.showCompromisedAttempts()">

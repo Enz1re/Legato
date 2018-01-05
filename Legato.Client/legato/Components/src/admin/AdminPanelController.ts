@@ -16,7 +16,7 @@ import {
 
 
 export class AdminPanelController {
-    compromisedAttempts: CompromisedAttempt[] = [];
+    compromisedAttempts: CompromisedAttempt[];
     static $inject = ["ManageService", "ModalService", "PagingService", "UpdateService", "RoutingService", "UserService", "ClaimService"];
 
     constructor(private manageService: IManageService, private modalService: IModalService, private pagingService: IPagingService, private updateService: IUpdateService,
