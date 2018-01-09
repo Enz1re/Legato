@@ -20,7 +20,7 @@
     "@types/angular": "^1.6.9",
     "@types/angular-cookies": "^1.4.5",
     "@types/angular-animate": "^1.5.8",
-    "@types/angular-mocks": "^1.5.9",
+    "@types/angular-mocks": "^1.6.4",
     "@types/angular-ui-router": "^1.1.36",
     "@types/jasmine": "^2.5.47",
     "@types/systemjs": "^0.20.2",

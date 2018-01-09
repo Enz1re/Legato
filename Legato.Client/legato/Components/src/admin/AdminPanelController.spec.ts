@@ -1,4 +1,6 @@
-﻿import {
+﻿import angular from "angular";
+
+import {
     Price,
     Vendor,
     Sorting,
@@ -19,11 +21,12 @@ import {
 
 
 function hasAdminRights() {
-    return this.addGuitar && this.editGuitar && this.removeGuitar && this.blockUser;
+    return this.claims.addGuitar && this.claims.editGuitar && this.claims.removeGuitar && this.claims.blockUser;
 }
 
 
 describe("AdminPanelController", () => {
+    let $q: ng.IQService;
     let controllerUser: AdminPanelController;
     let controllerAdmin: AdminPanelController;
     let controllerSuperuser: AdminPanelController;
@@ -37,13 +40,18 @@ describe("AdminPanelController", () => {
     let mockUpdateService: IUpdateService;
     let mockRoutingService: IRoutingService;
 
-    beforeEach(() => {
+    beforeEach(angular.mock.inject((_$q_: ng.IQService) => {
+        $q = _$q_;
+
         mockUserService = <IUserService>{
             currentUser: null,
             authenticated: false,
             getUsers: jasmine.createSpy("getUsers"),
             blockUser: jasmine.createSpy("blockUser"),
-            getCompromisedAttempts: jasmine.createSpy("getCompromisedAttempts"),
+            getCompromisedAttempts: jasmine.createSpy("getCompromisedAttempts").and.callFake(() => {
+                let deferred = $q.defer();
+                return deferred.promise;
+            }),
             removeCompromisedAttempts: jasmine.createSpy("removeCompromisedAttempts")
         };
         const userClaims = {
@@ -86,20 +94,40 @@ describe("AdminPanelController", () => {
             getCompromisedAttempts: true,
             removeCompromiseAttempts: true
         };
-        mockClaimServiceUser = <IClaimService>{
+        mockClaimServiceSuperuser = <IClaimService>{
             claims: superUserClaims,
             hasAdminRights: hasAdminRights,
             getUserClaims: jasmine.createSpy("getUserClaims")
         };
         mockModalService = <IModalService>{
-            openGuitarModal: jasmine.createSpy("openGuitarModal"),
+            openGuitarModal: jasmine.createSpy("openGuitarModal").and.callFake(() => {
+                return {
+                    result: $q.defer().promise
+                };
+            }),
             openLoginModal: jasmine.createSpy("openLoginModal"),
-            openGuitarAddOrEditModal: jasmine.createSpy("openGuitarAddOrEditModal"),
+            openGuitarAddOrEditModal: jasmine.createSpy("openGuitarAddOrEditModal").and.callFake(() => {
+                return {
+                    result: $q.defer().promise
+                };
+            }),
             openYesNoDialog: jasmine.createSpy("openYesNoDialog"),
-            openDisplayAmountModal: jasmine.createSpy("openDisplayAmountModal"),
+            openDisplayAmountModal: jasmine.createSpy("openDisplayAmountModal").and.callFake(() => {
+                return {
+                    result: $q.defer().promise
+                };
+            }),
             openAlertModal: jasmine.createSpy("openAlertModal"),
-            openUserModal: jasmine.createSpy("openUserModal"),
-            openCompromisedAttemptsModal: jasmine.createSpy("openCompromisedAttemptsModal")
+            openUserModal: jasmine.createSpy("openUserModal").and.callFake(() => {
+                return {
+                    result: $q.defer().promise
+                };
+            }),
+            openCompromisedAttemptsModal: jasmine.createSpy("openCompromisedAttemptsModal").and.callFake(() => {
+                return {
+                    result: $q.defer().promise
+                };
+            })
         };
         mockManageService = <IManageService>{
             addGuitar: jasmine.createSpy("addGuitar"),
@@ -149,21 +177,20 @@ describe("AdminPanelController", () => {
             redirect: jasmine.createSpy("redirect"),
             replace: jasmine.createSpy("replace")
         };
-
-        controllerUser = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceUser);
-        controllerAdmin = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceAdmin);
-        controllerSuperuser = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceSuperuser);
-    });
+    }));
 
     it("Doesn't load a list of compromised attempts for user", () => {
+        controllerUser = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceUser);
         expect(mockUserService.getCompromisedAttempts).not.toHaveBeenCalled();
     });
 
     it("Doesn't load a list of compromised attempts for admin", () => {
+        controllerAdmin = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceAdmin);
         expect(mockUserService.getCompromisedAttempts).not.toHaveBeenCalled();
     });
 
     it("Loads a list of compromised attempts for superuser", () => {
+        controllerSuperuser = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceSuperuser);
         expect(mockUserService.getCompromisedAttempts).toHaveBeenCalled();
     });
 
@@ -180,21 +207,25 @@ describe("AdminPanelController", () => {
     });
 
     it("Opens add guitar modal", () => {
+        controllerAdmin = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceAdmin);
         controllerAdmin.addGuitar();
         expect(mockModalService.openGuitarAddOrEditModal).toHaveBeenCalled();
     });
 
     it("Opens display amount modal", () => {
+        controllerSuperuser = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceSuperuser);
         controllerSuperuser.changeDisplayAmount();
         expect(mockModalService.openDisplayAmountModal).toHaveBeenCalled();
     });
 
     it("Opens users modal", () => {
+        controllerSuperuser = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceSuperuser);
         controllerSuperuser.listUsers();
         expect(mockModalService.openUserModal).toHaveBeenCalled();
     });
 
     it("Opens compromised attempts modal", () => {
+        controllerSuperuser = new AdminPanelController(mockManageService, mockModalService, mockPagingService, mockUpdateService, mockRoutingService, mockUserService, mockClaimServiceSuperuser);
         controllerSuperuser.showCompromisedAttempts();
         expect(mockModalService.openCompromisedAttemptsModal).toHaveBeenCalled();
     });

@@ -1,26 +1,57 @@
-﻿import { MainController } from "./MainController";
+﻿import angular from "angular";
 
-import { Price, Sorting } from "../../../Models/models";
+import { MainController } from "./MainController";
+
+import {
+    Price,
+    Vendor,
+    Sorting
+} from "../../../Models/models";
 
 import {
     IClaimService,
     IUpdateService,
     IRoutingService,
+    IUrlParamResolver
 } from "../../../Interfaces/interfaces";
 
 
 describe("MainController", () => {
     let mockRoutingService: IRoutingService;
+    let paramResolver: IUrlParamResolver;
     let mockUpdateService: IUpdateService;
     let mockClaimService: IClaimService;
     let controller: MainController;
+
+    //beforeEach(() => {
+    //    angular.mock.module("legato");
+    //});
 
     beforeEach(() => {
         mockRoutingService = <IRoutingService>{
             url: "http://localhost:8080",
             urlSegments: ["", "classical"],
             queryParams: null,
-            getParamResolver: jasmine.createSpy("getParamResolver"),
+            getParamResolver: jasmine.createSpy("getParamResolver").and.returnValue(<IUrlParamResolver>{
+                resolvePage: (maxPage?: number) => {
+                    return 1;
+                },
+                resolvePrice: () => {
+                    return new Price();
+                },
+                resolveVendors: (vendorList: Vendor[]) => {
+                    return [];
+                },
+                resolveSorting: () => {
+                    return new Sorting();
+                },
+                resolveSearchString: () => {
+                    return "";
+                },
+                resolveIndex: (maxIndex?: number) => {
+                    return 1;
+                }
+            }),
             redirect: jasmine.createSpy("redirect"),
             replace: jasmine.createSpy("replace")
         };

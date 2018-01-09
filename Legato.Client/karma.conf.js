@@ -25,7 +25,8 @@ module.exports = function(config) {
 		// SystemJS configuration specifically for tests, added after your config file. 
 		// Good for adding test libraries and mock modules 
 		includeFiles: [
-			'node_modules/angular/angular.min.js'
+			'node_modules/angular/angular.min.js',
+			'node_modules/angular-mocks/angular-mocks.js'
 		],
 		testFileSuffix: 'spec.js',
 		config: {
