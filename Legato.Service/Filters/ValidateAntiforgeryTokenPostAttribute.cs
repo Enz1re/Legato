@@ -16,8 +16,8 @@ namespace Legato.Service.Filters
 
         public Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
         {
-            var requestBody = context.Request.Content.ReadAsAsync<dynamic>().Result;
-            string antiforgeryToken = requestBody.antiforgeryToken;
+            var serializedRequest = context.Request.Content.ReadAsStringAsync().Result;
+            string antiforgeryToken = Serialization.Deserialize<dynamic>(serializedRequest).antiforgeryToken;
 
             if (antiforgeryToken == null)
             {
