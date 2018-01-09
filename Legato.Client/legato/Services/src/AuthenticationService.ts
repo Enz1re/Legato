@@ -4,6 +4,7 @@ import {
     ISHA1,
     IUserService,
     IClaimService,
+    IAntiforgeryService,
     IAuthenticationService,
 } from "../../Interfaces/interfaces";
 
@@ -11,10 +12,10 @@ import { ServiceBase } from "./ServiceBase";
 
 
 export default class AuthenticationService extends ServiceBase implements IAuthenticationService {
-    static $inject = ["$http", "$cookies", "UserService", "SHA1", "ClaimService"];
+    static $inject = ["$http", "$cookies", "UserService", "SHA1", "ClaimService", "AntiforgeryService"];
 
     constructor(private $http: ng.IHttpService, private $cookies: ng.cookies.ICookiesService, private userService: IUserService,
-                private sha1: ISHA1, private claimService: IClaimService) {
+                private sha1: ISHA1, private claimService: IClaimService, private antiforgery: IAntiforgeryService) {
         super(null);
     }
 
@@ -27,7 +28,9 @@ export default class AuthenticationService extends ServiceBase implements IAuthe
         }).then((response: ng.IHttpResponse<User>) => {
             this.pendingRequests--;
             this.userService.currentUser = response.data;
-            return response.data;
+            return this.antiforgery.getTokens().then(() => {
+                return response.data;
+            });
         }).catch(err => {
             this.pendingRequests = 0;
             throw err;
@@ -43,13 +46,15 @@ export default class AuthenticationService extends ServiceBase implements IAuthe
         }).then((response: ng.IHttpResponse<any>) => {
             this.pendingRequests--;
             this.setCredentials(username, response.data.role, response.data.accessToken);
-            return this.claimService.getUserClaims().then(() => {
-                return response.data.accessToken;
+            return this.antiforgery.getTokens().then(() => {
+                return this.claimService.getUserClaims().then(() => {
+                    return response.data.accessToken;
+                });
             });
         }).catch(err => {
             this.pendingRequests = 0;
             throw err;
-        })
+        });
     }
 
     logOff() {
