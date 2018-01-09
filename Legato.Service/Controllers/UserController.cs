@@ -77,7 +77,6 @@ namespace Legato.Service.Controllers
 
         [HttpPost]
         [Route("Logout")]
-        [ValidateAntiforgeryTokenPost]
         public IHttpActionResult LogOut([FromBody]dynamic requestBody)
         {
             var username = requestBody.username.Value;
