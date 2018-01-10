@@ -6,7 +6,7 @@
     BassGuitar
 } from "../../../Models/models";
 
-import { Constants } from "../../../Constants";
+import { GuitarNameConfig } from "../../../Models/models";
 
 import { IFileUploadService, IGuitarDataService } from "../../../Interfaces/interfaces";
 
@@ -16,10 +16,10 @@ export class AddEditModalController {
     type: string;
     mode: "Add" | "Edit";
     guitar: Guitar;
-    static $inject = ["$uibModalInstance", "FileUploadService", "GuitarDataService", "guitar", "type"];
+    static $inject = ["$uibModalInstance", "FileUploadService", "GuitarDataService", "GuitarName", "guitar", "type"];
 
     constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private fileUpload: IFileUploadService, private guitarData: IGuitarDataService,
-                guitar: Guitar, type: string) {
+                private guitarName: GuitarNameConfig, guitar: Guitar, type: string) {
         this.type = type;
 
         if (guitar) {
@@ -29,26 +29,26 @@ export class AddEditModalController {
         } else {
             this.mode = "Add";
             switch (this.type) {
-                case Constants.CLASSICAL:
+                case this.guitarName.classical:
                     this.guitar = new ClassicalGuitar();
                     break;
-                case Constants.WESTERN:
+                case this.guitarName.western:
                     this.guitar = new WesternGuitar();
                     break;
-                case Constants.ELECTRIC:
+                case this.guitarName.electric:
                     this.guitar = new ElectricGuitar();
                     break;
-                case Constants.BASS:
+                case this.guitarName.bass:
                     this.guitar = new BassGuitar();
                     break;
             }
         }
 
         this.options = [
-            Constants.CLASSICAL,
-            Constants.WESTERN,
-            Constants.ELECTRIC,
-            Constants.BASS
+            this.guitarName.classical,
+            this.guitarName.western,
+            this.guitarName.electric,
+            this.guitarName.bass
         ];
     }
 
