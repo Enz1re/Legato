@@ -26,7 +26,8 @@ module.exports = function(config) {
 		// Good for adding test libraries and mock modules 
 		includeFiles: [
 			'node_modules/angular/angular.min.js',
-			'node_modules/angular-mocks/angular-mocks.js'
+			'node_modules/angular-mocks/angular-mocks.js',
+			'node_modules/angular-cookies/angular-cookies.js'
 		],
 		testFileSuffix: 'spec.js',
 		config: {
@@ -34,6 +35,7 @@ module.exports = function(config) {
 				"typescript": "node_modules/typescript/lib/typescript.js",
 				"systemjs": "node_modules/systemjs/dist/system.js",
 				'angular-mocks': 'node_modules/angular-mocks/angular-mocks.js',
+				'angular-cookies': 'node_modules/angular-cookies/angular-cookies.js',
 				'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
 			}
 		}
