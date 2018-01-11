@@ -14,11 +14,7 @@ export default class PagingService implements IPagingService {
     currentPage: number;
 
     constructor(private manageService: IManageService, private routingService: IRoutingService) {
-        manageService.getDisplayAmount().then(amount => {
-            this.itemsToShow = amount;
-            this.lowerBound = 0;
-            this.upperBound = this.itemsToShow;
-        });
+        this.init();
     }
 
     get itemsToShow() {
@@ -34,6 +30,14 @@ export default class PagingService implements IPagingService {
         this._itemsToShow = value;
     }
 
+    init() {
+        return this.manageService.getDisplayAmount().then(amount => {
+            this.itemsToShow = amount;
+            this.lowerBound = 0;
+            this.upperBound = this.itemsToShow;
+        });
+    }
+
     goToSelectedPage() {
         if (this.currentPage !== 0) {
             this.lowerBound = (this.currentPage - 1) * this.itemsToShow;
@@ -42,7 +46,7 @@ export default class PagingService implements IPagingService {
             this.lowerBound = 0;
             this.upperBound = this.itemsToShow;
         }
-
+        
         let params = this.routingService.queryParams;
         params.page = this.currentPage;
         this.routingService.replace(params);

@@ -5,6 +5,7 @@
     currentPage: number;
     itemsToShow: number;
 
+    init(): ng.IPromise<any>;
     goToSelectedPage(): void;
     goToLastPage(callback: Function): void;
     goToFirstPage(callback: Function): void;
