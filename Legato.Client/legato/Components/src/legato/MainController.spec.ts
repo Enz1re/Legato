@@ -23,10 +23,6 @@ describe("MainController", () => {
     let mockClaimService: IClaimService;
     let controller: MainController;
 
-    //beforeEach(() => {
-    //    angular.mock.module("legato");
-    //});
-
     beforeEach(() => {
         mockRoutingService = <IRoutingService>{
             url: "http://localhost:8080",
