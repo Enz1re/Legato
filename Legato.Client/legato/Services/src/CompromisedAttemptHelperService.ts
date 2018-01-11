@@ -5,7 +5,7 @@ import { ICompromisedAttemptHelperService } from "../../Interfaces/interfaces";
 
 export default class CompromisedAttemptHelperService implements ICompromisedAttemptHelperService {
     private _checkedAttempts: CompromisedAttempt[] = [];
-    pristine: boolean = false;
+    pristine: boolean;
     allCompromisedAttempts: CompromisedAttempt[] = [];
 
     constructor() {
@@ -23,13 +23,21 @@ export default class CompromisedAttemptHelperService implements ICompromisedAtte
     }
 
     removeAttemptFromCheckList(attempt: CompromisedAttempt) {
-        this._checkedAttempts.splice(this._checkedAttempts.indexOf(attempt), 1);
+        const index = this.allCompromisedAttempts.indexOf(attempt);
+
+        if (index !== -1) {
+            this._checkedAttempts.splice(this._checkedAttempts.indexOf(attempt), 1);
+        }
     }
 
     removeAttempt(attempt: CompromisedAttempt) {
-        this.pristine = true;
-        this.allCompromisedAttempts.splice(this.allCompromisedAttempts.indexOf(attempt), 1);
-        this.removeAttemptFromCheckList(attempt);
+        const index = this.allCompromisedAttempts.indexOf(attempt);
+
+        if (index !== -1) {
+            this.pristine = true;
+            this.allCompromisedAttempts.splice(index, 1);
+            this.removeAttemptFromCheckList(attempt);
+        }
     }
 
     selectAll() {
