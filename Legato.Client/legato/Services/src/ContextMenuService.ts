@@ -7,6 +7,7 @@
 import {
     IUserService,
     IModalService,
+    IClaimService,
     IManageService,
     IUpdateService,
     IContextMenuService,
@@ -15,11 +16,11 @@ import {
 
 
 export default class ContextMenuService implements IContextMenuService {
-    static $inject = ["ManageService", "ModalService", "UpdateService", "UserService", "CompromisedAttemptHelperService"];
+    static $inject = ["ManageService", "ModalService", "UpdateService", "UserService", "CompromisedAttemptHelperService", "ClaimService"];
     guitarOptions = [
         {
             text: "Remove",
-            displayed: () => true,
+            displayed: () => this.claimService.claims.removeGuitar,
             click: ($itemScope, $event, modelValue: Guitar, text, $li, data) => {
                 this.modalService.openYesNoDialog(`Are you sure you want to delete guitar ${modelValue.vendor.name} ${modelValue.model} with product id ${modelValue.id}?`).result.then(() => {
                     this.manageService.removeGuitar(modelValue, data.type).then(val => {
@@ -32,7 +33,7 @@ export default class ContextMenuService implements IContextMenuService {
         },
         {
             text: "Edit",
-            displayed: () => true,
+            displayed: () => this.claimService.claims.editGuitar,
             click: ($itemScope, $event, modelValue: Guitar, text, $li, data) => {
                 this.modalService.openGuitarAddOrEditModal({
                     guitar: { ...modelValue, vendor: { ...modelValue.vendor } },
@@ -51,7 +52,7 @@ export default class ContextMenuService implements IContextMenuService {
     userOptions = [
         {
             text: "Block",
-            displayed: () => true,
+            displayed: () => this.claimService.claims.blockUser,
             click: ($itemScope, $event, modelValue: UserViewModel, text, $li, data) => {
                 this.modalService.openYesNoDialog(`Are you sure you want to block user ${modelValue.name}? This action is irreversible.`).result.then(() => {
                     this.userService.blockUser(modelValue.name).then(() => {
@@ -67,7 +68,7 @@ export default class ContextMenuService implements IContextMenuService {
     attemptOptions = [
         {
             text: "Delete",
-            displayed: () => this.attemptService.checkedCompromisedAttempts.length === 1,
+            displayed: () => this.claimService.claims.removeCompromiseAttempts && this.attemptService.checkedCompromisedAttempts.length === 1,
             click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data) => {
                 this.modalService.openYesNoDialog(`Detele attempt '${modelValue.requestDateTime}'? This action is irreversible`).result.then(() => {
                     this.userService.removeCompromisedAttempts([modelValue.attemptId]).then(() => {
@@ -80,7 +81,7 @@ export default class ContextMenuService implements IContextMenuService {
         },
         {
             text: "Delete checked",
-            displayed: () => this.attemptService.checkedCompromisedAttempts.length > 1,
+            displayed: () => this.claimService.claims.removeCompromiseAttempts && this.attemptService.checkedCompromisedAttempts.length > 1,
             click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data) => {
                 this.modalService.openYesNoDialog("Do you want to delete checked attempts? This action is irreversible").result.then(() => {
                     var attempts = this.attemptService.checkedCompromisedAttempts;
@@ -97,7 +98,7 @@ export default class ContextMenuService implements IContextMenuService {
     ];
 
     constructor(private manageService: IManageService, private modalService: IModalService, private updateService: IUpdateService,
-                private userService: IUserService, private attemptService: ICompromisedAttemptHelperService) {
+                private userService: IUserService, private attemptService: ICompromisedAttemptHelperService, private claimService: IClaimService) {
 
     }
 }
