@@ -6,8 +6,8 @@ interface IShaSum {
     digest: () => string
 }
 
-
 let shared = new Uint32Array(80);
+
 
 class ShaSum implements IShaSum {
     private h0 = 0x67452301;
@@ -57,10 +57,10 @@ class ShaSum implements IShaSum {
 
         // At this point one last processthis.block() should trigger and we can pull out the result.
         return this.toHex(this.h0) +
-            this.toHex(this.h1) +
-            this.toHex(this.h2) +
-            this.toHex(this.h3) +
-            this.toHex(this.h4);
+               this.toHex(this.h1) +
+               this.toHex(this.h2) +
+               this.toHex(this.h3) +
+               this.toHex(this.h4);
     }
 
     private updateString(string) {
@@ -92,7 +92,6 @@ class ShaSum implements IShaSum {
             this.block[i] = (w << 1) | (w >>> 31);
         }
 
-        // log(this.block);
         // Initialize hash value for this chunk:
         let a = this.h0;
         let b = this.h1;
