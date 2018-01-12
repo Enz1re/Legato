@@ -5,9 +5,9 @@
     currentPage: number;
     itemsToShow: number;
 
-    init(): ng.IPromise<any>;
+    init(): ng.IPromise<void>;
     goToSelectedPage(): void;
-    goToLastPage(callback: Function): void;
-    goToFirstPage(callback: Function): void;
+    goToLastPage(callback?: Function): void;
+    goToFirstPage(callback?: Function): void;
     maxPage(): number;
 }
