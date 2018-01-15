@@ -1,6 +1,8 @@
-﻿import { IGuitarResource } from "../../Interfaces/interfaces";
-import { IVendorService } from "../../Interfaces/interfaces";
-import { ICacheService } from "../../Interfaces/interfaces";
+﻿import {
+    ICacheService,
+    IVendorService,
+    IGuitarResource
+} from "../../Interfaces/interfaces";
 
 import { ServiceBase } from "../src/ServiceBase";
 
