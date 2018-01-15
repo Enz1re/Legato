@@ -7,7 +7,7 @@ import {
 
 
 export default class UrlParamResolver implements IUrlParamResolver {
-    constructor(private stateParamsObject: ng.ui.IStateParamsService, private routingService: IRoutingService) {
+    constructor(private stateParamsObject: ng.ui.IStateParamsService, public routingService: IRoutingService) {
         
     }
 
@@ -38,14 +38,14 @@ export default class UrlParamResolver implements IUrlParamResolver {
         return parsedFrom && parsedTo ? new Price({ from: parsedFrom, to: parsedTo }) : new Price();
     }
 
-    resolveVendors(vendorList: Vendor[] = null) {
+    resolveVendors(vendorList?: Vendor[]) {
         if (!this.stateParamsObject.vendors) {
             return vendorList;
         }
 
         const checkedVendors = this.stateParamsObject.vendors !== "" ? this.stringToVendorArray(this.stateParamsObject.vendors) : [];
 
-        return vendorList ? this.uncheckVendors(vendorList, checkedVendors) : checkedVendors;
+        return !!vendorList ? this.uncheckVendors(vendorList, checkedVendors) : checkedVendors;
     }
 
     resolveSorting() {
