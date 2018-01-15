@@ -10,7 +10,7 @@ export interface IUrlParamResolver {
 
     resolvePrice(): Price;
 
-    resolveVendors(vendorList: Vendor[]): Vendor[];
+    resolveVendors(vendorList?: Vendor[]): Vendor[];
 
     resolveSorting(): Sorting;
 
