@@ -26,7 +26,9 @@ describe("PagingService", () => {
             addGuitar: jasmine.createSpy("addGuitar"),
             removeGuitar: jasmine.createSpy("removeGuitar"),
             editGuitarCharacteristics: jasmine.createSpy("editGuitarCharacteristics"),
-            getDisplayAmount: jasmine.createSpy("getDisplayAmount").and.returnValue(_$q_.resolve(displayAmount)),
+            getDisplayAmount: () => {
+                return _$q_.when(displayAmount);
+            },
             changeDisplayAmount: jasmine.createSpy("changeDisplayAmount")
         };
         routingService = <IRoutingService>{
