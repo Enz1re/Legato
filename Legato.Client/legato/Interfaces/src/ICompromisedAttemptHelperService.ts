@@ -2,7 +2,7 @@
 
 
 export interface ICompromisedAttemptHelperService {
-    pristine: boolean;
+    changed: boolean;
     allCompromisedAttempts: CompromisedAttempt[];
     checkedCompromisedAttempts: CompromisedAttempt[];
 

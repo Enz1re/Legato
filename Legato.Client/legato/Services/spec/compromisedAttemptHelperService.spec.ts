@@ -28,7 +28,7 @@ describe("CompromisedAttemptHelperService", () => {
     });
 
     it("sets 'pristine' value to false", () => {
-        expect(compromisedAttemptsService.pristine).toBe(false);
+        expect(compromisedAttemptsService.changed).toBe(false);
     });
 
     it("adds attempt to checklist", () => {
@@ -51,7 +51,7 @@ describe("CompromisedAttemptHelperService", () => {
 
     it("removes attempt from compromised attempts", () => {
         compromisedAttemptsService.removeAttempt(compromisedAttempts[4]);
-        expect(compromisedAttemptsService.pristine).toBe(true);
+        expect(compromisedAttemptsService.changed).toBe(true);
         expect(compromisedAttemptsService.allCompromisedAttempts.length).toEqual(9);
         expect(compromisedAttemptsService.allCompromisedAttempts[3]).toBe(compromisedAttempts[3]);
         expect(compromisedAttemptsService.allCompromisedAttempts[4]).toBe(compromisedAttempts[5]);
@@ -74,7 +74,7 @@ describe("CompromisedAttemptHelperService", () => {
 
     it("clears compromised attempt lists", () => {
         compromisedAttemptsService.clear();
-        expect(compromisedAttemptsService.pristine).toBe(false);
+        expect(compromisedAttemptsService.changed).toBe(false);
         expect(compromisedAttemptsService.allCompromisedAttempts.length).toBe(0);
         expect(compromisedAttemptsService.checkedCompromisedAttempts.length).toBe(0);
     });

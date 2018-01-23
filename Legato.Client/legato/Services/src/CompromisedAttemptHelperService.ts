@@ -5,11 +5,11 @@ import { ICompromisedAttemptHelperService } from "../../Interfaces/interfaces";
 
 export default class CompromisedAttemptHelperService implements ICompromisedAttemptHelperService {
     private _checkedAttempts: CompromisedAttempt[] = [];
-    pristine: boolean;
+    changed: boolean;
     allCompromisedAttempts: CompromisedAttempt[] = [];
 
     constructor() {
-        this.pristine = false;
+        this.changed = false;
     }
 
     get checkedCompromisedAttempts() {
@@ -34,7 +34,7 @@ export default class CompromisedAttemptHelperService implements ICompromisedAtte
         const index = this.allCompromisedAttempts.indexOf(attempt);
 
         if (index !== -1) {
-            this.pristine = true;
+            this.changed = true;
             this.allCompromisedAttempts.splice(index, 1);
             this.removeAttemptFromCheckList(attempt);
         }
@@ -59,7 +59,7 @@ export default class CompromisedAttemptHelperService implements ICompromisedAtte
     }
 
     clear() {
-        this.pristine = false;
+        this.changed = false;
         this._checkedAttempts = [];
         this.allCompromisedAttempts = [];
     }

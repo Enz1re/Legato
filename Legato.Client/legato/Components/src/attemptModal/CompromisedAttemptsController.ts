@@ -18,7 +18,7 @@ export class CompromisedAttemptsController {
 
     removeAttempt(e, attempt: CompromisedAttempt) {
         e.stopPropagation();
-        this.modalService.openYesNoDialog(`Detele attempt '${attempt.requestDateTime}'? This action is irreversible`).result.then(() => {
+        return this.modalService.openYesNoDialog(`Detele attempt '${attempt.requestDateTime}'? This action is irreversible`).result.then(() => {
             this.userService.removeCompromisedAttempts([attempt.attemptId]).then(() => {
                 this.attemptService.removeAttempt(attempt);
                 if (this.attemptService.allCompromisedAttempts.length === 0) {
@@ -55,6 +55,6 @@ export class CompromisedAttemptsController {
 
     onOkButtonClicked() {
         this.attemptService.clear();
-        this.$uibModalInstance.close(this.attemptService.pristine);
+        this.$uibModalInstance.close(this.attemptService.changed);
     }
 }

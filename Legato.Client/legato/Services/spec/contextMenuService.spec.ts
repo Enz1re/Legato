@@ -135,7 +135,7 @@ describe("ContextMenuService", () => {
             updateLastPage: jasmine.createSpy("updateLastPage")
         };
         compromisedAttemptsService = <ICompromisedAttemptHelperService>{
-            pristine: false,
+            changed: false,
             allCompromisedAttempts: [],
             checkedCompromisedAttempts: [],
             addAttemptToCheckList: jasmine.createSpy("addAttemptToCheckList"),
