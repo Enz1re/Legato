@@ -26,7 +26,6 @@ function hasAdminRights() {
 
 
 describe("AdminPanelController", () => {
-    let $q: ng.IQService;
     let controllerUser: AdminPanelController;
     let controllerAdmin: AdminPanelController;
     let controllerSuperuser: AdminPanelController;
@@ -41,15 +40,13 @@ describe("AdminPanelController", () => {
     let mockRoutingService: IRoutingService;
 
     beforeEach(angular.mock.inject((_$q_: ng.IQService) => {
-        $q = _$q_;
-
         mockUserService = <IUserService>{
             currentUser: null,
             authenticated: false,
             getUsers: jasmine.createSpy("getUsers"),
             blockUser: jasmine.createSpy("blockUser"),
             getCompromisedAttempts: jasmine.createSpy("getCompromisedAttempts").and.callFake(() => {
-                let deferred = $q.defer();
+                let deferred = _$q_.defer();
                 return deferred.promise;
             }),
             removeCompromisedAttempts: jasmine.createSpy("removeCompromisedAttempts")
@@ -100,34 +97,14 @@ describe("AdminPanelController", () => {
             getUserClaims: jasmine.createSpy("getUserClaims")
         };
         mockModalService = <IModalService>{
-            openGuitarModal: jasmine.createSpy("openGuitarModal").and.callFake(() => {
-                return {
-                    result: $q.defer().promise
-                };
-            }),
+            openGuitarModal: jasmine.createSpy("openGuitarModal").and.returnValue({ result: _$q_.defer().promise }),
             openLoginModal: jasmine.createSpy("openLoginModal"),
-            openGuitarAddOrEditModal: jasmine.createSpy("openGuitarAddOrEditModal").and.callFake(() => {
-                return {
-                    result: $q.defer().promise
-                };
-            }),
+            openGuitarAddOrEditModal: jasmine.createSpy("openGuitarAddOrEditModal").and.returnValue({ result: _$q_.defer().promise }),
             openYesNoDialog: jasmine.createSpy("openYesNoDialog"),
-            openDisplayAmountModal: jasmine.createSpy("openDisplayAmountModal").and.callFake(() => {
-                return {
-                    result: $q.defer().promise
-                };
-            }),
+            openDisplayAmountModal: jasmine.createSpy("openDisplayAmountModal").and.returnValue({ result: _$q_.defer().promise }),
             openAlertModal: jasmine.createSpy("openAlertModal"),
-            openUserModal: jasmine.createSpy("openUserModal").and.callFake(() => {
-                return {
-                    result: $q.defer().promise
-                };
-            }),
-            openCompromisedAttemptsModal: jasmine.createSpy("openCompromisedAttemptsModal").and.callFake(() => {
-                return {
-                    result: $q.defer().promise
-                };
-            })
+            openUserModal: jasmine.createSpy("openUserModal").and.returnValue({ result: _$q_.defer().promise }),
+            openCompromisedAttemptsModal: jasmine.createSpy("openCompromisedAttemptsModal").and.returnValue({ result: _$q_.defer().promise }),
         };
         mockManageService = <IManageService>{
             addGuitar: jasmine.createSpy("addGuitar"),
@@ -142,6 +119,7 @@ describe("AdminPanelController", () => {
             upperBound: 20,
             currentPage: 1,
             itemsToShow: 20,
+            init: jasmine.createSpy("init"),
             goToSelectedPage: jasmine.createSpy("goToSelectedPage"),
             goToLastPage: jasmine.createSpy("goToLastPage"),
             goToFirstPage: jasmine.createSpy("goToFirstPage"),
