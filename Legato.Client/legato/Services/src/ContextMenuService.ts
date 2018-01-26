@@ -68,7 +68,7 @@ export default class ContextMenuService implements IContextMenuService {
     attemptOptions = [
         {
             text: "Delete",
-            displayed: () => this.claimService.claims.removeCompromiseAttempts && this.attemptService.checkedCompromisedAttempts.length === 1,
+            displayed: () => this.claimService.claims.removeCompromisedAttempts && this.attemptService.checkedCompromisedAttempts.length === 1,
             click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data) => {
                 this.modalService.openYesNoDialog(`Detele attempt '${modelValue.requestDateTime}'? This action is irreversible`).result.then(() => {
                     this.userService.removeCompromisedAttempts([modelValue.attemptId]).then(() => {
@@ -81,7 +81,7 @@ export default class ContextMenuService implements IContextMenuService {
         },
         {
             text: "Delete checked",
-            displayed: () => this.claimService.claims.removeCompromiseAttempts && this.attemptService.checkedCompromisedAttempts.length > 1,
+            displayed: () => this.claimService.claims.removeCompromisedAttempts && this.attemptService.checkedCompromisedAttempts.length > 1,
             click: ($itemScope, $event, modelValue: CompromisedAttempt, text, $li, data) => {
                 this.modalService.openYesNoDialog("Do you want to delete checked attempts? This action is irreversible").result.then(() => {
                     var attempts = this.attemptService.checkedCompromisedAttempts;

@@ -14,12 +14,16 @@
                 </thead>
                 <tbody>
                     <tr ng-class="{'selected-row': attempt.isSelected}" ng-repeat="attempt in attemptCtrl.attemptService.allCompromisedAttempts"
-                                                                               ng-click="attemptCtrl.checkOrUncheckRow($event, attempt)"
-                                                                               contextmenu="attemptCtrl.checkOrUncheckRow(attempt)"
-                                                                               context-menu="attemptCtrl.contextMenu.attemptOptions"
-                                                                               allow-event-propagation="true"
-                                                                               model="attempt">
-                        <td><div><input ng-click="attemptCtrl.checkOrUncheckAttempt($event, attempt)" type="checkbox" ng-model="attempt.isSelected"></div></td>
+                                                                        ng-click="attemptCtrl.checkOrUncheckRow($event, attempt)"
+                                                                        contextmenu="attemptCtrl.checkOrUncheckRow(attempt)"
+                                                                        context-menu="attemptCtrl.contextMenu.attemptOptions"
+                                                                        allow-event-propagation="true"
+                                                                        model="attempt">
+                        <td>
+                            <div>
+                                <input ng-click="attemptCtrl.checkOrUncheckAttempt($event, attempt)" type="checkbox" ng-model="attempt.isSelected">
+                            </div>
+                        </td>
                         <td>{{attempt.username}}</td>
                         <td>{{attempt.requestIP}}</td>
                         <td>{{attempt.requestDateTime}}</td>

@@ -28,7 +28,7 @@ let fakeUserClaims: LegatoClaims = {
     removeGuitar: false,
     editGuitar: false,
     getCompromisedAttempts: false,
-    removeCompromiseAttempts: false
+    removeCompromisedAttempts: false
 };
 
 

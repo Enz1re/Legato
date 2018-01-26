@@ -15,7 +15,7 @@ export default class ClaimService implements IClaimService {
     }
 
     hasAdminRights() {
-        return this.claims ? this.claims.addGuitar && this.claims.editGuitar && this.claims.removeGuitar && this.claims.blockUser : false;
+        return !!this.claims ? this.claims.addGuitar && this.claims.editGuitar && this.claims.removeGuitar && this.claims.blockUser : false;
     }
 
     getUserClaims() {

@@ -13,5 +13,5 @@
 
     getCompromisedAttempts?: boolean = false;
 
-    removeCompromiseAttempts?: boolean = false;
+    removeCompromisedAttempts?: boolean = false;
 }
