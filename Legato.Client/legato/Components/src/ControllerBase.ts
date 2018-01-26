@@ -34,7 +34,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
                 protected modalService: IModalService, protected contextMenu: IContextMenuService, protected pagingService: IPagingService,
                 protected claimService: IClaimService) {
         const urlParamResolver = routingService.getParamResolver();
-        
+
         this.filter.price = urlParamResolver.resolvePrice();
         this.filter.vendors = urlParamResolver.resolveVendors(null);
         this.filter.sorting = urlParamResolver.resolveSorting();
@@ -122,30 +122,32 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
             if (this.updateService.needUsePriceFilter(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.updateService.replacePriceQueryParams();
-                    let from = newValue.price.from
+                    let from = newValue.price.from;
                     let to = newValue.price.to;
                     if (from || to) {
-                        if (!newValue.price.from)
-                            from = 0
-                        if (!newValue.price.to)
+                        if (!newValue.price.from) {
+                            from = 0;
+                        }
+                        if (!newValue.price.to) {
                             to = this.getMaxGuitarPrice();
+                        }
                     }
                     this.filter.price = { from: from, to: to };
-                    this.pagingService.goToFirstPage(() => { this.init() });
+                    this.pagingService.goToFirstPage(() => { this.init(); });
                 });
             }
             if (this.updateService.needUseVendorFilter(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.updateService.replaceVendorQueryParams();
                     this.filter.vendors = newValue.vendors;
-                    this.pagingService.goToFirstPage(() => { this.init() });
+                    this.pagingService.goToFirstPage(() => { this.init(); });
                 });
             }
             if (this.updateService.needUseSorting(newValue, oldValue)) {
                 this.pendingTaskService.setPendingTask(() => {
                     this.updateService.replaceSortingQueryParams();
                     this.filter.sorting = newValue.sorting;
-                    this.pagingService.goToFirstPage(() => { this.init() });
+                    this.pagingService.goToFirstPage(() => { this.init(); });
                 });
             }
         }, true);
