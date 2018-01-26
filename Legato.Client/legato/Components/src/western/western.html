@@ -5,7 +5,7 @@
         <li class="guitar-li" ng-repeat="guitar in westernCtrl.guitars">
             <div class="guitar-container" ng-click="westernCtrl.onGuitarClick($index)" context-menu="westernCtrl.contextMenu.guitarOptions"
                                                                                        context-menu-data="{ type: 'western' }"
-                                                                                       context-menu-if="westernCtrl.claimService.hasAdminRights"
+                                                                                       context-menu-if="westernCtrl.claimService.hasAdminRights()"
                                                                                        model="guitar">
                 <div class="guitarimg-container"><img class="guitarimg" ng-src="{{guitar.imgPath}}"></div>
                 <div>{{guitar.vendor.name}} {{guitar.model}}</div>
