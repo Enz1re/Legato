@@ -15,7 +15,7 @@ namespace Legato.Service
             var symmetricKey = Convert.FromBase64String(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            var now = DateTime.UtcNow;
+            var timeStamp = DateTime.UtcNow;
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
@@ -23,9 +23,9 @@ namespace Legato.Service
                                                     new Claim(ClaimTypes.Name, username),
                                                     new Claim(ClaimTypes.Role, userRole)
                                                 }),
-                IssuedAt = now,
-                Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256Signature)
+                IssuedAt = timeStamp,
+                Expires = timeStamp.AddMinutes(Convert.ToInt32(expireMinutes)),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256Signature),
             };
 
             var stoken = tokenHandler.CreateToken(tokenDescriptor);
