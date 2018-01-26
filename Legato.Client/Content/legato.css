@@ -68,6 +68,12 @@ ol, ul {
     overflow: hidden;
 }
 
+/* Own directives styles */
+
+filter-panel {
+    position: relative;
+}
+
 .table-container {
     height: 13em;
     max-height: 13em;
@@ -388,12 +394,12 @@ div.animated-container {
     height: 100%;
     min-height: 500px;
     border-top: 1px solid gray;
-    border-left: 1px solid gray;
     border-bottom: 1px solid gray;
 }
 
 .guitar-grid {
-    margin: 1.44em;
+    margin-left: 3.44em;
+    margin-top: 1.44em;
 }
 
 .guitar-container:hover,
@@ -402,11 +408,13 @@ div.animated-container {
 }
 
 .guitar-container {
-    margin: 2em;
     width: 300px;
     height: 550px;
+    margin-top: 2em;
     overflow: hidden;
+    margin-bottom: 2em;
     text-align: center;
+    margin-right: 1.5em;
     vertical-align: baseline;
 }
 
@@ -623,4 +631,49 @@ div.animated-container {
 
 .alert {
     margin-bottom: inherit !important;
+}
+
+.sliding-panel-button {
+    width: 3em;
+    display: block;
+    text-align: center;
+    border-radius: 0.5em;
+    border: 1px solid #e0e1e0;
+    background-color: aliceblue;
+}
+
+.sliding-panel-button:hover {
+    cursor: pointer;
+    transform: scale(1.002);
+    background-color: #ccebff;
+}
+
+.sliding-panel-left {
+    animation: slide-left 1s ease both;
+}
+
+.sliding-panel-right {
+    animation: slide-right 1s ease both;
+}
+
+@keyframes slide-left {
+    from {
+        width: 14em;
+        left: 0;
+    }
+    to {
+        width: 0;
+        left: -12em;
+    }
+}
+
+@keyframes slide-right {
+    from {
+        width: 0;
+        left: -12em;
+    }
+    to {
+        width: 14em;
+        left: 0;
+    }
 }

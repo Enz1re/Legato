@@ -2,9 +2,10 @@
     <top-panel></top-panel>
 </div>
 <div class="main-container">
-    <div class="left-panel">
-        <filter-panel></filter-panel>
-    </div>
+    <filter-panel ng-class="{ 'sliding-panel-left': !mainCtrl.opened, 'sliding-panel-right': mainCtrl.opened }"></filter-panel>
+    <span class="sliding-panel-button" ng-click="mainCtrl.slide()">
+        <span class="glyphicon " ng-class="{ 'glyphicon-chevron-left': mainCtrl.opened, 'glyphicon-chevron-right': !mainCtrl.opened }"></span>
+    </span>
     <div id="main-panel" ng-animate-children>
         <tab-panel></tab-panel>
         <div class="guitar-list-container">
