@@ -46,7 +46,7 @@ export abstract class ControllerBase<TGuitar extends Guitar> {
         }).then(() => {
             this.loadGuitarList().then(() => {
                 const gIndex = urlParamResolver.resolveIndex(this.guitars.length - 1);
-                if (!gIndex) {
+                if (gIndex === null) {
                     return;
                 }
                 this.onGuitarClick(gIndex);

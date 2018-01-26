@@ -81,7 +81,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
             this.routingService.replace(params);
         }
 
-        return index ? index : null;
+        return index;
     }
 
     private uncheckVendors(allVendors: Vendor[], queriedVendors: Vendor[]) {
