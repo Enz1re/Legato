@@ -24,7 +24,7 @@
     "@types/angular-ui-router": "^1.1.36",
     "@types/jasmine": "^2.5.47",
     "@types/systemjs": "^0.20.2",
-    "@types/angular-ui-bootstrap": "^0.13.46",
+    "@types/angular-ui-bootstrap": ">=0.13.46",
     "@types/ng-file-upload": "^12.2.1",
     "codelyzer": "^3.0.0",
     "concurrently": "^3.4.0",
@@ -38,6 +38,7 @@
     "karma-systemjs": "^0.16.0",
     "karma-typescript": "^3.0.1",
     "lite-server": "^2.3.0",
+    "tslint": "4.0.0-dev.1",
     "systemjs": "^0.19.47",
     "typescript": "^2.2.1"
   },
