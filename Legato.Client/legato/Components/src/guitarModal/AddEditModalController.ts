@@ -12,11 +12,11 @@ import { IFileUploadService, IGuitarDataService } from "../../../Interfaces/inte
 
 
 export class AddEditModalController {
+    static $inject = ["$uibModalInstance", "FileUploadService", "GuitarDataService", "GuitarName", "guitar", "type"];
     options: string[];
     type: string;
     mode: "Add" | "Edit";
     guitar: Guitar;
-    static $inject = ["$uibModalInstance", "FileUploadService", "GuitarDataService", "GuitarName", "guitar", "type"];
 
     constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private fileUpload: IFileUploadService, private guitarData: IGuitarDataService,
                 private guitarName: GuitarNameConfig, guitar: Guitar, type: string) {

@@ -10,9 +10,9 @@ import { IUpdateService, IRoutingService } from "../../Interfaces/interfaces";
 
 
 export default class UpdateService implements IUpdateService {
+    static $inject = ["RoutingService"];
     filter: { price: Price, vendors: Vendor[], sorting: Sorting, search: string };
     updatePage: { updateCurrentPage: boolean, updateLastPage: boolean };
-    static $inject = ["RoutingService"];
 
     constructor(private routingService: IRoutingService) {
         this.filter = {
@@ -92,8 +92,8 @@ export default class UpdateService implements IUpdateService {
 
     needUseSorting(newValue, oldValue) {
         return newValue.sorting.name !== oldValue.sorting.name ||
-            newValue.sorting.direction !== oldValue.sorting.direction ||
-            newValue.sorting.required !== oldValue.sorting.required;
+               newValue.sorting.direction !== oldValue.sorting.direction ||
+               newValue.sorting.required !== oldValue.sorting.required;
     }
 
     updateCurrentPage() {

@@ -6,9 +6,9 @@
 
 
 export class MainController implements ng.IController {
+    static $inject = ["RoutingService", "UpdateService", "ClaimService"];
     opened: boolean = true;
     display: string = "block";
-    static $inject = ["RoutingService", "UpdateService", "ClaimService"];
 
     constructor(private routingService: IRoutingService, private updateService: IUpdateService, private claimService: IClaimService) {
         const urlParamResolver = routingService.getParamResolver();

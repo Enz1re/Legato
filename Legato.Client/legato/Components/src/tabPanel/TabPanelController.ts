@@ -8,8 +8,8 @@ import { Price, Sorting } from "../../../Models/models";
 
 
 export class TabPanelController {
-    activeTab: string;
     static $inject = ["UpdateService", "FilterStateService", "RoutingService"];
+    activeTab: string;
 
     constructor(private updateService: IUpdateService, private filterService: IFilterStateService, private routingService: IRoutingService) {
         this.activeTab = routingService.urlSegments[1];
@@ -24,7 +24,7 @@ export class TabPanelController {
         this.updateService.filter.price = this.filterService.guitarFilter[guitarTypeName].price || new Price();
         this.updateService.filter.sorting = this.filterService.guitarFilter[guitarTypeName].sorting || new Sorting();
         this.updateService.filter.search = this.filterService.guitarFilter[guitarTypeName].search;
-
+        
         this.routingService.redirect(this.activeTab, this.filterService.guitarFilter[guitarTypeName].params || { page: "1" });
     }
 

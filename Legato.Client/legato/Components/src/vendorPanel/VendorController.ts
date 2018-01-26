@@ -9,8 +9,8 @@ import {
 
 
 export class VendorController {
-    error: boolean;
     static $inject = ["$scope", "VendorService", "RoutingService", "UpdateService", "FilterStateService", "GuitarName"];
+    error: boolean;
 
     constructor($scope: ng.IScope, private vendorService: IVendorService, routingService: IRoutingService,
                 private updateService: IUpdateService, filterService: IFilterStateService, private guitarNames: GuitarNameConfig) {

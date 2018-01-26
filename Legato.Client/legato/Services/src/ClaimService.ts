@@ -7,8 +7,8 @@ import {
 
 
 export default class ClaimService implements IClaimService {
-    claims: LegatoClaims = new LegatoClaims();
     static $inject = ["$http", "UserService"];
+    claims: LegatoClaims = new LegatoClaims();
 
     constructor(private $http: ng.IHttpService, private userService: IUserService) {
         

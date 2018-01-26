@@ -2,8 +2,8 @@
 
 
 export class DisplayAmountModalController {
-    amount: number;
     static $inject = ["$uibModalInstance", "amount"];
+    amount: number;
 
     constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, amount: number) {
         this.amount = amount;

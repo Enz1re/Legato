@@ -8,13 +8,13 @@ import {
 
 
 export class UserModalController {
+    static $inject = ["$uibModalInstance", "ModalService", "UserService", "ContextMenuService"];
     private numUsersToPreload = 25;
     private lowerBound = 0;
     private upperBound = this.numUsersToPreload;
     allUsersLoaded: boolean = false;
     loading: boolean;
     users: UserViewModel[] = [];
-    static $inject = ["$uibModalInstance", "ModalService", "UserService", "ContextMenuService"];
 
     constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private modalService: IModalService,
                 private userService: IUserService, private contextMenu: IContextMenuService) {

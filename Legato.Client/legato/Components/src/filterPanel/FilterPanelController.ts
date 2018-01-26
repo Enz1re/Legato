@@ -2,8 +2,8 @@
 
 
 export class FilterPanelController {
-    search: string;
     static $inject = ["UpdateService"];
+    search: string;
 
     constructor(private updateService: IUpdateService) {
 

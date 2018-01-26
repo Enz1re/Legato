@@ -2,6 +2,7 @@
 
 
 export class LoginModalController {
+    static $inject = ["$uibModalInstance", "AuthenticationService", "UserService"];
     messaging = {
         loading: false,
         error: true,
@@ -9,7 +10,6 @@ export class LoginModalController {
     };
     private username: string;
     private password: string;
-    static $inject = ["$uibModalInstance", "AuthenticationService", "UserService"];
 
     constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, private authService: IAuthenticationService, private userService: IUserService) {
 

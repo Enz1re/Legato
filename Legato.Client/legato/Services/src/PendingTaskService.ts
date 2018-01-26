@@ -2,9 +2,9 @@
 
 
 export default class PendingTaskService implements IPendingTaskService {
+    static $inject = ["$timeout"];
     private taskHandle: ng.IPromise<{}>;
     private task: any;
-    static $inject = ["$timeout"];
 
     constructor(private $timeout: ng.ITimeoutService) {
 

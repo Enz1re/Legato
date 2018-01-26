@@ -2,8 +2,8 @@
 
 
 export default class CacheService implements ICacheService {
-    private instance: ng.ICacheObject;
     static $inject = ["$cacheFactory"];
+    private instance: ng.ICacheObject;
 
     constructor(private $cacheFactory: ng.ICacheFactoryService) {
 

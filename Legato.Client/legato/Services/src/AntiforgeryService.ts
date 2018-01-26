@@ -2,10 +2,10 @@
 
 
 export default class AntiforgeryService implements IAntiforgeryService {
+    static $inject = ["$http"];
     antiforgeryTokenGet: string;
     antiforgeryTokenPost: string;
     antiforgeryTokenDelete: string;
-    static $inject = ["$http"];
 
     constructor(private $http: ng.IHttpService) {
 

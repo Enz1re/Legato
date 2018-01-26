@@ -8,7 +8,7 @@ import {
 
 export default class UrlParamResolver implements IUrlParamResolver {
     constructor(private stateParamsObject: ng.ui.IStateParamsService, public routingService: IRoutingService) {
-        
+
     }
 
     resolvePage(maxPage?: number) {
@@ -16,7 +16,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
             return 1;
         }
 
-        let parsedPage = parseInt(this.stateParamsObject.page);
+        let parsedPage = parseInt(this.stateParamsObject.page, 10);
         if (parsedPage > maxPage) {
             parsedPage = maxPage;
             let params = this.routingService.queryParams;
@@ -32,8 +32,8 @@ export default class UrlParamResolver implements IUrlParamResolver {
             return new Price();
         }
 
-        const parsedFrom = parseInt(this.stateParamsObject.from);
-        const parsedTo = parseInt(this.stateParamsObject.to);
+        const parsedFrom = parseInt(this.stateParamsObject.from, 10);
+        const parsedTo = parseInt(this.stateParamsObject.to, 10);
 
         return parsedFrom && parsedTo ? new Price({ from: parsedFrom, to: parsedTo }) : new Price();
     }
@@ -43,7 +43,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
             return vendorList;
         }
 
-        const checkedVendors = this.stateParamsObject.vendors !== "" ? this.stringToVendorArray(this.stateParamsObject.vendors) : [];
+        const checkedVendors = this.stateParamsObject.vendors !== '' ? this.stringToVendorArray(this.stateParamsObject.vendors) : [];
 
         return !!vendorList ? this.uncheckVendors(vendorList, checkedVendors) : checkedVendors;
     }
@@ -62,7 +62,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
 
     resolveSearchString() {
         if (!this.stateParamsObject.search) {
-            return "";
+            return '';
         }
 
         return this.stateParamsObject.search;
@@ -73,7 +73,7 @@ export default class UrlParamResolver implements IUrlParamResolver {
             return null;
         }
 
-        let index = parseInt(this.stateParamsObject.g);
+        let index = parseInt(this.stateParamsObject.g, 10);
         if (index > maxIndex) {
             index = maxIndex;
             let params = this.routingService.queryParams;
@@ -86,15 +86,15 @@ export default class UrlParamResolver implements IUrlParamResolver {
 
     private uncheckVendors(allVendors: Vendor[], queriedVendors: Vendor[]) {
         allVendors.forEach(v => {
-            v.isSelected = queriedVendors.map(qv => qv.name).indexOf(v.name) !== -1
+            v.isSelected = queriedVendors.map(qv => qv.name).indexOf(v.name) !== -1;
         });
 
         return allVendors;
     }
 
     private stringToVendorArray(vendors: string | string[]) {
-        if (typeof vendors === "string") {
-            vendors = vendors.split(",");
+        if (typeof vendors === 'string') {
+            vendors = vendors.split(',');
         }
 
         return vendors.map(v => new Vendor({ name: v, isSelected: true }));

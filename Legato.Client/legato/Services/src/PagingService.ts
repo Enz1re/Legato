@@ -6,8 +6,8 @@
 
 
 export default class PagingService implements IPagingService {
-    private _itemsToShow: number;
     static $inject = ["ManageService", "RoutingService"];
+    private _itemsToShow: number;
     total: number;
     lowerBound: number;
     upperBound: number;

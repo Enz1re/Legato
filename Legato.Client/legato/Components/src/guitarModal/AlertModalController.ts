@@ -1,7 +1,7 @@
 ﻿export class AlertModalController {
+    static $inject = ["$uibModalInstance", "modalContent", "mode"];
     modalContent: string;
     mode: string;
-    static $inject = ["$uibModalInstance", "modalContent", "mode"];
 
     constructor(private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance, modalContent: string, mode: string) {
         this.modalContent = modalContent;

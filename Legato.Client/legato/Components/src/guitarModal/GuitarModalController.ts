@@ -4,9 +4,9 @@ import { IRoutingService } from "../../../Interfaces/interfaces";
 
 
 export class GuitarModalController {
+    static $inject = ["RoutingService", "guitars", "currentIndex"];
     guitars: Guitar[];
     currentIndex: number;
-    static $inject = ["RoutingService", "guitars", "currentIndex"];
 
     constructor(private routingService: IRoutingService, guitars: Guitar[], currentIndex: number) {
         this.guitars = guitars;
