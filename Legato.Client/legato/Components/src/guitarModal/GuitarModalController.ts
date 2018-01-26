@@ -10,7 +10,9 @@ export class GuitarModalController {
 
     constructor(private routingService: IRoutingService, guitars: Guitar[], currentIndex: number) {
         this.guitars = guitars;
-        this.currentIndex = currentIndex;
+        this.currentIndex = currentIndex >= guitars.length ? guitars.length - 1 :
+                                currentIndex < 0 ? 0 :
+                                    currentIndex;
     }
 
     next() {
